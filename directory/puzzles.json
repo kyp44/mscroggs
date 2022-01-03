@@ -13,7 +13,8 @@
 	    {"number": 6, "tags": ["box"]},
 	    {"number": 7, "tags": ["misc", "mod"]},
 	    {"number": 8, "tags": ["num"]},
-	    {"number": 9, "tags": ["comb", "sum"]}
+	    {"number": 9, "tags": ["comb", "sum"]},
+	    {"number": 10, "tags": ["mod"]}
 	]
     },
     {
