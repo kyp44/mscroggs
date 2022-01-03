@@ -1,0 +1,562 @@
+\def\advent@xxi@i{
+  The geometric mean of a set of $n$ numbers can be computed by multiplying together all the numbers then computing the $n$th root of the result.
+
+  The factors of $4$ are $1$, $2$ and $4$. The geometric mean of these is 2.
+
+  The factors of $6$ are $1$, $2$, $3$, and $6$. The geometric mean of these is $\sqrt{6}$.
+
+  The geometric mean of all the factors of today's number is $22$.
+}
+
+\def\advent@xxi@ii{
+  The number $7n$ has $37$ factors (including $1$ and the number itself).
+  How many factors does $8n$ have?
+}
+
+\def\advent@xxi@iii{
+  If you write out the numbers from $1$ to $1000$ (inclusive), how many times will you write the digit $0$?
+}
+
+\newcommand\grid@advent@xxi@iv[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \gridbox{0}{6}{#1}
+      \gridsym{1}{6}{+}
+      \gridboxh{2}{6}{#2}
+      \gridsym{3}{6}{-}
+      \gridboxh{4}{6}{#3}
+      \gridsym{5}{6}{=}
+      \gridsym{6}{6}{5}
+
+      \gridsym{0}{5}{\div}
+      \gridblank{1}{5}
+      \gridsym{2}{5}{\times}
+      \gridblank{3}{5}
+      \gridsym{4}{5}{\times}
+
+      \gridbox{0}{4}{#4}
+      \gridsym{1}{4}{+}
+      \gridbox{2}{4}{#5}
+      \gridsym{3}{4}{-}
+      \gridbox{4}{4}{#6}
+      \gridsym{5}{4}{=}
+      \gridsym{6}{4}{5}
+
+      \gridsym{0}{3}{-}
+      \gridblank{1}{3}
+      \gridsym{2}{3}{\div}
+      \gridblank{3}{3}
+      \gridsym{4}{3}{\div}
+
+      \gridboxh{0}{2}{#7}
+      \gridsym{1}{2}{+}
+      \gridbox{2}{2}{#8}
+      \gridsym{3}{2}{\times}
+      \gridbox{4}{2}{#9}
+      \gridsym{5}{2}{=}
+      \gridsym{6}{2}{10}
+
+      \gridsym{0}{1}{=}
+      \gridsym{2}{1}{=}
+      \gridsym{4}{1}{=}
+
+      \gridsym{0}{0}{-6}
+      \gridsym{2}{0}{18}
+      \gridsym{4}{0}{35}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xxi@iv{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the product of the numbers in the red boxes.
+
+  \grid@advent@xxi@iv{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xxi@v{
+  How many different isosceles triangles are there whose perimeter is $50$ units, and whose area is an integer number of units squared?
+  
+  (Two triangles that are rotations, reflections and translations of each other are counted as the same triangle. Triangles with an area of 0 should not be counted.)
+}
+
+\def\advent@xxi@vi{
+  When $12345$ is divided by today's number, the remainder is $205$.
+  When $6789$ is divided by today's number, the remainder is $112$.
+}
+
+\newcommand\dec@ai{0.30901699437494745}
+\newcommand\dec@aii{0.8090169943749475}
+\newcommand\dec@bi{0.5877852522924731}
+\newcommand\dec@bii{0.9510565162951535}
+\newcommand\decagon[5]{
+  \def\ai{\dec@ai*#3+#1}
+  \def\aii{\dec@aii*#3+#1}
+  \def\bi{\dec@bi*#3+#2}
+  \def\bii{\dec@bii*#3+#2}
+  \draw (#3+#1, #2) -- (\aii, \bi) -- (\ai, \bii) -- (-\ai, \bii) -- (-\aii, \bi) -- (-#3+#1, #2) -- (-\aii, -\bi) -- (-\ai, -\bii) -- (\ai, -\bii) -- (\aii, -\bi) -- cycle;
+  \fill[fill=red] (-\ai, -\bii) -- (#4*#3+#1, #5*#3+#2) -- (\ai, -\bii) -- cycle;
+}
+\def\advent@xxi@vii{
+  The picture below shows eight regular decagons.
+  In each decagon, a red triangle has been drawn with vertices at three of the vertices of the decagon.
+
+  \begin{center}
+    \begin{tikzpicture}
+      \def\dr{2}
+      \def\spc{2.3*\dr}
+      
+      \decagon{0*\spc}{\spc}{\dr}{-\dec@aii}{-\dec@bi}
+      \decagon{1*\spc}{\spc}{\dr}{-1}{0}
+      \decagon{2*\spc}{\spc}{\dr}{-\dec@aii}{\dec@bi}
+      \decagon{3*\spc}{\spc}{\dr}{-\dec@ai}{\dec@bii}
+
+      \decagon{0*\spc}{0}{\dr}{\dec@ai}{\dec@bii}
+      \decagon{1*\spc}{0}{\dr}{\dec@aii}{\dec@bi}
+      \decagon{2*\spc}{0}{\dr}{1}{0}
+      \decagon{3*\spc}{0}{\dr}{\dec@aii}{-\dec@bi}
+    \end{tikzpicture}
+  \end{center}
+
+  The area of each decagon is $240$.
+  What is the total area of all the red triangles?
+}
+
+\def\advent@xxi@viii{
+  The sum of three integers is $51$.
+  The product of the same three integers is $836$. What is the product of largest integer and the second-largest integer?
+}
+
+\def\advent@xxi@ix{
+  Eve writes down a sequence of consecutive positive integers (she writes more than one number).
+  The sum of the numbers Eve has written down is $844$.
+  Today's number is the smallest integer that Eve has written down.
+}
+
+\newcommand\grid@advent@xxi@x[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \gridboxh{0}{6}{#1}
+      \gridsym{1}{6}{+}
+      \gridbox{2}{6}{#2}
+      \gridsym{3}{6}{+}
+      \gridbox{4}{6}{#3}
+      \gridsym{5}{6}{=}
+      \gridsym{6}{6}{20}
+
+      \gridsym{0}{5}{+}
+      \gridblank{1}{5}
+      \gridsym{2}{5}{+}
+      \gridblank{3}{5}
+      \gridsym{4}{5}{+}
+
+      \gridbox{0}{4}{#4}
+      \gridsym{1}{4}{+}
+      \gridboxh{2}{4}{#5}
+      \gridsym{3}{4}{+}
+      \gridbox{4}{4}{#6}
+      \gridsym{5}{4}{=}
+      \gridsym{6}{4}{10}
+
+      \gridsym{0}{3}{+}
+      \gridblank{1}{3}
+      \gridsym{2}{3}{+}
+      \gridblank{3}{3}
+      \gridsym{4}{3}{+}
+
+      \gridbox{0}{2}{#7}
+      \gridsym{1}{2}{+}
+      \gridbox{2}{2}{#8}
+      \gridsym{3}{2}{+}
+      \gridboxh{4}{2}{#9}
+      \gridsym{5}{2}{=}
+      \gridsym{6}{2}{15}
+
+      \gridsym{0}{1}{=}
+      \gridsym{2}{1}{=}
+      \gridsym{4}{1}{=}
+
+      \gridsym{0}{0}{7}
+      \gridsym{2}{0}{23}
+      \gridsym{4}{0}{15}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xxi@x{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  Today's number is the largest number you can make using the digits in the red boxes.
+
+  \grid@advent@xxi@x{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xxi@xi{
+  The integers are written in a triangle as shown below:
+  \begin{center}
+    \begin{tabular}{ccccccc}
+      & & & 1 & & & \\
+      & & 2 & 3 & 4 & & \\
+      & 5 & 6 & 7 & 8 & 9 & \\
+      10 & 11 & 12 & 13 & 14 & 15 & 16 \\
+      & & & etc. & & &
+    \end{tabular}
+  \end{center}
+  Today's number appears directly above the number $750$ in the triangle of integers.
+}
+
+\def\advent@xxi@abgrid{
+    \begin{center}
+    \begin{tikzpicture}
+      \def\gs{1}
+      % Grid
+      \foreach \i in {0,...,6}{
+        \foreach \j in {0,...,2}{
+          \draw[thick] (\i * \gs, \j * \gs) rectangle (\i * \gs + \gs, \j * \gs + \gs);
+        }
+      }
+      % Points
+      \fill[color=red] (0, 0) circle (0.2) node[color=red,left] {A};
+      \fill[color=blue] (7*\gs, 3*\gs) circle (0.2) node[color=blue,right] {B};
+    \end{tikzpicture}  
+  \end{center}
+}
+\def\advent@xxi@xii{
+  You start at the point marked A in the picture below. You want to get to the point marked B.
+  You may travel \textbf{to the right} or \textbf{upwards} along the black lines.
+
+  \advent@xxi@abgrid
+
+  Today's number is the total number of possible routes to get from A to B.
+}
+
+\def\advent@xxi@xiii{
+  The diagram below shows three circles and two triangles.
+  The three circles all meet at one point.
+  The vertices of the smaller red triangle are at the centers of the circles.
+  The lines connecting the vertices of the larger blue triangle to the point where all three circles meet are diameters of the three circles.
+
+  \begin{center}
+    \begin{tikzpicture}[rotate=30,transform shape]
+      \def\bcr{3}
+      \def\scr{0.55*\bcr}
+      \def\sca{34}
+      \def\mcr{0.7*\bcr}
+      \def\mca{142}
+      \def\pr{0.1}
+
+      % Circles
+      \draw (0, \bcr) circle (\bcr);
+      \draw (\sca: \scr) circle (\scr);
+      \draw (\mca: \mcr) circle (\mcr);
+
+      % Points
+      \fill (0, 0) circle (\pr);
+      \fill (0, \bcr) circle (\pr);
+      \fill (0, 2*\bcr) circle (\pr);
+      \fill (\sca: \scr) circle (\pr);
+      \fill (\sca: 2*\scr) circle (\pr);
+      \fill (\mca: \mcr) circle (\pr);
+      \fill (\mca: 2*\mcr) circle (\pr);
+
+      % Triangles
+      \draw[fill=blue,fill opacity=0.5] (\mca: 2*\mcr) -- (0, 2*\bcr) -- (\sca: 2*\scr) -- cycle;
+      \draw[fill=red,fill opacity=0.5] (\mca: \mcr) -- (0, \bcr) -- (\sca: \scr) -- cycle;
+    \end{tikzpicture}  
+  \end{center}
+  
+  The area of the smaller red triangle is $226$.
+  What is the area of the larger blue triangle?
+}
+
+\def\advent@xxi@xiv{
+  You start at the point marked A in the picture below.
+  You want to get to the point marked B.
+  You may travel \textbf{to the right}, \textbf{upwards}, or \textbf{to the left} along the black lines, but you cannot pass along the same line segment more than once.
+  
+  \advent@xxi@abgrid
+  
+  Today's number is the total number of possible routes to get from A to B.
+}
+
+\newcommand\pyramid@advent@xxi@xvi[6]{
+  \begin{center}
+    \begin{tabular}{cccccc}
+      (row 1) & & & #1 & & \\
+      (row 2) & & #2 & & #3 & \\
+      (row 3) & #4 & & #5 & & #6 \\ 
+      & & & etc. & & 
+    \end{tabular}
+  \end{center}
+}
+\def\advent@xxi@xv{
+  The odd numbers are written in a pyramid.
+
+  \pyramid@advent@xxi@xvi{1}{3}{5}{7}{9}{11}
+  
+  What is the mean of the numbers in the 19th row?
+}
+
+\newcommand\grid@advent@xxi@xvi[9]{
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \gridbox{0}{2}{#1}
+      \gridbox{1}{2}{#2}
+      \gridbox{2}{2}{#3}
+      \gridbox{0}{1}{#4}
+      \gridbox{1}{1}{#5}
+      \gridbox{2}{1}{#6}
+      \gridbox{0}{0}{#7}
+      \gridbox{1}{0}{#8}
+      \gridbox{2}{0}{#9}      
+      
+      % Labels
+      \cwlab{0}{2}{1}
+      \cwlab{1}{2}{2}
+      \cwlab{2}{2}{3}
+      \cwlab{0}{1}{4}
+      \cwlab{0}{0}{5}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xxi@xvi{
+  Each clue in this crossnumber is formed of two parts connected by a logical connective: AND means that both parts are true; NAND means that at most one part is true; OR means that at least one part is true; NOR means that neither part is true; XOR means that exactly one part is true; XNOR means that either both parts are false or both parts are true.
+  No number starts with $0$.
+
+  \begin{multicols}{2}
+    \grid@advent@xxi@xvi{}{}{}{}{}{}{}{}{}
+
+    \columnbreak
+
+    \begin{enumerate}
+      \item \textbf{1A} is a palindrome XNOR \textbf{1D} is a palindrome.
+      \item \textbf{1A} is greater than $350$ NOR \textbf{1D} is less than $150$.
+      \item \textbf{3D} is odd NAND \textbf{4A} and \textbf{2D} are equal.
+      \item \textbf{3D} is prime XOR \textbf{5A} is odd.
+      \item \textbf{4A} is a cube AND \textbf{2D} is a cube.
+      \item The sum of the digits of \textbf{3D} is $2$ OR the sum of the digits of \textbf{5A} is $5$.
+      \item Today's number is \textbf{1D}.
+    \end{enumerate}
+  \end{multicols}  
+}
+
+\def\advent@xxi@xvii{
+  The digital product of a number is computed by multiplying together all of its digits. For example, the digital product of $6273$ is $252$.
+
+  Today's number is the smallest number whose digital product is $252$.
+}
+
+\newcommand\grid@advent@xxi@xviii[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \gridboxh{0}{6}{#1}
+      \gridsym{1}{6}{+}
+      \gridbox{2}{6}{#2}
+      \gridsym{3}{6}{+}
+      \gridbox{4}{6}{#3}
+      \gridsym{5}{6}{=}
+      \gridsym{6}{6}{11}
+
+      \gridsym{0}{5}{+}
+      \gridblank{1}{5}
+      \gridsym{2}{5}{\times}
+      \gridblank{3}{5}
+      \gridsym{4}{5}{\times}
+
+      \gridbox{0}{4}{#4}
+      \gridsym{1}{4}{+}
+      \gridboxh{2}{4}{#5}
+      \gridsym{3}{4}{+}
+      \gridbox{4}{4}{#6}
+      \gridsym{5}{4}{=}
+      \gridsym{6}{4}{17}
+
+      \gridsym{0}{3}{\times}
+      \gridblank{1}{3}
+      \gridsym{2}{3}{-}
+      \gridblank{3}{3}
+      \gridsym{4}{3}{+}
+
+      \gridbox{0}{2}{#7}
+      \gridsym{1}{2}{+}
+      \gridbox{2}{2}{#8}
+      \gridsym{3}{2}{+}
+      \gridboxh{4}{2}{#9}
+      \gridsym{5}{2}{=}
+      \gridsym{6}{2}{17}
+
+      \gridsym{0}{1}{=}
+      \gridsym{2}{1}{=}
+      \gridsym{4}{1}{=}
+
+      \gridsym{0}{0}{11}
+      \gridsym{2}{0}{17}
+      \gridsym{4}{0}{17}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xxi@xviii{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the product of the numbers in the red boxes.
+
+  \grid@advent@xxi@xviii{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xxi@xix{
+  The equation $352x^3 - 528x^2 + 90 = 0$ has three distinct real-valued solutions.
+
+  Today's number is the number of integers $a$ such that the equation $352x^3 - 528x^2 + a = 0$ has three distinct real-valued solutions.
+}
+
+\def\advent@xxi@xx{
+  What is the area of the largest area triangle that has one side of length $32$ and one side of length $19$?
+}
+
+\newcommand\grid@advent@xxi@xxi[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \bigbox{0}{3}{#1}
+      \bigbox{1}{3}{#2}
+      \bigbox{2}{3}{#3}
+      \bbtextr{3}{3}{\textbf{today's number}}
+
+      \bigbox{0}{2}{#4}
+      \bigbox{1}{2}{#5}
+      \bigbox{2}{2}{#6}
+      \bbtextr{3}{2}{prime}
+
+      \bigbox{0}{1}{#7}
+      \bigbox{1}{1}{#8}
+      \bigbox{2}{1}{#9}
+      \bbtextr{3}{1}{square}
+
+      \bbtextb{0}{0}{cube}
+      \bbtextb{1}{0}{odd}
+      \bbtextb{2}{0}{multiple\\of $11$}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xxi@xxi{
+  Arrange the digits $1$–$9$ (using each digit exactly once) so that the three digit number in: the middle row is a prime number; the bottom row is a square number; the left column is a cube number; the middle column is an odd number; the right column is a multiple of $11$.
+  The $3$-digit number in the first row is today's number.
+
+  \grid@advent@xxi@xxi{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xxi@xxii{
+  There are $12$ ways of placing $2$ tokens on a $2 \times 4$ grid so that no two tokens are next to each other horizontally, vertically or diagonally:
+
+  \begin{center}
+    \begin{tikzpicture}
+      % Draw all the grids
+      \foreach \gi in {0,1}{
+        \foreach \gj in {0,...,5}{
+          \foreach \i in {0,1}{
+            \foreach \j in {0,...,3}{
+              \gridbox{5*\gj + \j}{3*\gi + \i}{}
+            }
+          }
+        }
+      }
+
+      % Place token circles
+      \gridcirc{0}{4}
+      \gridcirc{2}{4}
+      \gridcirc{5}{4}
+      \gridcirc{8}{4}
+      \gridcirc{10}{4}
+      \gridcirc{12}{3}
+      \gridcirc{15}{4}
+      \gridcirc{18}{3}
+      \gridcirc{21}{4}
+      \gridcirc{23}{4}
+      \gridcirc{26}{4}
+      \gridcirc{28}{3}
+      \gridcirc{0}{0}
+      \gridcirc{2}{1}
+      \gridcirc{5}{0}
+      \gridcirc{8}{1}
+      \gridcirc{11}{0}
+      \gridcirc{13}{1}
+      \gridcirc{15}{0}
+      \gridcirc{17}{0}
+      \gridcirc{20}{0}
+      \gridcirc{23}{0}
+      \gridcirc{26}{0}
+      \gridcirc{28}{0}
+    \end{tikzpicture}
+  \end{center}
+
+  Today's number is the number of ways of placing $2$ tokens on a $2 \times 21$ grid so that no two tokens are next to each other horizontally, vertically or diagonally.
+}
+
+\def\advent@xxi@xxiii{
+  I draw the parabola $y = x^2$ and mark points on the parabola at $x = 17$ and $x = -6$.
+  I then draw a straight line connecting these two points.
+
+  At which value of $y$ does this line intercept the $y$-axis?
+}
+
+\def\advent@xxi@xxiv{
+  The digital product of a number is computed by multiplying together all of its digits.
+  For example, the digital product of $1522$ is $20$.
+
+  How many $12$-digit numbers are there whose digital product is $20$?
+}
+
+\def\card@xxi@i{
+  What is the sum of all the odd integers between $0$ and $30$?
+}
+
+\def\card@xxi@ii{
+  What is the sum of all the odd integers between $0$ and $5668$?
+}
+
+\def\card@xxi@iii{
+  What is the smallest integer with a digital sum of $28$ and a digital product of $10000$?
+}
+
+\def\card@xxi@iv{
+  What is the smallest integer with a digital sum of $41$ and a digital product of $432000$?
+}
+
+\def\card@xxi@v{
+  What is the area of the largest area dodecagon that will fit inside a circle with area $111185 \pi$?
+}
+
+\def\card@xxi@vi{
+  What is the area of the largest area heptagon that will fit inside a semicircle with area $115185 \pi$?
+}
+
+\def\card@xxi@vii{
+  How many terms are there in the (simplified) expansion of $(x + y + z)^2$?
+}
+
+\def\card@xxi@viii{
+  How many terms are there in the (simplified) expansion of $(x + y + z)^{41172}$?
+}
+
+\def\card@xxi@ix{
+  What is the largest integer that cannot be written as $4a + 5b$ for non-negative integers $a$ and $b$?
+}
+
+\def\card@xxi@x{
+  What is the largest integer that cannot be written as $83409a + 66608b$ for non-negative integers $a$ and $b$?
+}
+
+\def\card@xxi@xi{
+  How many positive integers are there below $100$ whose digits are all non-zero and different?
+}
+
+\def\card@xxi@xii{
+  How many positive integers are there whose digits are all non-zero and different?
+}
+
+\def\card@xxi@xiii{
+  What is the only integer for which taking the geometric mean of all its factors (including $1$ and the number itself) gives $2$?
+}
+
+\def\card@xxi@xiv{
+  What is the only integer for which taking the geometric mean of all its factors (including $1$ and the number itself) gives $25$?
+}

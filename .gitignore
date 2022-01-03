@@ -1,0 +1,12 @@
+# Python stuff
+__pycache__
+*.pickle
+
+# For LaTeX documents
+*.aux
+*.log
+*.out
+*.pdf
+
+# Puzzles
+directory/puzzles.tex

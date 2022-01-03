@@ -1,0 +1,101 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+
+\begin{document}
+
+\title{MS Scroggs 2019 Christmas Card Solutions}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Link to the online card: \href{http://mscroggs.co.uk/blog/70}{http://mscroggs.co.uk/blog/70}
+
+\cproblem{1}{4001}{\card@xix@i}{
+  Each of the four digits of a four-digit number will be one 1000 times since there are 1000 combinations of the other three digits.
+  Thus the total number of ones written in the numbers 1 to 9999 are
+  $$
+  4 \cdot 1000 = 4000 \,.
+  $$
+  Then of course 10000 only has one 1 so that the final answer is $4000 + 1 = 4001$.
+
+  This answer was verified using Python.
+}
+
+\cproblem{2}{1849}{\card@xix@ii}{
+  We have that $2N+1 = 85$ for $N = 42$ so that the answer is clearly
+  $$
+  \sum_{k=0}^{42} (2k+1) = 2 \sum_{k=0}^{42} k + \sum_{k=0}^{42} 1 = 2 \frac{42 \cdot 43}{2} + 43 = 43 \cdot 42 + 43 = 43 (42 + 1) = 43^2 = 1849 \,.
+  $$
+  This answer was verified with Python.
+}
+
+\cproblem{3}{2002}{\card@xix@iii}{
+  The number $4008004$ may seem like a very random choice for an upper bound of this problem, but it is not at all.
+  The key insight is that for any number $n$ a factor $k$ of $n$ must always result in two factors, namely $k$ and $n/k$, noting that this is also the case for $k=1$.
+  So it seems that the number of factors of $n$ must always be even.
+  However, the only exception to this occurs when $n$ is a perfect square, in which case one integer factor $k = \sqrt{n}$ generates only one distinct factor instead of two.
+  Therefore only the set of integers with an odd number of factors is exactly the set of perfect squares!
+
+  Moreover if we are interested in the number of integers between $1$ and $N^2$ (inclusive) with an odd number of factors, then this is the number of perfect squares between $1$ and $N^2$.
+  Of course this will simply be the set $\{k^2 \mid 1 \leq k \leq N\}$, which of course has $N$ elements.
+  We then notice that $N^2 = 4008004$ is a perfect square so that the number we seek is $N = \sqrt{4008004} = 2002$.
+
+  This result was verified using Python using a quasi-brute force approach.
+}
+
+\cproblem{4}{130405}{\card@xix@iv}{
+  In order for a book to even have a center spread it must have at least $4$ pages, where we take a page to be a single side of a two-sided sheet in the book.
+  Moreover if the number of pages $N$ is divisible by $4$, then every side of every sheet will be used.
+  In our case $N = 130404$, which is divisible by $4$, so we shall only consider this case.
+  For a book where $N = 4$ the center pages are $2 = N/2$ and $3 = N/2+1$ so that the sum is
+  $$
+  s = \frac{N}{2} + \frac{N}{2} + 1 = N + 1 \,.
+  $$
+  In fact, this generalizes to any book where $N$ is divisible by $4$.
+  So in our case our answer is $s = N+1 = 130405$.
+}
+
+\cproblem{5}{120306}{\card@xix@v}{
+  For any circle with radius $r$, the largest quadrilateral that fits in the circle is a square whose diagonal is the diameter $d = 2r$ of the circle.
+  If such a square has side length $s$ then the diagonal of the square is then
+  \begin{gather*}
+    \sqrt{2}s = d = 2r \\
+    s = \frac{2r}{\sqrt{2}} = \sqrt{2}r
+  \end{gather*}
+  so that the area of the square is $A = s^2 = (\sqrt{2}r)^2 = 2r^2$.
+  Now, in our case, the area of the circle is $\pi r^2 = 60153 \pi$ so that clearly $r^2 = 60153$.
+  Hence the area of the square that we seek is $A = 2r^2 = 120306$.
+}
+
+\cproblem{6}{514229}{\card@xix@vi}{
+  Let $f(n)$ be the number of ways to write $n$ as the sum of \mn{1} and \mn{2}.
+  When you write as the sum of \mn{1} and \mn{2}, the sum must end in either $1$ or $2$: if it ends in $1$, then there are $f(n-1)$ ways to write the rest before this $1$ as the sum of \mn{1} and \mn{2}; if it ends in $2$, there are $f(n-2)$ ways to write the rest.
+  This means that $f(n) = f(n-1) + f(n-2)$, or in other words the Fibonacci numbers.
+  We clearly have that $f(1) = 1$, and also $f(2) = 2$ (since $2$ can only be written as $1+1$ or simply $2$).
+  Python was used to calculate these recursively using these base conditions so that our answer is $f(28) = 514229$.
+}
+
+\cproblem{7}{171175}{\card@xix@vii}{
+  This was calculated in Python using the NumPy function.
+}
+
+\cproblem{8}{59}{\card@xix@viii}{
+  This was calculated in Python, which was made easy by the fact that integers can be arbitrarily large in Python.
+}
+
+\cproblem{9}{304434}{\card@xix@ix}{
+  The ones digit of the sum is 7, which tells us that the ones digit has to be the one that was removed so that they are different in each number.
+  If this were not the case, then the ones digit of the sum would have to be even.
+  Hence our two numbers have digits $N_1 = d_5 d_4 d_3 d_2 d_1 d_0$ and $N_2 = d_5 d_4 d_3 d_2 d_1$.
+  Thus the sum of $d_5$ and any carried numbers from the previous additions is $3$.
+  If we assume that no digits are carried over then it follows that $N_1 = 304434$ and $n_2 = 30443$, which work!
+
+  Python was used to verify that this is the unique answer.
+}
+
+\end{document}

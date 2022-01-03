@@ -1,0 +1,22 @@
+* Past things we could do:
+** TODO 2018 Advent/Card
+*** TODO Card (not documented, and no Python script)
+*** TODO Migrate crappy Open Office advent doc to LaTeX
+** TODO 2017 Advent/Card
+*** TODO Card (not documented, and no Python script)
+*** TODO Migrate crappy text file and Open Office advent doc to LaTeX
+** TODO 2016 Advent/Card
+** TODO 2015 Advent
+Never completed before, or else just not documented at all.
+Confirmed to be the first year of the advent calendar but there was no Christmas card.
+*** TODO Document card (have Python script)
+*** TODO Document advent (have Python scripts)
+** TODO Other Puzzles
+Complete list: https://www.mscroggs.co.uk/puzzles/list
+*** TODO Sunday Afternoon Maths
+*** TODO Scour blog posts looking for additional puzzles or activities
+* Other things
+** DONE Re-organize directory using tags
+   CLOSED: [2021-12-20 Mon 09:35]
+** DONE Unify 1-9 box puzzle answers using a mcaro
+   CLOSED: [2021-12-18 Sat 12:40]

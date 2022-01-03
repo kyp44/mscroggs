@@ -1,0 +1,174 @@
+
+[
+    {
+	"type": "advent",
+	"year": 2015,
+	"number": 24,
+	"puzzles": [
+	    {"number": 1, "tags": ["geom"]},
+	    {"number": 2, "tags": ["comb"]},
+	    {"number": 3, "tags": ["misc"]},
+	    {"number": 4, "tags": ["box"]},
+	    {"number": 5, "tags": ["geom", "comb", "sum"]},
+	    {"number": 6, "tags": ["box"]},
+	    {"number": 7, "tags": ["misc", "mod"]},
+	    {"number": 8, "tags": ["num"]},
+	    {"number": 9, "tags": ["comb", "sum"]}
+	]
+    },
+    {
+	"type": "advent",
+	"year": 2018,
+	"number": 24,
+	"puzzles": [
+	    {"number": 1, "tags": ["comb"]},
+	    {"number": 2, "tags": ["geom"]}
+	]
+    },
+    {
+	"type": "advent",
+	"year": 2019,
+	"number": 24,
+	"puzzles": [
+	    {"number": 1, "tags": ["dig", "comb"]},
+	    {"number": 2, "tags": ["geom", "comb"]},
+	    {"number": 3, "tags": ["box"]},
+	    {"number": 4, "tags": ["comb"]},
+	    {"number": 5, "tags": ["geom", "comb"]},
+	    {"number": 6, "tags": ["cons"]},
+	    {"number": 7, "tags": ["comb", "sum"]},
+	    {"number": 8, "tags": ["dig", "sum"]},
+	    {"number": 9, "tags": ["box"]},
+	    {"number": 10, "tags": ["calc"]},
+	    {"number": 11, "tags": ["box"]},
+	    {"number": 12, "tags": ["misc"]},
+	    {"number": 13, "tags": ["cross"]},
+	    {"number": 14, "tags": ["comb", "sum"]},
+	    {"number": 15, "tags": ["num", "comb"]},
+	    {"number": 16, "tags": ["box"]},
+	    {"number": 17, "tags": ["dig"]},
+	    {"number": 18, "tags": ["misc"]},
+	    {"number": 19, "tags": ["geom"]},
+	    {"number": 20, "tags": ["num"]},
+	    {"number": 21, "tags": ["box"]},
+	    {"number": 22, "tags": ["base"]},
+	    {"number": 23, "tags": ["box"]},
+	    {"number": 24, "tags": ["dig"]}
+	]
+    },
+    {
+	"type": "card",
+	"year": 2019,
+	"number": 9,
+	"puzzles": [
+	    {"number": 1, "tags": ["dig", "comb"]},
+	    {"number": 2, "tags": ["sum"]},
+	    {"number": 3, "tags": ["num", "comb"]},
+	    {"number": 4, "tags": ["book"]},
+	    {"number": 5, "tags": ["geom"]},
+	    {"number": 6, "tags": ["sum", "comb"]},
+	    {"number": 7, "tags": ["num"]},
+	    {"number": 8, "tags": ["num"]},
+	    {"number": 9, "tags": ["dig"]}
+	]
+    },
+    {
+	"type": "advent",
+	"year": 2020,
+	"number": 24,
+	"puzzles": [
+	    {"number": 1, "tags": ["dig", "comb"]},
+	    {"number": 2, "tags": ["geom"]},
+	    {"number": 3, "tags": ["box"]},
+	    {"number": 4, "tags": ["dig"]},
+	    {"number": 5, "tags": ["prob", "sum"]},
+	    {"number": 6, "tags": ["comb"]},
+	    {"number": 7, "tags": ["sum", "comb"]},
+	    {"number": 8, "tags": ["base"]},
+	    {"number": 9, "tags": ["box"]},
+	    {"number": 10, "tags": ["dig", "num"]},
+	    {"number": 11, "tags": ["misc"]},
+	    {"number": 12, "tags": ["geom"]},
+	    {"number": 13, "tags": ["comb"]},
+	    {"number": 14, "tags": ["dig", "comb"]},
+	    {"number": 15, "tags": ["misc"]},
+	    {"number": 16, "tags": ["cross"]},
+	    {"number": 17, "tags": ["box"]},
+	    {"number": 18, "tags": ["comb"]},
+	    {"number": 19, "tags": ["geom", "comb"]},
+	    {"number": 20, "tags": ["cons"]},
+	    {"number": 21, "tags": ["comb"]},
+	    {"number": 22, "tags": ["box"]},
+	    {"number": 23, "tags": ["dig", "sum"]},
+	    {"number": 24, "tags": ["comb"]}
+	]
+    },
+    {
+	"type": "card",
+	"year": 2020,
+	"number": 14,
+	"puzzles": [
+	    {"number": 1, "tags": ["comb"]},
+	    {"number": 2, "tags": ["book"]},
+	    {"number": 3, "tags": ["sum"]},
+	    {"number": 4, "tags": ["misc"]},
+	    {"number": 5, "tags": ["geom"]},
+	    {"number": 6, "tags": ["num"]},
+	    {"number": 7, "tags": ["prob", "sum"]},
+	    {"number": 8, "tags": ["comb"]},
+	    {"number": 9, "tags": ["dig", "sum"]}
+	]
+    },
+    {
+	"type": "advent",
+	"year": 2021,
+	"number": 24,
+	"puzzles": [
+	    {"number": 1, "tags": ["num"]},
+	    {"number": 2, "tags": ["num"]},
+	    {"number": 3, "tags": ["dig", "comb"]},
+	    {"number": 4, "tags": ["box"]},
+	    {"number": 5, "tags": ["geom", "calc"]},
+	    {"number": 6, "tags": ["mod"]},
+	    {"number": 7, "tags": ["geom", "sum"]},
+	    {"number": 8, "tags": ["num"]},
+	    {"number": 9, "tags": ["cons", "sum"]},
+	    {"number": 10, "tags": ["box"]},
+	    {"number": 11, "tags": ["tri"]},
+	    {"number": 12, "tags": ["comb", "sum"]},
+	    {"number": 13, "tags": ["geom"]},
+	    {"number": 14, "tags": ["comb", "sum"]},
+	    {"number": 15, "tags": ["tri"]},
+	    {"number": 16, "tags": ["cross"]},
+	    {"number": 17, "tags": ["dig", "num"]},
+	    {"number": 18, "tags": ["box"]},
+	    {"number": 19, "tags": ["cubic"]},
+	    {"number": 20, "tags": ["geom", "calc"]},
+	    {"number": 21, "tags": ["box"]},
+	    {"number": 22, "tags": ["comb", "sum"]},
+	    {"number": 23, "tags": ["calc"]},
+	    {"number": 24, "tags": ["num", "comb", "dig"]}
+	]
+    },
+    {
+	"type": "card",
+	"year": 2021,
+	"number": 14,
+	"puzzles": [
+	    {"number": 1, "tags": ["sum"]},
+	    {"number": 2, "tags": ["sum"]},
+	    {"number": 3, "tags": ["dig", "num"]},
+	    {"number": 4, "tags": ["dig", "num"]},
+	    {"number": 5, "tags": ["geom"]},
+	    {"number": 6, "tags": ["geom"]},
+	    {"number": 7, "tags": ["comb"]},
+	    {"number": 8, "tags": ["comb"]},
+	    {"number": 9, "tags": ["mod"]},
+	    {"number": 10, "tags": ["mod"]},
+	    {"number": 11, "tags": ["dig", "comb"]},
+	    {"number": 12, "tags": ["dig", "comb"]},
+	    {"number": 13, "tags": ["num", "sum"]},
+	    {"number": 14, "tags": ["num", "sum"]}
+	]
+    }
+]

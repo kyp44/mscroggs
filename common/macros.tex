@@ -1,0 +1,67 @@
+% Monospace code
+\def\code#1{\texttt{#1}}
+
+% Greek letters
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\D{\Delta}
+
+% Commands that make life easier
+\newcommand\gath[1]{\begin{gather} #1 \end{gather}}
+\newcommand\ali[1]{\begin{align} #1 \end{align}}
+\newcommand\parens[1]{\left( #1 \right)}
+\newcommand\squares[1]{\left[ #1 \right]}
+\newcommand\braces[1]{\left\{ #1 \right\}}
+\newcommand\deriv[2]{\frac{d #1}{d #2}}
+\newcommand\abs[1]{\left| #1 \right|}
+\newcommand\floor[1]{\left\lfloor #1 \right\rfloor}
+\DeclareMathOperator{\lcm}{lcm}
+\def\non{\nonumber \\}
+
+% Multiline equation space
+\def\mlesp{\hspace{1.2cm}}
+
+% For grid diagrams
+\newcommand\gridbox[3]{\draw (#1,#2) rectangle (#1+1,#2+1) node[pos=.5] {#3};}
+\newcommand\gridboxh[3]{\draw[fill=red!20] (#1,#2) rectangle (#1+1,#2+1) node[pos=.5] {#3};}
+\newcommand\gridboxb[3]{\draw[fill=black] (#1,#2) rectangle (#1+1,#2+1) node[pos=.5] {#3};}
+\newcommand\gridsym[3]{\node at (#1+0.5,#2+0.5) {$#3$};}
+\newcommand\gridblank[2]{\filldraw[draw=gray, color=gray] (#1,#2) rectangle (#1+1,#2+1);}
+\newcommand\gridcirc[2]{\draw (#1 + 0.5,#2 + 0.5) circle (0.25);}
+\newcommand\cwlab[3]{
+  \def\dd{0.15}
+  \draw (#1 + \dd - 0.03, #2 + 1 - \dd) node {\scriptsize #3};
+}
+
+\def\bbw{3.5}
+\def\bbh{2}
+\newcommand\bigbox[3]{\draw (#1*\bbw,#2*\bbh) rectangle (#1*\bbw+\bbw,#2*\bbh+\bbh) node[pos=.5] {#3};}
+\newcommand\bbtextr[3]{\node[right] at (#1*\bbw,#2*\bbh+0.5*\bbh) {#3};}
+\newcommand\bbtextb[3]{\node[align=center] at (#1*\bbw+0.5*\bbw,#2*\bbh+0.5*\bbh) {#3};}
+
+% Box puzzle stock answer
+\newcommand\boxans[1]{
+  Logic was used to deduce the solution:
+
+  #1
+
+  This was verified using Python as well as shown to be unique with a brute force approach.
+}
+
+% Multiple numbers
+\newcommand\mn[1]{$#1$'s}
+
+% Commands for problems
+\newcommand\problem[4]{
+  \section*{#1}
+
+  Question: #3
+  
+  Answer: #2
+  
+  Explanation: #4
+}
+\newcommand\aproblem[4]{\problem{Dec #1}{#2}{#3}{#4}}
+\newcommand\cproblem[4]{\problem{Problem #1}{#2}{#3}{#4}}

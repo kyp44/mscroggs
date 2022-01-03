@@ -1,0 +1,125 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+
+\begin{document}
+
+\title{MS Scroggs Advent Calendar 2018 Answers}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2018}{https://www.mscroggs.co.uk/puzzles/advent2018}
+
+\aproblem{1}{233}{\advent@xviii@i}{
+  Define a qualifying sum as a sum written with only \mn{1} and \mn{2}.
+  Let $f(n)$ be the number of ways to write $n$ as a qualifying sum.
+  Each sum of $f(n)$ will end with either a $1$ or a $2$.
+  In the former case, there are $f(n-1)$ ways to write the part preceding the $1$.
+  In the latter case there are $f(n-2)$ ways to write the part preceding the $2$.
+  Clearly then the total number of ways is the recursive relation
+  \gath{
+    f(n) = f(n-1) + f(n-2) \label{eqn:01:rec}
+  }
+  with the obvious base case $f(1) = 1$ and $f(2) = 2$ since $2$ can only be written as $1 + 1$ or simply $2$.
+  This is the Fibonacci sequence but offset by one due to differing base cases.
+  Since this has no nice closed form solution, the recursive function was evaluated in Python to get our answer $f(12) = 233$.
+}
+
+\aproblem{2}{172}{\advent@xviii@ii}{
+  TODO
+}
+
+\aproblem{3}{TODO}{\advent@xviii@iii}{
+  TODO
+}
+
+\aproblem{4}{TODO}{\advent@xviii@iv}{
+  TODO
+}
+
+\aproblem{5}{TODO}{\advent@xviii@v}{
+  TODO
+}
+
+\aproblem{6}{TODO}{\advent@xviii@vi}{
+  TODO
+}
+
+\aproblem{7}{TODO}{\advent@xviii@vii}{
+  TODO
+}
+
+\aproblem{8}{TODO}{\advent@xviii@viii}{
+  TODO
+}
+
+\aproblem{9}{TODO}{\advent@xviii@vix}{
+  TODO
+}
+
+\aproblem{10}{TODO}{\advent@xviii@x}{
+  TODO
+}
+
+\aproblem{11}{TODO}{\advent@xviii@xi}{
+  TODO
+}
+
+\aproblem{12}{TODO}{\advent@xviii@xii}{
+  TODO
+}
+
+\aproblem{13}{TODO}{\advent@xviii@xiii}{
+  TODO
+}
+
+\aproblem{14}{TODO}{\advent@xviii@xiv}{
+  TODO
+}
+
+\aproblem{15}{TODO}{\advent@xviii@xv}{
+  TODO
+}
+
+\aproblem{16}{TODO}{\advent@xviii@xvi}{
+  TODO
+}
+
+\aproblem{17}{TODO}{\advent@xviii@xvii}{
+  TODO
+}
+
+\aproblem{18}{TODO}{\advent@xviii@xviii}{
+  TODO
+}
+
+\aproblem{19}{TODO}{\advent@xviii@xix}{
+  TODO
+}
+
+\aproblem{20}{TODO}{\advent@xviii@xx}{
+  TODO
+}
+
+\aproblem{21}{TODO}{\advent@xviii@xxi}{
+  TODO
+}
+
+\aproblem{22}{TODO}{\advent@xviii@xxii}{
+  TODO
+}
+
+\aproblem{23}{TODO}{\advent@xviii@xxiii}{
+  TODO
+}
+
+\aproblem{24}{TODO}{\advent@xviii@xxiv}{
+  TODO
+}
+
+\end{document}

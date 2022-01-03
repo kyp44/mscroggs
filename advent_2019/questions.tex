@@ -1,0 +1,518 @@
+\def\advent@xix@i{
+  If you write out the numbers from $1$ to $1000$ (inclusive), how many times will you write the digit $1$?
+}
+
+\def\advent@xix@ii{
+  You have 15 sticks of length $1$ cm, $2$ cm, $\ldots$, $15$ cm (one of each length).
+  How many triangles can you make by picking three sticks and joining their ends?
+}
+
+\newcommand\grid@advent@xix@iii[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \gridbox{0}{6}{#1}
+      \gridsym{1}{6}{+}
+      \gridbox{2}{6}{#2}
+      \gridsym{3}{6}{+}
+      \gridbox{4}{6}{#3}
+      \gridsym{5}{6}{=}
+      \gridsym{6}{6}{21}
+
+      \gridsym{0}{5}{+}
+      \gridblank{1}{5}
+      \gridsym{2}{5}{\times}
+      \gridblank{3}{5}
+      \gridsym{4}{5}{\times}
+
+      \gridboxh{0}{4}{#4}
+      \gridsym{1}{4}{+}
+      \gridbox{2}{4}{#5}
+      \gridsym{3}{4}{+}
+      \gridbox{4}{4}{#6}
+      \gridsym{5}{4}{=}
+      \gridsym{6}{4}{10}
+
+      \gridsym{0}{3}{+}
+      \gridblank{1}{3}
+      \gridsym{2}{3}{\div}
+      \gridblank{3}{3}
+      \gridsym{4}{3}{\times}
+
+      \gridbox{0}{2}{#7}
+      \gridsym{1}{2}{+}
+      \gridboxh{2}{2}{#8}
+      \gridsym{3}{2}{+}
+      \gridboxh{4}{2}{#9}
+      \gridsym{5}{2}{=}
+      \gridsym{6}{2}{14}
+
+      \gridsym{0}{1}{=}
+      \gridsym{2}{1}{=}
+      \gridsym{4}{1}{=}
+
+      \gridsym{0}{0}{21}
+      \gridsym{2}{0}{10}
+      \gridsym{4}{0}{14}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xix@iii{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the largest number you can make with the digits in the red boxes.
+
+  \grid@advent@xix@iii{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xix@iv{
+  There are $5$ ways to tile a $3 \times 2$ rectangle with $2 \times 2$ squares and $2 \times 1$ dominoes.
+
+  Today's number is the number of ways to tile a $9 \times 2$ rectangle with $2 \times 2$ squares and $2 \times 1$ dominoes.
+}
+
+\def\advent@xix@v{
+  $28$ points are spaced equally around the circumference of a circle.
+  There are $3276$ ways to pick three of these points.
+  The three picked points can be connected to form a triangle.
+  Today's number is the number of these triangles that are isosceles.
+}
+
+\def\advent@xix@vi{
+  Noel's grandchildren were in born in November in consecutive years.
+  Each year for Christmas, Noel gives each of his grandchildren their age in pounds.
+
+  Last year, Noel gave his grandchildren a total of \pounds$208$. How much will he give them in total this year?
+}
+
+\def\advent@xix@vii{
+  The sum of the coefficients in the expansion of $(x + 1)^5$ is $32$.
+  Today's number is the sum of the coefficients in the expansion of $(2x + 1)^5$.
+}
+
+\def\advent@xix@viii{
+  Carol uses the digits from $0$ to $9$ (inclusive) exactly once each to write five $2$-digit even numbers, then finds their sum.
+  What is the largest number she could have obtained?
+}
+
+\newcommand\grid@advent@xix@ix[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \bigbox{0}{3}{#1}
+      \bigbox{1}{3}{#2}
+      \bigbox{2}{3}{#3}
+      \bbtextr{3}{3}{all odd}
+
+      \bigbox{0}{2}{#4}
+      \bigbox{1}{2}{#5}
+      \bigbox{2}{2}{#6}
+      \bbtextr{3}{2}{all even}
+
+      \bigbox{0}{1}{#7}
+      \bigbox{1}{1}{#8}
+      \bigbox{2}{1}{#9}
+      \bbtextr{3}{1}{all multiples of $3$}
+
+      \bbtextb{0}{0}{\textbf{today's}\\\textbf{number}}
+      \bbtextb{1}{0}{all $>6$}
+      \bbtextb{2}{0}{all non-\\prime}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xix@ix{
+  Arrange the digits $1$-$9$ in a $3 \times 3$ square so that: all the digits in the first row are odd; all the digits in the second row are even; all the digits in the third row are multiples of $3$; all the digits in the second column are (strictly) greater than $6$; all the digits in the third column are non-prime.
+  The number in the first column is today's number.
+
+  \grid@advent@xix@ix{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xix@x{
+  For all values of $x$, the function $f(x) = ax + b$ satisfies
+  \gath{
+    8x - 8 -x^2 \leq f(x) \leq x^2
+  }
+  What is $f(65)$?
+}
+
+\newcommand\grid@advent@xix@xi[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \gridbox{0}{6}{#1}
+      \gridsym{1}{6}{+}
+      \gridbox{2}{6}{#2}
+      \gridsym{3}{6}{\div}
+      \gridboxh{4}{6}{#3}
+      \gridsym{5}{6}{=}
+      \gridsym{6}{6}{2}
+
+      \gridsym{0}{5}{+}
+      \gridblank{1}{5}
+      \gridsym{2}{5}{\div}
+      \gridblank{3}{5}
+      \gridsym{4}{5}{\div}
+
+      \gridbox{0}{4}{#4}
+      \gridsym{1}{4}{\div}
+      \gridbox{2}{4}{#5}
+      \gridsym{3}{4}{\div}
+      \gridbox{4}{4}{#6}
+      \gridsym{5}{4}{=}
+      \gridsym{6}{4}{3}
+
+      \gridsym{0}{3}{\div}
+      \gridblank{1}{3}
+      \gridsym{2}{3}{-}
+      \gridblank{3}{3}
+      \gridsym{4}{3}{\div}
+
+      \gridboxh{0}{2}{#7}
+      \gridsym{1}{2}{\div}
+      \gridboxh{2}{2}{#8}
+      \gridsym{3}{2}{\div}
+      \gridbox{4}{2}{#9}
+      \gridsym{5}{2}{=}
+      \gridsym{6}{2}{1}
+
+      \gridsym{0}{1}{=}
+      \gridsym{2}{1}{=}
+      \gridsym{4}{1}{=}
+
+      \gridsym{0}{0}{2}
+      \gridsym{2}{0}{1}
+      \gridsym{4}{0}{1}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xix@xi{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the product of the red digits.
+
+  \grid@advent@xix@xi{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xix@xii{
+  For a general election, the Advent isles are split into $650$ constituencies.
+  In each constituency, exactly $99$ people vote: everyone votes for one of the two main parties: the Rum party or the Land party.
+  The party that receives the most votes in each constituency gets an MAP (Member of Advent Parliament) elected to parliament to represent that constituency.
+
+  In this year's election, exactly half of the $64350$ total voters voted for the Rum party. What is the largest number of MAPs that the Rum party could have?
+}
+
+% This cheats a bit because we are annoyingly limited to 9 arguments
+\newcommand\grid@advent@xix@xiii[9]{
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      % Grid
+      \gridbox{0}{3}{#1}
+      \gridbox{1}{3}{#2}
+      \gridbox{0}{2}{#3}
+      \gridbox{1}{2}{#4}
+      \gridbox{2}{2}{#5}
+      \gridbox{1}{1}{#6}
+      \gridbox{2}{1}{#7}
+      \gridbox{3}{1}{#8}
+      \gridbox{2}{0}{#9}
+      \gridbox{3}{0}{#8}
+
+      % Blacked out boxes
+      \gridboxb{2}{3}{}
+      \gridboxb{3}{3}{}
+      \gridboxb{3}{2}{}
+      \gridboxb{0}{1}{}
+      \gridboxb{0}{0}{}
+      \gridboxb{1}{0}{}
+
+      % Across / Down labels
+      \cwlab{0}{3}{1}
+      \cwlab{1}{3}{2}
+      \cwlab{0}{2}{3}
+      \cwlab{2}{2}{4}
+      \cwlab{1}{1}{5}
+      \cwlab{3}{1}{6}
+      \cwlab{2}{0}{7}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xix@xiii{
+  Each clue in this crossnumber (except 5A) gives a property of that answer that is true of no other answer.
+  For example: 7A is a multiple of $13$; but 1A, 3A, 5A, 1D, 2D, 4D, and 6D are all not multiples of $13$.
+  No number starts with 0.
+
+  \setlength{\columnsep}{-2cm}
+  \begin{multicols}{2}
+    \grid@advent@xix@xiii{}{}{}{}{}{}{}{}{}{}
+    
+    \vfill\null
+    \columnbreak
+
+    \begin{center}
+      \textbf{Across}
+      
+      \begin{tabular}{clc}
+        \textbf{1} & The only multiple of $3$. & (\textbf{2}) \\
+        \textbf{3} & The only number larger than $300$. & (\textbf{3}) \\
+        \textbf{5} & Today's number. & (\textbf{3}) \\
+        \textbf{7} & The only multiple of $13$. & (\textbf{2})
+      \end{tabular}
+
+      \textbf{Down}
+      
+      \begin{tabular}{clc}
+        \textbf{1} & The only square number. & (\textbf{2}) \\
+        \textbf{2} & The only number whose digits have product $4$. & (\textbf{3}) \\
+        \textbf{4} & The only number whose digits add to $11$. & (\textbf{3}) \\
+        \textbf{6} & The only number less than $20$. & (\textbf{2})
+      \end{tabular}
+    \end{center}
+  \end{multicols}
+}
+
+\def\advent@xix@xiv{
+  During one day, a digital clock shows times from 00:00 to 23:59.
+  How many times during the day do the four digits shown on the clock add up to $14$?
+}
+
+\def\advent@xix@xv{
+  There are $5$ ways to make $30$ by multiplying positive integers (including the trivial way):
+  \begin{itemize}
+    \item $30$
+    \item $2 \times 15$
+    \item $3 \times 10$
+    \item $5 \times 6$
+    \item $2 \times 3 \times 5$
+  \end{itemize}
+  Today's number is the number of ways of making $30030$ by multiplying.
+}
+
+\newcommand\grid@advent@xix@xvi[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \bigbox{0}{3}{#1}
+      \bigbox{1}{3}{#2}
+      \bigbox{2}{3}{#3}
+      \bbtextr{3}{3}{median $6$}
+
+      \bigbox{0}{2}{#4}
+      \bigbox{1}{2}{#5}
+      \bigbox{2}{2}{#6}
+      \bbtextr{3}{2}{median $3$}
+
+      \bigbox{0}{1}{#7}
+      \bigbox{1}{1}{#8}
+      \bigbox{2}{1}{#9}
+      \bbtextr{3}{1}{mean $4$}
+
+      \bbtextb{0}{0}{\textbf{today's}\\\textbf{number}}
+      \bbtextb{1}{0}{mean $7$}
+      \bbtextb{2}{0}{range $2$}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xix@xvi{
+  Arrange the digits $1$-$9$ in a $3 \times 3$ square so that: the median number in the first row is $6$; the median number in the second row is $3$; the mean of the numbers in the third row is $4$; the mean of the numbers in the second column is $7$; the range of the numbers in the third column is $2$, The $3$-digit number in the first column is today's number.
+
+  \grid@advent@xix@xvi{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xix@xvii{
+  Eve picks a three digit number then reverses its digits to make a second number.
+  The second number is larger than her original number.
+
+  Eve adds her two numbers together; the result is $584$.
+  What was Eve's original number?
+}
+
+\def\advent@xix@xviii{
+  The final round of a game show starts with \pounds $1,000,000$.
+  You and your opponent take it in turn to take any value between \pounds $1$ and \pounds $900$.
+  At the end of the round, whoever takes the final pound gets to take the money they have collected home, while the other player leaves with nothing.
+
+  You get to take an amount first.
+  How much money should you take to be certain that you will not go home with nothing?
+}
+
+\def\advent@xix@xix{
+  The diagram below shows three squares and five circles.
+  The four smaller circles are all the same size, and the red square's vertices are the centers of these circles.
+
+  \begin{center}
+    \begin{tikzpicture}
+      % Values
+      \def\bss{5}
+      \def\sqrtii{1.4142135623730951}
+      \def\scr{\bss*0.4142135623730951}
+      \def\cs{0.1}
+
+      % Main square and circle
+      \draw (-\bss,-\bss) rectangle (\bss,\bss);
+      \draw (0,0) circle (\bss);
+
+      % Shaded squares
+      \filldraw[fill=blue!40] (-\bss, \bss/\sqrtii) rectangle (-\bss/\sqrtii, \bss);
+      \filldraw[fill=red!20] (-\scr, -\scr) rectangle (\scr, \scr);
+      \draw[fill=black] (-\scr, -\scr) circle (\cs);
+      \draw[fill=black] (-\scr, \scr) circle (\cs);
+      \draw[fill=black] (\scr, -\scr) circle (\cs);
+      \draw[fill=black] (\scr, \scr) circle (\cs);
+
+      % Small circles
+      \draw (-\scr, -\scr) circle (\scr);
+      \draw (-\scr, \scr) circle (\scr);
+      \draw (\scr, -\scr) circle (\scr);
+      \draw (\scr, \scr) circle (\scr);
+    \end{tikzpicture}
+  \end{center}
+  
+  The area of the blue square is $14$ units.
+  What is the area of the red square?
+}
+
+\def\advent@xix@xx{
+  The integers from $2$ to $14$ (including $2$ and $14$) are written on $13$ cards (one number per card).
+  You and a friend take it in turns to take one of the numbers.
+
+  When you have both taken five numbers, you notice that the product of the numbers you have collected is equal to the product of the numbers that your friend has collected.
+  What is the product of the numbers on the three cards that neither of you has taken?
+}
+
+\newcommand\grid@advent@xix@xxi[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \gridbox{0}{6}{#1}
+      \gridsym{1}{6}{+}
+      \gridboxh{2}{6}{#2}
+      \gridsym{3}{6}{-}
+      \gridbox{4}{6}{#3}
+      \gridsym{5}{6}{=}
+      \gridsym{6}{6}{7}
+
+      \gridsym{0}{5}{\div}
+      \gridblank{1}{5}
+      \gridsym{2}{5}{-}
+      \gridblank{3}{5}
+      \gridsym{4}{5}{\div}
+
+      \gridbox{0}{4}{#4}
+      \gridsym{1}{4}{+}
+      \gridboxh{2}{4}{#5}
+      \gridsym{3}{4}{\div}
+      \gridboxh{4}{4}{#6}
+      \gridsym{5}{4}{=}
+      \gridsym{6}{4}{8}
+
+      \gridsym{0}{3}{\times}
+      \gridblank{1}{3}
+      \gridsym{2}{3}{\times}
+      \gridblank{3}{3}
+      \gridsym{4}{3}{\times}
+
+      \gridbox{0}{2}{#7}
+      \gridsym{1}{2}{+}
+      \gridbox{2}{2}{#8}
+      \gridsym{3}{2}{-}
+      \gridbox{4}{2}{#9}
+      \gridsym{5}{2}{=}
+      \gridsym{6}{2}{7}
+
+      \gridsym{0}{1}{=}
+      \gridsym{2}{1}{=}
+      \gridsym{4}{1}{=}
+
+      \gridsym{0}{0}{12}
+      \gridsym{2}{0}{5}
+      \gridsym{4}{0}{28}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xix@xxi{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the smallest number you can make with the digits in the red boxes.
+
+  \grid@advent@xix@xxi{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xix@xxii{
+  In bases $3$ to $9$, the number $112$ is: $11011_3$, $1300_4$, $422_5$, $304_6$, $220_7$, $160_8$, and $134_9$.
+  In bases $3$, $4$, $6$, $8$ and $9$, these representations contain no digit $2$.
+
+  There are two $3$-digit numbers that contain no $2$ in their representations in all the bases between $3$ and $9$ (inclusive).
+  Today's number is the smaller of these two numbers.
+}
+
+\newcommand\grid@advent@xix@xxiii[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \bigbox{0}{3}{#1}
+      \bigbox{1}{3}{#2}
+      \bigbox{2}{3}{#3}
+      \bbtextr{3}{3}{a multiple of $4$}
+
+      \bigbox{0}{2}{#4}
+      \bigbox{1}{2}{#5}
+      \bigbox{2}{2}{#6}
+      \bbtextr{3}{2}{a cube}
+
+      \bigbox{0}{1}{#7}
+      \bigbox{1}{1}{#8}
+      \bigbox{2}{1}{#9}
+      \bbtextr{3}{1}{a multiple of $3$}
+
+      \bbtextb{0}{0}{\textbf{today's}\\\textbf{number}}
+      \bbtextb{1}{0}{a cube}
+      \bbtextb{2}{0}{an odd\\number}
+    \end{tikzpicture}
+  \end{center}
+}
+\def\advent@xix@xxiii{
+  Arrange the digits $1$-$9$ in a $3 \times 3$ square so the $3$-digits numbers formed in the rows and columns are the types of numbers given at the ends of the rows and columns.
+  The number in the first column is today's number.
+
+  \grid@advent@xix@xxiii{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xix@xxiv{
+  There are six $3$-digit numbers with the property that the sum of their digits is equal to the product of their digits.
+  Today's number is the largest of these numbers.
+}
+
+\def\card@xix@i{
+  If you write out the numbers from $1$ to $10,000$ (inclusive), how many times will you write the digit $1$?
+}
+
+\def\card@xix@ii{
+  What is the sum of all the odd numbers between $0$ and $86$?
+}
+
+\def\card@xix@iii{
+  How many numbers between $1$ and $4,008,004$ (inclusive) have an odd number of factors (including $1$ and the number itself)?
+}
+
+\def\card@xix@iv{
+  In a book with pages numbered from $1$ to $130,404$, what do the two page numbers on the centre spread add up to?
+}
+
+\def\card@xix@v{
+  What is the area of the largest area quadrilateral that will fit inside a circle with area $60153\pi$?
+}
+
+\def\card@xix@vi{
+  There are $5$ ways to write $4$ as the sum of ones and twos ($1+1+1+1$, $1+1+2$, $1+2+1$, $2+1+1$, and $2+2$).
+  How many ways can you write $28$ as the sum of ones and twos?
+}
+
+\def\card@xix@vii{
+  What is the lowest common multiple of $1025$ and $835$?
+}
+
+\def\card@xix@viii{
+  How many zeros does $245!$ ($245! = 245 \times 244 \times 243 \times \cdots \times 1$) end in?
+}
+
+\def\card@xix@ix{
+  Carol picked a $6$-digit number then removed one of its digits to make a $5$-digit number.
+  The sum of her $6$-digit and $5$-digit numbers is $334877$. Which $6$-digit number did she pick?
+}

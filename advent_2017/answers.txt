@@ -1,0 +1,108 @@
+Dec 1:
+Answer: 123
+
+Dec 2:
+Numbers: 40, 59, 43
+Answer: 142
+
+Dec 3:
+Numbers: 539
+         716
+         842
+Answer: 216
+
+Dec 4:
+Answer: 495
+
+Dec 5:
+Answer: 196
+
+Dec 6:
+Polynomial: 3/2*x^2 + 6x + 16
+Answer: 106
+
+Dec 7:
+If a_n is the first number in the nth row then we have the recursive relationship a_{n+1} = a_n + 2n.
+This leads to a_n = 1 + n(n-1)
+The nth row has n numbers in it so that the sum of the nth row is s_n = \sum_{k=0}^{n-1} (a_n + 2k).
+This leads to s_n = n^3.
+So for n = 7 this is
+Answer: 343
+
+Dec 8:
+From yesterday's problem we have that s_n = n^3
+and the nth row has n numbers so that the mean is
+m_n = s_n / n = n^3 / n = n^2
+For n = 23 this is
+Answer: 529
+
+Dec 9:
+Answer: 512
+
+Dec 10:
+Answer: 249
+
+Dec 11:
+Answer: 497
+
+Dec 12:
+Numbers: 395
+         241
+         678
+Answer: 315
+
+Dec 13:
+The nth spread has page 2n-1 on the left and 2n on the right.
+There are 754 pages so 754/2 = 377 spreads.
+Thus the middle spread is spread 189 so that the two pages are 377 (left) and 378 (right)
+Hence their sum is
+Answer: 755
+
+Dec 14:
+For an NxN grid the number of squares was reasoned to be N(N+1)(2N+1)/6, which was verified by Python.
+Thus for N=13 we have
+Answer: 819
+
+Dec 15:
+For a sequence of length n there are binom(n, r) sequences containing r "A"'s
+Thus the answer is sum_{k=3}^10 binom(10, k):
+Answer: 968
+
+Dec 16:
+It was reasoned that for a grid of NxM there are N(N+1)M(M+1)/4 rectangles.
+So for N=2 and M=19 this gives
+Answer: 570
+
+Dec 17:
+Number: 361
+        529
+        784
+Answer: 194
+
+Dec 18:
+It was reasoned by induction that the maximum number of regions f for n lines is
+f(n) = (n^2 + n + 2) / 2 so that
+Answer: 154
+
+Dec 19:
+Numbers: 259
+         437
+         861
+Answer: 268
+
+Dec 20:
+Answer: 233
+
+Dec 21:
+Answer: 496
+
+Dec 22:
+Answer: 294
+
+Dec 23:
+It was reasoned that after n days n(n+1)(n+2)/6 gifts were received
+So for n=8 we have
+Answer: 120
+
+Dec 24:
+Answer: 960

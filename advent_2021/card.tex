@@ -1,0 +1,317 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+
+\begin{document}
+
+\title{MS Scroggs 2021 Christmas Card Solutions}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Link to the online card: \href{https://www.mscroggs.co.uk/blog/92}{https://www.mscroggs.co.uk/blog/92}
+
+\newcommand\Nodd[1]{N_\mathrm{o}\parens{#1}}
+
+\cproblem{1}{225}{\card@xxi@i}{
+  Let $\Nodd{n}$ denote the number of odd integers from $0$ to $n$ inclusive.
+  Then clearly
+  \ali{
+    \Nodd{2n+1} &= \sum_{k=0}n (2k+1) = 2 \sum_{k=0}^n k + \sum_{k=0}^n 1 = 2 \sum_{k=1}^n k + (n+1) \non
+    &= 2 \frac{n(n+1)}{2} + n + 1 = n(n+1) + n + 1 = n^2 + 2n + 1 \non
+    &= (n+1)^2 \,. \label{eqn:01:Nodd}
+  }
+  In our case we have $\Nodd{30} = \Nodd{29}$ and $29 = 2 \cdot 14 + 1$ so that our answer is $\Nodd{30} = (14+1)^2 = 225$.
+  This was verified in Python with brute force.
+}
+
+\cproblem{2}{8031556}{\card@xxi@ii}{
+  From the previous problem, $\Nodd{5668} = \Nodd{5667}$ and $5667 = 2 \cdot 2833 + 1$, so that $\Nodd{5668} = (2833+1)^2 = 8031556$ by \eqref{eqn:01:Nodd} above.
+  This was also verified in Python with brute force.
+}
+
+\def\pval{10000}
+\cproblem{3}{445555}{\card@xxi@iii}{
+  First, the prime factorization of $\pval$ is
+  \gath{
+    \pval = 2^4 5^4 \,.
+  }
+  The only digits that can be formed from products of these primes are $2$, $4 = 2^2$, $5$, and $8 = 2^3$, noting that, in particular, $2 \cdot 5 = 10$ is not a digit or is, for example $5^2 = 25$.
+  Hence the answer must have four \mn{5} in it because these cannot be combined to create any other digits.
+  The card board provides a hint here as it tells us that the answer has six digits.
+  Since there must be four \mn{5}, the $2^4$ factor must comprise two digits.
+  The only way to do this is with two \mn{4} since $4 \cdot 4 = 2^4$.
+  Therefore the digits must be two $4$'s and four \mn{5}.
+  Clearly the smallest number using these is found by just sorting the digits in ascending order, which is $445555$.
+  This was verified with Python using brute force.
+}
+
+\def\pval{432000}
+\cproblem{4}{44555666}{\card@xxi@iv}{
+  Similar to the approach of the previous problem, the prime factorization of $\pval$ is
+  \gath{
+    \pval = 2^7 3^3 5^3 \,.
+  }
+  Here the only digits that can be formed from these prime factors are clearly $2$, $3$, $4 = 2^2$, $5$, $6=2 \cdot 3$, $8 = 2^3$, and $9 = 3^2$.
+  Once again, the answer must contain three \mn{5} since these cannot be combined into other digits.
+  Using the card board, the answer must have eight digits.
+  So let the following denote the number of each digit in the answer:
+  \begin{center}
+    \begin{tabular}{c|c}
+      Let & Digit \\
+      \hline
+      $a$ & 9 \\
+      $b$ & 8 \\
+      $c$ & 6 \\
+      $d$ & 4 \\
+      $e$ & 3 \\
+      $f$ & 2
+    \end{tabular}
+  \end{center}
+  Then, since three of the digits must be \mn{5}, we have
+  \gath{
+    a + b + c + d + e + f = 8 - 3 = 5 \,. \label{eqn:04:nd}
+  }
+  of the other digits.
+  The digital sum then becomes
+  \gath{
+    9a + 8b + 5 \cdot 3 + 6c + 4d + 3e + 2f = 41 \non
+    9a + 8b + 6c + 4d + 3e + 2f = 26 \label{eqn:04:ds}
+  }
+  Since \mn{9} use two \mn{3}, \mn{6} use one $3$, and we must have three $3$'s to achieve the digital product, it has to be that
+  \gath{
+    2a + c + e = 3 \non
+    e = 3 - 2a - c \label{eqn:04:3s}
+  }
+  Similarly, for the digits that use \mn{2}, we must have
+  \gath{
+    3b + c + 2d + f = 7 \non
+    f = 7 - 3b - c - 2d \,. \label{eqn:04:2s}
+  }
+  Substituting \eqref{eqn:04:3s} and \eqref{eqn:04:2s} into \eqref{eqn:04:nd} results in
+  \gath{
+    a + b + c + d + (3 - 2a - c) + (7 - 3b - c - 2d) = 5 \non
+    -a - 2b - c - d = -5 \non
+    a + 2b + c + d = 5 \,. \label{eqn:04:d}
+  }
+  Similarly, substituting \eqref{eqn:04:3s} and \eqref{eqn:04:2s} into \eqref{eqn:04:ds} gives
+  \gath{
+    9a + 8b + 6c + 4d + 3(3 - 2a - c) + 2(7 - 3b - c - 2d) = 26 \non
+    3a + 2b + c = 3 \,. \label{eqn:04:dio}
+  }
+  Since everything must be non-negative, \eqref{eqn:04:dio} has three possible solutions:
+  \begin{center}
+    \begin{tabular}{ccc}
+      $a$ & $b$ & $c$ \\
+      \hline
+      1 & 0 & 0 \\
+      0 & 1 & 1 \\
+      0 & 0 & 3
+    \end{tabular}
+  \end{center}
+  For the first solution we have $a = 1$ and $b = c = 0$.
+  Equation \eqref{eqn:04:d} implies that $d = 4$.
+  However, this would mean that the answer contains four \mn{4}, which would require eight \mn{2} since $4^4 = 2^8$.
+  As there are only seven \mn{2} available, this solution cannot work.
+  In the second solution, $a = 0$ and $b = c = 1$.
+  This time \eqref{eqn:04:d} results in $d = 2$ so that \eqref{eqn:04:2s} implies that $f = -1$.
+  As this is clearly problematic, this solution does not work either.
+  In the third solution, $a = b = 0$ and $c = 3$ so that \eqref{eqn:04:3s} sets $e = 0$, \eqref{eqn:04:d} set $d = 2$, and \eqref{eqn:04:2s} sets $f = 0$.
+  None of these are problematic, and they tell us that our solution contains three \mn{6}, two \mn{4}, and no other digits besides the three \mn{5}.
+  Once the digits are sorted from smallest to largest to give the smallest integer, our solution becomes $44555666$.
+  This was also verified with Python using brute force.
+}
+
+\cproblem{5}{333555}{\card@xxi@v}{
+  Intuitively and by symmetry, the largest $n$-gon that can fit inside a circle is a regular $n$-gon whose circumradius is the same as the radius of the circle.
+  So consider a general regular $n$-gon with circumradius $r$ centered at the origin with one of its vertices aligned at the positive $x$-axis at $p_0 = (r, 0)$.
+  Then the angle spanned by each segment is clearly $\phi = 2 \pi / n$, and the next vertex is at the point $p_1 = (r \cos{\phi}, r \sin{\phi})$.
+  This is illustrated by the following diagram:
+  \begin{center}
+    \begin{tikzpicture}
+      \def\dr{12}
+      \def\ss{0.8}
+      \def\pi@x{0.8660254037844387*\dr}
+      \def\pi@y{0.5*\dr}
+      \def\ar{1}
+      \def\cr{0.1}
+      \draw (0, 0) -- (\pi@x, \pi@y) node[midway,above]{$r$} -- (\dr, 0) -- cycle node[midway,below]{$r$};
+      \draw (\pi@x, 0) -- (\pi@x, \pi@y);
+      \draw (\pi@x-\ss, 0) rectangle (\pi@x, \ss);
+      \draw (\ar, 0) arc [start angle=0, end angle=30, radius=\ar] node[midway,right,yshift=2]{$\phi$};
+      \filldraw[fill=black] (0, 0) circle (\cr);
+      \node[left] at (0, 0) {$(0,0)$};
+      \filldraw[fill=black] (\pi@x, \pi@y) circle (\cr);
+      \node[above] at (\pi@x, \pi@y) {$p_1$};
+      \filldraw[fill=black] (\dr, 0) circle (\cr);
+      \node[right] at (\dr, 0) {$p_0$};
+    \end{tikzpicture}
+  \end{center}
+  The area of the entire $n$-gon is then $n$ times the area of this segment:
+  \gath{
+    A = n \frac{1}{2} r (r \sin{\phi}) = \frac{n r^2 \sin{\phi}}{2} \,. \label{eqn:05:A}
+  }
+  For the dodecagon in our case, clearly $n = 12$ so that $\phi = \sin(2\pi/12) = \sin(\pi/6) = 1/2$ so that
+  \gath{
+    A = \frac{12 r^2 (1/2)}{2} = 3r^2 \,.
+  }
+  We are told that the area of the circumscribing circle is
+  \gath{
+    A_c = 111185 \pi = r^2 \pi \non
+    r^2 = 111185 \,.
+  }
+  Therefore the area of the dodecagon is
+  \gath{
+    A = 3r^2 = 3 \cdot 111185 = 333555 \,,
+  }
+  which is of course our answer.
+}
+
+\cproblem{6}{345555}{\card@xxi@vi}{
+  If we consider a dodecagon with circumradius $r$ centered at the origin that is oriented such that one of the vertices is on the $x$-axis at $(r, 0)$, then clearly each of the vertices will be at an angle of $2 \pi k / 12 = \pi k / 6$ where $0 \leq k \leq 11$.
+  In particular, for $k = 6$ there is a vertex at angle $\pi$, which will obviously be at the point $(-r, 0)$.
+  If we cut the dodecagon in half along the $x$-axis, the bottom six sides collapse into a single side formed by connecting $(-r, 0)$ to $(r, 0)$ along a segment of the $x$-axis, therefore becoming a heptagon.
+  Clearly this is the largest heptagon that will fit in a semicircle of radius $r$ in the upper half-plane.
+  Now, we are told that the area of the semicircle is
+  \gath{
+    A_c = \frac{r^2 \pi}{2} = 115185 \pi \non
+    r^2 = 2 \cdot 115185 = 230370 \,.
+  }
+  Then, from the previous problem, the area of the circumscribed heptagon (which is a semi-dodecagon) is
+  \gath{
+    A = \frac{3r^2}{2} = \frac{3 \cdot 230370}{2} = 345555 \,,
+  }
+  which is then our answer.
+}
+
+\cproblem{7}{6}{\card@xxi@vii}{
+  This problem was solved generally in the 2020, Dec~18 advent problem, in which it was deduced that the number of terms $N(n, k)$ of $(x_1 + \cdots + x_n)^k$ is
+  \gath{
+    N(n, k) = \binom{n + k - 1}{k}    
+  }
+  Hence, in our case, we have $N(3, 2) = 6$.
+}
+
+\cproblem{8}{847628551}{\card@xxi@viii}{
+  From the previous problem, we have that the number of terms is
+  \gath{
+    N(3, 41172) = \binom{3 + 41172 - 1}{41172} = \binom{41174}{41172} = 847628551 \,.
+  }
+}
+
+\cproblem{9}{11}{\card@xxi@ix}{
+  Suppose that $n$ and $m$ are two positive, coprime integers and that $n < m$.
+  Clearly $0 \cdot n \equiv 0 \pmod{m}$ and $1 \cdot n \equiv n \pmod{m}$.
+  Also, since they are coprime, the least common multiple of $n$ and $m$ is $nm$ so that $m$ is the smallest nonzero integer such that $m \cdot n \equiv 0 \pmod{m}$ again.
+  It turns out that $a \cdot n$ cycles through all $m$ possible values modulo $m$ as $a$ is increased and does not repeat until $a = m$.
+  Thus, for any positive integer $c$, there is an integer $0 \leq a < m$ such that $a \cdot n \equiv c \pmod{m}$.
+  Hence there are integers $b_1$ and $b_2$ such that
+  \gath{
+    a n + b_1 m = c + b_2 m \non
+    a n + (b_1 - b_2)m = c \non
+    a n + b m = c \label{eqn:09:orig} \\
+    b m = c - a n \,, \nonumber
+  }
+  where we have let $b = b_1 - b_2$ be just another integer.
+  Note that \eqref{eqn:09:orig} is the solution to our original problem, provided that $a$ and $b$ are non-negative.
+  By definition $a$ is non-negative, but, since $m > 0$, clearly $b$ is non-negative if and only if $c - an \geq 0$, that is $c \geq an$.
+  If this condition is not satisfied, then the original equation has no solution, i.e. $c$ cannot be written in the required form.
+  Hence we are looking for the largest $c$ that has no solution so that $c < an$ where $0 \leq a < m$ and $an \equiv c \pmod{m}$.
+  Now, since $0 \leq a < m$, clearly $an$ is the largest when $a = m - 1$.
+  Similarly, the largest $c$ such that $c < an$ and $an \equiv c \pmod{m}$ is going to be
+  \gath{
+    c = an - m = (m-1)n - m = nm - n - m \,.
+  }
+  In our case we have $n = 4$ and $m = 5$, which are clearly coprime.
+  Therefore our answer is
+  \gath{
+    c = nm - n - m = 4 \cdot 5 - 4 - 5 = 11 \,.
+  }
+  Note that this solution is the same if we interchange $n$ and $m$, so it does not actually matter which value is assigned to which variable.
+}
+
+\cproblem{10}{5555556655}{\card@xxi@x}{
+  Using the results of the previous problem, we here can have $n = 83409$ and $m = 66608$, which were verified to be coprime, so that our answer is
+  \gath{
+    c = nm - n - m = 83409 \cdot 66608 - 83409 - 66608 = 5555556655
+  }
+}
+
+\cproblem{11}{81}{\card@xxi@xi}{
+  Clearly there are $9$ single-digit numbers that meet this criteria.
+  For double-digit numbers, we have $9$ choices for the first digit and then $8$ choices for the second, noting that zero is not included in either.
+  Therefore the total number is
+  \gath{
+    9 + 9 \cdot 8 = 9 \cdot (1 + 8) = 9 \cdot 9 = 81 \,.
+  }
+  This answer was confirmed with a brute-force Python program.
+}
+
+\cproblem{12}{986409}{\card@xxi@xii}{
+  First we note that clearly any integer with ten digits or more cannot count since there are only $9$ nonzero digits and so one must repeat.
+  Using the same approach as in the previous problem, it was reasoned that an integers with $n$ digits have
+  \gath{
+    N(n) = \prod_{k=0}^{n-1} (9 - k) = \frac{9!}{(9-n)!}
+  }
+  qualifying numbers.
+  Therefore the total number of qualifying integers is
+  \ali{
+    \sum_{n=1}^9 N(n) &= \sum_{n=1}^9 \frac{9!}{(9-n)!} \non
+    &= \frac{9!}{8!} + \frac{9!}{7!} + \frac{9!}{6!} + \frac{9!}{5!} + \frac{9!}{4!} + \frac{9!}{3!} + \frac{9!}{2!} + \frac{9!}{1!} + \frac{9!}{0!} \non
+    &= 9 + 9 \cdot 8 + 9 \cdot 8 \cdot 7 + 9 \cdot 8 \cdot 7 \cdot 6 +  \cdot 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 + 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 + 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \non
+    &\mlesp + 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 + 9 \cdot 8 \cdot 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3 \cdot 2 \cdot 1 \non
+    &= 9(1 + 8(1 + 7(1 + 6(1 + 5(1 + 4(1 + 3(1 + 2(1 + 1)))))))) \non
+    &= 986409 \,.
+  }
+
+  This answer was confirmed with a brute-force Python program.
+}
+
+\cproblem{13}{4}{\card@xxi@xiii}{
+  Call our answer $x$ and suppose that it has $n$ factors $\braces{f_i}$ so that we clearly have
+  \gath{
+    \prod_{i = 1}^n f_i = 2^n \,.
+  }
+  Since $2$ is prime, the factors, and thus $x$ itself can only be some power of $2$ so that $x = 2^m$.
+  This clearly has the $n = m + 1$ factors $f_i = 2^i$ where $0 \leq i \leq m$.
+  Therefore we have
+  \gath{
+    \prod_{i = 1}^n f_i = \prod_{i=0}^m 2^i = 2^n = 2^{m+1} \non
+    2^{\sum_{i=0}^m i} = 2^{m+1} \non
+    \sum_{i=0}^m i = m+1 \non
+    \frac{m(m+1)}{2} = m + 1 \non
+    m^2 + m = 2m + 2 \non
+    m^2 - m - 2 = 0 \non
+    (m + 1)(m - 2) = 0
+  }
+  so that it must be that $m = 2$ since the other solution is negative.
+  Hence our answer is $x = 2^m = 2^2 = 4$.
+  This result was verified with Python with brute force.
+}
+
+\cproblem{14}{625}{\card@xxi@xiv}{
+  Similarly to the previous problem, we have
+  \gath{
+    \prod_{i = 1}^n f_i = 25^n = 5^{2n} \,.
+  }
+  So that our answer $x$ and its factors must be powers of $5$ since $5$ is prime.
+  Therefore $x = 5^m$, which again has the $n = m + 1$ factors $f_i = 5^i$ for $0 \leq i \leq m$.
+  Thus
+  \gath{
+    \prod_{i = 1}^n f_i = \prod_{i=0}^m 5^i = 5^{2n} = 5^{2m+2} \non
+    5^{\sum_{i=0}^m i} = 5^{2m+2} \non
+    \sum_{i=0}^m i = 2m + 2 \non
+    \frac{m(m+1)}{2} = 2m + 2 \non
+    m^2 + m = 4m + 4 \non
+    m^2 - 3m - 4 = 0 \non
+    (m + 1)(m - 4) = 0
+  }
+  Since the other solution is negative, we must have $m = 4$ so that our answer is $x = 5^m = 5^4 = 625$.
+  This result was also verified with Python with brute force.
+}
+
+\end{document}

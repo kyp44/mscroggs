@@ -1,0 +1,26 @@
+% For math environments
+\usepackage{amsmath}
+% For links
+\usepackage[hidelinks]{hyperref}
+% So space it put between paragraphs
+\usepackage{parskip}
+% For figures
+\usepackage{tikz}
+% Set the margins to not be ridiculous
+\usepackage[margin=0.75in]{geometry}
+% For multiple columns
+\usepackage{multicol}
+
+% For tikz plots
+\usepackage{pgfplots}
+% This isn't needed but avoids a compiler warning
+\pgfplotsset{compat=1.16}
+
+% Allow multi-line equations to be broken across pages
+\allowdisplaybreaks
+
+% Use @ as a letter
+\makeatletter
+
+% Scale down all tikz coordinates while maintaining font size
+\tikzset{every picture/.style={scale=0.45, every picture/.style={}}}

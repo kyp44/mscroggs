@@ -1,0 +1,244 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+
+\begin{document}
+
+\title{MS Scroggs Advent Calendar 2015 Answers}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2015}{https://www.mscroggs.co.uk/puzzles/advent2015}
+
+\aproblem{1}{200}{\advent@xv@i}{
+  In general, the largest area $n$-gon that will fit in a circle is a regular $n$-gon with a circumradius equal to the radius of the circle.
+  Of course, a rectangle is a quadrilateral, that is a $4$-gon, so that the largest area rectangle will actually be a square with a diagonal equal to the diameter of the circle.
+  A square with sides $s$ has an area $A = s^2$ and a diagonal of $d = \sqrt{2}s$ so that of course $s = d / \sqrt{2}$.
+  We have a circle of radius $r = 10$ so that the diameter is of course $2r$.
+  The area of the square is thus
+  \gath{
+    A = s^2 = \parens{\frac{d}{\sqrt{2}}}^2 = \frac{d^2}{2} = \frac{(2r)^2}{2} = \frac{4r^2}{2} = 2r^2 = 2 \cdot 10^2 = 200 \,,
+  }
+  which is our answer.
+}
+
+\aproblem{2}{154}{\advent@xv@ii}{
+  Consider a twelve hour period from 12:01 to 12:01.
+  The minute hand aligns with the hour hand first between 1:00 and 2:00 (precisely at 1:05), and then between 2:00 and 3:00 (at exactly 2:10), and lastly at exactly 12:00.
+  This is $11$ times once the clock strikes the next 12:01.
+  Hence during a day starting at 12:01 (i.e. two $12$ hour periods) this happens $22$ times.
+  So, during a week, this happens $7 \cdot 22 = 154$ times.
+}
+
+\aproblem{3}{304}{\advent@xv@iii}{
+  The answer is just from the blog post.
+  Since the number exploits symmetry and the fact that games are ended once a player wins, deriving this number analytically or even using a Python program would be highly non-trivial.
+}
+
+\aproblem{4}{108}{\advent@xv@iv}{
+  \boxans{\grid@advent@xv@iv{1}{9}{4}{2}{7}{5}{3}{8}{6}}
+}
+
+\aproblem{5}{208}{\advent@xv@v}{
+  For a triangle to be valid, the pairwise sum of the lengths of two sides must be strictly greater than the third side.
+  So suppose we have potential sides $a$, $b$, and $c$ such that
+  \gath{
+    0 < a \leq b \leq c \,. \label{eqn:05:ineq}
+  }
+  We always have
+  \gath{
+    b > 0 \non
+    b + c > c \geq a
+  }
+  and
+  \gath{
+    a > 0 \non
+    a + c > c \geq b \,.
+  }
+  Therefore, for $a$, $b$, and $c$ that meet \eqref{eqn:05:ineq}, these can form the sides of a valid triangle if and only if
+  \gath{
+    a + b > c \,. \label{eqn:05:cond}
+  }
+  The perimeter of the triangle is of course $p = 100 = 2k = a + b + c$ when $k = 50$, and we are only interested in triangles with this perimeter.
+  Hence
+  \gath{
+    a + b > c \non
+    p - c > c \non
+    2k > 2c \non
+    c < k \,,
+  }
+  that is, in order for \eqref{eqn:05:cond} to be met so that the triangle is valid, it must be that $c < k = 50$.
+  Now, suppose that $c = k - r$ where $r \geq 1$ is an integer.
+  Also suppose that $b = c - s = k - r - s$ where $s \geq 0$ is an integer.
+  This of course ensures that $b \leq c$ per \eqref{eqn:05:ineq}.
+  Then set $a = 2r + s$ so that
+  \gath{
+    a + b + c = (2r + s) + (k - r - s) + (k - r) = 2r + s + 2k - 2r - s = 2k = p
+  }
+  just as we require.
+  To enforce $a \leq b$, we get
+  \gath{
+    2r + s \leq k - r - s \non
+    2s \leq k - 3r \non
+    0 \leq s \leq \floor{\frac{k - 3r}{2}}
+  }
+  since $s$ must be an integer.
+  Thus the number of valid triangles for a given $r$ is
+  \gath{
+    N(r) = \floor{\frac{k - 3r}{2}} + 1
+  }
+  since $s$ can be zero.
+  The largest that $r$ can be so that $s$ is valid is such that $f(r) = \floor{(k - 3r)/2}$ is as low as possible, but no lower than zero.
+  Since $k \equiv 2 \pmod{3}$ for our $k = 50$, this is $r = 16$, for which $f(16) = 1$, noting that $f(17) = -1$, which is going too far.
+  Thus the total number of valid triangles with integer sides is
+  \gath{
+    N = \sum_{r=1}^{16} N(r) = \sum_{r=1}^{16} \parens{\floor{\frac{k - 3r}{2}} + 1} \,,
+  }
+  which is difficult to evaluate analytically due to the floor function.
+  However, this can be evaluated if we break it up into two cases.
+  First, note that $k = 50$ is even and so $k = 2l$ for $l = 25$.
+  Now, if $r$ is even then $r = 2n$ for some $n$ so that
+  \gath{
+    N(2n) = \floor{\frac{k - 3r}{2}} + 1 = \floor{\frac{2l - 3(2n)}{2}} + 1 = \floor{\frac{2(l - 3n)}{2}} + 1 = l - 3n + 1 \,.
+  }
+  On the other hand, if $r$ is odd, then $r = 2n-1$ for some $n$ so that
+  \ali{
+    N(2n-1) &= \floor{\frac{k - 3r}{2}} + 1 = \floor{\frac{2l - 3(2n-1)}{2}} + 1 = \floor{\frac{2l - 6n + 3}{2}} + 1 \non
+    &= \floor{\frac{2l - 6n + 2 + 1}{2}} + 1 = \floor{\frac{2(l - 3n + 1) + 1}{2}} + 1 \non
+    &= \floor{(l - 3n + 1) + \frac{1}{2}} + 1 = (l - 3n + 1) + 1 \non
+    &= l - 3n + 2 \,.
+  }
+  Therefore, since $16 = 2 \cdot 8$, it follows that
+  \ali{
+    N &= \sum_{r=1}^{16} N(r) = \sum_{n=1}^8 \squares{N(2n) + N(2n-1)} = \sum_{n=1}^8 \squares{(l - 3n + 1) + (l - 3n + 2)} \non
+    &= \sum_{n=1}^8 \squares{2l - 6n + 3} = 16l - 6\sum_{n=1}^8 n + 24 = 16l - 6 \frac{8 \cdot 9}{2} + 24 \non
+    &= 16l - 216 + 24 = 16l - 192 \non
+    &= 16 \cdot 25 - 192 =  208 \,,
+  }
+  which is our answer.
+  This was verified against a brute force Python program.
+}
+
+\aproblem{6}{385}{\advent@xv@vi}{
+  \boxans{\grid@advent@xv@vi{3}{8}{5}{4}{9}{7}{2}{1}{6}}
+}
+
+\aproblem{7}{138}{\advent@xv@vii}{
+  Let $N(n)$ denote the number of ways that integer $n$ can be calculated as a linear combination of $3$ (penalty kick or drop goal), $5$ (try), and $7$ (try and conversion).
+  A brute force Python function was written to calculate $N(n)$ for a given $n$.
+  Then we calculate this for increasing $n$ until we find three consecutive $n$, $n+1$, and $n+2$ for which the number of ways is greater than our desired $101$ ways.
+  We go back and look for the largest $k < n$ such that $N(k) = 101$.
+  We are then guaranteed that $k$ is the highest integer such that $N(k) = 101$.
+  This is because $n$, $n+1$, and $n+2$ must cover all three values modulo $3$, and so for any number higher than $n+2$, say $m$, it must congruent to one of these modulo $3$, say $n+l$ for $0 \leq l \leq 2$.
+  Then of course $m = n+l + 3r$ for some $r$ so that
+  \gath{
+    N(m) \geq N(n+l) > 101 \,.
+  }
+}
+
+\aproblem{8}{720720}{\advent@xv@viii}{
+  The number $720720$ has $240$ factors, which was determined by a brute force Python program.
+}
+
+\aproblem{9}{792}{\advent@xv@ix}{
+  Let $N(h, w)$ denote the number of routes from the lower left corner of a $h \times w$ (height by width) grid to the upper right corner.
+  In our case we are looking for $N(5, 7)$, which we can first deduce by considering the number of spaces below and to the right of the route.
+  In the bottom row, the spaces to the right of the route can be any number from $0$ (if the route goes along the entire bottom and then up the right side) to $7$ (if the route starts by going immediately up from A).
+  Then, \emph{for each} of the number of spaces to the right of the route in the first (i.e. bottom) row $a_1$, the number of spaces to the right of the route in the second row $a_2$ can be any number from $0$ to $a_1$, i.e. the route runs to the right along the top of the first row then goes up at the node where $a_2$ spaces are to the right in the second row.
+  This applies in the same way to the third  row based on $a_2$ and so on.
+  As these possibilities must be added the number of routes for a $5 \times w$ grid can be expressed as
+  \ali{
+    N(5, w) &= \sum_{a=0}^w \sum_{b=0}^a \sum_{c=0}^b \sum_{d=0}^c \sum_{e=0}^d 1 = \sum_{a=0}^w \sum_{b=0}^a \sum_{c=0}^b \sum_{d=0}^c (d + 1) = \sum_{a=0}^w \sum_{b=0}^a \sum_{c=0}^b \sum_{d=1}^{c+1} d \non
+    &= \sum_{a=0}^w \sum_{b=0}^a \sum_{c=0}^b \frac{(c+1)(c+2)}{2} = \frac{1}{2} \sum_{a=0}^w \sum_{b=0}^a \sum_{c=0}^b (c^2 + 3c + 2) \non
+    &= \frac{1}{2} \sum_{a=0}^w \sum_{b=0}^a \squares{\sum_{c=0}^b c^2 + 3 \sum_{c=0}^b c + 2\sum_{c=0}^b 1} = \frac{1}{2} \sum_{a=0}^w \sum_{b=0}^a \squares{\frac{2b^3 + 3b^2 + b}{6} + 3\frac{b^2 + b}{2} + 2(b+1)} \non
+    &= \frac{1}{12} \sum_{a=0}^w \sum_{b=0}^a \squares{2b^3 + 3b^2 + b + 9b^2 + 9b + 12b + 12} = \frac{1}{6} \sum_{a=0}^w \sum_{b=0}^a \squares{b^3 + 6b^2 + 11b + 6} \non
+    &= \frac{1}{6} \sum_{a=0}^w \squares{\sum_{b=0}^a b^3 + 6 \sum_{b=0}^a b^2 + 11 \sum_{b=0}^ab + 6 \sum_{b=0}^a 1} \non
+    &= \frac{1}{6} \sum_{a=0}^w \squares{\frac{a^4 + 2a^3 + a^2}{4} + 6\frac{2a^3 + 3a^2 + a}{6} + 11\frac{a^2 + a}{2} + 6(a+1)} \non
+    &= \frac{1}{24} \sum_{a=0}^w \squares{a^4 + 2a^3 + a^2 + 8a^3 + 12a^2 + 4a + 22a^2 + 22a + 24a + 24} \non
+    &= \frac{1}{24} \sum_{a=0}^w \squares{a^4 + 10a^3 + 35a^2 + 50a + 24} \non
+    &= \frac{1}{24} \squares{\sum_{a=0}^w a^4 + 10 \sum_{a=0}^w a^3 + 35 \sum_{a=0}^w a^2 + 50 \sum_{a=0}^w a + 24\sum_{a=0}^w 1} \non
+    &= \frac{1}{24} \squares{\frac{6w^5 + 15w^4 + 10w^3 - w}{30} + 10 \frac{w^4 + 2w^3 + w^2}{4} + 35 \frac{2w^3 + 3w^2 + w}{6} + 50 \frac{w^2 + w}{2} + 24(w+1)} \non
+    &= \frac{1}{1440} \left[12w^5 + 30w^4 + 20w^3 - 2w + 150w^4 + 300w^3 + 150w^2 + 700w^3 + 1050w^2 + 350w \right. \non
+      &\mlesp \left.+ 1500w^2 + 1500w + 1440w + 1440\right] \non
+    &= \frac{1}{1440} \squares{12w^5 + 180w^4 + 1020w^3 + 2700w^2 + 3288w + 1440} \non
+    &= \frac{1}{120} \squares{w^5 + 15w^4 + 85w^3 + 225w^2 + 274w + 120} \,.
+  }
+  When we plug in our $w = 7$ we get our answer $N(5, 7) = 792$.
+  We can also solve this problem using a recursive function, which is more difficult to calculate analytically, but easier to implement on a computer.
+  For simplicity, we change our convention so that the upper right corner is node $(0, 0)$ and other nodes are numbered $(y, x)$, where $y$ increases downward, and $x$ increases to the left.
+  Thus the lower left corner becomes $(h, w)$, though $N(h, w)$ retains its original meaning.
+  In our base case we have that that $N(h, 0) = N(0, w) = 1$ for any $h$ and $w$, which is due to the fact that, once the top or right side of the total grid is reached, there is only one way to complete the journey to the upper right corner.
+  Then, at a node $(y, x)$, the number of routes to get from this node to the upper right corner is
+  \gath{
+    N(y, x) = N(y-1, x) + N(y, x-1) \,,
+  }
+  which is the sum of the number of routes if we go up and the number of routes if we instead go right.
+  This simple recursive function was implemented in Python and was found to give the same answer as above for $N(5, 7)$.
+}
+
+\aproblem{10}{TODO}{\advent@xv@x}{
+  TODO
+}
+
+\aproblem{11}{TODO}{\advent@xv@xi}{
+  TODO
+}
+
+\aproblem{12}{TODO}{\advent@xv@xii}{
+  TODO
+}
+
+\aproblem{13}{TODO}{\advent@xv@xiii}{
+  TODO
+}
+
+\aproblem{14}{TODO}{\advent@xv@xiv}{
+  TODO
+}
+
+\aproblem{15}{TODO}{\advent@xv@xv}{
+  TODO
+}
+
+\aproblem{16}{TODO}{\advent@xv@xvi}{
+  TODO
+}
+
+\aproblem{17}{TODO}{\advent@xv@xvii}{
+  TODO
+}
+
+\aproblem{18}{TODO}{\advent@xv@xviii}{
+  TODO
+}
+
+\aproblem{19}{TODO}{\advent@xv@xix}{
+  TODO
+}
+
+\aproblem{20}{TODO}{\advent@xv@xx}{
+  TODO
+}
+
+\aproblem{21}{TODO}{\advent@xv@xxi}{
+  TODO
+}
+
+\aproblem{22}{TODO}{\advent@xv@xxii}{
+  TODO
+}
+
+\aproblem{23}{TODO}{\advent@xv@xxiii}{
+  TODO
+}
+
+\aproblem{24}{TODO}{\advent@xv@xxiv}{
+  TODO
+}
+
+\end{document}
