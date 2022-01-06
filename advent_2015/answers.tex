@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[table]{article}
 \input{common/prelude}
 
 % Macros
@@ -222,10 +222,74 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2015}{https://www.mscrog
 
 \aproblem{11}{742}{\advent@xv@xi}{
   We know that this is a three-digit number, so suppose that our number has the digits $d_2 d_1 d_0$.
+  With what was given in the problem, we have that
+  \gath{
+    100 d_2 + 10 d_1 + d_0 = 3\parens{100 d_0 + 10 d_1 + d_2} + 1 = 300 d_0 + 30 d_1 + 3 d_2 + 1 \non
+    97 d_2 - 1 = 299 d_0 + 20 d_1 \label{eqn:11:e}
+  }
+  Now, all the digits can be from $0$ to $9$, and so, letting $f(x) = 97x - 1$, we have the following possible values for the left side of \eqref{eqn:11:e}:
+  \begin{center}
+    \begin{tabular}{c|ccc}
+      $d_2$ & $f(d_2)$ & $f(d_2) \pmod{299}$ & $f(d_2) \pmod{20}$ \\
+      \hline
+      \rowcolor{lightgray} 0 & -1 & 298 & 19 \\
+      \rowcolor{lightgray} 1 & 96 & 96 & 16 \\
+      \rowcolor{lightgray} 2 & 193 & 193 & 13 \\
+      \rowcolor{lightgray} 3 & 290 & 290 & 10 \\
+      4 & 387 & 88 & 7 \\
+      5 & 484 & 185 & 4 \\
+      6 & 581 & 282 & 1 \\
+      7 & 678 & 80 & 18 \\
+      8 & 775 & 177 & 15 \\
+      9 & 872 & 274 & 12 \\
+    \end{tabular}
+  \end{center}
+  As none of these are divisible by either $299$ or $20$, this means that neither $d_0$ nor $d_1$ can be zero, which is unfortunate as this would accelerate the solution.
+  Since $d_0 > 0$, that means that both sides of the equation must be no less than $299$ so that we can remove from consideration the first four rows of the above table (hence why they are grayed).
+  Now since the maximum that $d_2$ can be is $9$, the maximum that both sides of the equation can be is $872$.
+  Hence it must be that $1 \leq d_0 \leq 2$ (i.e. $d_0$ must be $1$ or $2$) since $299 d_0 \geq 897 > 872$ when $d_0 \geq 3$ so that this also applies to the entire right side.
+  Supposing that $d_0 = 1$, then we have:
+  \gath{
+    97 d_2 - 1 = 299 \cdot 1 + 20 d_1 \non
+    97 d_2 - 300 = 20 d_1 \,.
+  }
+  Below, the positive possible values of the left side are then:
+  \begin{center}
+    \begin{tabular}{c|ccc}
+      $d_2$ & $97 d_2 - 300$ \\
+      \hline
+      4 & 88 \\
+      5 & 185 \\
+      6 & 282 \\
+      7 & 379 \\
+      8 & 476 \\
+      9 & 573 \\
+    \end{tabular}
+  \end{center}
+  Since none the these are divisible by $20$, it must be that $d_0 = 2$.
+  This means that
+  \gath{
+    97 d_2 - 1 = 299 \cdot 2 + 20 d_1 \non
+    97 d_2 - 599 = 20 d_1\,,
+  }
+  and we also have the positive possible values for the left side as
+  \begin{center}
+    \begin{tabular}{c|ccc}
+      $d_2$ & $97 d_2 - 599$ \\
+      \hline
+      7 & 80 \\
+      8 & 177 \\
+      9 & 274 \\
+    \end{tabular}
+  \end{center}
+  Therefore $d_2 = 7$ since this is the only value for which the left side is divisible by $20$.
+  Clearly also then $d_1 = 4$ since then $20 d_1 = 20 \cdot 4 = 80$.
+  Hence our answer is $d_2 d_1 d_0 = 742$.
+  That this satisfies the original requirement was verified with Python.
 }
 
-\aproblem{12}{TODO}{\advent@xv@xii}{
-  TODO
+\aproblem{12}{252}{\advent@xv@xii}{
+  \boxans{\grid@advent@xv@xii{3}{1}{6}{7}{9}{4}{8}{2}{5}}
 }
 
 \aproblem{13}{TODO}{\advent@xv@xiii}{

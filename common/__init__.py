@@ -198,6 +198,7 @@ def box_solutions(fname, sol, ansf, brute) :
     print("Solution:")
     print(sol)
     grid = EquGrid(fname)
+    print("Solution code:", "".join(["{" + str(v) + "}" for v in sol.flatten()]))
     print("Solution verified:", grid.check(sol))
 
     if brute :
@@ -276,3 +277,10 @@ def cross_filter(a1, dn1, a2, dn2) :
         [n for n in a1 if digits(n)[::-1][dn1] in ds],
         [n for n in a2 if digits(n)[::-1][dn2] in ds],
     )
+
+def latex_row(*args) :
+    """
+    Prints a row of a LaTeX tabular with the given values,
+    which will be converted to strings.
+    """
+    print(" & ".join([str(v) for v in args]), r"\\")

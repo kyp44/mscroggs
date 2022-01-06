@@ -14,7 +14,9 @@
 	    {"number": 7, "tags": ["misc", "mod"]},
 	    {"number": 8, "tags": ["num"]},
 	    {"number": 9, "tags": ["comb", "sum"]},
-	    {"number": 10, "tags": ["mod"]}
+	    {"number": 10, "tags": ["mod"]},
+	    {"number": 11, "tags": ["dig"]},
+	    {"number": 12, "tags": ["box"]}
 	]
     },
     {
