@@ -50,7 +50,7 @@ class GenGrid :
     grid puzzle.
     """
 
-    def __init__(self, rowchecks, colchecks) :
+    def __init__(self, rowchecks, colchecks, genchecks=[]) :
         """
         Each argument should be an iterable of three
         functions, that checks the corresponding rows
@@ -61,6 +61,7 @@ class GenGrid :
         """
         self.rowchecks = rowchecks
         self.colchecks = colchecks
+        self.genchecks = genchecks
 
     def check(self, sol) :
         # Verify that solution uses each digit exactly once
@@ -75,6 +76,12 @@ class GenGrid :
         # Check each column
         for col,check in zip(sol.T, self.colchecks) :
             if not check(col) :
+                return False
+
+
+        # General checks (the grid as a whole)
+        for check in self.genchecks :
+            if not check(sol) :
                 return False
 
         return True
@@ -210,10 +217,11 @@ def box_solutions(fname, sol, ansf, brute) :
         pans(ansf(sol))
 
 anumber = lambda a : number(a[::-1])
-def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute) :
+def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute, genchecks=[]) :
     print("Solution:")
     print(sol)
-    grid = GenGrid(rowchecks, colchecks)
+    grid = GenGrid(rowchecks, colchecks, genchecks)
+    print("Solution code:", "".join(["{" + str(v) + "}" for v in sol.flatten()]))
     print("Solution verified:", grid.check(sol))
 
     if brute :
