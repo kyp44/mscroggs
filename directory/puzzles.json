@@ -16,7 +16,9 @@
 	    {"number": 9, "tags": ["comb", "sum"]},
 	    {"number": 10, "tags": ["mod"]},
 	    {"number": 11, "tags": ["dig"]},
-	    {"number": 12, "tags": ["box"]}
+	    {"number": 12, "tags": ["box"]},
+	    {"number": 13, "tags": ["box"]},
+	    {"number": 14, "tags": ["dig", "base"]}
 	]
     },
     {
