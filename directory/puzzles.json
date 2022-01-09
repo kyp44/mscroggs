@@ -18,7 +18,9 @@
 	    {"number": 11, "tags": ["dig"]},
 	    {"number": 12, "tags": ["box"]},
 	    {"number": 13, "tags": ["box"]},
-	    {"number": 14, "tags": ["dig", "base"]}
+	    {"number": 14, "tags": ["dig", "base"]},
+	    {"number": 15, "tags": ["comb"]},
+	    {"number": 16, "tags": ["misc"]}
 	]
     },
     {

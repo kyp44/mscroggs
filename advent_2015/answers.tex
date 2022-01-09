@@ -297,15 +297,42 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2015}{https://www.mscrog
 }
 
 \aproblem{14}{313}{\advent@xv@xiv}{
-  This was solved using a brute force Python program, since it likely would have to have been solved with a manual search anyway.
+  This was solved using a brute force Python program, since it likely would have to be solved with a manual search anyway.
 }
 
-\aproblem{15}{TODO}{\advent@xv@xv}{
-  TODO
+\aproblem{15}{328}{\advent@xv@xv}{
+  There is no easy way to solve this analytically, but the following algorithm will calculate it.
+  First define the set $A = \braces{1,2,3,4,5,6,7}$ and, for a positive integer $n$, let $B(n)$ be the subset of $A$ such that $k \in B(n)$ if and only if $k > n$ or $k$ is a factor of $n$.
+  Now we define a recursive function $f(n, R)$, where $n \in A$ is the previous number in the sequence, $R \subseteq A$ are the remaining numbers to place, and the return value of $f$ is the number of valid ways to arrange the remaining numbers $R$ in an arrangement that starts with $n$.
+  We then have the following cases and return values that define the recursive $f(n, R)$:
+
+  Case: $R$ is empty. The arrangement is complete, so return $1$.
+
+  Case: If $R$ is nonempty but $B(n)$ is empty then there are no valid ways to complete this arrangement, so return $0$.
+
+  Case: If $R$ and $B(n)$ are both nonempty, then return
+  \gath{
+    \sum_{k \in B(n) \cap R} f(k, R - \braces{k}) \,.
+  }
+
+  Since the first number in the arrangement can be any $n \in A$, our answer is then
+  \gath{
+    \sum_{n \in A} f(n, A - \braces{n}) \,.
+  }
+  This recursive function was implemented in Python, giving us our answer $328$.
 }
 
-\aproblem{16}{TODO}{\advent@xv@xvi}{
-  TODO
+\aproblem{16}{685}{\advent@xv@xvi}{
+  First let $x_1 = 729$, $x_2 = 313$, and $x_3 = 328$ be the known answers for the Dec~$13$th, $14$th, and $15$th problems, respectively.
+  If $a$ is the answer to today's problem, then, by what is given we have that
+  \gath{
+    a = \frac{4}{3} \cdot \frac{1}{4} \parens{\sum_{i=1}^3 x_i + a} \non
+    a = \frac{1}{3} \parens{\sum_{i=1}^3 x_i + a} \non
+    3a = \sum_{i=1}^3 x_i + a \non
+    2a = \sum_{i=1}^3 x_i \non
+    a = \frac{1}{2} \sum_{i=1}^3 x_i = \frac{1}{2} \parens{729 + 313 + 328} = \frac{1370}{2} = 685 \,.
+  }
+  That this answer verifies the original condition was verified with Python.
 }
 
 \aproblem{17}{TODO}{\advent@xv@xvii}{
