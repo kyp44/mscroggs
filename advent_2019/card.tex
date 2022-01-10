@@ -85,7 +85,13 @@ Link to the online card: \href{http://mscroggs.co.uk/blog/70}{http://mscroggs.co
 }
 
 \cproblem{8}{59}{\card@xix@viii}{
-  This was calculated in Python, which was made easy by the fact that integers can be arbitrarily large in Python.
+  The number of zeros at the end of a number is the same as the number of \mn{10} in the product that makes the number.
+  Each of these \mn{10} is made by multiplying a $5$ and a $2$.
+  There will clearly be many more even numbers than multiples of $5$ in any large number, and so plenty of \mn{2} to pair with each $5$.
+  Hence the number of \mn{5} will tell us how many zeros the number ends in.
+  In $245!$ there will be $49$ multiples of $5$ (since $245 /5 = 49$), $9$ multiples of $5^2 = 25$ (since $\floor{245/25} = 9$), and $1$ multiple of $5^3 = 125$.
+  Therefore the number of zeros at the end of $245!$ is $49 + 9 + 1 = 59$.
+  This was verified using Python, which is easy because integers can be arbitrarily large.
 }
 
 \cproblem{9}{304434}{\card@xix@ix}{

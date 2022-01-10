@@ -82,18 +82,7 @@ if prob(7) :
     pans(lcm(1025, 835))
 
 if prob(8) :
-    # Number reversed as a string
-    istr = str(factorial(245))[::-1]
-
-    # Count the leading zeros
-    cnt = 0
-    for c in istr :
-        if c == "0" :
-            cnt += 1
-        else :
-            break
-
-    pans(cnt)
+    pans(count_ending_zeros(factorial(245)))
 
 if prob(9) :
     for n in range(10**5, 10**6) :

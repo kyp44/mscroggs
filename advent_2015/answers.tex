@@ -335,8 +335,27 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2015}{https://www.mscrog
   That this answer verifies the original condition was verified with Python.
 }
 
-\aproblem{17}{TODO}{\advent@xv@xvii}{
-  TODO
+\aproblem{17}{205}{\advent@xv@xvii}{
+  The number of zeros at the end of a number is the same as the number of \mn{10} in the product that makes the number.
+  Each of these \mn{10} is made by multiplying a $5$ and a $2$.
+  There will clearly be many more even numbers than multiples of $5$ in any large number, and so plenty of \mn{2} to pair with each $5$.
+  Hence the number of \mn{5} will tell us how many zeros the number ends in.
+  Because of this, for a general positive integer $n$, $n!$ will end in $f(n)$ zeros where
+  \gath{
+    f(n) = \sum_{i=1}^\infty \floor{\frac{n}{5^i}} \,.
+  }
+  Of course eventually the terms will all be zero once $5^i$ becomes larger than $n$.
+  Now, we know that $n < 5 \cdot 50 = 250$ since $f(250) > 250/5 = 50$, and thus $5^3 = 125$ is the largest power of $5$ we need to worry about since $5^4 = 625 > 250 > n$.
+  We can get close to our answer if we solve
+  \gath{
+    \frac{n}{5} + \frac{n}{25} + \frac{n}{125} = 50 \non
+    25n + 5n + n = 50 \cdot 125 = 6250 \non
+    31n = 6250 \non
+    n \approx 201.6
+  }
+  However, we have $f(201) = 40 + 8 + 1 = 49$, so we are not quite there.
+  If we increase this to $n = 205$ then we get one extra factor of $5$ in there with no additional factors of $25$ or $125$, hence  $f(205) = 41 + 8 + 1 = 50$ so that $n = 205$ is our answer.
+  This was verified by brute force with Python, which supports arbitrarily large integers so that factorials can actually be evaluated and the zeros counted.
 }
 
 \aproblem{18}{TODO}{\advent@xv@xviii}{

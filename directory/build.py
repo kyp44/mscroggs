@@ -42,6 +42,7 @@ class Tag(Enum) :
     CROSS = "cross"
     CUBIC = "cubic"
     DIG = "dig"
+    FACT = "fact"
     GEOM = "geom"
     MISC = "misc"
     MOD = "mod"
@@ -60,6 +61,7 @@ tag_labels = {
     Tag.CROSS : "Cross Number",
     Tag.CUBIC : "Cubic",
     Tag.DIG : "Digits",
+    Tag.FACT : "Factorial",
     Tag.GEOM : "Geometry",
     Tag.MISC : "Miscellaneous",
     Tag.MOD : "Modulo",

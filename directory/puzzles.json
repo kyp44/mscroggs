@@ -20,7 +20,8 @@
 	    {"number": 13, "tags": ["box"]},
 	    {"number": 14, "tags": ["dig", "base"]},
 	    {"number": 15, "tags": ["comb"]},
-	    {"number": 16, "tags": ["misc"]}
+	    {"number": 16, "tags": ["misc"]},
+	    {"number": 17, "tags": ["dig", "fact"]}
 	]
     },
     {
@@ -75,7 +76,7 @@
 	    {"number": 5, "tags": ["geom"]},
 	    {"number": 6, "tags": ["sum", "comb"]},
 	    {"number": 7, "tags": ["num"]},
-	    {"number": 8, "tags": ["num"]},
+	    {"number": 8, "tags": ["dig", "fact"]},
 	    {"number": 9, "tags": ["dig"]}
 	]
     },

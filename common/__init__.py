@@ -292,3 +292,16 @@ def latex_row(*args) :
     which will be converted to strings.
     """
     print(" & ".join([str(v) for v in args]), r"\\")
+
+def count_ending_zeros(n) :
+    # Number reversed as a string
+    istr = str(n)[::-1]
+
+    # Count the leading zeros
+    cnt = 0
+    for c in istr :
+        if c == "0" :
+            cnt += 1
+        else :
+            break
+    return cnt
