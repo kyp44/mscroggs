@@ -266,8 +266,36 @@
   What is the smallest number, $n$, such that $n!$ ends with $50$ zeros?
 }
 
+\newcommand\grid@advent@xv@xviii[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \bigbox{0}{3}{#1}
+      \bigbox{1}{3}{#2}
+      \bigbox{2}{3}{#3}
+      \bbtextr{3}{3}{multiple of $9$}
+
+      \bigbox{0}{2}{#4}
+      \bigbox{1}{2}{#5}
+      \bigbox{2}{2}{#6}
+      \bbtextr{3}{2}{multiple of $3$}
+
+      \bigbox{0}{1}{#7}
+      \bigbox{1}{1}{#8}
+      \bigbox{2}{1}{#9}
+      \bbtextr{3}{1}{multiple of $5$}
+
+      \bbtextb{0}{0}{multiple\\of $6$}
+      \bbtextb{1}{0}{multiple\\of $4$}
+      \bbtextb{2}{0}{cube\\number}
+    \end{tikzpicture}
+  \end{center}
+}
 \def\advent@xv@xviii{
-  TODO
+  Put the digits $1$ to $9$ (using each digit once) in the boxes so that the three digit numbers formed (reading left to right and top to bottom) have the desired properties written by their rows and columns.
+
+  \grid@advent@xv@xviii{}{}{}{}{}{}{}{}{}
+  
+  Today's number is the multiple of $6$ formed in the left hand column.
 }
 
 \def\advent@xv@xix{
