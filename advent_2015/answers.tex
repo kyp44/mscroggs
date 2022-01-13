@@ -362,8 +362,16 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2015}{https://www.mscrog
   \boxans{\grid@advent@xv@xviii{8}{9}{1}{3}{7}{2}{4}{6}{5}}
 }
 
-\aproblem{19}{TODO}{\advent@xv@xix}{
-  TODO
+\aproblem{19}{147}{\advent@xv@xix}{
+  There does not seem to be an easy way to solve this analytically, but we can design a recursive algorithm to count the possible ways.
+  Define a recursive function $N(\braces{n_i}, m)$ where $\braces{n_i}$ is the sequence of positive integer denominators of unit fractions so far, and $m$ is the number of fractions remaining.
+  Now suppose we have chosen $k$ fractions so far and $m$ remain (so that in our case $k + m = 5$).
+  Then the remaining fractions must add to
+  \gath{
+    1 - \sum_{i=1}^k \frac{1}{n_i}
+  }
+
+  Implementing and executing this algorithm in Python gives the answer $147$.
 }
 
 \aproblem{20}{TODO}{\advent@xv@xx}{
