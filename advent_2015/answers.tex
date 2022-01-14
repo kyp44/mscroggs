@@ -364,14 +364,46 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2015}{https://www.mscrog
 
 \aproblem{19}{147}{\advent@xv@xix}{
   There does not seem to be an easy way to solve this analytically, but we can design a recursive algorithm to count the possible ways.
-  Define a recursive function $N(\braces{n_i}, m)$ where $\braces{n_i}$ is the sequence of positive integer denominators of unit fractions so far, and $m$ is the number of fractions remaining.
+  We consider sequences of positive integer denominators $\angles{n_i}$ such that each term in the sum is $1/n_i$.
+  Since the order of the sequence does not affect the sum, we only consider sequences $\angles{n_i}$ that are non-decreasing, that is $n_i \leq n_j$ whenever $i < j$.
   Now suppose we have chosen $k$ fractions so far and $m$ remain (so that in our case $k + m = 5$).
-  Then the remaining fractions must add to
+  Then the sum so far is
   \gath{
-    1 - \sum_{i=1}^k \frac{1}{n_i}
+    s = \sum_{i=1}^k \frac{1}{n_i}
   }
+  so that the remaining fractions must sum to $1 - s$.
+  Since we are only considering non-decreasing sequences, the remaining $n_i$ can be no smaller than $n_k$, and so the \emph{largest} any remaining term can be is $1/n_k$.
+  Hence the largest that the sum of the remaining terms can be is $m / n_k$ if all the remaining terms are $1/n_k$.
+  Therefore, for the next $n_{k+1}$, we have
+  \gath{
+    1 - s \leq \frac{m}{n_{k+1}} \non
+    n_{k+1}(1 - a) \leq m \non
+    n_{k+1} \leq \frac{m}{1 - s} \,,
+  }
+  noting that $1 - s$ will be positive.
+  Since $m / (1 - s)$ may not always be an integer, we can limit $n_{k+1}$ by
+  \gath{
+    n_k \leq n_{k+1} \leq \floor{\frac{m}{1 - s}} \,.
+  }
+  Now we define a recursive function $N(m, n, s)$ that is the number of unit fraction sums that add to $1$ where $m$ is the number of terms remaining in the sum, $1/n$ is last term in the sum so far, and $s$ is the sum so far:
 
-  Implementing and executing this algorithm in Python gives the answer $147$.
+  Case: $m = 0$.
+  The sequence is complete since there are no remaining terms.
+  If the sum $s = 1$, then this is a valid sequence so return $1$.
+  Otherwise the sequence is invalid so return $0$.
+
+  Case: $m > 0$ and $s \geq 1$.
+  The sum has gone over $1$ (or is prematurely $1$) so that this sequence is already invalid, hence return $0$.
+
+  Case: $m > 0$ and $s < 1$.
+  The sequence is incomplete but still potentially valid, and so we recurse.
+  In particular, we return
+  \gath{
+    \sum_{i = n}^{\floor{m/(1-s)}} N(m - 1, i, s + 1/i)
+  }
+  Since clearly the very first term in the sum cannot be $1/1 = 1$ (since then the sum would exceed $1$), the smallest possible initial denominator is $2$.
+  Therefore our answer results from recursively evaluating $N(5, 2, 0)$.
+  Implementing and executing this algorithm in Python gives our answer $N(5, 2, 0) = 147$.
 }
 
 \aproblem{20}{TODO}{\advent@xv@xx}{

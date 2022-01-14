@@ -1,9 +1,9 @@
+
 from common import *
 
-def N(Nl, ns=[]) :
+def N(m, n=2, s=0, ns=[]) :
     # Base cases
-    s = sum([frc(1, n) for n in ns])
-    if Nl == 0 :
+    if m == 0 :
         if s == 1 :
             print(ns)
             return 1
@@ -13,11 +13,6 @@ def N(Nl, ns=[]) :
         return 0
     
     # Recurse
-    cnt = 0
-    a = 2 if len(ns) == 0 else ns[-1]
-    for n in range(a, np.floor(frc(Nl) / (1 - s)) + 1) :
-        cnt += N(Nl - 1, ns + [n])
-    return cnt
-
+    return sum([N(m - 1, nn, s + frc(1,nn), ns + [nn]) for nn in range(n, np.floor(frc(m) / (1 - s)) + 1)])
     
 pans(N(5))
