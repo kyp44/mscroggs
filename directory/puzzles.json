@@ -22,7 +22,9 @@
 	    {"number": 15, "tags": ["comb"]},
 	    {"number": 16, "tags": ["misc"]},
 	    {"number": 17, "tags": ["dig", "fact"]},
-	    {"number": 18, "tags": ["box"]}
+	    {"number": 18, "tags": ["box"]},
+	    {"number": 19, "tags": ["comb"]},
+	    {"number": 20, "tags": ["box"]}
 	]
     },
     {

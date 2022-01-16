@@ -6,8 +6,9 @@ sol = np.array([[8, 6, 7],
                 [9, 3, 2]])
 
 box_solutions(
-    "dec03-grid.txt",
+    2019,
+    3,
     sol,
-    lambda sol : number(sorted([sol[1,0], sol[2,1], sol[2,2]])),
+    lambda hl : number(sorted(hl)),
     True,
 )

@@ -6,8 +6,9 @@ sol = np.array([[3, 1, 6],
                 [8, 2, 5]])
 
 box_solutions(
-    "dec12-grid.txt",
+    2015,
+    12,
     sol,
-    lambda sol : product(sol[1,:]),
+    product,
     True,
 )

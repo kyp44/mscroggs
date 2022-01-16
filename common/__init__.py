@@ -7,6 +7,7 @@ import os
 from functools import reduce
 from fractions import Fraction as frc
 from enum import Enum, auto
+import roman
 
 def check_div(a,b) :
     """
@@ -29,12 +30,6 @@ def digits(n, nd=None) :
     """
     ds = str(n) if nd is None else ("{:0" + str(nd) + "}").format(n)
     return [int(d) for d in ds][::-1]
-
-# Operators
-opers = {"+" : op.add,
-         "-" : op.sub,
-         "*" : op.mul,
-         "/" : op.truediv}
 
 """
 Converts a digit arrray into an integer number.
@@ -102,77 +97,114 @@ class EquGrid(GenGrid) :
     Represents and can solve an equation digit
     grid puzzle.
     """
-
     Equ = namedtuple("Equ", ("first", "sec", "equ"))
-    
+
+    # Operators
+    class Oper(Enum) :
+        ADD = auto()
+        SUB = auto()
+        MUL = auto()
+        DIV = auto()
+        
     def __init__(self, fname) :
+        opers = {
+            "+" : self.Oper.ADD,
+            "-" : self.Oper.SUB,
+            "*" : self.Oper.MUL,
+            "/" : self.Oper.DIV,
+        }    
+
         # Read lines from file
         with open(fname, "r") as f :
             lines = [l.strip() for l in f]
 
         # Parse rows and columns
+        self.highlighted = []
         self.rows = []
         self.cols = []
         for rc in range(3) :
             sp = lines[2*rc].split()
             self.rows.append(self.Equ(opers[sp[1]], opers[sp[3]], frc(sp[-1])))
-
             self.cols.append(self.Equ(opers[lines[1].split()[rc]], opers[lines[3].split()[rc]], frc(lines[-1].split()[rc])))
+
+            # Highlighted cells
+            for n in [n for n, v in enumerate(sp) if v == "^"] :
+                self.highlighted.append((rc, n // 2))
 
         # Create the check functions for the general grid
         def checkf(checkequ, sol) :
-            if checkequ.sec(checkequ.first(sol[0], sol[1]), sol[2]) != checkequ.equ :
+            opers = {
+                self.Oper.ADD : op.add,
+                self.Oper.SUB : op.sub,
+                self.Oper.MUL : op.mul,
+                self.Oper.DIV : op.truediv,
+            }
+
+            if opers[checkequ.sec](opers[checkequ.first](sol[0], sol[1]), sol[2]) != checkequ.equ :
                 return False 
             return True
 
         super().__init__([lambda sol, r=r : checkf(self.rows[r], sol) for r in range(3)], [lambda sol, c=c : checkf(self.cols[c], sol) for c in range(3)])
 
-    def print_latex() :
+    def highlighted_sol(self, sol) :
+        """
+        Returns list of highlightes cells in a solution.
+        Theye are ordered from left to right and top to
+        bottom.
+        """
+        return [sol[c] for c in self.highlighted]
         
-        \gridbox{0}{6}{#1}
-      \gridsym{1}{6}{+}
-      \gridbox{2}{6}{#2}
-      \gridsym{3}{6}{-}
-      \gridbox{4}{6}{#3}
-      \gridsym{5}{6}{=}
-      \gridsym{6}{6}{-2}
+    def print_latex(self) :
+        """
+        Prints LaTeX code for this grid in terms of the
+        grid box macros.
+        """
+        opers = {
+            self.Oper.ADD : "+",
+            self.Oper.SUB : "-",
+            self.Oper.MUL : r"\times",
+            self.Oper.DIV : r"\div",
+        }
+        gsym = r"\gridsym"
+        gblank = r"\gridblank"
 
-      \gridsym{0}{5}{-}
-      \gridblank{1}{5}
-      \gridsym{2}{5}{-}
-      \gridblank{3}{5}
-      \gridsym{4}{5}{-}
+        for rn, row in enumerate(self.rows) :
+            rg = 6 - 2*rn
 
-      \gridboxh{0}{4}{#4}
-      \gridsym{1}{4}{+}
-      \gridboxh{2}{4}{#5}
-      \gridsym{3}{4}{\div}
-      \gridboxh{4}{4}{#6}
-      \gridsym{5}{4}{=}
-      \gridsym{6}{4}{4}
+            # Number cells
+            for cn in range(3) :
+                boxh =  "h" if (rn, cn) in self.highlighted else ""
+                print(r"\gridbox" + boxh + latex_args(2*cn, rg, "#" + str(3*rn + cn + 1)))
 
-      \gridsym{0}{3}{+}
-      \gridblank{1}{3}
-      \gridsym{2}{3}{\div}
-      \gridblank{3}{3}
-      \gridsym{4}{3}{\times}
+            # Operators and result
+            print(gsym + latex_args(1, rg, opers[row.first]))
+            print(gsym + latex_args(3, rg, opers[row.sec]))
+            print(gsym + latex_args(5, rg, "="))
+            print(gsym + latex_args(6, rg, row.equ))
 
-      \gridbox{0}{2}{#7}
-      \gridsym{1}{2}{+}
-      \gridbox{2}{2}{#8}
-      \gridsym{3}{2}{\times}
-      \gridbox{4}{2}{#9}
-      \gridsym{5}{2}{=}
-      \gridsym{6}{2}{50}
+        # Column operators and result
+        for cn, col in enumerate(self.cols) :
+            print(gsym + latex_args(2*cn, 5, opers[col.first]))
+            print(gsym + latex_args(2*cn, 3, opers[col.sec]))
+            print(gsym + latex_args(2*cn, 1, "="))
+            print(gsym + latex_args(2*cn, 0, col.equ))
 
-      \gridsym{0}{1}{=}
-      \gridsym{2}{1}{=}
-      \gridsym{4}{1}{=}
+        # Blanks
+        print(gblank + latex_args(1, 5))
+        print(gblank + latex_args(3, 5))
+        print(gblank + latex_args(1, 3))
+        print(gblank + latex_args(3, 3))
 
-      \gridsym{0}{0}{4}
-      \gridsym{2}{0}{-4}
-      \gridsym{4}{0}{10}
-
+        """
+        
+        \gridsym{0}{1}{=}
+        \gridsym{2}{1}{=}
+        \gridsym{4}{1}{=}
+        
+        \gridsym{0}{0}{4}
+        \gridsym{2}{0}{-4}
+        \gridsym{4}{0}{10}
+        """
 
 class GridRoutes :
     """
@@ -242,7 +274,7 @@ def product(ns) :
         p *= n
     return p
 
-def box_solutions(fname, sol, ansf, brute) :
+def box_solutions(year, day, sol, ansf, brute) :
     """
     Verifies solution to a box sum puzzle and
     optionally shows uniqueness by finding
@@ -256,11 +288,18 @@ def box_solutions(fname, sol, ansf, brute) :
     args = parser.parse_args()
 
     # Read in grid
-    grid = EquGrid(fname)
+    grid = EquGrid("dec{:02}-grid.txt".format(day))
             
     if args.code :
+        tag = "@advent@" + roman.toRoman(year - 2000).lower() + "@" + roman.toRoman(day).lower()
+        print(r"\newcommand\grid" + tag + "[9]{")
+        print(r"\begin{center}")
+        print(r"\begin{tikzpicture}")
         grid.print_latex()
-        print("Solution code:", "".join(["{" + str(v) + "}" for v in sol.flatten()]))
+        print(r"\end{tikzpicture}")
+        print(r"\end{center}")
+        print("}")
+        print(r"\def\gridsol" + tag + r"{\grid" + tag + latex_args(*sol.flatten()) + "}")
     else :
         # Read in expression grid and check solution
         print("Solution:")
@@ -273,7 +312,7 @@ def box_solutions(fname, sol, ansf, brute) :
             for s in sols :
                 print(s)
 
-            pans(ansf(sol))
+            pans(ansf(grid.highlighted_sol(sol)))
 
 anumber = lambda a : number(a[::-1])
 def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute, genchecks=[]) :
@@ -345,6 +384,13 @@ def cross_filter(a1, dn1, a2, dn2) :
         [n for n in a2 if digits(n)[::-1][dn2] in ds],
     )
 
+def latex_args(*args) :
+    """
+    Returns args converted to strings with each in braces
+    for a list of LaTeX arguments.
+    """
+    return "".join(["{" + str(v) + "}" for v in args])
+    
 def latex_row(*args) :
     """
     Prints a row of a LaTeX tabular with the given values,

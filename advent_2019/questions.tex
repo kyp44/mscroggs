@@ -7,55 +7,6 @@
   How many triangles can you make by picking three sticks and joining their ends?
 }
 
-\newcommand\grid@advent@xix@iii[9]{
-  \begin{center}
-    \begin{tikzpicture}
-      \gridbox{0}{6}{#1}
-      \gridsym{1}{6}{+}
-      \gridbox{2}{6}{#2}
-      \gridsym{3}{6}{+}
-      \gridbox{4}{6}{#3}
-      \gridsym{5}{6}{=}
-      \gridsym{6}{6}{21}
-
-      \gridsym{0}{5}{+}
-      \gridblank{1}{5}
-      \gridsym{2}{5}{\times}
-      \gridblank{3}{5}
-      \gridsym{4}{5}{\times}
-
-      \gridboxh{0}{4}{#4}
-      \gridsym{1}{4}{+}
-      \gridbox{2}{4}{#5}
-      \gridsym{3}{4}{+}
-      \gridbox{4}{4}{#6}
-      \gridsym{5}{4}{=}
-      \gridsym{6}{4}{10}
-
-      \gridsym{0}{3}{+}
-      \gridblank{1}{3}
-      \gridsym{2}{3}{\div}
-      \gridblank{3}{3}
-      \gridsym{4}{3}{\times}
-
-      \gridbox{0}{2}{#7}
-      \gridsym{1}{2}{+}
-      \gridboxh{2}{2}{#8}
-      \gridsym{3}{2}{+}
-      \gridboxh{4}{2}{#9}
-      \gridsym{5}{2}{=}
-      \gridsym{6}{2}{14}
-
-      \gridsym{0}{1}{=}
-      \gridsym{2}{1}{=}
-      \gridsym{4}{1}{=}
-
-      \gridsym{0}{0}{21}
-      \gridsym{2}{0}{10}
-      \gridsym{4}{0}{14}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xix@iii{
   Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
   The sums should be read left to right and top to bottom ignoring the usual order of operations.
@@ -134,55 +85,6 @@
   What is $f(65)$?
 }
 
-\newcommand\grid@advent@xix@xi[9]{
-  \begin{center}
-    \begin{tikzpicture}
-      \gridbox{0}{6}{#1}
-      \gridsym{1}{6}{+}
-      \gridbox{2}{6}{#2}
-      \gridsym{3}{6}{\div}
-      \gridboxh{4}{6}{#3}
-      \gridsym{5}{6}{=}
-      \gridsym{6}{6}{2}
-
-      \gridsym{0}{5}{+}
-      \gridblank{1}{5}
-      \gridsym{2}{5}{\div}
-      \gridblank{3}{5}
-      \gridsym{4}{5}{\div}
-
-      \gridbox{0}{4}{#4}
-      \gridsym{1}{4}{\div}
-      \gridbox{2}{4}{#5}
-      \gridsym{3}{4}{\div}
-      \gridbox{4}{4}{#6}
-      \gridsym{5}{4}{=}
-      \gridsym{6}{4}{3}
-
-      \gridsym{0}{3}{\div}
-      \gridblank{1}{3}
-      \gridsym{2}{3}{-}
-      \gridblank{3}{3}
-      \gridsym{4}{3}{\div}
-
-      \gridboxh{0}{2}{#7}
-      \gridsym{1}{2}{\div}
-      \gridboxh{2}{2}{#8}
-      \gridsym{3}{2}{\div}
-      \gridbox{4}{2}{#9}
-      \gridsym{5}{2}{=}
-      \gridsym{6}{2}{1}
-
-      \gridsym{0}{1}{=}
-      \gridsym{2}{1}{=}
-      \gridsym{4}{1}{=}
-
-      \gridsym{0}{0}{2}
-      \gridsym{2}{0}{1}
-      \gridsym{4}{0}{1}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xix@xi{
   Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
   The sums should be read left to right and top to bottom ignoring the usual order of operations.
@@ -377,55 +279,6 @@
   What is the product of the numbers on the three cards that neither of you has taken?
 }
 
-\newcommand\grid@advent@xix@xxi[9]{
-  \begin{center}
-    \begin{tikzpicture}
-      \gridbox{0}{6}{#1}
-      \gridsym{1}{6}{+}
-      \gridboxh{2}{6}{#2}
-      \gridsym{3}{6}{-}
-      \gridbox{4}{6}{#3}
-      \gridsym{5}{6}{=}
-      \gridsym{6}{6}{7}
-
-      \gridsym{0}{5}{\div}
-      \gridblank{1}{5}
-      \gridsym{2}{5}{-}
-      \gridblank{3}{5}
-      \gridsym{4}{5}{\div}
-
-      \gridbox{0}{4}{#4}
-      \gridsym{1}{4}{+}
-      \gridboxh{2}{4}{#5}
-      \gridsym{3}{4}{\div}
-      \gridboxh{4}{4}{#6}
-      \gridsym{5}{4}{=}
-      \gridsym{6}{4}{8}
-
-      \gridsym{0}{3}{\times}
-      \gridblank{1}{3}
-      \gridsym{2}{3}{\times}
-      \gridblank{3}{3}
-      \gridsym{4}{3}{\times}
-
-      \gridbox{0}{2}{#7}
-      \gridsym{1}{2}{+}
-      \gridbox{2}{2}{#8}
-      \gridsym{3}{2}{-}
-      \gridbox{4}{2}{#9}
-      \gridsym{5}{2}{=}
-      \gridsym{6}{2}{7}
-
-      \gridsym{0}{1}{=}
-      \gridsym{2}{1}{=}
-      \gridsym{4}{1}{=}
-
-      \gridsym{0}{0}{12}
-      \gridsym{2}{0}{5}
-      \gridsym{4}{0}{28}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xix@xxi{
   Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
   The sums should be read left to right and top to bottom ignoring the usual order of operations.

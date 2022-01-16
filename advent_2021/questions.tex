@@ -17,55 +17,6 @@
   If you write out the numbers from $1$ to $1000$ (inclusive), how many times will you write the digit $0$?
 }
 
-\newcommand\grid@advent@xxi@iv[9]{
-  \begin{center}
-    \begin{tikzpicture}
-      \gridbox{0}{6}{#1}
-      \gridsym{1}{6}{+}
-      \gridboxh{2}{6}{#2}
-      \gridsym{3}{6}{-}
-      \gridboxh{4}{6}{#3}
-      \gridsym{5}{6}{=}
-      \gridsym{6}{6}{5}
-
-      \gridsym{0}{5}{\div}
-      \gridblank{1}{5}
-      \gridsym{2}{5}{\times}
-      \gridblank{3}{5}
-      \gridsym{4}{5}{\times}
-
-      \gridbox{0}{4}{#4}
-      \gridsym{1}{4}{+}
-      \gridbox{2}{4}{#5}
-      \gridsym{3}{4}{-}
-      \gridbox{4}{4}{#6}
-      \gridsym{5}{4}{=}
-      \gridsym{6}{4}{5}
-
-      \gridsym{0}{3}{-}
-      \gridblank{1}{3}
-      \gridsym{2}{3}{\div}
-      \gridblank{3}{3}
-      \gridsym{4}{3}{\div}
-
-      \gridboxh{0}{2}{#7}
-      \gridsym{1}{2}{+}
-      \gridbox{2}{2}{#8}
-      \gridsym{3}{2}{\times}
-      \gridbox{4}{2}{#9}
-      \gridsym{5}{2}{=}
-      \gridsym{6}{2}{10}
-
-      \gridsym{0}{1}{=}
-      \gridsym{2}{1}{=}
-      \gridsym{4}{1}{=}
-
-      \gridsym{0}{0}{-6}
-      \gridsym{2}{0}{18}
-      \gridsym{4}{0}{35}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xxi@iv{
   Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
   The sums should be read left to right and top to bottom ignoring the usual order of operations.
@@ -134,55 +85,6 @@
   Today's number is the smallest integer that Eve has written down.
 }
 
-\newcommand\grid@advent@xxi@x[9]{
-  \begin{center}
-    \begin{tikzpicture}
-      \gridboxh{0}{6}{#1}
-      \gridsym{1}{6}{+}
-      \gridbox{2}{6}{#2}
-      \gridsym{3}{6}{+}
-      \gridbox{4}{6}{#3}
-      \gridsym{5}{6}{=}
-      \gridsym{6}{6}{20}
-
-      \gridsym{0}{5}{+}
-      \gridblank{1}{5}
-      \gridsym{2}{5}{+}
-      \gridblank{3}{5}
-      \gridsym{4}{5}{+}
-
-      \gridbox{0}{4}{#4}
-      \gridsym{1}{4}{+}
-      \gridboxh{2}{4}{#5}
-      \gridsym{3}{4}{+}
-      \gridbox{4}{4}{#6}
-      \gridsym{5}{4}{=}
-      \gridsym{6}{4}{10}
-
-      \gridsym{0}{3}{+}
-      \gridblank{1}{3}
-      \gridsym{2}{3}{+}
-      \gridblank{3}{3}
-      \gridsym{4}{3}{+}
-
-      \gridbox{0}{2}{#7}
-      \gridsym{1}{2}{+}
-      \gridbox{2}{2}{#8}
-      \gridsym{3}{2}{+}
-      \gridboxh{4}{2}{#9}
-      \gridsym{5}{2}{=}
-      \gridsym{6}{2}{15}
-
-      \gridsym{0}{1}{=}
-      \gridsym{2}{1}{=}
-      \gridsym{4}{1}{=}
-
-      \gridsym{0}{0}{7}
-      \gridsym{2}{0}{23}
-      \gridsym{4}{0}{15}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xxi@x{
   Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
   Today's number is the largest number you can make using the digits in the red boxes.
@@ -345,55 +247,6 @@
   Today's number is the smallest number whose digital product is $252$.
 }
 
-\newcommand\grid@advent@xxi@xviii[9]{
-  \begin{center}
-    \begin{tikzpicture}
-      \gridboxh{0}{6}{#1}
-      \gridsym{1}{6}{+}
-      \gridbox{2}{6}{#2}
-      \gridsym{3}{6}{+}
-      \gridbox{4}{6}{#3}
-      \gridsym{5}{6}{=}
-      \gridsym{6}{6}{11}
-
-      \gridsym{0}{5}{+}
-      \gridblank{1}{5}
-      \gridsym{2}{5}{\times}
-      \gridblank{3}{5}
-      \gridsym{4}{5}{\times}
-
-      \gridbox{0}{4}{#4}
-      \gridsym{1}{4}{+}
-      \gridboxh{2}{4}{#5}
-      \gridsym{3}{4}{+}
-      \gridbox{4}{4}{#6}
-      \gridsym{5}{4}{=}
-      \gridsym{6}{4}{17}
-
-      \gridsym{0}{3}{\times}
-      \gridblank{1}{3}
-      \gridsym{2}{3}{-}
-      \gridblank{3}{3}
-      \gridsym{4}{3}{+}
-
-      \gridbox{0}{2}{#7}
-      \gridsym{1}{2}{+}
-      \gridbox{2}{2}{#8}
-      \gridsym{3}{2}{+}
-      \gridboxh{4}{2}{#9}
-      \gridsym{5}{2}{=}
-      \gridsym{6}{2}{17}
-
-      \gridsym{0}{1}{=}
-      \gridsym{2}{1}{=}
-      \gridsym{4}{1}{=}
-
-      \gridsym{0}{0}{11}
-      \gridsym{2}{0}{17}
-      \gridsym{4}{0}{17}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xxi@xviii{
   Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
   The sums should be read left to right and top to bottom ignoring the usual order of operations.
