@@ -127,6 +127,53 @@ class EquGrid(GenGrid) :
 
         super().__init__([lambda sol, r=r : checkf(self.rows[r], sol) for r in range(3)], [lambda sol, c=c : checkf(self.cols[c], sol) for c in range(3)])
 
+    def print_latex() :
+        
+        \gridbox{0}{6}{#1}
+      \gridsym{1}{6}{+}
+      \gridbox{2}{6}{#2}
+      \gridsym{3}{6}{-}
+      \gridbox{4}{6}{#3}
+      \gridsym{5}{6}{=}
+      \gridsym{6}{6}{-2}
+
+      \gridsym{0}{5}{-}
+      \gridblank{1}{5}
+      \gridsym{2}{5}{-}
+      \gridblank{3}{5}
+      \gridsym{4}{5}{-}
+
+      \gridboxh{0}{4}{#4}
+      \gridsym{1}{4}{+}
+      \gridboxh{2}{4}{#5}
+      \gridsym{3}{4}{\div}
+      \gridboxh{4}{4}{#6}
+      \gridsym{5}{4}{=}
+      \gridsym{6}{4}{4}
+
+      \gridsym{0}{3}{+}
+      \gridblank{1}{3}
+      \gridsym{2}{3}{\div}
+      \gridblank{3}{3}
+      \gridsym{4}{3}{\times}
+
+      \gridbox{0}{2}{#7}
+      \gridsym{1}{2}{+}
+      \gridbox{2}{2}{#8}
+      \gridsym{3}{2}{\times}
+      \gridbox{4}{2}{#9}
+      \gridsym{5}{2}{=}
+      \gridsym{6}{2}{50}
+
+      \gridsym{0}{1}{=}
+      \gridsym{2}{1}{=}
+      \gridsym{4}{1}{=}
+
+      \gridsym{0}{0}{4}
+      \gridsym{2}{0}{-4}
+      \gridsym{4}{0}{10}
+
+
 class GridRoutes :
     """
     Represents a grid, possibly with removed nodes, and
@@ -198,23 +245,35 @@ def product(ns) :
 def box_solutions(fname, sol, ansf, brute) :
     """
     Verifies solution to a box sum puzzle and
-    optionally also shows uniqueness by finding
-    all solutions by brute force.
+    optionally shows uniqueness by finding
+    all solutions by brute force. Also generates
+    LaTeX code for the puzzle and solution with
+    a command line option
     """
-    # Read in expression grid and check solution
-    print("Solution:")
-    print(sol)
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="Verifies and solves the box puzzle and generates LaTeX code for it.")
+    parser.add_argument("--code", "-c", action="store_true", help="Generate LaTeX code instead of solving.")
+    args = parser.parse_args()
+
+    # Read in grid
     grid = EquGrid(fname)
-    print("Solution code:", "".join(["{" + str(v) + "}" for v in sol.flatten()]))
-    print("Solution verified:", grid.check(sol))
+            
+    if args.code :
+        grid.print_latex()
+        print("Solution code:", "".join(["{" + str(v) + "}" for v in sol.flatten()]))
+    else :
+        # Read in expression grid and check solution
+        print("Solution:")
+        print(sol)
+        print("Solution verified:", grid.check(sol))
 
-    if brute :
-        print("Brute force solutions:")
-        sols = grid.brute()
-        for s in sols :
-            print(s)
+        if brute :
+            print("Brute force solutions:")
+            sols = grid.brute()
+            for s in sols :
+                print(s)
 
-        pans(ansf(sol))
+            pans(ansf(sol))
 
 anumber = lambda a : number(a[::-1])
 def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute, genchecks=[]) :
