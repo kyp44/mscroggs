@@ -6,10 +6,10 @@
 TARGET = answers
 BOXES = boxes.tex
 
-.PHONY: all boxes clean
+.PHONY: all clean
 
 #==============================================================================
-all: boxes
+all: $(BOXES)
 #==============================================================================
 	pdflatex $(TARGET).tex
 
@@ -19,12 +19,10 @@ card:
 	pdflatex card.tex
 
 #==============================================================================
-boxes:
+$(BOXES): dec03.py dec09.py dec17.py dec22.py
 #==============================================================================
-	python3 dec03.py -c > $(BOXES)
-	python3 dec09.py -c >> $(BOXES)
-	python3 dec17.py -c >> $(BOXES)
-	python3 dec22.py -c >> $(BOXES)
+	> $@
+	$(foreach script, $^, python3 $(script) -c >> $@;)
 
 #==============================================================================
 clean:

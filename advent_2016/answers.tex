@@ -15,8 +15,34 @@
 
 Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2016}{https://www.mscroggs.co.uk/puzzles/advent2016}
 
-\aproblem{1}{TODO}{\advent@xvi@i}{
-  TODO
+\aproblem{1}{563}{\advent@xvi@i}{
+  Suppose that today's number has the three digits $d_2 d_1 d_0$.
+  If $d_2$ or $d_1$ were removed then the last digit of the sum would be $d_0 + d_0 = 2d_0$ and so would be even.
+  As $9$ is odd, it means that $d_0$ must be the digit that was removed so that the two digit number therefore has digits $d_2 d_1$.
+  Thus we have
+  \begin{center}
+    \begin{tabular}{c@{\,}c@{\,}c@{\,}c}
+      & $d_2$ & $d_1$ & $d_0$ \\
+      $+$ &   & $d_2$ & $d_1$ \\
+      \hline
+      & 6 & 1 & 9
+    \end{tabular} \,.
+  \end{center}
+  Moreover, no digits can add to $19$ (since the biggest digit $9 + 9 = 18 < 19$) so that
+  \gath{
+    d_0 + d_1 = 9 \label{eqn:01:d0d1}
+  }
+  with no carry to the next digit.
+  Since the middle digit of the sum is $1$, either $d_1 + d_2 = 1$ or $d_1 + d_2 = 11$.
+  In the former case it has to be that $d_1 = 0$ and $d_2 = 1$ since otherwise the two digit number would actually only be a one digit number.
+  However, in this case, it cannot possibly be that the first digit of the sum is $6$.
+  So it must be that in fact
+  \gath{
+    d_1 + d_2 = 11 \label{eqn:01:d1d2}
+  }
+  so that $d_2 + 1 = 6$ because of the carry, and thus $d_2 = 6 - 1 = 5$.
+  Hence $d_1 = 11 - d_2 = 11 - 5 = 6$ by \eqref{eqn:01:d1d2}, from which it follows from \eqref{eqn:01:d0d1} that $d_0 = 9 - d_1 = 9 - 6 = 3$.
+  Therefore today's number is $d_2 d_1 d_0 = 563$.
 }
 
 \aproblem{2}{TODO}{\advent@xvi@ii}{

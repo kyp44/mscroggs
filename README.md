@@ -8,8 +8,8 @@ Each December I really enjoy working the advent and Christmas card puzzles, but 
 
 ## Puzzle Status
 
-- **Advent 2015** - Currently going back and working on these puzzles as I did not participate this year because I was unaware of Matt's site.
-- **Advent 2016** - Have old Python scripts for some of the puzzles but did not document the solutions. Currently the solutions document is just a placeholder, and I plan to go back and complete it.
+- **Advent 2015** - Complete.
+- **Advent 2016** - Have old Python scripts for some of the puzzles but did not document the solutions. Currently working on getting these into the new format.
 - **Christmas Card 2016** - Have an old Python script but no solutions. I plan to go back and complete this.
 - **Advent 2017** - Have old Python scripts for some of the puzzles and solutions/answers crudely written in a text file. Currently the solutions document is just a placeholder, and I plan to go back and complete it.
 - **Christmas Card 2017** - Completely undocumented. I plan to go back and complete this.
