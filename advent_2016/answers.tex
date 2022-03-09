@@ -45,8 +45,14 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2016}{https://www.mscrog
   Therefore today's number is $d_2 d_1 d_0 = 563$.
 }
 
-\aproblem{2}{TODO}{\advent@xvi@ii}{
-  TODO
+\aproblem{2}{435}{\advent@xvi@ii}{
+  If they are placed in an optimal way, each time a plane is added, it can intersect every already-placed plane.
+  So clearly a single plane has $0$ intersections, adding a second plane adds $1$ intersection, adding a third plane adds $2$ more intersections, etc.
+  Thus for $n$ planes the maximum number of intersecting lines is a triangular number:
+  \gath{
+    f(n) = \sum_{i=1}^{n-1} i = \frac{(n-1)(n-1 + 1)}{2} = \frac{n(n-1)}{2} \,.
+  }
+  Hence our answer is $f(30) = 435$.
 }
 
 \aproblem{3}{TODO}{\advent@xvi@iii}{

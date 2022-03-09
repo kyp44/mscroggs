@@ -36,7 +36,8 @@
 	"year": 2016,
 	"number": 24,
 	"puzzles": [
-	    {"number": 1, "tags": ["dig"]}
+	    {"number": 1, "tags": ["dig"]},
+	    {"number": 2, "tags": ["geom", "sum"]}
 	]
     },
     {
