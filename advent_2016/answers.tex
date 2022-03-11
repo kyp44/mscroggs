@@ -4,6 +4,7 @@
 % Macros
 \input{common/macros}
 \input{questions}
+\input{boxes}
 
 \begin{document}
 
@@ -55,12 +56,23 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2016}{https://www.mscrog
   Hence our answer is $f(30) = 435$.
 }
 
-\aproblem{3}{TODO}{\advent@xvi@iii}{
-  TODO
+\aproblem{3}{798}{\advent@xvi@iii}{
+  Clearly the smallest such cube is such that the base of the pyramid is square and coincides with one side of the cube.
+  The height of the pyramid then is also the same as the sides of the square base.
+  If the sides of the enclosing cube have length $s$, then the base length, base width, and height of the pyramid are all $l = w = h = s$.
+  The volume of the pyramid is then
+  \gath{
+    V_p = \frac{lwh}{3} = \frac{s^3}{3} \,.
+  }
+  The volume of the cube is of course simply
+  \gath{
+    V_c = s^3
+  }
+  so that $V_c = 3 V_p = 3 \cdot 266 = 798$, which is our answer.
 }
 
-\aproblem{4}{TODO}{\advent@xvi@iv}{
-  TODO
+\aproblem{4}{140}{\advent@xvi@iv}{
+  \boxans{\gridsol@advent@xvi@iv}
 }
 
 \aproblem{5}{TODO}{\advent@xvi@v}{

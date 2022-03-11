@@ -37,7 +37,9 @@
 	"number": 24,
 	"puzzles": [
 	    {"number": 1, "tags": ["dig"]},
-	    {"number": 2, "tags": ["geom", "sum"]}
+	    {"number": 2, "tags": ["geom", "sum"]},
+	    {"number": 3, "tags": ["geom"]},
+	    {"number": 4, "tags": ["box"]}
 	]
     },
     {

@@ -30,6 +30,7 @@ tags: help
 boxes: 
 #==============================================================================
 	cd ../advent_2015/; make $(BOXES)
+	cd ../advent_2016/; make $(BOXES)
 	cd ../advent_2019/; make $(BOXES)
 	cd ../advent_2020/; make $(BOXES)
 	cd ../advent_2021/; make $(BOXES)
