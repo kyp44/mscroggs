@@ -26,7 +26,7 @@ def sums(n, used=None, lvl=0) :
 
     # Remove duplicates.
     # This is annoying but there is no better way
-    # because Counters are multable and therefore
+    # because Counters are mutable and therefore
     # not hashable, so they cannot be put into sets
     css = [Counter(s) for s in ss]
     ss = [s for i,s in enumerate(ss) if Counter(s) not in css[i+1:]]
