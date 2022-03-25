@@ -40,7 +40,8 @@
 	    {"number": 2, "tags": ["geom", "sum"]},
 	    {"number": 3, "tags": ["geom"]},
 	    {"number": 4, "tags": ["box"]},
-	    {"number": 5, "tags": ["comb", "sum"]}
+	    {"number": 5, "tags": ["comb", "sum"]},
+	    {"number": 6, "tags": ["dig", "sum"]}
 	]
     },
     {

@@ -79,8 +79,29 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2016}{https://www.mscrog
   This was solved using Python.
 }
 
-\aproblem{6}{TODO}{\advent@xvi@vi}{
-  TODO
+\aproblem{6}{819}{\advent@xvi@vi}{
+  Let $S(k)$ denote the digital sum of a non-negative integer $k$.
+  We will prove the following set identity:
+  \gath{
+    \braces{S(k) \mid 0 \leq k \leq 10^n} = \braces{0, 1, \ldots, 9n}\,, \label{eqn:06:hyp}
+  }
+  TODO need to modify and complete below proof.
+  We show both of these by induction on $n$.
+  First, for $n = 1$, clearly for any $0 \leq k \leq 10^n = 10$, the digital sum $S(k)$ is either just zero through nine in the case of a single-digit number, or $S(k) = 1$ for $10$ so that $0 \leq S(k) \leq 9 = 9n$ (showing 1 above) and that all of these are covered (showing 2 above).
+  Now suppose that 1 and 2 above are true for $n$.
+  Let $0 \leq k \leq 10^{n+1}$.
+  In the case where $0 \leq k < 10^{n+1}$, then $k$ has $n$ digits, where we can consider $k < 10^n$ as an $n$-digit number whose first digit is zero.
+  So let $d$ be the first digit of $k$ so that $0 \leq d \leq 9$, and let $m$ be the integer formed from the remaining digits so that of course $m$ has $n-1$ digits and hence $0 \leq m < 10^n$ so that $0 \leq S(m) \leq 9n$ by 1 above (the induction hypothesis).
+  Then we have
+  \gath{
+    0 + 0 \leq d + S(m) \leq 9 + 9n \non
+    0 \leq S(k) \leq 9(n+1) \,,
+  }
+  which shows 1 above.
+  These show the desired result by induction.
+
+  
+  
 }
 
 \aproblem{7}{TODO}{\advent@xvi@vii}{
