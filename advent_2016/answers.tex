@@ -83,25 +83,54 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2016}{https://www.mscrog
   Let $S(k)$ denote the digital sum of a non-negative integer $k$.
   We will prove the following set identity:
   \gath{
-    \braces{S(k) \mid 0 \leq k \leq 10^n} = \braces{0, 1, \ldots, 9n}\,, \label{eqn:06:hyp}
+    \braces{S(k) \mid 1 \leq k \leq 10^n} = \braces{1, 2, \ldots, 9n}\,, \label{eqn:06:hyp}
   }
-  TODO need to modify and complete below proof.
-  We show both of these by induction on $n$.
-  First, for $n = 1$, clearly for any $0 \leq k \leq 10^n = 10$, the digital sum $S(k)$ is either just zero through nine in the case of a single-digit number, or $S(k) = 1$ for $10$ so that $0 \leq S(k) \leq 9 = 9n$ (showing 1 above) and that all of these are covered (showing 2 above).
-  Now suppose that 1 and 2 above are true for $n$.
-  Let $0 \leq k \leq 10^{n+1}$.
-  In the case where $0 \leq k < 10^{n+1}$, then $k$ has $n$ digits, where we can consider $k < 10^n$ as an $n$-digit number whose first digit is zero.
-  So let $d$ be the first digit of $k$ so that $0 \leq d \leq 9$, and let $m$ be the integer formed from the remaining digits so that of course $m$ has $n-1$ digits and hence $0 \leq m < 10^n$ so that $0 \leq S(m) \leq 9n$ by 1 above (the induction hypothesis).
-  Then we have
-  \gath{
-    0 + 0 \leq d + S(m) \leq 9 + 9n \non
-    0 \leq S(k) \leq 9(n+1) \,,
-  }
-  which shows 1 above.
-  These show the desired result by induction.
+  for all integers $n \geq 1$.
+  We show this by induction on $n$.
+  In what follows define $A_n = \braces{S(k) \mid 1 \leq k \leq 10^n}$ and $B_n = \braces{1, 2, \ldots, 9n}$ so that we must show that $A_n = B_n$ for all $n \geq 1$.
+  First, for $n = 1$, consider any $x \in A_n$ so that $x = S(k)$ for some $1 \leq k \leq 10^n = 10$.
+  If $k$ is a single digit $1$ through $9$ then of course simply $x = S(k) = k$, and if $k = 10$ then of course $x = S(k) = 1$.
+  Thus, in any case, $1 \leq x \leq 9 = 9n$ so that $x \in B_n$, and therefore $A_n \ss B_n$.
+  Conversely, consider any $x \in B_n$ so that $1 \leq x \leq 9n = 9$ and simply set $k = x$ so that of course $x = S(k) = k$ since it is just a single digit.
+  Since also clearly $1 \leq k = x \leq 9 \leq 10 = 10^n$, we have $x \in A_n$ so that $B_n \ss A_n$ as well.
 
-  
-  
+  Now suppose that \eqref{eqn:06:hyp} is true for $n \geq 1$ and consider any $x \in A_{n+1}$ so that $x = S(k)$ for some $1 \leq k \leq 10^{n+1}$.
+  If $k < 10^{n+1}$ then $k$ can be considered as an $n$-digit number where the first digit may be zero if $k < 10^n$.
+  So let $d$ be the first digit and let $m$ be the integer formed by the remaining digits.
+  Therefore $0 \leq d \leq 9$ and $m$ is a nonzero $(n-1)$-digit number and hence $1 \leq m < 10^n$.
+  Thus $S(m) \in A_n = B_n$ by the induction hypothesis so that $1 \leq S(m) \leq 9n$.
+  Since also clearly $x = S(k) = d + S(m)$, we have
+  \gath{
+    0 + 1 \leq d + S(m) \leq 9 + 9n \non
+    1 \leq S(k) \leq 9(n+1) \non
+    1 \leq x \leq 9(n+1)
+  }
+  so that $x \in B_{n+1}$, and hence $A_{n+1} \ss B_{n+1}$.
+  Now suppose that $x \in B_{n+1}$ so that $1 \leq x \leq 9(n+1)$.
+  In the case where $1 \leq x \leq 9n$ then $x \in B_n = A_n$ by the induction hypothesis, and so there is a $1 \leq k \leq 10^n$ where $x = S(k)$.
+  Since also $1 \leq k \leq 10^n \leq 10^{n+1}$, it follows that $x = S(k) \in A_{n+1}$.
+  In the other case where $9n < x \leq 9(n+1)$ set $d = 9$ and $y = x - d$ so that
+  \gath{
+    9n - 9 < x - 9 \leq 9(n+1) - 9 \non
+    9(n-1) < x - d \leq 9n + 9 - 9 \non
+    0 \leq 9(n-1) < x - d \leq 9n \non
+    1 \leq y \leq 9n \,
+  }
+  noting that $0 \leq 9(n-1)$ since $1 \leq n$.
+  Hence $y \in B_n = A_n$ by the induction hypothesis so that there is a $1 \leq k \leq 10^n$ such that $y = S(k)$.
+  Now, if $k = 10^n$, then it must be that $y = S(k) = 1$, so let $m = k + 9 = 10^n + 9$ so that clearly
+  \gath{
+    1 + 9 \leq k + 9 \leq 10^n + 10 \non
+    10 \leq k + 9 \leq 10^{n+1} \non
+    1 \leq m \leq 10^{n+1} \,.
+  }
+  Since we also clearly have $x = y + d = y + 9 = 1 + 9 = 10 = S(10^n + 9) = S(m)$, it follows that $x \in A_{n+1}$.
+  Otherwise we have $1 \leq k < 10^n$ so that $k$ is an $(n-1)$-digit number (where leading digits may be zero).
+  So let $m$ be the number with leading digit $d = 9$ followed by the digits of $k$, resulting in an $n$-digit number so that $1 \leq m \leq 10^{n+1}$.
+  Clearly also $S(m) = 9 + S(k) = 9 + y = d + y = x$.
+  Thus we have that $x \in A_{n+1}$ and, as this is true in all cases, it follows that $B_{n+1} \ss A_{n+1}$, which completes the inductive proof of \eqref{eqn:06:hyp}.
+
+  Clearly then our answer is $\abs{A_{91}} = \abs{B_{91}} = \abs{\braces{1, 2, \ldots, 9 \cdot 91}} = 9 \cdot 91 = 819$.
 }
 
 \aproblem{7}{TODO}{\advent@xvi@vii}{
