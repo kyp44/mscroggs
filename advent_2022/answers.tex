@@ -1,0 +1,31 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+%\input{boxes}
+
+\begin{document}
+
+\title{MS Scroggs Advent Calendar 2022 Answers}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+% TODO: Once the event is over, add answers link.
+%Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2021}{https://www.mscroggs.co.uk/puzzles/advent2021}
+Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://mscroggs.co.uk/adventcode/JYcziCbI}
+
+\aproblem{1}{162}{\advent@xxii@i}{
+  Since $p_1 = (9,0)$ is a vertex and the $y$-axis is a line of symmetry, it must be that a second vertex is $p_2 = (-9, 0)$.
+  Since there must be four vertices, and both $p_1$ and $p_2$ are on the $x$-axis, it must be that the other two vertices are on the $y$-axis.
+  This is because any vertex not on either axis would result in four vertices not on either axis due to the axes being lines of symmetry, and a rectangle cannot have six vertices!
+  It then must be that the two $y$-axis vertices are at $p_3 = (0, 9)$ and $p_4 = (0, -9)$, since any other points that possess the required symmetry would result in a parallelogram without right angles.
+
+  Therefore, our rectangle is also square that clearly has sides of $s = \sqrt{9^2 + 9^2} = 9\sqrt{2}$.
+  The area is then of course $A = s^2 = 81 \cdot 2 = 162$.
+}
+
+\end{document}
