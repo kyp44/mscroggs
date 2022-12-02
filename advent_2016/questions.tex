@@ -22,21 +22,47 @@
 }
 
 \def\advent@xvi@v{
-Today's number is the number of ways that 35 can be written as the sum of distinct numbers, with none of the numbers in the sum being divisible by $9$.
+  Today's number is the number of ways that 35 can be written as the sum of distinct numbers, with none of the numbers in the sum being divisible by $9$.
 
-Clarification: By "numbers", I mean (strictly) positive integers.
-The sum of the same numbers in a different order is counted as the same sum: e.g. $1 + 34$ and $34 + 1$ are not different sums.
-The trivial sum consisting of just the number $35$ counts as a sum.
+  Clarification: By "numbers", I mean (strictly) positive integers.
+  The sum of the same numbers in a different order is counted as the same sum: e.g. $1 + 34$ and $34 + 1$ are not different sums.
+  The trivial sum consisting of just the number $35$ counts as a sum.
 }
 
 \def\advent@xvi@vi{
   When you add up the digits of a number, the result is called the digital sum.
-  
+
   How many different digital sums do the numbers from $1$ to $10^{91}$ have?
 }
 
+\newcommand\grid@advent@xvi@vii[9]{
+  \begin{center}
+    \begin{tikzpicture}
+      \bigbox{0}{3}{#1}
+      \bigbox{1}{3}{#2}
+      \bigbox{2}{3}{#3}
+      \bbtextr{3}{3}{multiple of $25$}
+
+      \bigbox{0}{2}{#4}
+      \bigbox{1}{2}{#5}
+      \bigbox{2}{2}{#6}
+      \bbtextr{3}{2}{today's number}
+
+      \bigbox{0}{1}{#7}
+      \bigbox{1}{1}{#8}
+      \bigbox{2}{1}{#9}
+      \bbtextr{3}{1}{all digits even}
+
+      \bbtextb{0}{0}{multiple\\of $91$}
+      \bbtextb{1}{0}{multiple\\of $7$}
+      \bbtextb{2}{0}{cube\\number}
+    \end{tikzpicture}
+  \end{center}
+}
 \def\advent@xvi@vii{
-  TODO
+  Put the digits $1$ to $9$ (using each digit once) in the boxes so that the three-digit numbers formed (reading left to right and top to bottom) have the desired properties written by their rows and columns.
+
+  \grid@advent@xvi@vii{}{}{}{}{}{}{}{}{}
 }
 
 \def\advent@xvi@viii{
