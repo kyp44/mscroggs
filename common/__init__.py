@@ -9,17 +9,19 @@ from fractions import Fraction as frc
 from enum import Enum, auto
 import roman
 
-def check_div(a,b) :
+
+def check_div(a, b):
     """
     Integer division where a ValueError is
     thrown if the numbers are not divisible.
     """
-    if a % b != 0 :
+    if a % b != 0:
         raise ValueError("a not evenly divisible by b")
 
     return a // b
 
-def digits(n, nd=None) :
+
+def digits(n, nd=None):
     """
     Converts integer to a list of its digits.
     Can optionally sepcifiy number of digits
@@ -31,21 +33,23 @@ def digits(n, nd=None) :
     ds = str(n) if nd is None else ("{:0" + str(nd) + "}").format(n)
     return [int(d) for d in ds][::-1]
 
+
 """
 Converts a digit arrray into an integer number.
 
 The digits are assumed to be in order from least
 significant to most.
 """
-number = lambda ds : sum([d*10**e for (e,d) in enumerate(ds)])
+def number(ds): return sum([d*10**e for (e, d) in enumerate(ds)])
 
-class GenGrid :
+
+class GenGrid:
     """
     Represents and can solve a general digit
     grid puzzle.
     """
 
-    def __init__(self, rowchecks, colchecks, genchecks=[]) :
+    def __init__(self, rowchecks, colchecks, genchecks=[]):
         """
         Each argument should be an iterable of three
         functions, that checks the corresponding rows
@@ -58,41 +62,40 @@ class GenGrid :
         self.colchecks = colchecks
         self.genchecks = genchecks
 
-    def check(self, sol) :
+    def check(self, sol):
         # Verify that solution uses each digit exactly once
-        if len(set(sol.flatten())) != 9 or np.min(sol) != 1 or np.max(sol) != 9 :
+        if len(set(sol.flatten())) != 9 or np.min(sol) != 1 or np.max(sol) != 9:
             return False
 
         # Check each row
-        for row,check in zip(sol, self.rowchecks) :
-            if not check(row) :
+        for row, check in zip(sol, self.rowchecks):
+            if not check(row):
                 return False
 
         # Check each column
-        for col,check in zip(sol.T, self.colchecks) :
-            if not check(col) :
+        for col, check in zip(sol.T, self.colchecks):
+            if not check(col):
                 return False
 
-
         # General checks (the grid as a whole)
-        for check in self.genchecks :
-            if not check(sol) :
+        for check in self.genchecks:
+            if not check(sol):
                 return False
 
         return True
 
-    def brute(self) :
+    def brute(self):
         # Try every possible gride configuration
         sols = []
-        for nums in it.permutations(range(1,9+1), 9) :
-            sol = np.array(nums).reshape(3,3)
-            if self.check(sol) :
+        for nums in it.permutations(range(1, 9+1), 9):
+            sol = np.array(nums).reshape(3, 3)
+            if self.check(sol):
                 sols.append(sol)
 
         return sols
 
-    
-class EquGrid(GenGrid) :
+
+class EquGrid(GenGrid):
     """
     Represents and can solve an equation digit
     grid puzzle.
@@ -100,81 +103,84 @@ class EquGrid(GenGrid) :
     Equ = namedtuple("Equ", ("first", "sec", "equ"))
 
     # Operators
-    class Oper(Enum) :
+    class Oper(Enum):
         ADD = auto()
         SUB = auto()
         MUL = auto()
         DIV = auto()
-        
-    def __init__(self, fname) :
+
+    def __init__(self, fname):
         opers = {
-            "+" : self.Oper.ADD,
-            "-" : self.Oper.SUB,
-            "*" : self.Oper.MUL,
-            "/" : self.Oper.DIV,
-        }    
+            "+": self.Oper.ADD,
+            "-": self.Oper.SUB,
+            "*": self.Oper.MUL,
+            "/": self.Oper.DIV,
+        }
 
         # Read lines from file
-        with open(fname, "r") as f :
+        with open(fname, "r") as f:
             lines = [l.strip() for l in f]
 
         # Parse rows and columns
         self.highlighted = []
         self.rows = []
         self.cols = []
-        for rc in range(3) :
+        for rc in range(3):
             sp = lines[2*rc].split()
             self.rows.append(self.Equ(opers[sp[1]], opers[sp[3]], frc(sp[-1])))
-            self.cols.append(self.Equ(opers[lines[1].split()[rc]], opers[lines[3].split()[rc]], frc(lines[-1].split()[rc])))
+            self.cols.append(self.Equ(opers[lines[1].split()[rc]], opers[lines[3].split()[
+                             rc]], frc(lines[-1].split()[rc])))
 
             # Highlighted cells
-            for n in [n for n, v in enumerate(sp) if v == "^"] :
+            for n in [n for n, v in enumerate(sp) if v == "^"]:
                 self.highlighted.append((rc, n // 2))
 
         # Create the check functions for the general grid
-        def checkf(checkequ, sol) :
+        def checkf(checkequ, sol):
             opers = {
-                self.Oper.ADD : op.add,
-                self.Oper.SUB : op.sub,
-                self.Oper.MUL : op.mul,
-                self.Oper.DIV : op.truediv,
+                self.Oper.ADD: op.add,
+                self.Oper.SUB: op.sub,
+                self.Oper.MUL: op.mul,
+                self.Oper.DIV: op.truediv,
             }
 
-            if opers[checkequ.sec](opers[checkequ.first](sol[0], sol[1]), sol[2]) != checkequ.equ :
-                return False 
+            if opers[checkequ.sec](opers[checkequ.first](sol[0], sol[1]), sol[2]) != checkequ.equ:
+                return False
             return True
 
-        super().__init__([lambda sol, r=r : checkf(self.rows[r], sol) for r in range(3)], [lambda sol, c=c : checkf(self.cols[c], sol) for c in range(3)])
+        super().__init__([lambda sol, r=r: checkf(self.rows[r], sol) for r in range(
+            3)], [lambda sol, c=c: checkf(self.cols[c], sol) for c in range(3)])
 
-    def highlighted_sol(self, sol) :
+    def highlighted_sol(self, sol):
         """
         Returns list of highlightes cells in a solution.
         Theye are ordered from left to right and top to
         bottom.
         """
         return [sol[c] for c in self.highlighted]
-        
-    def print_latex(self) :
+
+    def print_latex(self):
         """
         Prints LaTeX code for this grid in terms of the
         grid box macros.
         """
         opers = {
-            self.Oper.ADD : "+",
-            self.Oper.SUB : "-",
-            self.Oper.MUL : r"\times",
-            self.Oper.DIV : r"\div",
+            self.Oper.ADD: "+",
+            self.Oper.SUB: "-",
+            self.Oper.MUL: r"\times",
+            self.Oper.DIV: r"\div",
         }
         gsym = r"\gridsym"
         gblank = r"\gridblank"
 
-        for rn, row in enumerate(self.rows) :
+        for rn, row in enumerate(self.rows):
             rg = 6 - 2*rn
 
             # Number cells
-            for cn in range(3) :
-                boxh =  "h" if (rn, cn) in self.highlighted else ""
-                print(r"\gridbox" + boxh + latex_args(2*cn, rg, "#" + str(3*rn + cn + 1)))
+            for cn in range(3):
+                boxh = "h" if (rn, cn) in self.highlighted else ""
+                print(r"\gridbox" + boxh + latex_args(2 *
+                      cn, rg, "#" + str(3*rn + cn + 1)))
 
             # Operators and result
             print(gsym + latex_args(1, rg, opers[row.first]))
@@ -183,7 +189,7 @@ class EquGrid(GenGrid) :
             print(gsym + latex_args(6, rg, row.equ))
 
         # Column operators and result
-        for cn, col in enumerate(self.cols) :
+        for cn, col in enumerate(self.cols):
             print(gsym + latex_args(2*cn, 5, opers[col.first]))
             print(gsym + latex_args(2*cn, 3, opers[col.sec]))
             print(gsym + latex_args(2*cn, 1, "="))
@@ -206,20 +212,21 @@ class EquGrid(GenGrid) :
         \gridsym{4}{0}{10}
         """
 
-class GridRoutes :
+
+class GridRoutes:
     """
     Represents a grid, possibly with removed nodes, and
     calculates the number of routes from the lower left node
     to the upper right moving in a set of directions, without
     revisiting any nodes.
     """
-    class Direction(Enum) :
+    class Direction(Enum):
         UP = auto()
         DOWN = auto()
         LEFT = auto()
         RIGHT = auto()
 
-    def __init__(self, size, directions=(Direction.UP, Direction.RIGHT), removed=[]) :
+    def __init__(self, size, directions=(Direction.UP, Direction.RIGHT), removed=[]):
         """
         Takes the size of the grid as a tuple (w, h), and an
         optional list of tuples (x, y) of removed nodes, relative
@@ -230,27 +237,28 @@ class GridRoutes :
         self.directions = directions
         self.removed = removed
 
-    def routes(self, node=(0,0), visited=None) :
+    def routes(self, node=(0, 0), visited=None):
         """
         Calculates recursively the number of routes from the
         lower left corner to the upper right (or vice versa).
         """
-        if visited is None :
+        if visited is None:
             visited = set(self.removed)
 
         # Removed nodes are not allowed
         (x, y) = node
-        if node in visited or x < 0 or x > self.size[0] or y < 0 or y > self.size[1] :
+        if node in visited or x < 0 or x > self.size[0] or y < 0 or y > self.size[1]:
             return 0
         # End node
-        if node == self.size :
+        if node == self.size:
             return 1
 
         # Recurse
         s = 0
         visited.add(node)
-        def try_dir(direction, dx, dy) :
-            if direction in self.directions :
+
+        def try_dir(direction, dx, dy):
+            if direction in self.directions:
                 return self.routes((x + dx, y + dy), visited.copy())
             return 0
         s += try_dir(self.Direction.UP, 0, 1)
@@ -258,23 +266,30 @@ class GridRoutes :
         s += try_dir(self.Direction.LEFT, -1, 0)
         s += try_dir(self.Direction.RIGHT, 1, 0)
         return s
-        
+
 # Find factors of a number
-def factors(n):    
-    return set(reduce(list.__add__, 
-                ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))        
+
+
+def factors(n):
+    return set(reduce(list.__add__,
+                      ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 # Print answer
-def pans(a) :
+
+
+def pans(a):
     print("Answer:", a)
 
 # Product (the number version doesn't work so well)
-def product(ns) :
+
+
+def product(ns):
     p = 1
-    for n in ns :
+    for n in ns:
         p *= n
     return p
 
-def box_solutions(year, day, sol, ansf, brute) :
+
+def box_solutions(year, day, sol, ansf, brute):
     """
     Verifies solution to a box sum puzzle and
     optionally shows uniqueness by finding
@@ -283,15 +298,19 @@ def box_solutions(year, day, sol, ansf, brute) :
     a command line option
     """
     # Parse command line arguments
-    parser = argparse.ArgumentParser(description="Verifies and solves the box puzzle and generates LaTeX code for it.")
-    parser.add_argument("--code", "-c", action="store_true", help="Generate LaTeX code instead of solving.")
+    parser = argparse.ArgumentParser(
+        description="Verifies and solves the box puzzle and generates LaTeX code for it.")
+    parser.add_argument("--code", "-c", action="store_true",
+                        help="Generate LaTeX code instead of solving.")
     args = parser.parse_args()
 
     # Read in grid
     grid = EquGrid("dec{:02}-grid.txt".format(day))
-            
-    if args.code :
-        tag = "@advent@" + roman.toRoman(year - 2000).lower() + "@" + roman.toRoman(day).lower()
+
+    if args.code:
+        tag = "@advent@" + \
+            roman.toRoman(year - 2000).lower() + "@" + \
+            roman.toRoman(day).lower()
         print(r"\newcommand\grid" + tag + "[9]{")
         print(r"\begin{center}")
         print(r"\begin{tikzpicture}")
@@ -299,74 +318,92 @@ def box_solutions(year, day, sol, ansf, brute) :
         print(r"\end{tikzpicture}")
         print(r"\end{center}")
         print("}")
-        print(r"\def\gridsol" + tag + r"{\grid" + tag + latex_args(*sol.flatten()) + "}")
-    else :
+        print(r"\def\gridsol" + tag +
+              r"{\grid" + tag + latex_args(*sol.flatten()) + "}")
+    else:
         # Read in expression grid and check solution
         print("Solution:")
         print(sol)
         print("Solution verified:", grid.check(sol))
 
-        if brute :
+        if brute:
             print("Brute force solutions:")
             sols = grid.brute()
-            for s in sols :
+            for s in sols:
                 print(s)
 
             pans(ansf(grid.highlighted_sol(sol)))
 
-anumber = lambda a : number(a[::-1])
-def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute, genchecks=[]) :
+
+def anumber(a): return number(a[::-1])
+
+
+def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute, genchecks=[]):
     print("Solution:")
     print(sol)
     grid = GenGrid(rowchecks, colchecks, genchecks)
-    print("Solution code:", "".join(["{" + str(v) + "}" for v in sol.flatten()]))
+    print("Solution code:", "".join(
+        ["{" + str(v) + "}" for v in sol.flatten()]))
     print("Solution verified:", grid.check(sol))
 
-    if brute :
+    if brute:
         print("Brute force solutions:")
         sols = grid.brute()
-        for s in sols :
+        for s in sols:
             print(s)
 
             pans(ansf(sol))
 
+
 # These functions are useful in an interactive session to solve general box puzzles
-adigits = lambda a : [set([digits(n)[::-1][dn] for n in a]) for dn in range(3)]
-def three_digits(a) :
+def adigits(a):
+    """
+    For a list of 3-digit numbers, returns three sets of each digit.
+    """
+    return [set([digits(n)[::-1][dn]
+                 for n in a]) for dn in range(3)]
+
+
+def three_digits(a):
     """
     Filters an iterable of numbers to keep only
     those with three digits.
     """
     return [n for n in a if len(digits(n)) == 3]
 
-def remove_duplicate_digits(a) :
+
+def remove_duplicate_digits(a):
     """
     Removes numbers from an iterable that have duplicate
     digits.
     """
     return [n for n in a if len(digits(n)) == len(set(digits(n)))]
 
-def remove_digit(a, d) :
+
+def remove_digit(a, d):
     """
-    Removes alll numbers that contain a digit at all.
+    Removes all numbers that contain a digit at all.
     """
     return [n for n in a if d not in digits(n)]
-def filter_digits(a, d1=None, d2=None, d3=None) :
+
+
+def filter_digits(a, d1=None, d2=None, d3=None):
     """
     Filters an array of 3 digit nubmers, where digits
     match optionally passed sets for each digit.
 
     a - Iterable of 3 digit numbers
-    d1 - Set of acceptable first (most significant) digits (None of no filtering)
-    d2 - Set of acceptable second (middle) digits (None of no filtering)
-    d3 - Set of acceptable third (least significant) digits (None of no filtering)
+    d1 - Set of acceptable first (most significant) digits (None for no filtering)
+    d2 - Set of acceptable second (middle) digits (None for no filtering)
+    d3 - Set of acceptable third (least significant) digits (None for` no filtering)
     """
-    for dn, ds in enumerate((d1, d2, d3)) :
-        if ds is not None :
+    for dn, ds in enumerate((d1, d2, d3)):
+        if ds is not None:
             a = [n for n in a if digits(n)[::-1][dn] in ds]
     return a
-    
-def cross_filter(a1, dn1, a2, dn2) :
+
+
+def cross_filter(a1, dn1, a2, dn2):
     """
     Filter to arrays of 3-digit numbers based on certain digits
     in each being the same.
@@ -384,29 +421,32 @@ def cross_filter(a1, dn1, a2, dn2) :
         [n for n in a2 if digits(n)[::-1][dn2] in ds],
     )
 
-def latex_args(*args) :
+
+def latex_args(*args):
     """
     Returns args converted to strings with each in braces
     for a list of LaTeX arguments.
     """
     return "".join(["{" + str(v) + "}" for v in args])
-    
-def latex_row(*args) :
+
+
+def latex_row(*args):
     """
     Prints a row of a LaTeX tabular with the given values,
     which will be converted to strings.
     """
     print(" & ".join([str(v) for v in args]), r"\\")
 
-def count_ending_zeros(n) :
+
+def count_ending_zeros(n):
     # Number reversed as a string
     istr = str(n)[::-1]
 
     # Count the leading zeros
     cnt = 0
-    for c in istr :
-        if c == "0" :
+    for c in istr:
+        if c == "0":
             cnt += 1
-        else :
+        else:
             break
     return cnt
