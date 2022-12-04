@@ -55,8 +55,30 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   This result was verified by a brute force Python program.
 }
 
-\aproblem{4}{TODO}{\advent@xxii@iv}{
-  TODO
+\aproblem{4}{625}{\advent@xxii@iv}{
+  First, clearly the last three digits of any number $n \geq 100$ is just $n \mod 1000$.
+  We claim, for all $n \geq 3$, that
+  \gath{
+    5^n \mod 1000 = \begin{cases}
+      625 & \text{$n$ is even} \\
+      125 & \text{$n$ is odd} \,,
+    \end{cases}
+  }
+  which we show by induction on $n$.
+  First, for $n = 3$, we obviously have $5^3 = 125 \equiv 125 \pmod{1000}$ so that the hypothesis is true here since $n = 3$ is odd.
+  Now suppose that the hypothesis is true for $n$.
+  If $n$ is even then $5^n \equiv 625 \pmod{1000}$ so that
+  \gath{
+    5^{n+1} = 5 \cdot 5^n \equiv 5 \cdot 625 \pmod{1000} \equiv 3125 \pmod{1000} \equiv 125 \pmod{1000},
+  }
+  which proves the hypothesis for $n+1$ since $n+1$ is odd.
+  If, on the other hand, $n$ is odd, then $5^n \equiv 125 \pmod{1000}$ by the induction hypothesis so that
+  \gath{
+    5^{n+1} = 5 \cdot 5^n \equiv 5 \cdot 125 \pmod{1000} \equiv 625 \pmod{1000},
+  }
+  which again proves the hypothesis for $n+1$ since here $n+1$ is even.
+
+  Now, since clearly $n = 2022000000$ is even, it follows that the last three digits of $5^n$ are $625$ by what was just proven.
 }
 
 \aproblem{5}{TODO}{\advent@xxii@v}{
