@@ -28,7 +28,7 @@
 
 \def\advent@xxi@v{
   How many different isosceles triangles are there whose perimeter is $50$ units, and whose area is an integer number of units squared?
-  
+
   (Two triangles that are rotations, reflections and translations of each other are counted as the same triangle. Triangles with an area of 0 should not be counted.)
 }
 
@@ -57,7 +57,7 @@
     \begin{tikzpicture}
       \def\dr{2}
       \def\spc{2.3*\dr}
-      
+
       \decagon{0*\spc}{\spc}{\dr}{-\dec@aii}{-\dec@bi}
       \decagon{1*\spc}{\spc}{\dr}{-1}{0}
       \decagon{2*\spc}{\spc}{\dr}{-\dec@aii}{\dec@bi}
@@ -96,30 +96,30 @@
   The integers are written in a triangle as shown below:
   \begin{center}
     \begin{tabular}{ccccccc}
-      & & & 1 & & & \\
-      & & 2 & 3 & 4 & & \\
-      & 5 & 6 & 7 & 8 & 9 & \\
-      10 & 11 & 12 & 13 & 14 & 15 & 16 \\
-      & & & etc. & & &
+         &    &    & 1    &    &    &    \\
+         &    & 2  & 3    & 4  &    &    \\
+         & 5  & 6  & 7    & 8  & 9  &    \\
+      10 & 11 & 12 & 13   & 14 & 15 & 16 \\
+         &    &    & etc. &    &    &
     \end{tabular}
   \end{center}
   Today's number appears directly above the number $750$ in the triangle of integers.
 }
 
 \def\advent@xxi@abgrid{
-    \begin{center}
+  \begin{center}
     \begin{tikzpicture}
       \def\gs{1}
       % Grid
       \foreach \i in {0,...,6}{
-        \foreach \j in {0,...,2}{
-          \draw[thick] (\i * \gs, \j * \gs) rectangle (\i * \gs + \gs, \j * \gs + \gs);
+          \foreach \j in {0,...,2}{
+              \draw[thick] (\i * \gs, \j * \gs) rectangle (\i * \gs + \gs, \j * \gs + \gs);
+            }
         }
-      }
       % Points
       \fill[color=red] (0, 0) circle (0.2) node[color=red,left] {A};
       \fill[color=blue] (7*\gs, 3*\gs) circle (0.2) node[color=blue,right] {B};
-    \end{tikzpicture}  
+    \end{tikzpicture}
   \end{center}
 }
 \def\advent@xxi@xii{
@@ -163,9 +163,9 @@
       % Triangles
       \draw[fill=blue,fill opacity=0.5] (\mca: 2*\mcr) -- (0, 2*\bcr) -- (\sca: 2*\scr) -- cycle;
       \draw[fill=red,fill opacity=0.5] (\mca: \mcr) -- (0, \bcr) -- (\sca: \scr) -- cycle;
-    \end{tikzpicture}  
+    \end{tikzpicture}
   \end{center}
-  
+
   The area of the smaller red triangle is $226$.
   What is the area of the larger blue triangle?
 }
@@ -174,19 +174,19 @@
   You start at the point marked A in the picture below.
   You want to get to the point marked B.
   You may travel \textbf{to the right}, \textbf{upwards}, or \textbf{to the left} along the black lines, but you cannot pass along the same line segment more than once.
-  
+
   \advent@xxi@abgrid
-  
+
   Today's number is the total number of possible routes to get from A to B.
 }
 
 \newcommand\pyramid@advent@xxi@xvi[6]{
   \begin{center}
     \begin{tabular}{cccccc}
-      (row 1) & & & #1 & & \\
-      (row 2) & & #2 & & #3 & \\
-      (row 3) & #4 & & #5 & & #6 \\ 
-      & & & etc. & & 
+      (row 1) &    &    & #1   &    &    \\
+      (row 2) &    & #2 &      & #3 &    \\
+      (row 3) & #4 &    & #5   &    & #6 \\
+              &    &    & etc. &    &
     \end{tabular}
   \end{center}
 }
@@ -194,7 +194,7 @@
   The odd numbers are written in a pyramid.
 
   \pyramid@advent@xxi@xvi{1}{3}{5}{7}{9}{11}
-  
+
   What is the mean of the numbers in the 19th row?
 }
 
@@ -209,8 +209,8 @@
       \gridbox{2}{1}{#6}
       \gridbox{0}{0}{#7}
       \gridbox{1}{0}{#8}
-      \gridbox{2}{0}{#9}      
-      
+      \gridbox{2}{0}{#9}
+
       % Labels
       \cwlab{0}{2}{1}
       \cwlab{1}{2}{2}
@@ -238,7 +238,7 @@
       \item The sum of the digits of \textbf{3D} is $2$ OR the sum of the digits of \textbf{5A} is $5$.
       \item Today's number is \textbf{1D}.
     \end{enumerate}
-  \end{multicols}  
+  \end{multicols}
 }
 
 \def\advent@xxi@xvii{
@@ -304,14 +304,14 @@
     \begin{tikzpicture}
       % Draw all the grids
       \foreach \gi in {0,1}{
-        \foreach \gj in {0,...,5}{
-          \foreach \i in {0,1}{
-            \foreach \j in {0,...,3}{
-              \gridbox{5*\gj + \j}{3*\gi + \i}{}
+          \foreach \gj in {0,...,5}{
+              \foreach \i in {0,1}{
+                  \foreach \j in {0,...,3}{
+                      \gridbox{5*\gj + \j}{3*\gi + \i}{}
+                    }
+                }
             }
-          }
         }
-      }
 
       % Place token circles
       \gridcirc{0}{4}

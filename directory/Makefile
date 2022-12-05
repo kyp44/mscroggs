@@ -34,6 +34,7 @@ boxes:
 	cd ../advent_2019/; make $(BOXES)
 	cd ../advent_2020/; make $(BOXES)
 	cd ../advent_2021/; make $(BOXES)
+	cd ../advent_2022/; make $(BOXES)
 
 #==============================================================================
 clean:

@@ -13,11 +13,11 @@
   Write the numbers $1$ to $81$ in a grid like this:
   \gath{
     \begin{array}{ccccc}
-      1 & 2 & 3 & \cdots & 9 \\
-      10 & 11 & 12 & \cdots & 18 \\
-      19 & 20 & 21 & \cdots & 27 \\
+      1      & 2      & 3      & \cdots & 9      \\
+      10     & 11     & 12     & \cdots & 18     \\
+      19     & 20     & 21     & \cdots & 27     \\
       \vdots & \vdots & \vdots & \ddots & \vdots \\
-      73 & 74 & 75 & \cdots & 81
+      73     & 74     & 75     & \cdots & 81
     \end{array}
   }
   Pick $9$ numbers so that you have exactly one number in each row and one number in each column, and find their sum. What is the largest value you can get?
@@ -29,7 +29,12 @@
 }
 
 \def\advent@xxii@v{
-  TODO
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the product of the numbers in the red boxes.
+
+  \grid@advent@xxii@v{}{}{}{}{}{}{}{}{}
 }
 
 \def\advent@xxii@vi{

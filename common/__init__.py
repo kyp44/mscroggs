@@ -267,10 +267,11 @@ class GridRoutes:
         s += try_dir(self.Direction.RIGHT, 1, 0)
         return s
 
-# Find factors of a number
-
 
 def factors(n):
+    """
+    Find factors of a number.
+    """
     return set(reduce(list.__add__,
                       ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 # Print answer
@@ -279,10 +280,11 @@ def factors(n):
 def pans(a):
     print("Answer:", a)
 
-# Product (the number version doesn't work so well)
-
 
 def product(ns):
+    """
+    Product (the number version doesn't work so well)
+    """
     p = 1
     for n in ns:
         p *= n
