@@ -34,13 +34,14 @@ def digits(n, nd=None):
     return [int(d) for d in ds][::-1]
 
 
-"""
-Converts a digit arrray into an integer number.
+def number(ds):
+    """
+    Converts a digit arrray into an integer number.
 
-The digits are assumed to be in order from least
-significant to most.
-"""
-def number(ds): return sum([d*10**e for (e, d) in enumerate(ds)])
+    The digits are assumed to be in order from least
+    significant to most.
+    """
+    return sum([d*10**e for (e, d) in enumerate(ds)])
 
 
 class GenGrid:
