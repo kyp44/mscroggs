@@ -121,8 +121,33 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   This result was also verified with a brute force search in the Python program.
 }
 
-\aproblem{7}{TODO}{\advent@xxii@vii}{
-  TODO
+\aproblem{7}{476}{\advent@xxii@vii}{
+  It seems fairly clear that the largest triangle that can fit within a hexagon is that whose three vertices lie on every other vertex of the hexagon as shown below:
+  \def\hexr{3}
+  \begin{center}
+    \begin{tikzpicture}
+      \draw (-30:\hexr) -- (30:\hexr) -- (90:\hexr) -- (150:\hexr) -- (210:\hexr) -- (270:\hexr) -- cycle;
+      \draw[fill=red] (-30:\hexr) -- (90:\hexr) -- (210:\hexr) -- cycle;
+    \end{tikzpicture}
+  \end{center}
+  Let $s$ denote the side length of the hexagon, and let $t$ denote the side of the inner red triangle, which is clearly equilateral.
+  The three smaller white triangles inside the hexagon but outside the red triangle are isosceles and have two side of length $s$ and a base of length $t$.
+  Moreover, the apex angles of these triangles is $120^\circ$, from which it follows that
+  \gath{
+    t = \sqrt{3} s
+  }
+  so that the area of the large red triangle is
+  \gath{
+    A_t = \frac{\sqrt{3}}{4} t^2 = \frac{\sqrt{3}}{4} \parens{\sqrt{3} s}^2 = \frac{3\sqrt{3}}{4} s^2.
+  }
+  Meanwhile, the area of the hexagon is
+  \gath{
+    A_h = \frac{3\sqrt{3}}{2} s^2.
+  }
+  Therefore, we have
+  \gath{
+    A_t = \frac{1}{2} A_h = \frac{1}{2} \cdot 952 = 476.
+  }
 }
 
 \aproblem{8}{TODO}{\advent@xxii@viii}{
