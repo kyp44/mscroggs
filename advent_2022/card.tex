@@ -1,0 +1,72 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+
+\begin{document}
+
+\title{MS Scroggs 2022 Christmas Card Solutions}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Link to the online card: \href{https://www.mscroggs.co.uk/blog/98}{https://www.mscroggs.co.uk/blog/98}
+
+\cproblem{1}{5}{\card@xxii@i}{
+  Just working through the primes starting at $1$, the answer is clearly $5$, which is two more than $3$ and two less than $7$, both of which are also prime.
+}
+
+\newcommand\sumo[1]{s_\mathrm{o}\parens{#1}}
+\cproblem{2}{49}{\card@xxii@ii}{
+  While this would be really simple to just manually calculate, it is more fun (though perhaps more work) to derive an easier formula.
+  Clearly the sum of the first $n$ odd numbers is going to be
+  \gath{
+    \sumo{n} = \sum_{k=1}^n (2k - 1) = 2 \sum_{k=1}^n k - \sum_{k=1}^n 1 = \frac{2n(n+1)}{2} - n = n^2 \,.
+  }
+  Thus our answer is $\sumo{7} = 7^2 = 49$.
+}
+
+\cproblem{3}{33}{\card@xxii@iii}{
+  From the equation derived in the previous problem, clearly the answer is $\sqrt{1089} = 33$.
+}
+
+\cproblem{4}{1}{\card@xxii@iv}{
+  Since $7$ is prime, the quotient group $\ints/7\ints$ is cyclic, and indeed $4$ is a generator for it.
+  From this it follows that \emph{any} integer can be obtained by adding only integer multiples of $4$ and $7$.
+  As an example, clearly $2 \cdot 4 - 1 \cdot 7 = 1$, which is of course the smallest positive integer period.
+}
+
+\cproblem{5}{80}{\card@xxii@v}{
+  This is similar to the previous problem, but not so straightforward because our two integers are not coprime.
+  In particular, $\gcd(240, 400) = 80$ so that only integer multiples of $80$ are obtainable by adding integer multiples of $240$ and $400$.
+  Hence, our answer is of course $80$, noting that $2 \cdot 240 - 1 \cdot 400 = 80$ as an example of how to attain this.
+}
+
+\cproblem{6}{TODO}{\card@xxii@vi}{
+  TODO
+}
+
+\cproblem{7}{TODO}{\card@xxii@vii}{
+  TODO
+}
+
+\cproblem{8}{TODO}{\card@xxii@viii}{
+  TODO
+}
+
+\cproblem{9}{TODO}{\card@xxii@ix}{
+  TODO
+}
+
+\cproblem{10}{TODO}{\card@xxii@x}{
+  TODO
+}
+
+\cproblem{11}{TODO}{\card@xxii@xi}{
+  TODO
+}
+
+\end{document}

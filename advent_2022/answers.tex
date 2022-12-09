@@ -150,8 +150,25 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   }
 }
 
-\aproblem{8}{TODO}{\advent@xxii@viii}{
-  TODO
+\aproblem{8}{840}{\advent@xxii@viii}{
+  Suppose that the five real roots are $a$, $b$, $c$, $d$, and $e$ so that the quintic equation is then of course
+  \gath{
+    (x - a)(x - b)(x - c)(x - d)(x - e) = 0.
+  }
+  If we were to expand this, clearly the last term is the only term to be a constant without a factor of $x$.
+  This expansion would thus have the form
+  \gath{
+    f(x) + abcde = 0
+  }
+  such that $f(x)$ is some quintic in which every term has a factor of $x$.
+  Therefore, $-f(x) = abcde$, which is exactly the form of the original given equation.
+  Hence, the right side is the product of all the roots, which is the answer we seek!
+
+  While not necessary to get the sought answer, we can also use this and a bit of trial and error to quickly and easily find what the roots actually are.
+  Our root product $840$ has 32 factors, not including $840$ itself.
+  So the roots can be determined by just plugging all the factors into the original quintic and see which result in the equation holding, being careful to also try the negatives of the factors as well.
+  This tedious process was implemented in Python to arrive at the five distinct roots $\braces{-4, -3, 2, 5, 7}$.
+  It was then verified using Wolfram Alpha that fully expanding the quintic $(x + 4)(x + 3)(x - 2)(x - 5)(x - 7)$ indeed results in the original quintic expression.
 }
 
 \aproblem{9}{TODO}{\advent@xxii@ix}{

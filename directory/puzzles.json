@@ -801,7 +801,7 @@
 			{
 				"number": 19,
 				"tags": [
-					"cubic"
+					"poly"
 				]
 			},
 			{
@@ -983,6 +983,12 @@
 				"number": 7,
 				"tags": [
 					"geom"
+				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"poly"
 				]
 			}
 		]
