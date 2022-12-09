@@ -976,7 +976,9 @@
 			{
 				"number": 6,
 				"tags": [
-					"comb"
+					"comb",
+					"dig",
+					"sum"
 				]
 			},
 			{
@@ -989,6 +991,64 @@
 				"number": 8,
 				"tags": [
 					"poly"
+				]
+			},
+			{
+				"number": 9,
+				"tags": [
+					"box"
+				]
+			}
+		]
+	},
+	{
+		"type": "card",
+		"year": 2022,
+		"number": 11,
+		"puzzles": [
+			{
+				"number": 1,
+				"tags": [
+					"num"
+				]
+			},
+			{
+				"number": 2,
+				"tags": [
+					"sum"
+				]
+			},
+			{
+				"number": 3,
+				"tags": [
+					"sum"
+				]
+			},
+			{
+				"number": 4,
+				"tags": [
+					"mod"
+				]
+			},
+			{
+				"number": 5,
+				"tags": [
+					"mod"
+				]
+			},
+			{
+				"number": 6,
+				"tags": [
+					"comb",
+					"dig",
+					"sum"
+				]
+			},
+			{
+				"number": 7,
+				"tags": [
+					"comb",
+					"dig"
 				]
 			}
 		]

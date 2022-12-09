@@ -45,12 +45,36 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/98}{https://www.m
   Hence, our answer is of course $80$, noting that $2 \cdot 240 - 1 \cdot 400 = 80$ as an example of how to attain this.
 }
 
-\cproblem{6}{TODO}{\card@xxii@vi}{
-  TODO
+\cproblem{6}{20}{\card@xxii@vi}{
+  Here we can leverage the solution of the 2022, Dec~6 problem.
+  There, it was reasoned that, for a digital sum of $1 \leq s \leq 9$, the number of $m$-digit numbers with this digital sum and for which there are no nonzero digits is the recursive function
+  \gath{
+    N_m(s) = \begin{cases}
+      1                             & m = 1         \\
+      \sum_{j=m-1}^{s-1} N_{m-1}(j) & 1 < m \leq 9.
+    \end{cases} \label{eqn:06:rec}
+  }
+  It was also derived that, in particular,
+  \gath{
+    N_3(s) = \frac{(s-1)(s-2)}{2}.
+  }
+  Hence, for $4$-digit numbers we have
+  \ali{
+    N_4(s) &= \sum_{j=3}^{s-1} N_3(j) = \sum_{j=3}^{s-1} \frac{(j-1)(j-2)}{2} = \frac{1}{2} \sum_{j=3}^{s-1} \parens{j^2 - 3j + 2} = \frac{1}{2} \parens{\sum_{j=3}^{s-1} j^2 - 3 \sum_{j=3}^{s-1} j + 2 \sum_{j=3}^{s-1} 1} \non
+    &= \frac{1}{2}\squares{\frac{s(s-1)(2s-1)}{6} - (2^2 + 1^2) - \frac{3s(s-1)}{2} + 3(2 + 1) + 2(s-3)} \non
+    &= \frac{1}{2}\squares{\frac{2s^3 - 12s^2 + 22s - 12}{6}} = \frac{s^3 - 6s^2 + 11s - 6}{6}.
+  }
+  So our answer is then $N_4(7) = 20$, which was also verified with a brute force search Python program.
 }
 
-\cproblem{7}{TODO}{\card@xxii@vii}{
-  TODO
+\cproblem{7}{64}{\card@xxii@vii}{
+  This is just like the previous problem except that we are looking at all positive integers instead of just the $4$-digit integers.
+  Again, we can use the results of the 2022, Dec~6 problem, according to which this number for the general digital sum $s$ is
+  \gath{
+    N_s = \sum_{m=1}^s N_m(s). \label{eqn:07:Ns}
+  }
+  Just like the Dec~6 problem, we shall not undergo the tedium of computing $N_5(s)$, $N_6(s)$, or $N_7(s)$, but instead implement \eqref{eqn:07:Ns} along with the recursive function \eqref{eqn:06:rec} in Python to arrive at our answer $N_7 = 64$.
+  As before, this result was also verified with a brute force search in the Python program.
 }
 
 \cproblem{8}{TODO}{\card@xxii@viii}{
