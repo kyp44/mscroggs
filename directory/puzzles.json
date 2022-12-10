@@ -618,7 +618,7 @@
 	{
 		"type": "card",
 		"year": 2020,
-		"number": 14,
+		"number": 9,
 		"puzzles": [
 			{
 				"number": 1,
@@ -998,6 +998,12 @@
 				"tags": [
 					"box"
 				]
+			},
+			{
+				"number": 10,
+				"tags": [
+					"calc"
+				]
 			}
 		]
 	},
@@ -1048,6 +1054,18 @@
 				"number": 7,
 				"tags": [
 					"comb",
+					"dig"
+				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 9,
+				"tags": [
 					"dig"
 				]
 			}

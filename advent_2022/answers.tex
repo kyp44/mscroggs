@@ -175,8 +175,24 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   \boxans{\gridsol@advent@xxii@ix}
 }
 
-\aproblem{10}{TODO}{\advent@xxii@x}{
-  TODO
+\aproblem{10}{800}{\advent@xxii@x}{
+  \def\xmin{\frac{a}{2}}
+  Let $f(x) = x^2 - ax$ and $b = -160,000$.
+  Clearly the tangent line $y = b$ is perfectly horizontal so that this touches the parabola $f(x)$ when its slope is zero.
+  Thus, we have that this occurs at
+  \gath{
+    f'(x) = 2x - a = 0 \non
+    x = \xmin.
+  }
+  Now, since the parabola must touch the line at this point, it must be that
+  \gath{
+    f\parens{\xmin} = \parens{\xmin}^2 - a \parens{\xmin} = b \non
+    \frac{a^2}{4} - \frac{a^2}{2} = b \non
+    \frac{s^2 - 2a^2}{4} = b \non
+    -\frac{a^2}{4} = b \non
+    a = \sqrt{-4b} = 800.
+  }
+  This result was verified by plotting $f(x)$ and the line $y = b$ using Python.
 }
 
 \aproblem{11}{TODO}{\advent@xxii@xi}{

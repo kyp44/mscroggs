@@ -1,6 +1,7 @@
 # Python stuff
 __pycache__
 *.pickle
+*.png
 
 # For LaTeX documents
 *.aux

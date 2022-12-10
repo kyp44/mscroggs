@@ -124,7 +124,7 @@ if args.info:
         # Puzzle numbers
         nums = sorted([p.number for p in sett.puzzles])
         vs = []
-        if sett.type is SetType.ADVENT and len(set(nums)) != sett.number:
+        if len(set(nums)) != sett.number:
             vs.append("Incomplete")
         if len(set(nums)) != len(nums):
             vs.append("Duplicates")

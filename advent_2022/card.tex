@@ -77,8 +77,28 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/98}{https://www.m
   As before, this result was also verified with a brute force search in the Python program.
 }
 
-\cproblem{8}{TODO}{\card@xxii@viii}{
-  TODO
+\cproblem{8}{2836}{\card@xxii@viii}{
+  Suppose that the original $4$-digit number is $d_3 d_2 d_1 d_0$ where of course $0 \leq d_i \leq 9$ for all $0 \leq i \leq 3$.
+  Now, it \emph{has} to be that the least significant digit is the one that was removed since otherwise the sum would end in $d_0 + d_0 = 2d_0$ so that it would have to end in an even digit.
+  Since the sum 
+  ends in a $9$ though, it must be that the $3$-digit number is $d_3 d_2 d_1$, and our sum is
+  \begin{center}
+    \begin{tabular}{ccccc}
+          & $d_3$ & $d_2$ & $d_1$ & $d_0$ \\ 
+      $+$ &       & $d_3$ & $d_2$ & $d_1$ \\
+      \hline
+          & 3 & 1 & 1 & 9
+    \end{tabular}
+  \end{center}
+  Clearly either $d_3 = 3$ and nothing is carried from the $d_2 + d_3$ digit, or else $d_3 = 2$ and a $1$ \emph{is} carried.
+  It must be the latter case since, in the former case, clearly $d_2 + d_3 = d_2 + 3 > 1$ so that this would have to be an $11$ instead and thus would carry, which contradicts that case.
+  So, since $d_3 = 2$ and the previous digit's sum must be $11$, we have a similar situation in that either $d_2 = 9$ and there is no carry from the $d_1 + d_2$ digit, or else $d_2 = 8$ and there is a carry.
+  For the same reason as before it must be that there \emph{is} a carry so that $d_2 = 8$.
+
+  Now, there can be no carry from the least significant $d_0 + d_1$ digit because there is no way for this sum to reach $19$.
+  Thus, we have that $d_1 + d_2 = d_1 + 8 = 11$ so that clearly $d_1 = 3$.
+  Then of course $d_0 + d_1 = d_0 + 3 = 9$, and hence $d_0 = 6$.
+  Therefore, the original number is $d_3 d_2 d_1 d_0 = 2836$, and indeed it is trivial to verify that $2836 + 283 = 3119$ as required.
 }
 
 \cproblem{9}{TODO}{\card@xxii@ix}{
