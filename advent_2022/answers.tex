@@ -195,8 +195,58 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   This result was verified by plotting $f(x)$ and the line $y = b$ using Python.
 }
 
-\aproblem{11}{TODO}{\advent@xxii@xi}{
-  TODO
+\aproblem{11}{987}{\advent@xxii@xi}{
+  Let $N_1(m)$ denote the number of qualifying $m$-digit numbers that start with a $1$, and let $N_2(m)$ be the number of qualifying $m$-digit numbers that start with a $2$.
+  Similarly, let $N(m)$ denote the total number of qualifying $m$-digit numbers.
+  Now, if a $m$-digit number starts with a $1$, then the next digit may either be a $1$ \emph{or} a $2$.
+  Thus, it follows that
+  \gath{
+    N_1(m) = \begin{cases}
+      1                   & m = 1  \\
+      N_1(m-1) + N_2(m-1) & m > 1.
+    \end{cases}
+    \label{eqn:11:N1rec}
+  }
+  On the other hand, if an $m$-digit number starts with a $2$, then the next digit \emph{must} be a $1$ so as not to have two \mn{2} in a row.
+  Therefore,
+  \gath{
+    N_2(m) = \begin{cases}
+      1        & m = 1 \\
+      N_1(m-1) & m > 1 \\
+    \end{cases}
+    \label{eqn:11:N2rec}
+  }
+  and also clearly in general
+  \gath{
+    N(m) = N_1(m) + N_2(m).
+  }
+  Combining \eqref{eqn:11:N1rec} and \eqref{eqn:11:N2rec} gives
+  \gath{
+    N_1(m) = \begin{cases}
+      1                                         & m = 1 \\
+      N_1(1) + N_2(1) = 2                       & m = 2 \\
+      N_1(m-1) + N_2(m-1) = N_1(m-1) + N_1(m-2) & m > 2
+    \end{cases}
+  }
+  Lastly, we generally have
+  \gath{
+    N(m) = N_1(m) + N_2(m) = N_1(m) + N_1(m-1) = N_1(m+1).
+  }
+  Hence,
+  \gath{
+    N(m) = \begin{cases}
+      N_1(1) = 1                                     & m = 0  \\
+      N_1(2) = 2                                     & m = 1  \\
+      N_1(m+1) = N_1(m) + N_1(m-1) = N(m-1) + N(m-2) & m > 1.
+    \end{cases}
+    \label{eqn:11:Nrec}
+  }
+
+  Now, the recursive function $\eqref{eqn:11:Nrec}$ is just a shifted Fibonacci sequence.
+  As such, these do have a closed-form solution, but it is a bit nasty and involves powers of the golden ratio and its conjugate.
+  Because of this, we simply implement the recursive function in Python and evaluate our answer $N(14) = 987$.
+
+  This result was verified using a brute force Python program.
 }
 
 \aproblem{12}{TODO}{\advent@xxii@xii}{
