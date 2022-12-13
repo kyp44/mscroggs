@@ -249,8 +249,28 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   This result was verified using a brute force Python program.
 }
 
-\aproblem{12}{TODO}{\advent@xxii@xii}{
-  TODO
+\aproblem{12}{143}{\advent@xxii@xii}{
+  \newcommand\maxsub[1]{{#1}_\mathrm{max}}
+  For the general $2$ by $2$ matrix
+  \gath{
+    M = \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}
+  }
+  the determinant is of course $\abs{M} = ad - bc$.
+  So, if we want to maximize this determinant, we should maximize the $ad$ term and minimize the $bc$ term.
+  Thus, if $A$ is a finite set of positive integers where $x$ is the lowest number and $y$ is the greatest number and the matrix entries may be chosen from $A$, then clearly the maximum determinant is that of the matrix
+  \gath{
+    \maxsub{M} = \begin{pmatrix}
+      y & x \\
+      x & y
+    \end{pmatrix}
+  }
+  so that the maximum determinant is $\abs{\maxsub{M}} = y^2 - x^2$.
+
+  Thus, for the set of entries $\braces{1, 2, 3, ..., 12}$, clearly the least and greatest numbers are $x = 1$ and $y = 12$, respectively.
+  It then follows that the maximum determinant we seek is $\abs{\maxsub{M}} = 12^2 - 1^2 = 143$.
 }
 
 \aproblem{13}{TODO}{\advent@xxii@xiii}{
