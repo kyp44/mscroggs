@@ -81,15 +81,85 @@
   What is the largest possible determinant of a $2$ by $2$ matrix whose entries are all in the set $\braces{1, 2, 3, ..., 12}$?
 }
 
+\newcommand\grid@advent@xxii@xiii[9]{
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \gridbox{0}{2}{#1}
+      \gridbox{1}{2}{#2}
+      \gridbox{2}{2}{#3}
+      \gridbox{0}{1}{#4}
+      \gridbox{1}{1}{#5}
+      \gridbox{2}{1}{#6}
+      \gridbox{0}{0}{#7}
+      \gridbox{1}{0}{#8}
+      \gridbox{2}{0}{#9}      
+      
+      % Labels
+      \cwlab{0}{2}{1}
+      \cwlab{1}{2}{2}
+      \cwlab{2}{2}{3}
+      \cwlab{0}{1}{4}
+      \cwlab{0}{0}{5}
+    \end{tikzpicture}
+  \end{center}
+}
 \def\advent@xxii@xiii{
+  Today's number is given in this crossnumber.
+  The across clues are given as normal, but the down clues are given in a random order: you must work out which clue goes with each down entry and solve the crossnumber to find today's number.
+  No number in the completed grid starts with $0$.
+  \begin{multicols}{2}
+    \grid@advent@xxii@xiii{}{}{}{}{}{}{}{}{}
+
+    \vfill\null
+    \columnbreak
+
+    \begin{center}
+      \textbf{Across}
+      
+      \begin{tabular}{clc}
+        \textbf{1} & A cube number. & (\textbf{3}) \\
+        \textbf{4} & A square number. & (\textbf{3}) \\
+        \textbf{5} & A multiple of 13. & (\textbf{3})
+      \end{tabular}
+
+      \textbf{Down} \\
+      (in a random order)
+      \begin{itemize}[leftmargin=2.6cm, itemsep=1pt, parsep=1pt]
+        \item Two times 1A.
+        \item Today's number.
+        \item A square number.
+      \end{itemize}
+    \end{center}
+  \end{multicols}
+}
+
+\def\pr{3}
+\def\pd{1.6180339887498951*\pr}
+\def\rd{1.902113032590307*\pd}
+\newcommand\pentagon@up[1]{\draw[line width=1, color=blue, shift={#1}] (-126: \pr) -- (-54: \pr) -- (18: \pr) -- (90: \pr) -- (162: \pr) -- cycle;}
+\newcommand\pentagon@down[1]{\draw[line width=1, color=blue, shift={#1}] (54: \pr) -- (126: \pr) -- (198: \pr) -- (270: \pr) -- (342: \pr) -- cycle;}
+\newcommand\downpos[1]{({#1 * \rd + \pd * cos(-18)}, {\pd * sin(-18)})}
+\def\advent@xxii@xiv{
   Holly draws a line of connected regular pentagons like this:
+  
+  \begin{center}
+    \begin{tikzpicture}
+      \foreach \n in {0,...,2}
+      {
+        \pentagon@up{(\n * \rd, 0)}
+      }
+      \foreach \n in {0,...,1}
+      {
+        \pentagon@down{\downpos{\n}}
+      }
+      \draw[line width=1, color=blue, shift={\downpos{2}}, dashed] (54: \pr) -- (126: \pr);
+      \draw[line width=1, color=blue, shift={\downpos{2}}, dashed] (198: \pr) -- (270: \pr);
+    \end{tikzpicture}
+  \end{center}
+  
   She continues the pattern until she has drawn $204$ pentagons.
   The perimeter of each pentagon is $5$.
   What is the perimeter of her line of pentagons?
-}
-
-\def\advent@xxii@xiv{
-  TODO
 }
 
 \def\advent@xxii@xv{
