@@ -12,3 +12,6 @@ boxes.tex
 
 # Puzzles
 directory/puzzles.tex
+
+# IDE stuff
+.vscode

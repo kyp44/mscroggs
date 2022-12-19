@@ -92,8 +92,8 @@
       \gridbox{2}{1}{#6}
       \gridbox{0}{0}{#7}
       \gridbox{1}{0}{#8}
-      \gridbox{2}{0}{#9}      
-      
+      \gridbox{2}{0}{#9}
+
       % Labels
       \cwlab{0}{2}{1}
       \cwlab{1}{2}{2}
@@ -115,10 +115,10 @@
 
     \begin{center}
       \textbf{Across}
-      
+
       \begin{tabular}{clc}
-        \textbf{1} & A cube number. & (\textbf{3}) \\
-        \textbf{4} & A square number. & (\textbf{3}) \\
+        \textbf{1} & A cube number.    & (\textbf{3}) \\
+        \textbf{4} & A square number.  & (\textbf{3}) \\
         \textbf{5} & A multiple of 13. & (\textbf{3})
       \end{tabular}
 
@@ -141,22 +141,22 @@
 \newcommand\downpos[1]{({#1 * \rd + \pd * cos(-18)}, {\pd * sin(-18)})}
 \def\advent@xxii@xiv{
   Holly draws a line of connected regular pentagons like this:
-  
+
   \begin{center}
     \begin{tikzpicture}
       \foreach \n in {0,...,2}
-      {
-        \pentagon@up{(\n * \rd, 0)}
-      }
+        {
+          \pentagon@up{(\n * \rd, 0)}
+        }
       \foreach \n in {0,...,1}
-      {
-        \pentagon@down{\downpos{\n}}
-      }
+        {
+          \pentagon@down{\downpos{\n}}
+        }
       \draw[line width=1, color=blue, shift={\downpos{2}}, dashed] (54: \pr) -- (126: \pr);
       \draw[line width=1, color=blue, shift={\downpos{2}}, dashed] (198: \pr) -- (270: \pr);
     \end{tikzpicture}
   \end{center}
-  
+
   She continues the pattern until she has drawn $204$ pentagons.
   The perimeter of each pentagon is $5$.
   What is the perimeter of her line of pentagons?
@@ -172,10 +172,10 @@
   Noel writes the integers from $1$ to $1000$ in a large triangle like this:
   \begin{center}
     \begin{tabular}{ccccccc}
-         &    &    & 1    &    &    &    \\
-         &    & 2  & 3    & 4  &    &    \\
-         & 5  & 6  & 7    & 8  & 9  &    \\
-      10 & 11 & 12 & 13   & $\ldots$ & &
+         &    &    & 1  &          &   & \\
+         &    & 2  & 3  & 4        &   & \\
+         & 5  & 6  & 7  & 8        & 9 & \\
+      10 & 11 & 12 & 13 & $\ldots$ &   &
     \end{tabular}
   \end{center}
   The rightmost number in the row containing the number $6$ is $9$.
@@ -196,10 +196,10 @@
 
   \begin{center}
     \begin{tabular}{ccccccc}
-         &    &    & 1    &    &    &    \\
-         &    & 2  & 3    & 4  &    &    \\
-         & 5  & 6  & 7    & 8  & 9  &    \\
-      10 & 11 & 12 & 13   & $\ldots$ & &
+         &    &    & 1  &          &   & \\
+         &    & 2  & 3  & 4        &   & \\
+         & 5  & 6  & 7  & 8        & 9 & \\
+      10 & 11 & 12 & 13 & $\ldots$ &   &
     \end{tabular}
   \end{center}
 
@@ -208,7 +208,9 @@
 }
 
 \def\advent@xxii@xix{
-  TODO
+  $120$ is the smallest number with exactly $16$ factors (including $1$ and $120$ itself).
+
+  What is the second-smallest number with exactly $16$ factors (including $1$ and the number itself)?
 }
 
 \def\advent@xxii@xx{

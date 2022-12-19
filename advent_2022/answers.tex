@@ -329,11 +329,11 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
       \begin{tabular}{c|cc}
         $n$ & $a_n$ & $b_n$ \\
         \hline
-        1 & 1 & 1 \\
-        2 & 2 & 4 \\
-        3 & 5 & 9 \\
-        4 & 10 & 16 \\
-        5 & 17 & 25 \\
+        1   & 1     & 1     \\
+        2   & 2     & 4     \\
+        3   & 5     & 9     \\
+        4   & 10    & 16    \\
+        5   & 17    & 25    \\
       \end{tabular}
     \end{center}
     \columnbreak
@@ -342,11 +342,11 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
       \begin{tabular}{c|cc}
         $n$ & $a_n$ & $b_n$ \\
         \hline
-        6 & 26 & 36 \\
-        7 & 37 & 49 \\
-        8 & 50 & 64 \\
-        9 & 65 & 81 \\
-        10 & 82 & 100 \\
+        6   & 26    & 36    \\
+        7   & 37    & 49    \\
+        8   & 50    & 64    \\
+        9   & 65    & 81    \\
+        10  & 82    & 100   \\
       \end{tabular}
     \end{center}
     \columnbreak
@@ -355,11 +355,11 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
       \begin{tabular}{c|cc}
         $n$ & $a_n$ & $b_n$ \\
         \hline
-        11 & 101 & 121 \\
-        12 & 122 & 144 \\
-        13 & 145 & 169 \\
-        14 & 170 & 196 \\
-        15 & 197 & 225 \\
+        11  & 101   & 121   \\
+        12  & 122   & 144   \\
+        13  & 145   & 169   \\
+        14  & 170   & 196   \\
+        15  & 197   & 225   \\
       \end{tabular}
     \end{center}
     \columnbreak
@@ -368,15 +368,15 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
       \begin{tabular}{c|cc}
         $n$ & $a_n$ & $b_n$ \\
         \hline
-        16 & 226 & 256 \\
-        17 & 257 & 289 \\
-        18 & 290 & 324 \\
-        19 & 325 & 361 \\
-        20 & 362 & 400 \\
+        16  & 226   & 256   \\
+        17  & 257   & 289   \\
+        18  & 290   & 324   \\
+        19  & 325   & 361   \\
+        20  & 362   & 400   \\
       \end{tabular}
     \end{center}
   \end{multicols}
-  
+
   From these it is clear that $300$ is in row $18$, the rightmost element of which is $324$.
 }
 
@@ -384,12 +384,63 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   \boxans{\gridsol@advent@xxii@xvii}
 }
 
-\aproblem{18}{TODO}{\advent@xxii@xviii}{
-  TODO
+\aproblem{18}{157}{\advent@xxii@xviii}{
+  In the 2021, Dec~11 problem it was shown that the first (i.e. leftmost) number of the $n$th row is
+  \gath{
+    a_n = n(n - 2) + 2,
+  }
+  where the first row is $n = 1$.
+  Let $a$ denote a number in the $n$th row, and let $b$ denote the number directly below $a$ in the pyramid, which is clearly in the $(n+1)$th row.
+  The offset between this $a$ and the first number in the same row is clearly $\D_n = a - a_n$, while the offset between the first number in the \emph{next} row and $b$ is clearly $\D_{n+1} = \D_n + 1$.
+  Hence, we have
+  \gath{
+    \D_{n+1} = b - a_{n+1} = \D_n + 1 \non
+    b = \D_n + 1 + a_{n+1} \non
+    b = a - a_n + 1 + a_{n+1} \non
+    b = a - \squares{n(n-2) + 2} + 1 + \squares{(n+1)(n-1) + 2} \non
+    b = a - n^2 + 2n - 2 + 1 + n^2 - 1 + 2 \non
+    b = a + 2n.
+  }
+  Noting that their number pyramids are identical and referring to the tables in the Dec~16 problem above, we find that $a = 133$ is in row $n = 12$.
+  Thus, the number directly below this is $b = a + 2n = 133 + 2 \cdot 12 = 157$.
 }
 
-\aproblem{19}{TODO}{\advent@xxii@xix}{
-  TODO
+\aproblem{19}{168}{\advent@xxii@xix}{
+If a number $n$ has the unique prime factorization of
+\gath{
+n = \prod_{i=1}^N p_i^{e_i},
+}
+where of course the $p_i$ are $N$ distinct primes and $e_i$ are their exponents, then $n$ has
+\gath{
+  N_f(n) = \prod_{i=1}^N (e_i + 1)
+}
+factors, including the trivial factors of $1$ and $n$ itself.
+The prime factorization of $120$ is
+\gath{
+  120 = 2^3 \cdot 3 \cdot 5
+}
+so that of course it has
+\gath{
+  N_f(120) = (3+1)(1+1)(1+1) = 4 \cdot 2 \cdot 2 = 16
+}
+factors, as we are given.
+So the question becomes what is the next smallest prime factorization such that the product of one more than each exponent is still $16$.
+
+First, note that we want to keep the factor of $2^3$ because there are no combinations or powers of other primes that will be smaller than $2^3 = 8$.
+For example, even $3^2 = 9$, and $3 \cdot 5 = 15$.
+Now, $16$ itself of course has a prime factorization of $2^4$ so that it has $4+1 = 5$ factors.
+In particular, these factors are $\braces{1, 2, 4, 8, 16}$, and there are $5$ distinct factorizations of $16$:
+\ali{
+  &16 & &4 \cdot 4 & &2 \cdot 2 \cdot 2 \cdot 2 \non
+  &2 \cdot 8 & &4 \cdot 2 \cdot 2 & &
+}
+Thus, the factorizations that contains the factor of $4$ that we wish to keep from $2^3$ are $4 \cdot 4$ and $4 \cdot 2 \cdot 2$, the latter of which is of course the factorization that corresponds to $120 = 2^3 \cdot 3 \cdot 5$.
+The smallest number that uses the $4 \cdot 4$ factorization is $2^3 \cdot 3^3$, which replaces the factor of $3 \cdot 5 = 15$ with $3^3 = 27$.
+Can we beat this using the $4 \cdot 2 \cdot 2$ factorization of $16$?
+Well, we have $5 \cdot 5 = 25$ and $3 \cdot 7 = 21$ so the answer is yes.
+In fact, clearly the next lowest number we seek will be $2^3 \cdot 3 \cdot 7 = 168$.
+
+This result was verified using a brute force Python program.
 }
 
 \aproblem{20}{TODO}{\advent@xxii@xx}{
