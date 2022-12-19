@@ -1017,6 +1017,42 @@
 				"tags": [
 					"misc"
 				]
+			},
+			{
+				"number": 13,
+				"tags": [
+					"cross"
+				]
+			},
+			{
+				"number": 14,
+				"tags": [
+					"geom"
+				]
+			},
+			{
+				"number": 15,
+				"tags": [
+					"cons"
+				]
+			},
+			{
+				"number": 16,
+				"tags": [
+					"tri"
+				]
+			},
+			{
+				"number": 17,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 18,
+				"tags": [
+					"tri"
+				]
 			}
 		]
 	},

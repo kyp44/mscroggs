@@ -273,24 +273,115 @@ Synchronized calendar: \href{http://mscroggs.co.uk/adventcode/JYcziCbI}{http://m
   It then follows that the maximum determinant we seek is $\abs{\maxsub{M}} = 12^2 - 1^2 = 143$.
 }
 
-\aproblem{13}{TODO}{\advent@xxii@xiii}{
-  TODO
+\aproblem{13}{564}{\advent@xxii@xiii}{
+  Logic was used to deduce the solution:
+  \grid@advent@xxii@xiii{1}{2}{5}{2}{5}{6}{1}{0}{4}
+  In particular, the first column is the square number, the second column is twice the first row, and the third column is today's number.
+  The solution was verified with Python.
 }
 
-\aproblem{14}{TODO}{\advent@xxii@xiv}{
-  TODO
+\aproblem{14}{614}{\advent@xxii@xiv}{
+  Clearly the fact that each pentagon has a perimeter of $5$ means that each side has a length of $1$.
+  Supposing we have at least $3$ pentagons in a line as above, it is easy to reason that the two pentagons on either end contribute $4$ to the perimeter while those in the middle each contribute $3$.
+  For $n$ total pentagons, clearly there are always $2$ end pentagons and $n-2$ in the middle.
+  So, if we let $P(n)$ denote the perimeter of $n$ pentagons, then we have
+  \gath{
+    P(n) = 2 \cdot 4 + 3 (n-2) = 8 + 3n - 6 = 3n + 2.
+  }
+  Interestingly, this formula still works for only one or two pentagons since clearly $P(1) = 5$ and $P(2) = 8$.
+  Our answer is of course $P(204) = 614$.
 }
 
-\aproblem{15}{TODO}{\advent@xxii@xv}{
-  TODO
+\aproblem{15}{243}{\advent@xxii@xv}{
+  Suppose we have two odd numbers $a$ and $b$ such that $a < b$.
+  Since they are both odd, we have $a = 2n+1$ and $b = 2m+1$ for some integers $n$ and $m$, which of course implies that
+  \ali{
+    n &= \frac{a-1}{2} & m &= \frac{b-1}{2}.
+  }
+  Now, clearly the even numbers between $a$ and $b$ range from $2n+2 = 2(n+1)$ to $2m$ inclusive so that there are
+  \gath{
+    N(a, b) = m - (n+1) + 1 = m - n = \frac{b-1}{2} - \frac{a-1}{2} = \frac{b-a}{2}
+  }
+  of these even numbers.
+  Based on what we are asked to find, we have $b = 729$, and we must find the odd number $a$ such that
+  \gath{
+    a = N(a, b) = \frac{b-a}{2} \non
+    2a = b - a \non
+    3a = b \non
+    a = \frac{b}{3}
+  }
+  so that our answer is $a = b/3 = 729/3 = 243$.
 }
 
-\aproblem{16}{TODO}{\advent@xxii@xvi}{
-  TODO
+\aproblem{16}{324}{\advent@xxii@xvi}{
+  In the 2021, Dec~11 problem, it deduced that the number of numbers in the $n$th row is $N(n) = 2n-1$, where the first row is $n = 1$.
+  It was also shown that the first (i.e. leftmost) number of the $n$th row is
+  \gath{
+    a_n = n(n - 2) + 2.
+  }
+  Clearly then the last (i.e. rightmost) number in the $n$th row is then
+  \gath{
+    b_n = a_{n+1} - 1 = \squares{(n+1)(n-1) + 2} - 1 = (n+1)(n-1) + 1.
+  }
+  It is then easy to calculate the following tables:
+  \begin{multicols}{4}
+    \begin{center}
+      \begin{tabular}{c|cc}
+        $n$ & $a_n$ & $b_n$ \\
+        \hline
+        1 & 1 & 1 \\
+        2 & 2 & 4 \\
+        3 & 5 & 9 \\
+        4 & 10 & 16 \\
+        5 & 17 & 25 \\
+      \end{tabular}
+    \end{center}
+    \columnbreak
+
+    \begin{center}
+      \begin{tabular}{c|cc}
+        $n$ & $a_n$ & $b_n$ \\
+        \hline
+        6 & 26 & 36 \\
+        7 & 37 & 49 \\
+        8 & 50 & 64 \\
+        9 & 65 & 81 \\
+        10 & 82 & 100 \\
+      \end{tabular}
+    \end{center}
+    \columnbreak
+
+    \begin{center}
+      \begin{tabular}{c|cc}
+        $n$ & $a_n$ & $b_n$ \\
+        \hline
+        11 & 101 & 121 \\
+        12 & 122 & 144 \\
+        13 & 145 & 169 \\
+        14 & 170 & 196 \\
+        15 & 197 & 225 \\
+      \end{tabular}
+    \end{center}
+    \columnbreak
+
+    \begin{center}
+      \begin{tabular}{c|cc}
+        $n$ & $a_n$ & $b_n$ \\
+        \hline
+        16 & 226 & 256 \\
+        17 & 257 & 289 \\
+        18 & 290 & 324 \\
+        19 & 325 & 361 \\
+        20 & 362 & 400 \\
+      \end{tabular}
+    \end{center}
+  \end{multicols}
+  
+  From these it is clear that $300$ is in row $18$, the rightmost element of which is $324$.
 }
 
-\aproblem{17}{TODO}{\advent@xxii@xvii}{
-  TODO
+\aproblem{17}{144}{\advent@xxii@xvii}{
+  \boxans{\gridsol@advent@xxii@xvii}
 }
 
 \aproblem{18}{TODO}{\advent@xxii@xviii}{
