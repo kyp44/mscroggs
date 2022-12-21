@@ -443,8 +443,36 @@ In fact, clearly the next lowest number we seek will be $2^3 \cdot 3 \cdot 7 = 1
 This result was verified using a brute force Python program.
 }
 
-\aproblem{20}{TODO}{\advent@xxii@xx}{
-  TODO
+\def\aA{\angle A}
+\def\aB{\angle B}
+\def\aC{\angle C}
+\def\aD{\angle D}
+\aproblem{20}{425}{\advent@xxii@xx}{
+  We are given that
+  \ali{
+    \aB + \aC &= 180 &
+    \aB + \aA &= 180 \label{eqn:20:given}
+  }
+  Subtracting these equations gives
+  \gath{
+    (\aB + \aC) - (\aB + \aA) = 180 - 180 \non
+    \aC - \aC = 0 \non
+    \aC = \aA.
+  }
+  Since we are dealing with a quadrilateral, we also have
+  \gath{
+    \aA + \aB + \aC + \aD = 360 \non
+    \aA + 180 + \aD = 360 \non
+    \aA + \aD = 180
+  }
+  from the first equation of \eqref{eqn:20:given}.
+  Similarly, we have
+  \gath{
+    \aA + \aB + \aC + \aD = 360 \non
+    180 + \aC + \aD = 360 \non
+    \aC + \aD = 180
+  }
+  from the second equation of \eqref{eqn:20:given}.
 }
 
 \aproblem{21}{TODO}{\advent@xxii@xxi}{
