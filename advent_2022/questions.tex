@@ -214,11 +214,62 @@
 }
 
 \def\advent@xxii@xx{
-  TODO
+  The diagram below shows (two copies of) quadrilateral $ABCD$.
+
+  \def\scale{4}
+  \def\pr{\scale * 0.035}
+  \def\pta{(\scale * 1, \scale * -0.07853403)}
+  \def\ptb{(\scale * 1.30890052, \scale * 1.01570681)}
+  \def\ptc{(\scale * 0.56020942, \scale * 1.19895288)}
+  \def\ptd{(0, 0)}
+  \def\tscale{0.75}
+  \def\drawpar{
+    \draw[line width=1] \pta -- \ptb -- \ptc -- \ptd -- cycle;
+    \draw[fill=blue] \pta circle (\pr);
+    \node[anchor=north west, scale=\tscale] at \pta {$A$};
+    \draw[fill=blue] \ptb circle (\pr);
+    \node[anchor=south west, scale=\tscale] at \ptb {$B$};
+    \draw[fill=blue] \ptc circle (\pr);
+    \node[anchor=south east, scale=\tscale] at \ptc {$C$};
+    \draw[fill=blue] \ptd circle (\pr);
+    \node[anchor=north east, scale=\tscale] at \ptd {$D$};
+  }
+  \begin{center}
+    \begin{tikzpicture}
+      \def\ar{0.7}
+      \definecolor{colb}{rgb}{0.114,0.403,0.163}
+      \begin{scope}
+        \clip \pta -- \ptb -- \ptc -- \ptd -- cycle;
+        \draw[orange, fill=orange] circle[at=\pta,radius=\ar];
+        \draw[cyan, fill=cyan] circle[at=\ptc,radius=\ar];
+        \draw[colb, fill=colb] circle[at=\ptb,radius=\ar];
+      \end{scope}
+      \drawpar
+    \end{tikzpicture}
+    \hspace{1in}
+    \begin{tikzpicture}
+      \def\ptp{(\scale * 0.71727749, \scale * 0.90052356)}
+      \definecolor{colm}{rgb}{0.963,0.121,1}
+      \draw[colm, fill=colm] \ptd -- \ptp -- \ptc -- cycle;
+      \draw[red, fill=red] \pta -- \ptp -- \ptb -- cycle;
+      \drawpar
+    \end{tikzpicture}
+  \end{center}
+
+  The sum of the angles $ABC$ and $BCD$ (green and blue in quadrilateral on the left) is $180^\circ$.
+  The sum of the angles $ABC$ and $DAB$ (green and orange in quadrilateral on the left) is also $180^\circ$.
+  In the diagram above, a point inside the quadrilateral has been used to draw two triangles.
+
+  The area of the quadrilateral is $850$.
+  What is the smallest that the total area of the two triangles could be?
 }
 
 \def\advent@xxii@xxi{
-  TODO
+  In the annual tournament of Christmas puzzles, each player must play one puzzle match against each other player.
+  Last year there were four entrants into the tournament (A, B, C, and D), and so $6$ matches were played: A vs B, C vs D, A vs D, A vs C, D vs B, and finally B vs C.
+
+  This year, the tournament has grown in popularity and $22$ players have entered.
+  How many matches will be played this year?
 }
 
 \def\advent@xxii@xxii{
