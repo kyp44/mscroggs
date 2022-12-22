@@ -1059,6 +1059,24 @@
 				"tags": [
 					"num"
 				]
+			},
+			{
+				"number": 20,
+				"tags": [
+					"num"
+				]
+			},
+			{
+				"number": 21,
+				"tags": [
+					"comb"
+				]
+			},
+			{
+				"number": 22,
+				"tags": [
+					"dig"
+				]
 			}
 		]
 	},

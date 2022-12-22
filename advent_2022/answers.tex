@@ -6,6 +6,9 @@
 \input{questions}
 \input{boxes}
 
+% Used for right angle boxes
+\usepackage{tkz-euclide}
+
 \begin{document}
 
 \title{MS Scroggs Advent Calendar 2022 Answers}
@@ -462,25 +465,108 @@ This result was verified using a brute force Python program.
   Since we are dealing with a quadrilateral, we also have
   \gath{
     \aA + \aB + \aC + \aD = 360 \non
-    \aA + 180 + \aD = 360 \non
-    \aA + \aD = 180
+    (\aA + \aB) + (\aB + \aC) + \aD = 360 + \aB \non
+    180 + 180 + \aD = 360 + \aB \non
+    \aD = \aB.
   }
-  from the first equation of \eqref{eqn:20:given}.
-  Similarly, we have
+  Since $\aA$ and $\aC$ are opposite angles, as are $\aB$ and $\aD$, this is sufficient to conclude that the quadrilateral is in fact a parallelogram.
+
+  With this in mind, consider the example parallelogram below:
+  \begin{center}
+    \begin{tikzpicture}
+      \def\scale{4}
+      \def\pr{\scale * 0.035}
+      \def\pta{(\scale * 2, \scale * 0)}
+      \def\ptb{(\scale * 2.5, \scale * 1)}
+      \def\ptc{(\scale * 0.5, \scale * 1)}
+      \def\ptd{(0, 0)}
+      \def\ptp{(\scale * 1.75, \scale * 0.8)}
+      \def\tscale{0.75}
+
+      % Draw parallel extensions
+      \draw[blue, dashed] (\scale * -0.25, \scale * -0.5) -- (\scale * 0.75, \scale * 1.5);
+      \draw[blue, dashed, shift={(\scale * 2, 0)}] (\scale * -0.25, \scale * -0.5) -- (\scale * 0.75, \scale * 1.5);
+
+      % Draw triangles
+      \definecolor{colm}{rgb}{0.963,0.121,1}
+      \draw[colm, fill=colm] \ptd -- \ptp -- \ptc -- cycle;
+      \draw[red, fill=red] \pta -- \ptp -- \ptb -- cycle;
+
+      % Perpendicular base line and right angle boxes
+      \coordinate (A) at (\scale * 0.67, \scale * 1.34) {};
+      \coordinate (B) at (\scale * 2.27, \scale * 0.54) {};
+      \coordinate (Z) at (0, 0) {};
+      \coordinate (SZ) at (\scale * 2, 0) {};
+      \def\br{\scale * 0.1}
+      \tkzMarkRightAngle[size=\br](Z,A,B);
+      \tkzMarkRightAngle[size=\br](A,B,SZ);
+      \draw (A) -- (B);
+
+      % Draw parallelogram
+      \draw[line width=1] \pta -- \ptb -- \ptc -- \ptd -- cycle;
+      \draw[fill=blue] \pta circle (\pr);
+      \node[anchor=west, scale=\tscale] at \pta {$A$};
+      \draw[fill=blue] \ptb circle (\pr);
+      \node[anchor=west, scale=\tscale] at \ptb {$B$};
+      \draw[fill=blue] \ptc circle (\pr);
+      \node[anchor=east, scale=\tscale] at \ptc {$C$};
+      \draw[fill=blue] \ptd circle (\pr);
+      \node[anchor=east, scale=\tscale] at \ptd {$D$};
+      \draw[fill=blue] \ptp circle (\pr);
+      \node[anchor=south, scale=\tscale] at \ptp {$P$};
+
+      % Side labels
+      \node[anchor=east, scale=\tscale] at (\scale * 0.25, \scale * 0.5) {$b$};
+      \node[anchor=west, scale=\tscale] at (\scale * 2.25, \scale * 0.5) {$b$};
+      \node[anchor=south west, scale=\tscale] at (\scale * 1, \scale * 1.175) {$h$};
+    \end{tikzpicture}
+  \end{center}
+  Two sides of the parallelogram have length $b$ and the perpendicular line connecting these two sides has length $h$, and is of course the height of the parallelogram.
+  Note that this line also intersects the common vertex of the two triangles, call this point $P$, and clearly has the same length $h$ regardless of where $P$ is placed.
+  Clearly, also, the two segments of this line when split at $P$ also form the heights of the two triangles.
+  Denote the area and height of the magenta triangle as $A_1$ and $h_1$, respectively.
+  Similarly, denote the area and height of the red triangle $A_2$ and $h_2$, respectively.
+  Hence, we have
   \gath{
-    \aA + \aB + \aC + \aD = 360 \non
-    180 + \aC + \aD = 360 \non
-    \aC + \aD = 180
+    A_1 = \frac{1}{2} b h_1 \non
+    A_2 = \frac{1}{2} b h_2 \non
+    h = h_1 + h_2,
   }
-  from the second equation of \eqref{eqn:20:given}.
+  and the area of the parallelogram itself is $A = bh$.
+  Therefore, the area of both triangles is
+  \gath{
+    A_1 + A_2 = \frac{1}{2} b h_1 + \frac{1}{2} b h_2 = \frac{1}{2} b (h_1 + h_2) = \frac{1}{2} b h = \frac{A}{2} = \frac{850}{2} = 425.
+  }
+  Note that this result is independent of the placement of $P$, and thus this is the smallest that this area $A_1 + A_2$ can be, and the largest for that matter since it is just constant.
 }
 
-\aproblem{21}{TODO}{\advent@xxii@xxi}{
-  TODO
+\aproblem{21}{231}{\advent@xxii@xxi}{
+  Clearly, this is simply the number of combinations of entrants when choosing two of them.
+  So, if there are $n$ entrants, the number of matches is
+  \gath{
+    N(n) = \binom{n}{2} = \frac{n!}{2!(n-2)!} = \frac{n(n-1)}{2},
+  }
+  which are, interestingly, the triangular numbers such that
+  \gath{
+    N(n) = \frac{n(n-1)}{2} = \sum_{i=1}^{n-1} i.
+  }
+  Thus, our answer is simply $N(22) = 22 \cdot 21 / 2 = 231$.
 }
 
-\aproblem{22}{TODO}{\advent@xxii@xxii}{
-  TODO
+\aproblem{22}{323}{\advent@xxii@xxii}{
+  It is easy to simply continue this sequence manually:
+  \gath{
+    35 \non
+    53 + 6 = 59 \non
+    95 + 6 = 101 \non
+    101 + 6 = 107 \non
+    701 + 6 = 707 \non
+    707 + 6 = 713 \non
+    317 + 6 = 323.
+  }
+  Hence, evidently our answer is simply $323$.
+
+  The computation of this sequence was verified with Python.
 }
 
 \aproblem{23}{TODO}{\advent@xxii@xxiii}{

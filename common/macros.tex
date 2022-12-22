@@ -13,6 +13,7 @@
 
 % Commands that make life easier
 \newcommand\gath[1]{\begin{gather} #1 \end{gather}}
+\newcommand\gaths[1]{\begin{gather*} #1 \end{gather*}}
 \newcommand\ali[1]{\begin{align} #1 \end{align}}
 \newcommand\parens[1]{\left( #1 \right)}
 \newcommand\squares[1]{\left[ #1 \right]}
@@ -62,13 +63,13 @@
 
 % Commands for problems
 \newcommand\problem[4]{
-  \section*{#1}
+\section*{#1}
 
-  \textbf{Question:} #3
-  
-  \textbf{Answer:} #2
-  
-  \textbf{Explanation:} #4
+\textbf{Question:} #3
+
+\textbf{Answer:} #2
+
+\textbf{Explanation:} #4
 }
 \newcommand\aproblem[4]{\problem{Dec #1}{#2}{#3}{#4}}
 \newcommand\cproblem[4]{\problem{Problem #1}{#2}{#3}{#4}}

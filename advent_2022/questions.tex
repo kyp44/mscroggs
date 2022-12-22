@@ -223,7 +223,7 @@
   \def\ptc{(\scale * 0.56020942, \scale * 1.19895288)}
   \def\ptd{(0, 0)}
   \def\tscale{0.75}
-  \def\drawpar{
+  \def\drawquad{
     \draw[line width=1] \pta -- \ptb -- \ptc -- \ptd -- cycle;
     \draw[fill=blue] \pta circle (\pr);
     \node[anchor=north west, scale=\tscale] at \pta {$A$};
@@ -244,7 +244,7 @@
         \draw[cyan, fill=cyan] circle[at=\ptc,radius=\ar];
         \draw[colb, fill=colb] circle[at=\ptb,radius=\ar];
       \end{scope}
-      \drawpar
+      \drawquad
     \end{tikzpicture}
     \hspace{1in}
     \begin{tikzpicture}
@@ -252,7 +252,7 @@
       \definecolor{colm}{rgb}{0.963,0.121,1}
       \draw[colm, fill=colm] \ptd -- \ptp -- \ptc -- cycle;
       \draw[red, fill=red] \pta -- \ptp -- \ptb -- cycle;
-      \drawpar
+      \drawquad
     \end{tikzpicture}
   \end{center}
 
@@ -273,7 +273,14 @@
 }
 
 \def\advent@xxii@xxii{
-  TODO
+  Ivy makes a sequence by starting with the number $35$, then making the next term by reversing the current number and adding $6$.
+  The first few terms of this sequence are:
+  \gaths{
+    35 \\
+    53 + 6 = 59 \\
+    95 + 6 = 101
+  }
+  What is the first number in Ivy's sequence that is smaller than the previous term?
 }
 
 \def\advent@xxii@xxiii{
