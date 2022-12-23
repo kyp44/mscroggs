@@ -78,16 +78,16 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/98}{https://www.m
 }
 
 \cproblem{8}{2836}{\card@xxii@viii}{
-  Suppose that the original $4$-digit number is $d_3 d_2 d_1 d_0$ where of course $0 \leq d_i \leq 9$ for all $0 \leq i \leq 3$.
+  Suppose that the original $4$-digit number has digits $d_3 d_2 d_1 d_0$, where of course $0 \leq d_i \leq 9$ for all $0 \leq i \leq 3$.
   Now, it \emph{has} to be that the least significant digit is the one that was removed since otherwise the sum would end in $d_0 + d_0 = 2d_0$ so that it would have to end in an even digit.
-  Since the sum 
+  Since the sum
   ends in a $9$ though, it must be that the $3$-digit number is $d_3 d_2 d_1$, and our sum is
   \begin{center}
     \begin{tabular}{ccccc}
-          & $d_3$ & $d_2$ & $d_1$ & $d_0$ \\ 
+          & $d_3$ & $d_2$ & $d_1$ & $d_0$ \\
       $+$ &       & $d_3$ & $d_2$ & $d_1$ \\
       \hline
-          & 3 & 1 & 1 & 9
+          & 3     & 1     & 1     & 9
     \end{tabular}
   \end{center}
   Clearly either $d_3 = 3$ and nothing is carried from the $d_2 + d_3$ digit, or else $d_3 = 2$ and a $1$ \emph{is} carried.
@@ -101,16 +101,67 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/98}{https://www.m
   Therefore, the original number is $d_3 d_2 d_1 d_0 = 2836$, and indeed it is trivial to verify that $2836 + 283 = 3119$ as required.
 }
 
-\cproblem{9}{TODO}{\card@xxii@ix}{
-  TODO
+\cproblem{9}{93079}{\card@xxii@ix}{
+  Suppose that the original $5$-digit number has digits $d_4 d_3 d_2 d_1 d_0$, where of course $0 \leq d_i \leq 9$ for all $0 \leq i \leq 4$.
+  Since we are looking for the largest original number, let us first explore the implications if the first digit is $d_4 = 9$ since the corresponding digit in the sum is $9$.
+  Now, if $d_4$ is \emph{not} the digit that was removed in forming the $4$-digit number, then our sum is
+  \begin{center}
+    \begin{tabular}{cccccc}
+          & $9$ & $d_3$ & $d_2$ & $d_1$ & $d_0$ \\
+      $+$ &     & $9$   & ?     & ?     & ?     \\
+      \hline
+          & 9   & 6     & 1     & 5     & 8
+    \end{tabular}
+  \end{center}
+  Here we reach a contradiction as there is no way for the sum of $d_3 + 9$ to be $6$ without carrying such that the next $d_4 = 9$ sum would not be $9$ as required.
+  Thus, if $d_4 = 9$, then it must be that this \emph{is} the digit that was removed to form the second number.
+  In this case our sum becomes
+  \begin{center}
+    \begin{tabular}{cccccc}
+          & $9$ & $d_3$ & $d_2$ & $d_1$ & $d_0$ \\
+      $+$ &     & $d_3$ & $d_2$ & $d_1$ & $d_0$ \\
+      \hline
+          & 9   & 6     & 1     & 5     & 8
+    \end{tabular}
+  \end{center}
+  Here the remaining digits all line up so that each digital sum is normally $d_i + d_i = 2d_i$.
+  So, their sum is odd if and only if there is a carry from the sum of the next lower digits, since  a carry always add $1$ to the sum, making it odd instead.
+
+  So, since the $d_1$ sum is $5$, which is odd, it must be that $d_0 = 9$ instead of $4$ so that $d_0 + d_0 = 18$, which carries.
+  The $d_2$ sum is also odd, which implies that $d_1 = 7$ instead of $2$ so that its sum is $d_1 + d_1 + 1 = 15$, which also carries.
+  Now, the $d_3$ sum is $6$, which is even, so that $d_2 = 0$ so that its sum is $d_2 + d_2 + 1 = 1$ with no carry.
+  Since we already concluded that the $d_3$ sum cannot carry, it must be that simply $d_3 = 3$.
+
+  Putting this all together, our original $5$-digit number must be $d_4 d_3 d_2 d_1 d_0 = 93079$.
+  Since this number was completely determined based only on setting $d_4 = 9$ with no arbitrary decisions along the way, this must be \emph{the} largest that the $5$-digit could have been since any other number would have to start with $d_4 = 8$ (with a carry from the previous digital sum).
+  This result was verified with a brute force Python program.
 }
 
-\cproblem{10}{TODO}{\card@xxii@x}{
-  TODO
+\cproblem{10}{66}{\card@xxii@x}{
+  In general, for $n$ points, since a line must connect every pair of distinct points, the number of lines is simply the number of combinations of choosing $2$ of the $n$ points, which is
+  \gath{
+    N(n) = \binom{n}{2} = \frac{n!}{2!(n-2)!} = \frac{n(n-1)}{2}.
+  }
+  As pointed out in the 2022, Dec~21 problem, these are the triangular numbers.
+  In our case here, we simply have $N(12) = 12 \cdot 11 / 2 = 66$.
 }
 
-\cproblem{11}{TODO}{\card@xxii@xi}{
-  TODO
+\cproblem{11}{77}{\card@xxii@xi}{
+  Just as in the previous problem, for $n$ points, there are
+  \gath{
+    N(n) = \binom{n}{2} = \frac{n!}{2!(n-2)!} = \frac{n(n-1)}{2}
+  }
+  lines connecting each distinct pair of points.
+  In this case, however, we know that $N(n) = 2926$ and need to find the corresponding $n$.
+  Hence, we have
+  \gath{
+    N(n) = \frac{n(n-1)}{2} = 2926 \non
+    n^2 - n = 5852 \non
+    n^2 - n - 5852 = 0 \non
+    (n - 77)(n + 76) = 0 \label{eqn:11:quad}
+  }
+  so that clearly $n = 77$ is the correct, positive solution so that $77$ points were drawn.
+  Note that the final step of \eqref{eqn:11:quad} might seem magical, but the quadratic formula could just as easily have been used here.
 }
 
 \end{document}

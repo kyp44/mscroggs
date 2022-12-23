@@ -569,8 +569,12 @@ This result was verified using a brute force Python program.
   The computation of this sequence was verified with Python.
 }
 
-\aproblem{23}{TODO}{\advent@xxii@xxiii}{
-  TODO
+\aproblem{23}{125}{\advent@xxii@xxiii}{
+  Clearly $1000$ does not qualify so that we need only consider $3$-digit numbers.
+  Now, the set of invalid digits is $I = \braces{0, 1, 2, 3, 4}$ so that clearly the set of valid digits is $V = \braces{5, 6, 7, 8, 9}$, of which there are $5$.
+  Since each valid number has exactly $3$ digits, clearly then there are $5 \cdot 5 \cdot 5 = 5^3 = 125$ of these since each digit can be any of the $5$ elements of $V$.
+
+  This result was verified with a brute force Python program.
 }
 
 \aproblem{24}{TODO}{\advent@xxii@xxiv}{
