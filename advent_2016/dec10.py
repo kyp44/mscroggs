@@ -1,7 +1,13 @@
 from common import *
 
-for n in range(100, 1000):
-    s = sum(digits(n))
-    if n == s*(s+10):
-        pans(n)
-        break
+ns = []
+for s in range(1, 27+1):
+    n = s*(s + 10)
+    S = sum(digits(n))
+
+    latex_row(s, n, S)
+    if s == S:
+        ns.append(n)
+
+print(sorted(ns))
+pans(min(ns))

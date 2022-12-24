@@ -148,7 +148,63 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2016}{https://www.mscrog
 }
 
 \aproblem{10}{171}{\advent@xvi@x}{
-  TODO
+  We know that our solution $n$ has three digits.
+  Let $s$ be the digital sum of $n$, which can can range from $1$, when $n = 100$, to $27$, when $n = 999$.
+  For a given $s$, let $S(s)$ denote the digital sum of $s(s + 10)$ so that we must have $n = s(s + 10)$ and $s = S(s)$.
+  Since we know the possible range of $s$, we can easily generate the following table:
+  \begin{multicols}{3}
+    \begin{center}
+      \begin{tabular}{c|cc}
+        $s$ & $n = s(s + 10)$ & $S(s)$ \\
+        \hline
+        1   & 11              & 2      \\
+        2   & 24              & 6      \\
+        3   & 39              & 12     \\
+        4   & 56              & 11     \\
+        5   & 75              & 12     \\
+        6   & 96              & 15     \\
+        7   & 119             & 11     \\
+        8   & 144             & 9      \\
+        9   & 171             & 9      \\
+      \end{tabular}
+    \end{center}
+    \columnbreak
+
+    \begin{center}
+      \begin{tabular}{c|cc}
+        $s$ & $n = s(s + 10)$ & $S(s)$ \\
+        \hline
+        10  & 200             & 2      \\
+        11  & 231             & 6      \\
+        12  & 264             & 12     \\
+        13  & 299             & 20     \\
+        14  & 336             & 12     \\
+        15  & 375             & 15     \\
+        16  & 416             & 11     \\
+        17  & 459             & 18     \\
+        18  & 504             & 9      \\
+      \end{tabular}
+    \end{center}
+    \columnbreak
+
+    \begin{center}
+      \begin{tabular}{c|cc}
+        $s$ & $n = s(s + 10)$ & $S(s)$ \\
+        \hline
+        19  & 551             & 11     \\
+        20  & 600             & 6      \\
+        21  & 651             & 12     \\
+        22  & 704             & 11     \\
+        23  & 759             & 21     \\
+        24  & 816             & 15     \\
+        25  & 875             & 20     \\
+        26  & 936             & 18     \\
+        27  & 999             & 27     \\
+      \end{tabular}
+    \end{center}
+  \end{multicols}
+  Inspecting the table, clearly $n \in \braces{171, 264, 375, 999}$ all have the defining property that $s = S(s)$.
+  Of these, $n = 171$ is the smallest and is thus our answer.
 }
 
 \aproblem{11}{TODO}{\advent@xvi@xi}{

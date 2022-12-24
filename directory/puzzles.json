@@ -218,6 +218,12 @@
 				"tags": [
 					"comb"
 				]
+			},
+			{
+				"number": 10,
+				"tags": [
+					"dig"
+				]
 			}
 		]
 	},
@@ -1089,6 +1095,13 @@
 				"tags": [
 					"comb",
 					"dig"
+				]
+			},
+			{
+				"number": 24,
+				"tags": [
+					"comb",
+					"misc"
 				]
 			}
 		]

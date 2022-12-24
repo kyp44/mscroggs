@@ -577,8 +577,25 @@ This result was verified using a brute force Python program.
   This result was verified with a brute force Python program.
 }
 
-\aproblem{24}{TODO}{\advent@xxii@xxiv}{
-  TODO
+\aproblem{24}{128}{\advent@xxii@xxiv}{
+  In general, the Binomial Theorem states that
+  \gath{
+    (x + y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k,
+  }
+  where of course
+  \gath{
+    \binom{n}{k} = \frac{n!}{k!(n - k)!}
+  }
+  is the binomial coefficient.
+  In our case we have
+  \gath{
+    (3x - 1)^7 = \sum_{k=0}^7 \binom{7}{k} (3x)^{7-k} (-1)^k
+  }
+  so that clearly the sum of the coefficients is
+  \gath{
+    S = \sum_{k=0}^7 \binom{7}{k} 3^{7-k} (-1)^k .
+  }
+  While it would not be too hateful to expand this sum out by hand, we avoid this tedium and simply calculate the result using Python: $S = 128$.
 }
 
 \end{document}
