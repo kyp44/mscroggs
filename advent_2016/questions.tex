@@ -69,12 +69,51 @@
   Today's number is the second-smallest number that can be written as $a \times b  \times c \times d \times e \times f \times g \times h \times i$, where $a, b, \ldots, i$ are all integers greater than $1$.
 }
 
-\def\advent@xvi@vix{
-  TODO
+\def\gs{1}
+\newcommand\sizedsqu[4]{
+  \draw[thick] (#1 * \gs, #2 * \gs) rectangle (#1 * \gs + #3 * \gs, #2 * \gs + #4 * \gs);
+}
+\newcommand\smallsqu[2]{
+  \sizedsqu{#1}{#2}{1}{1}
+}
+\def\advent@xvi@ix{
+  You start at A and are allowed to move either to the right or upwards.
+  \begin{center}
+    \begin{tikzpicture}
+      % Grid
+      \foreach \i in {0,...,2}{
+          \foreach \j in {0,...,5}{
+              \smallsqu{\i}{\j}
+            }
+        }
+      \foreach \j in {3,...,5}{
+          \smallsqu{3}{\j}
+        }
+      \sizedsqu{3}{0}{3}{3}
+      \sizedsqu{6}{0}{3}{3}
+      \sizedsqu{4}{3}{3}{3}
+      \foreach \i in {7,...,8}{
+          \foreach \j in {3,...,5}{
+              \smallsqu{\i}{\j}
+            }
+        }
+      \foreach \i in {9,...,11}{
+          \foreach \j in {0,...,2}{
+              \smallsqu{\i}{\j}
+            }
+        }
+      \sizedsqu{9}{3}{3}{3}
+
+      % Points
+      \fill[color=red] (0, 0) circle (0.2) node[color=red,left] {A};
+      \fill[color=blue] (12*\gs, 6*\gs) circle (0.2) node[color=blue,right] {B};
+    \end{tikzpicture}
+  \end{center}
+  How many different routes are there to get from A to B?
 }
 
 \def\advent@xvi@x{
-  TODO
+  The smallest number that is equal to the sum of its digits multiplied by ten more than the sum of its digits.
 }
 
 \def\advent@xvi@xi{
