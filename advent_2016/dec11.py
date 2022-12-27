@@ -1,15 +1,18 @@
 from common import *
 
-for n in range(800, 899+1) :
-    ds = [int(d) for d in str(n)]
+for n in range(100, 1000):
+    ds = digits(n)
 
-    if (n-1) % 9 != 0 :
+    if ds[2] != 8:
         continue
 
-    if sum(ds) % 5 != 0 :
+    if n % 9 != 1:
         continue
 
-    if len(set(ds)) != 2 :
+    if len(set(ds)) != 2:
+        continue
+
+    if sum(ds) % 5 != 0:
         continue
 
     pans(n)

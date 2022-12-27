@@ -207,8 +207,59 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2016}{https://www.mscrog
   Of these, $n = 171$ is the smallest and is thus our answer.
 }
 
-\aproblem{11}{TODO}{\advent@xvi@xi}{
-  TODO
+\aproblem{11}{811}{\advent@xvi@xi}{
+  We provide a walkthrough for this neat Christmas text adventure game.
+  First, examine the desk, look in the desk drawer, and take the UV torch, which will be needed a little later.
+  Read the note, which gives the first clue:
+  \begin{enumerate}
+    \item The first digit of the code to my safe is the weight of the five litre jug with one litre of liquid in it.
+  \end{enumerate}
+  Next, fill the $3$ liter jug and pour it into the $5$ liter jug, and then weigh the $5$ liter jug.
+  This weight will be $18$.
+  Dump the $5$ liter jug on the floor and refill it from the tap.
+  Measure this again, and the scale will read $28$.
+  Now, the weight of a filled $5$ liter jug is generally
+  \gath{
+    w_j + v w_l,
+  }
+  where $w_j$ is the weight of the empty jug itself, $v$ is the volume of liquid in the jug in liters, and $w_l$ is the per-liter weight of the liquid.
+  The above experiments then result in the following linear system:
+  \ali{
+    w_j + 3w_l &= 18 \\
+    w_j + 5w_l &= 28
+  }
+  Solving this system results in $w_j = 3$ and $w_l = 5$.
+  Thus, the first digit of the safe code is $w_j + 1w_l = 3 + 1 \cdot 5 = 8$.
+
+  Now, go back to the safe as we are done with the desk.
+  Examine the window and open it.
+  Go back to the safe and then back to the window again.
+  Now there will be more options as snow has fallen into the room.
+  Next, shine the UV torch on the snow and read the message.
+  This gives second clue:
+  \begin{enumerate}
+    \item[2.] The sum of the numbers in the safe code adds up to a multiple of 5.
+  \end{enumerate}
+  Lastly, pick up the snow before returning to the safe.
+
+  Next, examine the picture on the wall.
+  Unfortunately entering the Konami code here does nothing, but look behind the picture.
+  There is nothing behind it but a blank wall, but be sure to put the picture back upside down.
+  Now examine the picture frame and pull the lever to get the third clue:
+  \begin{enumerate}
+    \item[3.] The safe code is one more than a multiple of 9.
+  \end{enumerate}
+  Be careful not to pry open the crack in the picture frame as this will alert the police, and you will be arrested.
+  Instead, just return to the safe.
+
+  Now look at the fireplace and throw the snow onto the fire.
+  This will extinguish the fire, so look under the ashes and read the hidden message.
+  This is the fourth and final clue:
+  \begin{enumerate}
+    \item[4.] Two of the numbers in the code are the same.
+  \end{enumerate}
+  Python was used to filter the numbers from $800$ through $899$ inclusive (based on the solution to clue $1$) using clues $2$ through $4$, which left only the number $811$, which is the safe code.
+  Enter this into the safe to save Christmas!
 }
 
 \aproblem{12}{TODO}{\advent@xvi@xii}{
