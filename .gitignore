@@ -1,6 +1,6 @@
 # Python stuff
 __pycache__
-*.pickle
+/logic-work.pickle
 *.png
 
 # For LaTeX documents
