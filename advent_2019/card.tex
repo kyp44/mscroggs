@@ -19,7 +19,7 @@ Link to the online card: \href{http://mscroggs.co.uk/blog/70}{http://mscroggs.co
   Each of the four digits of a four-digit number will be one 1000 times since there are 1000 combinations of the other three digits.
   Thus the total number of ones written in the numbers 1 to 9999 are
   $$
-  4 \cdot 1000 = 4000 \,.
+    4 \cdot 1000 = 4000 \,.
   $$
   Then of course 10000 only has one 1 so that the final answer is $4000 + 1 = 4001$.
 
@@ -29,7 +29,7 @@ Link to the online card: \href{http://mscroggs.co.uk/blog/70}{http://mscroggs.co
 \cproblem{2}{1849}{\card@xix@ii}{
   We have that $2N+1 = 85$ for $N = 42$ so that the answer is clearly
   $$
-  \sum_{k=0}^{42} (2k+1) = 2 \sum_{k=0}^{42} k + \sum_{k=0}^{42} 1 = 2 \frac{42 \cdot 43}{2} + 43 = 43 \cdot 42 + 43 = 43 (42 + 1) = 43^2 = 1849 \,.
+    \sum_{k=0}^{42} (2k+1) = 2 \sum_{k=0}^{42} k + \sum_{k=0}^{42} 1 = 2 \frac{42 \cdot 43}{2} + 43 = 43 \cdot 42 + 43 = 43 (42 + 1) = 43^2 = 1849 \,.
   $$
   This answer was verified with Python.
 }
@@ -49,15 +49,15 @@ Link to the online card: \href{http://mscroggs.co.uk/blog/70}{http://mscroggs.co
 }
 
 \cproblem{4}{130405}{\card@xix@iv}{
-  In order for a book to even have a center spread it must have at least $4$ pages, where we take a page to be a single side of a two-sided sheet in the book.
-  Moreover if the number of pages $N$ is divisible by $4$, then every side of every sheet will be used.
-  In our case $N = 130404$, which is divisible by $4$, so we shall only consider this case.
-  For a book where $N = 4$ the center pages are $2 = N/2$ and $3 = N/2+1$ so that the sum is
-  $$
-  s = \frac{N}{2} + \frac{N}{2} + 1 = N + 1 \,.
-  $$
-  In fact, this generalizes to any book where $N$ is divisible by $4$.
-  So in our case our answer is $s = N+1 = 130405$.
+  Here we can leverage the results of the 2016, Dec 15 problem.
+  In our case, the number of pages is
+  \gath{
+    P = 130404 \equiv 0 \pmod{4}
+  }
+  so that we do in fact have a center spread, the sum of the two center spread page numbers being
+  \gath{
+    s = P + 1 = 130405.
+  }
 }
 
 \cproblem{5}{120306}{\card@xix@v}{

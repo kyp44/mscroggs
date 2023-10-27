@@ -64,11 +64,11 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/92}{https://www.m
     \begin{tabular}{c|c}
       Let & Digit \\
       \hline
-      $a$ & 9 \\
-      $b$ & 8 \\
-      $c$ & 6 \\
-      $d$ & 4 \\
-      $e$ & 3 \\
+      $a$ & 9     \\
+      $b$ & 8     \\
+      $c$ & 6     \\
+      $d$ & 4     \\
+      $e$ & 3     \\
       $f$ & 2
     \end{tabular}
   \end{center}
@@ -108,9 +108,9 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/92}{https://www.m
     \begin{tabular}{ccc}
       $a$ & $b$ & $c$ \\
       \hline
-      1 & 0 & 0 \\
-      0 & 1 & 1 \\
-      0 & 0 & 3
+      1   & 0   & 0   \\
+      0   & 1   & 1   \\
+      0   & 0   & 3
     \end{tabular}
   \end{center}
   For the first solution we have $a = 1$ and $b = c = 0$.
@@ -191,7 +191,7 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/92}{https://www.m
 \cproblem{7}{6}{\card@xxi@vii}{
   This problem was solved generally in the 2020, Dec~18 advent problem, in which it was deduced that the number of terms $N(n, k)$ of $(x_1 + \cdots + x_n)^k$ is
   \gath{
-    N(n, k) = \binom{n + k - 1}{k}    
+    N(n, k) = \binom{n + k - 1}{k}
   }
   Hence, in our case, we have $N(3, 2) = 6$.
 }
@@ -204,38 +204,17 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/92}{https://www.m
 }
 
 \cproblem{9}{11}{\card@xxi@ix}{
-  Suppose that $n$ and $m$ are two positive, coprime integers and that $n < m$.
-  Clearly $0 \cdot n \equiv 0 \pmod{m}$ and $1 \cdot n \equiv n \pmod{m}$.
-  Also, since they are coprime, the least common multiple of $n$ and $m$ is $nm$ so that $m$ is the smallest nonzero integer such that $m \cdot n \equiv 0 \pmod{m}$ again.
-  It turns out that $a \cdot n$ cycles through all $m$ possible values modulo $m$ as $a$ is increased and does not repeat until $a = m$.
-  Thus, for any positive integer $c$, there is an integer $0 \leq a < m$ such that $a \cdot n \equiv c \pmod{m}$.
-  Hence there are integers $b_1$ and $b_2$ such that
-  \gath{
-    a n + b_1 m = c + b_2 m \non
-    a n + (b_1 - b_2)m = c \non
-    a n + b m = c \label{eqn:09:orig} \\
-    b m = c - a n \,, \nonumber
-  }
-  where we have let $b = b_1 - b_2$ be just another integer.
-  Note that \eqref{eqn:09:orig} is the solution to our original problem, provided that $a$ and $b$ are non-negative.
-  By definition $a$ is non-negative, but, since $m > 0$, clearly $b$ is non-negative if and only if $c - an \geq 0$, that is $c \geq an$.
-  If this condition is not satisfied, then the original equation has no solution, i.e. $c$ cannot be written in the required form.
-  Hence we are looking for the largest $c$ that has no solution so that $c < an$ where $0 \leq a < m$ and $an \equiv c \pmod{m}$.
-  Now, since $0 \leq a < m$, clearly $an$ is the largest when $a = m - 1$.
-  Similarly, the largest $c$ such that $c < an$ and $an \equiv c \pmod{m}$ is going to be
-  \gath{
-    c = an - m = (m-1)n - m = nm - n - m \,.
-  }
+  Here we can utilize the results of the 2016, Dec~14 problem.
   In our case we have $n = 4$ and $m = 5$, which are clearly coprime.
-  Therefore our answer is
+  Therefore, our answer is
   \gath{
-    c = nm - n - m = 4 \cdot 5 - 4 - 5 = 11 \,.
+    c = nm - n - m = 4 \cdot 5 - 4 - 5 = 11.
   }
-  Note that this solution is the same if we interchange $n$ and $m$, so it does not actually matter which value is assigned to which variable.
 }
 
 \cproblem{10}{5555556655}{\card@xxi@x}{
-  Using the results of the previous problem, we here can have $n = 83409$ and $m = 66608$, which were verified to be coprime, so that our answer is
+  We again utilize the results of the 2016, Dec~14 problem.
+  Here we have $n = 83409$ and $m = 66608$, which were verified to be coprime, so that our answer is
   \gath{
     c = nm - n - m = 83409 \cdot 66608 - 83409 - 66608 = 5555556655
   }
@@ -294,22 +273,22 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/92}{https://www.m
 }
 
 \cproblem{14}{625}{\card@xxi@xiv}{
-  Similarly to the previous problem, we have
-  \gath{
-    \prod_{i = 1}^n f_i = 25^n = 5^{2n} \,.
-  }
-  So that our answer $x$ and its factors must be powers of $5$ since $5$ is prime.
-  Therefore $x = 5^m$, which again has the $n = m + 1$ factors $f_i = 5^i$ for $0 \leq i \leq m$.
-  Thus
-  \gath{
-    \prod_{i = 1}^n f_i = \prod_{i=0}^m 5^i = 5^{2n} = 5^{2m+2} \non
-    5^{\sum_{i=0}^m i} = 5^{2m+2} \non
-    \sum_{i=0}^m i = 2m + 2 \non
-    \frac{m(m+1)}{2} = 2m + 2 \non
-    m^2 + m = 4m + 4 \non
-    m^2 - 3m - 4 = 0 \non
-    (m + 1)(m - 4) = 0
-  }
+Similarly to the previous problem, we have
+\gath{
+  \prod_{i = 1}^n f_i = 25^n = 5^{2n} \,.
+}
+So that our answer $x$ and its factors must be powers of $5$ since $5$ is prime.
+Therefore $x = 5^m$, which again has the $n = m + 1$ factors $f_i = 5^i$ for $0 \leq i \leq m$.
+Thus
+\gath{
+  \prod_{i = 1}^n f_i = \prod_{i=0}^m 5^i = 5^{2n} = 5^{2m+2} \non
+      5^{\sum_{i=0}^m i} = 5^{2m+2} \non
+      \sum_{i=0}^m i = 2m + 2 \non
+      \frac{m(m+1)}{2} = 2m + 2 \non
+      m^2 + m = 4m + 4 \non
+      m^2 - 3m - 4 = 0 \non
+      (m + 1)(m - 4) = 0
+    }
   Since the other solution is negative, we must have $m = 4$ so that our answer is $x = 5^m = 5^4 = 625$.
   This result was also verified with Python with brute force.
 }
