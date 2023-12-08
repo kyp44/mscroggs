@@ -1219,5 +1219,50 @@
 				]
 			}
 		]
+	},
+	{
+		"type": "advent",
+		"year": 2023,
+		"number": 24,
+		"puzzles": [
+			{
+				"number": 1,
+				"tags": [
+					"geom"
+				]
+			},
+			{
+				"number": 2,
+				"tags": [
+					"sum",
+					"cons"
+				]
+			},
+			{
+				"number": 3,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 4,
+				"tags": [
+					"fact",
+					"mod"
+				]
+			},
+			{
+				"number": 5,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 6,
+				"tags": [
+					"comb"
+				]
+			}
+		]
 	}
 ]

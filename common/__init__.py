@@ -23,8 +23,8 @@ def check_div(a, b):
 
 def digits(n, nd=None):
     """
-    Converts integer to a list of its digits.
-    Can optionally sepcifiy number of digits
+    Converts an integer to a list of its digits.
+    Can optionally specify number of digits
     to pad with zeros.
 
     The digits are returned in order from least
@@ -506,8 +506,8 @@ def count_ending_zeros(n):
 
 def digital_sums(s, num_digs=None, analytical=None):
     """
-    Counts the number of numberrs with nonzero digits whose digital sum is
-    s, with either a specific number of digits (num_digs) or among all natrual
+    Counts the number of numbers with nonzero digits whose digital sum is
+    s, with either a specific number of digits (num_digs) or among all natural
     numbers (num_digs = None). An optional analytical solution function f(s)
     may be passed to ensure that this matches the other methods.
 

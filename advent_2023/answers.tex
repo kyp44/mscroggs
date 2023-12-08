@@ -1,0 +1,120 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+\input{boxes}
+
+\begin{document}
+
+\title{MS Scroggs Advent Calendar 2023 Answers}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.uk/adventcode/yglswiTw}
+
+\aproblem{1}{180}{\advent@xxiii@i}{
+  A regular $n$-gon has interior angles that are each
+  \gath{
+    \theta = \frac{180(n - 2)}{n}
+  }
+  in degrees.
+  Using basic algebra, solving this for $n$ results in
+  \gath{
+    n = \frac{360}{180 - \theta}
+  }
+  Therefore, plugging in $\theta = 178$ gives our answer $n = 180$.
+}
+
+\aproblem{2}{681}{\advent@xxiii@ii}{
+  Clearly, the sum of the first $n$ even numbers and half of the next even number is
+  \ali{
+    s_n &= \sum_{i=1}^n 2i + \frac{2(n+1)}{2} = 2 \sum_{i=1}^n i + (n+1) = 2\frac{n(n+1)}{2} + (n+1) \non
+    &= n(n+1) = (n+1) = (n+1)^2.
+  }
+  Solving this for $n$ clearly results in
+  \gath{
+    n = \sqrt{s_n} - 1.
+  }
+  Hence, the $n$ we seek is $n = \sqrt{465124} - 1 = 682 - 1 = 681$.
+  This answer was verified with a Python program that calculates the actual sum $s_{681}$, showing that this is indeed $465124$.
+}
+
+\aproblem{3}{195}{\advent@xxiii@iii}{
+  Let $n$ be this smallest multiple of $15$ whose digits add up to $15$.
+  First, we note that clearly the digits of $555$ add to $15$, and that $555 = 37 \times 15$, and so is also a multiple of $15$.
+  Therefore, it has to be that $n \leq 555$.
+
+  Now, any multiple of $15$ must end in either the digits $0$ or $5$.
+  Suppose that the last digit is $0$ so that $n$ has the form $n = d_2 d_10$, and thus $d_2 + d_1 = 15$.
+  There are only two sets of digits such that this is the case, namely $6 + 9 = 9 + 6 = 15$ and $7 + 8 = 8 + 7 = 15$.
+  This is because $d_2 \leq 5$ would require that $d_1 > 9$ and vice versa.
+  Therefore, it has to be that $d_2 \in \braces{6, 7, 8, 9}$, which would mean that $n = d_2 d_1 0 > 555$.
+  Hence, it must be that the last digit is a $5$.
+
+  Thus, $n$ has the form $n = d_2 d_1 5$.
+  If it were the case that $d_2 = 0$ so that $n$ was a two-digit number, it would have to be that $0 + d_1 + 5 = 15$ so that $d_1 = 10$, which is clearly out of the range of valid digits.
+  Therefore, $0 < d_2 \leq 5$.
+  What about if $d_2 = 1$?
+  Well, in this case, we'd have $1 + d_2 + 5 = 15$ so that $d_2 = 9$.
+  Hence, the digits of $n = 195$ sum to $15$.
+  Since also $195 = 13 \times 15$, this is in fact our answer since there can be no smaller number that meets the established criteria!
+
+  This answer was also verified using a brute force Python program.
+}
+
+\aproblem{4}{246}{\advent@xxiii@iv}{
+  Let us generalize this a bit and ask, for any positive integer $a$, what is the largest value of $n$ for which $f(n) = (n! - a)/(n - a)$ is an integer?
+
+  First, for $n = 2a$ we have
+  \gath{
+    f(n) = f(2a) = \frac{(2a)! - a}{2a - a} = \frac{2a(2a-1)! - a}{a} = 2(2a-1)! - 1,
+  }
+  which is clearly an integer. We aim to prove that, in fact, $n = 2a$ is the \emph{largest} $n$ for which $f(n)$ is an integer!
+
+  To this end, first note that $f(n)$ being an integer means that $n! - a$ is divisible by $n - a$, which is equivalent to saying that
+  \gath{
+    n! - a \equiv 0 \pmod{n-a}. \label{eqn:04:fcond}
+  }
+  Now suppose that $n > 2a$ so that
+  \gath{
+    a > 0 \non
+    n > 2a > a \non
+    n - a > a > 0.
+  }
+  We also clearly have
+  \gath{
+    n > n - a
+  }
+  since $a > 0$.
+  Therefore, clearly
+  \gath{
+    n! = (n-a)k,
+  }
+  where $k$ is an integer.
+  Hence, $n!$ is a multiple of $n-a$ so that
+  \gath{
+    n! \equiv 0 \pmod{n-a}.
+  }
+  From this it follows that
+  \gath{
+    n! - a \equiv -a \pmod{n-a},
+  }
+  and, since $0 < a < n-a$, this means that \eqref{eqn:04:fcond} cannot be true so that $f(n)$ cannot be an integer!
+
+  In our case, we have $a = 123$ so that our answer is $n = 2 \cdot 123 = 246$.
+  This answer was also verified using a brute force Python program.
+}
+
+\aproblem{5}{378}{\advent@xxiii@v}{
+  \boxans{\gridsol@advent@xxiii@v}
+}
+
+\aproblem{6}{233}{\advent@xxiii@vi}{
+  TODO
+}
+
+\end{document}
