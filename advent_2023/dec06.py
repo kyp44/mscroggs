@@ -2,15 +2,16 @@ from common import *
 from math import ceil
 
 
-def A(n, k):
-    if n == 0:
+def N(n):
+    if n == 1:
         return 1
+    elif n == 2:
+        return 2
+    else:
+        return N(n-1) + N(n-2)
 
-    # print([(n-1, k-1-i) for i in range(1, k)])
-    # return sum([A(n-1, k-1-i) for i in range(1, k)])
-    return sum([A(n-1, i) for i in range(k-2+1)])
 
+for n in range(1, 12+1):
+    print(n, "&", N(n), "\\\\")
 
-for k in range(1, 12+1):
-    b = ceil(k / 2)
-    print(k, sum([A(n, k) for n in range(b+1)]))
+pans(N(12))

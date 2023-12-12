@@ -114,28 +114,66 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
 }
 
 \aproblem{6}{233}{\advent@xxiii@vi}{
-  Consider the general problem of the number of ways to tile a $k \times 2$ rectangle with $2 \times 1$ pieces.
-  Clearly one way, for all $k \geq 1$, is for all the $2 \times 1$ pieces to be oriented vertically.
-  As any adjacent pair of $2 \times 1$ pieces forms a square, the pair can be oriented either with the pieces vertically or horizontally.
-  So the problem is equivalent to considering $k$ items lined up in a row and counting the number of ways that zero or more adjacent pairs can be chosen.
-  A chosen pair corresponds to the pair being oriented horizontally instead of the default vertical orientation.
-  Obviously a single item cannot be shared between two distinct adjacent pairs, and so can only be chosen at most once.
-
-  So, using the ways to tile a $4 \times 2$ rectangle above as an example, if we label each of the vertical $2 \times 1$ pieces from left to right as $1$, $2$, $3$, and $4$, then each of the five arrangements corresponds to the following chosen adjacent pairs:
-  % Ugh, evidently there's no way to just easily vertically center the text in a way that works with teh graphics!
+  Consider the general problem of the number of ways to tile an $n \times 2$ rectangle with $2 \times 1$ pieces, and let this number be $N_n$.
+  Clearly the number of ways to tile a $1 \times 2$ rectangle is just one, and hence $N_1 = 1$.
+  Similarly, there are obviously only two ways to tile a $2 \times 2$ square, namely the following:
   \begin{center}
-    \begin{tabular}{cm{4cm}}
-      Arrangement \vspace{6pt} & Chosen adjacent pairs    \\
-      \begin{tikzpicture}[scale=\crscale]
-        \crfour@i{0}{0}
-      \end{tikzpicture}
-                               & $\varnothing$            \\
-      \begin{tikzpicture}[scale=\crscale]
-        \crfour@ii{0}{0}
-      \end{tikzpicture}
-                               & $\braces{\braces{3, 4}}$ \\
+    \begin{tikzpicture}[scale=\crscale]
+      \crvert{cry}{0}{0}
+      \crvert{crb}{1}{0}
+
+      \crhorz{cry}{3}{0}
+      \crhorz{crb}{3}{-1}
+    \end{tikzpicture}
+  \end{center}
+  Therefore, of course, $N_2 = 2$.
+
+  Now, if we consider $N_n$, we have two cases, either the first $2 \times 1$ tile is oriented horizontally or vertically.
+  In the first case, the second must also be horizontal beneath, and their width is 2 so that the remaining part is an $(n-2) \times 2$ rectangle.
+  This is illustrated below:
+  \begin{center}
+    \begin{tikzpicture}[scale=\crscale]
+      \crhorz{cry}{0}{0}
+      \crhorz{crb}{0}{-1}
+      \filldraw[ultra thick,fill=crg] (2,0) rectangle (10,-2);
+      \node at (6, -1) {$(n-2) \times 2$};
+    \end{tikzpicture}
+  \end{center}
+  Thus, the total number of tilings in this case is $N_{n-2}$.
+  The case in which the first $2 \times 1$ tile is oriented vertically is shown below:
+  \begin{center}
+    \begin{tikzpicture}[scale=\crscale]
+      \crvert{cry}{0}{0}
+      \filldraw[ultra thick,fill=crg] (1,0) rectangle (10,-2);
+      \node at (6, -1) {$(n-1) \times 2$};
+    \end{tikzpicture}
+  \end{center}
+  Therefore, the number of tilings in this case is clearly $N_{n-1}$.
+  As these cases are exhaustive, the total number of tilings is
+  \gath{
+    N_n = N_{k-1} + N_{k-2},
+  }
+  but this is just the Fibonacci sequence!
+  Putting this all together we clearly have
+  \begin{center}
+    \begin{tabular}{c|c}
+      $n$ & $N_n$ \\
+      \hline
+      1   & 1     \\
+      2   & 2     \\
+      3   & 3     \\
+      4   & 5     \\
+      5   & 8     \\
+      6   & 13    \\
+      7   & 21    \\
+      8   & 34    \\
+      9   & 55    \\
+      10  & 89    \\
+      11  & 144   \\
+      12  & 233   \\
     \end{tabular}
   \end{center}
+  so that our answer is $N_{12} = 233$, which was verified by implementing this series in Python.
 }
 
 \end{document}
