@@ -114,7 +114,28 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
 }
 
 \aproblem{6}{233}{\advent@xxiii@vi}{
-  TODO
+  Consider the general problem of the number of ways to tile a $k \times 2$ rectangle with $2 \times 1$ pieces.
+  Clearly one way, for all $k \geq 1$, is for all the $2 \times 1$ pieces to be oriented vertically.
+  As any adjacent pair of $2 \times 1$ pieces forms a square, the pair can be oriented either with the pieces vertically or horizontally.
+  So the problem is equivalent to considering $k$ items lined up in a row and counting the number of ways that zero or more adjacent pairs can be chosen.
+  A chosen pair corresponds to the pair being oriented horizontally instead of the default vertical orientation.
+  Obviously a single item cannot be shared between two distinct adjacent pairs, and so can only be chosen at most once.
+
+  So, using the ways to tile a $4 \times 2$ rectangle above as an example, if we label each of the vertical $2 \times 1$ pieces from left to right as $1$, $2$, $3$, and $4$, then each of the five arrangements corresponds to the following chosen adjacent pairs:
+  % Ugh, evidently there's no way to just easily vertically center the text in a way that works with teh graphics!
+  \begin{center}
+    \begin{tabular}{cm{4cm}}
+      Arrangement \vspace{6pt} & Chosen adjacent pairs    \\
+      \begin{tikzpicture}[scale=\crscale]
+        \crfour@i{0}{0}
+      \end{tikzpicture}
+                               & $\varnothing$            \\
+      \begin{tikzpicture}[scale=\crscale]
+        \crfour@ii{0}{0}
+      \end{tikzpicture}
+                               & $\braces{\braces{3, 4}}$ \\
+    \end{tabular}
+  \end{center}
 }
 
 \end{document}

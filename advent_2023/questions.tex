@@ -43,39 +43,51 @@
 \definecolor{crp}{rgb}{1,0.667,1}
 \newcommand\crvert[3]{\filldraw[ultra thick,fill=#1] (#2,#3) rectangle (#2+1,#3-2);}
 \newcommand\crhorz[3]{\filldraw[ultra thick,fill=#1] (#2,#3) rectangle (#2+2,#3-1);}
+\newcommand\crfour@i[2]{
+  \crvert{cry}{#1}{#2}
+  \crvert{crb}{#1+1}{#2}
+  \crvert{crg}{#1+2}{#2}
+  \crvert{crp}{#1+3}{#2}
+}
+\newcommand\crfour@ii[2]{
+  \crvert{cry}{#1}{#2}
+  \crvert{crb}{#1+1}{#2}
+  \crhorz{crg}{#1+2}{#2}
+  \crhorz{crp}{#1+2}{#2-1}
+}
+\newcommand\crfour@iii[2]{
+  \crhorz{cry}{#1}{#2}
+  \crhorz{crb}{#1}{#2-1}
+  \crvert{crg}{#1+2}{#2}
+  \crvert{crp}{#1+3}{#2}
+}
+\newcommand\crfour@iv[2]{
+  \crhorz{cry}{#1}{#2}
+  \crhorz{crb}{#1}{#2-1}
+  \crhorz{crg}{#1+2}{#2}
+  \crhorz{crp}{#1+2}{#2-1}
+}
+\newcommand\crfour@v[2]{
+  \crvert{cry}{#1}{#2}
+  \crhorz{crb}{#1+1}{#2}
+  \crhorz{crg}{#1+1}{#2-1}
+  \crvert{crp}{#1+3}{#2}
+}
 \def\advent@xxiii@vi{
   There are $5$ ways to tile a $4 \times 2$ rectangle with $2 \times 1$ pieces:
 
   \begin{center}
     \begin{tikzpicture}[scale=\crscale]
-      \crvert{cry}{0}{0}
-      \crvert{crb}{1}{0}
-      \crvert{crg}{2}{0}
-      \crvert{crp}{3}{0}
-
-      \crvert{cry}{5}{0}
-      \crvert{crb}{6}{0}
-      \crhorz{crg}{7}{0}
-      \crhorz{crp}{7}{-1}
-
-      \crhorz{cry}{10}{0}
-      \crhorz{crb}{10}{-1}
-      \crvert{crg}{12}{0}
-      \crvert{crp}{13}{0}
+      \crfour@i{0}{0}
+      \crfour@ii{5}{0}
+      \crfour@iii{10}{0}
     \end{tikzpicture}
 
     \vspace{0.3cm}
 
     \begin{tikzpicture}[scale=\crscale]
-      \crhorz{cry}{0}{0}
-      \crhorz{crb}{0}{-1}
-      \crhorz{crg}{2}{0}
-      \crhorz{crp}{2}{-1}
-
-      \crvert{cry}{5}{0}
-      \crhorz{crb}{6}{0}
-      \crhorz{crg}{6}{-1}
-      \crvert{crp}{8}{0}
+      \crfour@iv{0}{0}
+      \crfour@v{5}{0}
     \end{tikzpicture}
   \end{center}
 
