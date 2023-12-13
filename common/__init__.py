@@ -10,6 +10,14 @@ from enum import Enum, auto
 import roman
 
 
+def powerset(iterable):
+    """
+    The power set of an iterable
+    """
+    s = set(iterable)
+    return list(set(x) for x in it.chain.from_iterable(it.combinations(s, r) for r in range(len(s)+1)))
+
+
 def check_div(a, b):
     """
     Integer division where a ValueError is

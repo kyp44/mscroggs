@@ -120,9 +120,18 @@
   The diagram below shows a rectangle.
   Two of its sides have been colored blue.
   A red line has been drawn from two of its vertices to the midpoint of a side.
+
   \begin{center}
-    TODO DIAGRAM!
+    \begin{tikzpicture}
+      \def\rw{6}
+      \def\rh{3}
+
+      \draw[black, thick] (0, 0) -- (\rw, 0) -- (\rw, -\rh);
+      \draw[blue, thick] (0, 0) -- (0, -\rh) -- (\rw, -\rh);
+      \draw[red, thick] (0, 0) -- (\rw/2, -\rh) -- (\rw, 0);
+    \end{tikzpicture}
   \end{center}
+
   The total length of the blue lines is $50$~cm.
   The total length of the red lines is also $50$~cm.
   What is the area of the rectangle (in $\mathrm{cm^2}$)?
@@ -159,7 +168,7 @@
     \begin{center}
       \textbf{Across}
 
-      \begin{tabular}{clc}
+      \begin{tabular}{cp{5cm}c}
         \textbf{1} & Today's number.                                      & (\textbf{3}) \\
         \textbf{4} & A multiple of $5$ times the sum of the digits of 2D. & (\textbf{3}) \\
         \textbf{5} & Greater than two times 3D.                           & (\textbf{3})
@@ -167,7 +176,7 @@
 
       \textbf{Down}
 
-      \begin{tabular}{clc}
+      \begin{tabular}{cp{5cm}c}
         \textbf{1} & The sum of 5A and 3D.                   & (\textbf{3}) \\
         \textbf{2} & Nine times the sum of the digits of 4A. & (\textbf{3}) \\
         \textbf{3} & Greater than 2D.                        & (\textbf{3})

@@ -113,6 +113,15 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   \boxans{\gridsol@advent@xxiii@v}
 }
 
+\newcommand\table@vi[1]{
+  \begin{center}
+    \begin{tabular}{c|c}
+      $n$ & $N_n$ \\
+      \hline
+      #1
+    \end{tabular}
+  \end{center}
+}
 \aproblem{6}{233}{\advent@xxiii@vi}{
   Consider the general problem of the number of ways to tile an $n \times 2$ rectangle with $2 \times 1$ pieces, and let this number be $N_n$.
   Clearly the number of ways to tile a $1 \times 2$ rectangle is just one, and hence $N_1 = 1$.
@@ -153,43 +162,202 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   \gath{
     N_n = N_{k-1} + N_{k-2},
   }
-  but this is just the Fibonacci sequence!
+  but this is just a Fibonacci sequence!
   Putting this all together we clearly have
-  \begin{center}
-    \begin{tabular}{c|c}
-      $n$ & $N_n$ \\
-      \hline
+  \begin{multicols}{3}
+    \table@vi{
       1   & 1     \\
       2   & 2     \\
       3   & 3     \\
       4   & 5     \\
+    }
+    \columnbreak
+    \table@vi{
       5   & 8     \\
       6   & 13    \\
       7   & 21    \\
       8   & 34    \\
+    }
+    \columnbreak
+    \table@vi{
       9   & 55    \\
       10  & 89    \\
       11  & 144   \\
       12  & 233   \\
-    \end{tabular}
-  \end{center}
+    }
+  \end{multicols}
   so that our answer is $N_{12} = 233$, which was verified by implementing this sequence in Python.
 }
 
-\aproblem{7}{TODO}{\advent@xxiii@vii}{
-  TODO
+\newcommand\table@vii[1]{
+  \begin{center}
+    \begin{tabular}{c|c}
+      $n$ & $\abs{C_n}$ \\
+      \hline
+      #1
+    \end{tabular}
+  \end{center}
+}
+\aproblem{7}{987}{\advent@xxiii@vii}{
+  For $n \geq 0$, let $I_n$ be the set containing the numbers $1$ to $n$ inclusive, that is
+  \gath{
+    I_n = \braces{k \in \ints \mid 1 \leq k \leq n}.
+  }
+  Similarly, let $C_n$ be the set of subsets of $I_n$ that do not include any consecutive numbers, including the empty set.
+  Clearly, we have that $I_0 = \es$, and so $C_0 = \braces{\es}$ and $\abs{C_0} = 1$.
+  We also have that $I_1 = \braces{1}$ so that
+  \gath{
+    C_1 = \braces{\varnothing, \braces{1}},
+  }
+  and hence $\abs{C_1} = 2$.
+  Now consider any $n > 1$ so that $I_n = \braces{1, 2, \ldots, n-1, n}$.
+  For any set in $C_n$, either $n$ is in the set or it is not.
+  Consider those sets of $C_n$ such that $n$ is \emph{not} in any of the sets.
+  The set of these is clearly simply $C_{n-1}$.
+  Now consider the sets of $C_n$ where $n$ is in all the sets.
+  This means that $n-1$ cannot be in any of the sets since it is consecutive with $n$.
+  Thus, these are exactly the sets $\braces{S \cup \braces{n} \mid S \in C_{n-2}}$, which of course has the same cardinality as $C_{n-2}$.
+  Since the cases are exhaustive and the set of subsets in each case are clearly disjoint (since none of the sets of one contain $n$ while all the sets of the other contain $n$), it follows that
+  \gath{
+    \abs{C_n} = \abs{C_{n-1}} + \abs{C_{n-2}}
+  }
+  so that the sequence $\abs{C_n}$ is a Fibonacci sequence!
+  It is then easy to calculate this sequence:
+  \begin{multicols}{3}
+    \table@vii{
+      0   & 1           \\
+      1   & 2           \\
+      2   & 3           \\
+      3   & 5           \\
+      4   & 8           \\
+    }
+    \columnbreak
+    \table@vii{
+      5   & 13          \\
+      6   & 21          \\
+      7   & 34          \\
+      8   & 55          \\
+      9   & 89          \\
+    }
+    \columnbreak
+    \table@vii{
+      10  & 144         \\
+      11  & 233         \\
+      12  & 377         \\
+      13  & 610         \\
+      14  & 987         \\
+    }
+  \end{multicols}
+  Note hat $\abs{C_4} = 8$ as expected from the example.
+  Our answer is then $\abs{C_{14}} = 987$, which was verified using a brute force Python program that filters the power sets of $I_n$ to only those subsets containing non-consecutive integer.
 }
 
-\aproblem{8}{TODO}{\advent@xxiii@viii}{
-  TODO
+\aproblem{8}{729}{\advent@xxiii@viii}{
+  Suppose that $n$ is a positive, odd integer so that $n = 2k+1$ for some integer $k \geq 0$.
+  Also suppose that we write the inverted triangle of numbers as above where the first row is from $1$ to $n$.
+  Since $n$ is odd, there is a number $m$ exactly in the middle of the first row with the property that there are exactly $m-1$ numbers to the left of it (i.e. $1$ through $m-1$) and $m-1$ to the right (i.e. $m+1$ through $n$).
+  So the numbers of numbers on the right is
+  \gath{
+    m - 1 = n - m \non
+    2m = n + 1 \non
+    2m = (2k + 1) + 1 \non
+    2m = 2(k+1) \non
+    m = k+1
+  }
+  so that we have our middle number.
+  It should then be clear that there are $m$ rows, and let us number them from $1$ to $m$ from top to bottom, noting that row $r$ starts with the number $r$ and ends with $n - r + 1$.
+  The last row then contains only $m = k+1$, noting that the last number is also $n - m + 1 = (2k+1) - (k+1) + 1 = k + 1 = m$.
+
+  A short digression before we proceed: for non-negative integers $a \leq b$, we have that
+  \gath{
+    \sum_{i=a}^b i = \sum_{i=1}^b i - \sum_{i=1}^{a-1} i = \frac{b(b+1)}{2} - \frac{(a-1)a}{2} = \frac{b(b+1) - a(a-1)}{2}.
+  }
+  This still holds if $a = 0$ if we adopt the usual convention that $\sum_{i=a}^b f(i) = 0$ whenever $b < a$.
+  So we then have that the sum of the numbers in row $r$ is
+  \ali{
+    S_r &= \sum_{i=r}^{n-r+1} i = \sum_{i=r}^{(2k+1)-r+1} i = \sum_{i=r}^{2(k+1)-r} i = \sum_{i=r}^{2m-r} i = \frac{(2m - r)(2m - r + 1) - r(r-1)}{2} \non
+    &= \frac{4m^2 - 2m r + 2m - 2m r + r^2 - r - r^2 + r}{2} = \frac{4m^2 - 4m r + 2m}{2} = \frac{2m(2m - 2r + 1)}{2} \non
+    &= m(2m - 2r + 1)
+  }
+  The total sum of all rows is then
+  \ali{
+    S &= \sum_{r=1}^m S_r = \sum_{r=1}^m m(2m - 2r + 1) = m\squares{\sum_{r=1}^m(2m + 1) - 2\sum_{r=1}^m r} \non
+    &= m \squares{m(2m + 1)- 2\frac{m(m+1)}{2}} = m^2 \squares{2m + 1 - (m+1)} = m^3 \non
+    &= (k+1)^3.
+  }
+  In our case, we have that $n = 17 = 2 \cdot 8 + 1$ so that $k = 8$.
+  Thus, the sum we seek is $S = (k+1)^3  = 9^3 = 729$.
+  This answer was verified with a brute force Python program that calculates the sum directly.
 }
 
-\aproblem{9}{TODO}{\advent@xxiii@ix}{
-  TODO
+\aproblem{9}{600}{\advent@xxiii@ix}{
+  Consider the more general case when the length of the red lines is $a$, which is also the length of the blue lines.
+  Let $w$ and $h$ denote the width and height of the rectangle, respectively.
+  Then the sum of the blue lines is of course
+  \gath{
+    w + h = a. \label{eqn:09:add}
+  }
+  One corner of the rectangle along with one of the red lines forms a right triangle with sides $w/2$ and $h$, and a hypotenuse of $a/2$.
+  Thus, we have
+  \gath{
+    \parens{\frac{w}{2}}^2 + h^2 = \parens{\frac{a}{2}}^2 \non
+    \frac{w^2}{4} + h^2 = \frac{a^2}{4} \non
+    w^2 + 4h^2 + a^2. \label{eqn:09:tri}
+  }
+  From \eqref{eqn:09:add} we have $w = a - h$, so substituting this into \eqref{eqn:09:tri} gives us
+  \gath{
+    (a - h)^2 + 4h^2 = a^2 \non
+    a^2 - 2ah + h^2 + 4h^2 = a^2 \non
+    5h^2 - 2ah = 0 \non
+    5h^2 = 2ah \non
+    h = \frac{2a}{5}
+  }
+  Substituting this back into \eqref{eqn:09:add} yields
+  \gath{
+    w + \frac{2a}{5} = a \non
+    w = a\parens{1 - \frac{2}{5}} \non
+    w = \frac{3a}{5}.
+  }
+  Hence, the area is
+  \gath{
+    A = wh = \parens{\frac{3a}{5}}\parens{\frac{2a}{5}} = \frac{6a^2}{25}.
+  }
+  In our case, we have $a = 50\unit{cm}$, and therefore our answer is $A = 6 \cdot 50^2/25 = 600\unit{cm^2}$.
 }
 
-\aproblem{10}{TODO}{\advent@xxiii@x}{
-  TODO
+\aproblem{10}{450}{\advent@xxiii@x}{
+  Let $E$ be any even number and $O$ be any odd number.
+  It is trivial to show that
+  \gath{
+    E + E = E \\
+    E + O = O + E = O \\
+    O + O = E.
+  }
+  Now note that clearly the sum of the digits of $1000$ is one and so odd, so we need only consider three-digit numbers where the first digit is nonzero.
+  There are $5$ even digits (i.e. $\braces{0, 2, 4, 6, 8})$ and $5$ odd digits (i.e. $\braces{1,3,5,7,9}$).
+  However, the first digit must be nonzero, so that there are only $4$ possible even number that can be in this position.
+
+  We consider all combinations of whether each digit is even or odd, and denote the parity of each position.
+  For example a parity signature of $EOE$ would denote a number where the first digit is even, the second odd, and the third even.
+  Note that two sets of numbers with different parity signatures are disjoint since the sets of even and odd digits are disjoint.
+  For signatures whose digits sum to an even number, we also calculate the number of such numbers by considering the number of possibilities of each digit given the caveat about the first digit when even.
+  Hence, given the addition rules above, we have
+  \begin{center}
+    \begin{tabular}{ccc}
+      Signature & Digital sum & Number of numbers         \\
+      \hline
+      $EEE$     & $E$         & $4 \cdot 5 \cdot 5 = 100$ \\
+      $EEO$     & $O$         &                           \\
+      $EOE$     & $O$         &                           \\
+      $EOO$     & $E$         & $4 \cdot 5 \cdot 5 = 100$ \\
+      $OEE$     & $O$         &                           \\
+      $OEO$     & $E$         & $5 \cdot 5 \cdot 5 = 125$ \\
+      $OOE$     & $E$         & $5 \cdot 5 \cdot 5 = 125$ \\
+      $OOO$     & $O$         &                           \\
+    \end{tabular}
+  \end{center}
+  Therefore, the total number of numbers with even digital sums is the sum of the numbers in the final column: $100 + 100 + 125 + 125 = 450$.
+  This result was verified with a brute force Python program.
 }
 
 \aproblem{11}{TODO}{\advent@xxiii@xi}{

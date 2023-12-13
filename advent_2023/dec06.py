@@ -12,6 +12,7 @@ def N(n):
 
 
 for n in range(1, 12+1):
-    print(n, "&", N(n), "\\\\")
+    print(n, "&", N(n), r"\\")
 
+print()
 pans(N(12))

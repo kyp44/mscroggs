@@ -1268,6 +1268,19 @@
 				"tags": [
 					"comb"
 				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"tri",
+					"sum"
+				]
+			},
+			{
+				"number": 9,
+				"tags": [
+					"geom"
+				]
 			}
 		]
 	}
