@@ -60,28 +60,28 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2021}{https://www.mscrog
 }
 
 \aproblem{2}{144}{\advent@xxi@ii}{
-  For a general number $x$ with a prime factorization
-  \gath{
-    x = \prod_{i=1}^m p_i^{e_i}
-  }
-  into $m$ distinct primes, the number of factors of $x$ is
-  \gath{
-    N(x) = \prod_{i=1}^m (e_i + 1) \,,
-  }
-  which includes counting $1$ and $x$ itself.
-  Note that, whenever $m > 1$, this must be a composite number.
-  However, we are told that $7n$ has $37$ factors, and $37$ is prime.
-  Hence it has to be that $7n$ has only a single prime factor.
-  Moreover, since clearly $7$ is a prime factor of $7n$, it must be that it is the only prime factor so that in fact $n = 7^{35}$ so that $N(7n) = N(7^{36}) = 36 + 1 = 37$.
-  Hence we have that we have the prime factorization
-  \gath{
-    8n = 8 \cdot 7^{35} = 2^3 7^{35}
-  }
-  and thus
-  \gath{
-    N(8n) = (3+1)(35+1) = 4 \cdot 36 = 144 \,,
-  }
-  which must be our answer.
+For a general number $x$ with a prime factorization
+\gath{
+x = \prod_{i=1}^m p_i^{e_i}
+}
+into $m$ distinct primes, the number of factors of $x$ is
+\gath{
+  N(x) = \prod_{i=1}^m (e_i + 1) \,,
+}
+which includes counting $1$ and $x$ itself.
+Note that, whenever $m > 1$, this must be a composite number.
+However, we are told that $7n$ has $37$ factors, and $37$ is prime.
+Hence it has to be that $7n$ has only a single prime factor.
+Moreover, since clearly $7$ is a prime factor of $7n$, it must be that it is the only prime factor so that in fact $n = 7^{35}$ so that $N(7n) = N(7^{36}) = 36 + 1 = 37$.
+Hence we have that we have the prime factorization
+\gath{
+  8n = 8 \cdot 7^{35} = 2^3 7^{35}
+}
+and thus
+\gath{
+  N(8n) = (3+1)(35+1) = 4 \cdot 36 = 144 \,,
+}
+which must be our answer.
 }
 
 \aproblem{3}{192}{
@@ -91,12 +91,12 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2021}{https://www.mscrog
   We enumerate classes of numbers from $1$ to $1000$ that have zeros and count the zeros that appear in each class:
   \begin{center}
     \begin{tabular}{c|c}
-      Class & Total Zeros \\
+      Class  & Total Zeros      \\
       \hline
-      $d0$ & $9$ \\
-      $d00$ & $9\cdot 2 = 18$ \\
-      $dd0$ & $9 \cdot 9 = 81$ \\
-      $d0d$ & $9 \cdot 9 = 81$ \\
+      $d0$   & $9$              \\
+      $d00$  & $9\cdot 2 = 18$  \\
+      $dd0$  & $9 \cdot 9 = 81$ \\
+      $d0d$  & $9 \cdot 9 = 81$ \\
       $1000$ & $3$
     \end{tabular}
   \end{center}
@@ -160,7 +160,7 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2021}{https://www.mscrog
       \end{axis}
     \end{tikzpicture}
   \end{center}
-  
+
   Clearly there is a maximum here, which can be found as follows:
   \gath{
     \deriv{A}{b} = \deriv{}{b} \frac{b \sqrt{p(p - 2b)}}{4} = \frac{\sqrt{p(p - 2b)}}{4} - \frac{b(-2p)}{8\sqrt{p(p - 2b)}} = \frac{p(p - 3b)}{4 \sqrt{p(p - 2b)}} = 0 \non
@@ -338,40 +338,40 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2021}{https://www.mscrog
 }
 
 \aproblem{13}{904}{\advent@xxi@xiii}{
-  First, suppose that we have two line segments of length $a$ and $b$ that intersect at their endpoints, meeting at an angle $\phi$.
-  Set the origin to the intersection point with the positive $x$-axis aligning to the segment of length $a$.
-  Then the endpoints of each line segment are clearly
-  \ali{
-    p_a &= (a, 0) &
-    p_b &= (b \cos{\phi}, b \sin{\phi})
-  }
-  Thus the distance between these endpoints is
-  \ali{
-    \abs{p_b - p_a} &= \abs{(b \cos{\phi} - a, b \sin{\phi} - 0)} = \sqrt{(b \cos{\phi} - a)^2 - (b \sin{\phi})^2} \non
-    &= \sqrt{b^2 \cos^2{\phi} - 2 a b \cos{\phi} + a^2 + b^2 \sin^2{\phi}} \non
-    &= \sqrt{b^2 - 2 a b \cos{\phi} + a^2}
-  }
-  Now, if we scale both of these line segments by a factor $\a > 0$, then this distance scales by the same amount:
-  \ali{
-    \abs{\a p_b - \a p_a} &= \abs{(\a b \cos{\phi} - \a a, \a b \sin{\phi} - \a \cdot 0)} = \sqrt{(\a b \cos{\phi} - \a a)^2 - (\a b \sin{\phi})^2} \non
-    &= \sqrt{\a^2 (b^2 \cos^2{\phi} - 2 a b \cos{\phi} + a^2) + \a^2 b^2 \sin^2{\phi}} \non
-    &= \a \sqrt{b^2 - 2 a b \cos{\phi} + a^2} \non
-    &= \a \abs{p_b - p_a} \,.
-  }
-  To digress momentarily, if we have a triangle with base $b$ and height $h$, clearly its area is $A_1 = bh/2$.
-  If the sides of the triangle all scale by $\a > 0$ then of course the base becomes $\a b$ and the height $\a h$ so that the area becomes
-  \gath{
-    A = \frac{1}{2}(\a b)(\a h) = \a^2 \frac{1}{2} b h = \a^2 A_1 \,,
-  }
-  that is the area scales by $\a^2$.
-  Now, for our problem, the center and diameter points of each circle both lie on the same line, and the three lines intersect at a common point.
-  Each side of the red triangle is the pairwise distance between the center points.
-  Each side of the blue triangle, on the other hand, is the pairwise distance between the diameter points.
-  Therefore, by what was shown above, since the diameter points are twice as far from the intersection point as the center points, the blue triangle is similar to the red triangle where the sides scale by a factor of two.
-  Thus the area scales by a factor of $2^2 = 4$ so that our answer is
-  \gath{
-    A_\mathrm{blue} = 4 A_\mathrm{red} = 4 \cdot 226 = 904 \,.
-  }
+First, suppose that we have two line segments of length $a$ and $b$ that intersect at their endpoints, meeting at an angle $\phi$.
+Set the origin to the intersection point with the positive $x$-axis aligning to the segment of length $a$.
+Then the endpoints of each line segment are clearly
+\ali{
+  p_a &= (a, 0) &
+  p_b &= (b \cos{\phi}, b \sin{\phi})
+}
+Thus the distance between these endpoints is
+\ali{
+\abs{p_b - p_a} &= \abs{(b \cos{\phi} - a, b \sin{\phi} - 0)} = \sqrt{(b \cos{\phi} - a)^2 - (b \sin{\phi})^2} \non
+&= \sqrt{b^2 \cos^2{\phi} - 2 a b \cos{\phi} + a^2 + b^2 \sin^2{\phi}} \non
+&= \sqrt{b^2 - 2 a b \cos{\phi} + a^2}
+}
+Now, if we scale both of these line segments by a factor $\a > 0$, then this distance scales by the same amount:
+\ali{
+\abs{\a p_b - \a p_a} &= \abs{(\a b \cos{\phi} - \a a, \a b \sin{\phi} - \a \cdot 0)} = \sqrt{(\a b \cos{\phi} - \a a)^2 - (\a b \sin{\phi})^2} \non
+&= \sqrt{\a^2 (b^2 \cos^2{\phi} - 2 a b \cos{\phi} + a^2) + \a^2 b^2 \sin^2{\phi}} \non
+&= \a \sqrt{b^2 - 2 a b \cos{\phi} + a^2} \non
+&= \a \abs{p_b - p_a} \,.
+}
+To digress momentarily, if we have a triangle with base $b$ and height $h$, clearly its area is $A_1 = bh/2$.
+If the sides of the triangle all scale by $\a > 0$ then of course the base becomes $\a b$ and the height $\a h$ so that the area becomes
+\gath{
+  A = \frac{1}{2}(\a b)(\a h) = \a^2 \frac{1}{2} b h = \a^2 A_1 \,,
+}
+that is the area scales by $\a^2$.
+Now, for our problem, the center and diameter points of each circle both lie on the same line, and the three lines intersect at a common point.
+Each side of the red triangle is the pairwise distance between the center points.
+Each side of the blue triangle, on the other hand, is the pairwise distance between the diameter points.
+Therefore, by what was shown above, since the diameter points are twice as far from the intersection point as the center points, the blue triangle is similar to the red triangle where the sides scale by a factor of two.
+Thus the area scales by a factor of $2^2 = 4$ so that our answer is
+\gath{
+  A_\mathrm{blue} = 4 A_\mathrm{red} = 4 \cdot 226 = 904 \,.
+}
 }
 
 \aproblem{14}{512}{\advent@xxi@xiv}{
@@ -403,39 +403,39 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2021}{https://www.mscrog
 }
 
 \aproblem{15}{361}{\advent@xxi@xv}{
-    First, clearly each of the numbers in the pyramid is $2k+1$ where the corresponding values of $k$ form the following pyramid:
+  First, clearly each of the numbers in the pyramid is $2k+1$ where the corresponding values of $k$ form the following pyramid:
 
-    \pyramid@advent@xxi@xvi{0}{1}{2}{3}{4}{5}
+  \pyramid@advent@xxi@xv{0}{1}{2}{3}{4}{5}
 
-    In \emph{this} pyramid, the first number $a_n$ in row $n$ satisfies $a_1 = 0$ along with the the recursive relationship
-    \gath{
-      a_n = a_{n-1} + n - 1 \,.
-    }
-    It was reasoned then that, in closed form,
-    \gath{
-      a_n = \frac{n(n-1)}{2} \,. \label{eqn:15:an}
-    }
-    This is trivial to prove by induction since $a_1 = (1 \cdot 0) /2 = 0$ and, if we assume \eqref{eqn:15:an} for $n$, we have
-    \gath{
-      a_{n+1} = a_n + (n+1) - 1 = \frac{n(n-1)}{2} + n = \frac{n^2 - n + 2n}{2} = \frac{n^2 + n}{2} = \frac{n(n+1)}{2} = \frac{(n+1)\squares{(n+1) - 1}}{2} \,.
-    }
-    Clearly the $n$th row of both pyramids has $n$ elements, with the difference between each element in the \emph{original} pyramid being $2$.
-    It then follows that the mean of the $n$th row of the original pyramid is simply
-    \ali{
-      \mu_n &= \frac{1}{n} \sum_{k=0}^{n-1} (2a_n + 1 + 2k) = \frac{1}{n}\squares{\sum_{k=0}^{n-1} (2a_n + 1) + 2 \sum_{k=0}^{n-1} k} \non
-      &= \frac{1}{n} \squares{n(2a_n + 1) + 2\frac{n(n-1)}{2}} = 2a_n + 1 (n - 1) \non
-      &= 2a_n + n = 2 \frac{n(n-1)}{2} + n = n^2 - n + n \non
-      &= n^2 \,,
-    }
-    where we have of course substituted in \eqref{eqn:15:an} along the way.
-    Therefore our answer is $\mu_{19} = 19^2 = 361$.
-    This was also verified with Python using brute force.
+  In \emph{this} pyramid, the first number $a_n$ in row $n$ satisfies $a_1 = 0$ along with the the recursive relationship
+  \gath{
+    a_n = a_{n-1} + n - 1 \,.
+  }
+  It was reasoned then that, in closed form,
+  \gath{
+    a_n = \frac{n(n-1)}{2} \,. \label{eqn:15:an}
+  }
+  This is trivial to prove by induction since $a_1 = (1 \cdot 0) /2 = 0$ and, if we assume \eqref{eqn:15:an} for $n$, we have
+  \gath{
+    a_{n+1} = a_n + (n+1) - 1 = \frac{n(n-1)}{2} + n = \frac{n^2 - n + 2n}{2} = \frac{n^2 + n}{2} = \frac{n(n+1)}{2} = \frac{(n+1)\squares{(n+1) - 1}}{2} \,.
+  }
+  Clearly the $n$th row of both pyramids has $n$ elements, with the difference between each element in the \emph{original} pyramid being $2$.
+  It then follows that the mean of the $n$th row of the original pyramid is simply
+  \ali{
+    \mu_n &= \frac{1}{n} \sum_{k=0}^{n-1} (2a_n + 1 + 2k) = \frac{1}{n}\squares{\sum_{k=0}^{n-1} (2a_n + 1) + 2 \sum_{k=0}^{n-1} k} \non
+    &= \frac{1}{n} \squares{n(2a_n + 1) + 2\frac{n(n-1)}{2}} = 2a_n + 1 (n - 1) \non
+    &= 2a_n + n = 2 \frac{n(n-1)}{2} + n = n^2 - n + n \non
+    &= n^2 \,,
+  }
+  where we have of course substituted in \eqref{eqn:15:an} along the way.
+  Therefore our answer is $\mu_{19} = 19^2 = 361$.
+  This was also verified with Python using brute force.
 }
 
 \aproblem{16}{222}{\advent@xxi@xvi}{
   Logic was used to deduce the solution:
-  
-  \grid@advent@xxi@xvi{2}{5}{2}{2}{1}{6}{2}{2}{1}
+
+  \crossnumstd{2}{5}{2}{2}{1}{6}{2}{2}{1}
 
   Python was used to verify this solution.
 }

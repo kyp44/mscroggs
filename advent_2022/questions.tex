@@ -81,34 +81,12 @@
   What is the largest possible determinant of a $2$ by $2$ matrix whose entries are all in the set $\braces{1, 2, 3, ..., 12}$?
 }
 
-\newcommand\grid@advent@xxii@xiii[9]{
-  \begin{center}
-    \begin{tikzpicture}[scale=2]
-      \gridbox{0}{2}{#1}
-      \gridbox{1}{2}{#2}
-      \gridbox{2}{2}{#3}
-      \gridbox{0}{1}{#4}
-      \gridbox{1}{1}{#5}
-      \gridbox{2}{1}{#6}
-      \gridbox{0}{0}{#7}
-      \gridbox{1}{0}{#8}
-      \gridbox{2}{0}{#9}
-
-      % Labels
-      \cwlab{0}{2}{1}
-      \cwlab{1}{2}{2}
-      \cwlab{2}{2}{3}
-      \cwlab{0}{1}{4}
-      \cwlab{0}{0}{5}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xxii@xiii{
   Today's number is given in this crossnumber.
   The across clues are given as normal, but the down clues are given in a random order: you must work out which clue goes with each down entry and solve the crossnumber to find today's number.
   No number in the completed grid starts with $0$.
   \begin{multicols}{2}
-    \grid@advent@xxii@xiii{}{}{}{}{}{}{}{}{}
+    \crossnumstd{}{}{}{}{}{}{}{}{}
 
     \vfill\null
     \columnbreak

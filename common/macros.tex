@@ -59,6 +59,30 @@
   This was verified using Python as well as shown to be unique with a brute force approach.
 }
 
+% Standard crossnumber grid
+\newcommand\crossnumstd[9]{
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \gridbox{0}{2}{#1}
+      \gridbox{1}{2}{#2}
+      \gridbox{2}{2}{#3}
+      \gridbox{0}{1}{#4}
+      \gridbox{1}{1}{#5}
+      \gridbox{2}{1}{#6}
+      \gridbox{0}{0}{#7}
+      \gridbox{1}{0}{#8}
+      \gridbox{2}{0}{#9}
+
+      % Labels
+      \cwlab{0}{2}{1}
+      \cwlab{1}{2}{2}
+      \cwlab{2}{2}{3}
+      \cwlab{0}{1}{4}
+      \cwlab{0}{0}{5}
+    \end{tikzpicture}
+  \end{center}
+}
+
 % Multiple numbers
 \newcommand\mn[1]{$#1$'s}
 

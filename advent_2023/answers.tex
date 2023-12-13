@@ -128,8 +128,17 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   \end{center}
   Therefore, of course, $N_2 = 2$.
 
-  Now, if we consider $N_n$, we have two cases, either the first $2 \times 1$ tile is oriented horizontally or vertically.
-  In the first case, the second must also be horizontal beneath, and their width is 2 so that the remaining part is an $(n-2) \times 2$ rectangle.
+  Now, if we consider $N_n$, we have two cases, either the first $2 \times 1$ tile is oriented vertically or horizontally.
+  In the first case, the width of the first tile is only~1 so that the remaining part is an $(n-1) \times 2$ rectangle as shown below:
+  \begin{center}
+    \begin{tikzpicture}[scale=\crscale]
+      \crvert{cry}{0}{0}
+      \filldraw[ultra thick,fill=crg] (1,0) rectangle (10,-2);
+      \node at (6, -1) {$(n-1) \times 2$};
+    \end{tikzpicture}
+  \end{center}
+  Therefore, the number of tilings in this case is simply $N_{n-1}$.
+  In the second case in which the first tile is horizontal, the second tile must also be horizontal beneath, and their width is~2 so that the remaining part is an $(n-2) \times 2$ rectangle.
   This is illustrated below:
   \begin{center}
     \begin{tikzpicture}[scale=\crscale]
@@ -140,15 +149,6 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
     \end{tikzpicture}
   \end{center}
   Thus, the total number of tilings in this case is $N_{n-2}$.
-  The case in which the first $2 \times 1$ tile is oriented vertically is shown below:
-  \begin{center}
-    \begin{tikzpicture}[scale=\crscale]
-      \crvert{cry}{0}{0}
-      \filldraw[ultra thick,fill=crg] (1,0) rectangle (10,-2);
-      \node at (6, -1) {$(n-1) \times 2$};
-    \end{tikzpicture}
-  \end{center}
-  Therefore, the number of tilings in this case is clearly $N_{n-1}$.
   As these cases are exhaustive, the total number of tilings is
   \gath{
     N_n = N_{k-1} + N_{k-2},
@@ -173,7 +173,35 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
       12  & 233   \\
     \end{tabular}
   \end{center}
-  so that our answer is $N_{12} = 233$, which was verified by implementing this series in Python.
+  so that our answer is $N_{12} = 233$, which was verified by implementing this sequence in Python.
+}
+
+\aproblem{7}{TODO}{\advent@xxiii@vii}{
+  TODO
+}
+
+\aproblem{8}{TODO}{\advent@xxiii@viii}{
+  TODO
+}
+
+\aproblem{9}{TODO}{\advent@xxiii@ix}{
+  TODO
+}
+
+\aproblem{10}{TODO}{\advent@xxiii@x}{
+  TODO
+}
+
+\aproblem{11}{TODO}{\advent@xxiii@xi}{
+  \boxans{\gridsol@advent@xxiii@xi}
+}
+
+\aproblem{12}{TODO}{\advent@xxiii@xii}{
+  TODO
+}
+
+\aproblem{13}{TODO}{\advent@xxiii@xiii}{
+  TODO
 }
 
 \end{document}

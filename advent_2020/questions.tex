@@ -30,19 +30,19 @@
 }
 
 \def\advent@xx@vi{
-  There are 12 ways of placing 2 tokens on a $2 \times 4$ grid so that no two tokens are next to each other horizontally, vertically or diagonally: 
+  There are 12 ways of placing 2 tokens on a $2 \times 4$ grid so that no two tokens are next to each other horizontally, vertically or diagonally:
   \begin{center}
     \begin{tikzpicture}
       % Draw all the grids
       \foreach \gi in {0,1}{
-        \foreach \gj in {0,...,5}{
-          \foreach \i in {0,1}{
-            \foreach \j in {0,...,3}{
-              \gridbox{5*\gj + \j}{3*\gi + \i}{}
+          \foreach \gj in {0,...,5}{
+              \foreach \i in {0,1}{
+                  \foreach \j in {0,...,3}{
+                      \gridbox{5*\gj + \j}{3*\gi + \i}{}
+                    }
+                }
             }
-          }
         }
-      }
 
       % Place token circles
       \gridcirc{0}{4}
@@ -86,20 +86,20 @@
       \newcounter{dn}
       \newcounter{row}
       \foreach \gi in {0,...,4}{
-        \foreach \gj in {\gi,...,4}{
-          \domino{3*\value{dn}}{-2*\value{row}}{\gi}{\gj}
-          \stepcounter{dn}
-          \ifnum\value{dn} = 9
-          \setcounter{dn}{0}
-          \stepcounter{row}
-          \fi
+          \foreach \gj in {\gi,...,4}{
+              \domino{3*\value{dn}}{-2*\value{row}}{\gi}{\gj}
+              \stepcounter{dn}
+              \ifnum\value{dn} = 9
+              \setcounter{dn}{0}
+              \stepcounter{row}
+              \fi
+            }
         }
-      }
     \end{tikzpicture}
   \end{center}
 
   The sum of all the numbers on all these dominoes is 60.
-  
+
   Today's number is the sum of all the numbers on all the dominoes that can be made using the numbers 5 to 10 (inclusive).
 }
 
@@ -177,7 +177,7 @@
 
 \def\advent@xx@xiv{
   The numbers 33, 404 and 311 contain duplicate digits. The numbers 120, 15 and 312 do not.
-  
+
   How many numbers between 10 and 999 (inclusive) contain no duplicate digits?
 }
 
@@ -190,70 +190,49 @@
   The following sums are correct:
   \begin{center}
     \begin{multicols}{2}
-  \begin{tabular}{cccccc}
-    & & X & M & A & S \\
-    $+$ & M & A & T & H & S \\
-    \hline
-    & G & R & E & A & T
-  \end{tabular}
+      \begin{tabular}{cccccc}
+            &   & X & M & A & S \\
+        $+$ & M & A & T & H & S \\
+        \hline
+            & G & R & E & A & T
+      \end{tabular}
 
-  \begin{tabular}{ccccc}
-    & X & M & A & S \\
-    $+$ & M & A & T & H \\
-    \hline
-    & S & U & R & E
-  \end{tabular}
-  \end{multicols}
+      \begin{tabular}{ccccc}
+            & X & M & A & S \\
+        $+$ & M & A & T & H \\
+        \hline
+            & S & U & R & E
+      \end{tabular}
+    \end{multicols}
   \end{center}
-  
+
   Today's number is SAM. To help you get started, the letter T represents 4.
 }
 
-\newcommand\grid@advent@xx@xvi[9]{
-  \begin{center}
-    \begin{tikzpicture}[scale=2]
-      \gridbox{0}{2}{#1}
-      \gridbox{1}{2}{#2}
-      \gridbox{2}{2}{#3}
-      \gridbox{0}{1}{#4}
-      \gridbox{1}{1}{#5}
-      \gridbox{2}{1}{#6}
-      \gridbox{0}{0}{#7}
-      \gridbox{1}{0}{#8}
-      \gridbox{2}{0}{#9}      
-      
-      % Labels
-      \cwlab{0}{2}{1}
-      \cwlab{1}{2}{2}
-      \cwlab{2}{2}{3}
-      \cwlab{0}{1}{4}
-      \cwlab{0}{0}{5}
-    \end{tikzpicture}
-  \end{center}
-}
 \def\advent@xx@xvi{
-  Solve the crossnumber to find today's number. No number starts with 0.
+  Solve the crossnumber to find today's number.
+  No number starts with 0.
   \begin{multicols}{2}
-    \grid@advent@xx@xvi{}{}{}{}{}{}{}{}{}
+    \crossnumstd{}{}{}{}{}{}{}{}{}
 
     \vfill\null
     \columnbreak
 
     \begin{center}
       \textbf{Across}
-      
+
       \begin{tabular}{clc}
-        \textbf{1} & 3 more than a multiple of 110. & (\textbf{3}) \\
-        \textbf{4} & Today's number. & (\textbf{3}) \\
+        \textbf{1} & 3 more than a multiple of 110.  & (\textbf{3}) \\
+        \textbf{4} & Today's number.                 & (\textbf{3}) \\
         \textbf{5} & 30 more than a multiple of 101. & (\textbf{3})
       \end{tabular}
 
       \textbf{Down}
-      
+
       \begin{tabular}{clc}
         \textbf{1} & 37 times the sum of 1A's digits. & (\textbf{3}) \\
-        \textbf{2} & 3 times a factor of 5A. & (\textbf{3}) \\
-        \textbf{3} & 3 less than a multiple of 112. & (\textbf{3})
+        \textbf{2} & 3 times a factor of 5A.          & (\textbf{3}) \\
+        \textbf{3} & 3 less than a multiple of 112.   & (\textbf{3})
       \end{tabular}
     \end{center}
   \end{multicols}
@@ -262,7 +241,7 @@
 \def\advent@xx@xvii{
   Put the digits 1 to 9 (using each digit exactly once) in the boxes so that the sums and product are correct.
   Today's number is the product of the numbers in the red boxes.
-  
+
   \grid@advent@xx@xvii{}{}{}{}{}{}{}{}{}
 }
 
@@ -272,7 +251,7 @@
     x^3 + y^3 + z^3 + 3x^2y + 3x^2z + 3xy^2 + 3y^2z + 3xz^2 + 3yz^2 + 6xyz \, .
   }
   This has 10 terms.
-  
+
   Today's number is the number of terms in the expansion of $(x+y+z)^{26}$.
 }
 
@@ -331,22 +310,22 @@
 
 \def\advent@xx@xxiii{
   198 is the smallest number that is equal to 11 times the sum of its digits.
-  
+
   Today's number is the smallest number that is equal to 48 times the sum of its digits.
 }
 
 \def\advent@xx@xxiv{
   There are six ways to put two tokens in a 3 by 3 grid so that the diagonal from the top left to the bottom right is a line of symmetry:
-    \begin{center}
+  \begin{center}
     \begin{tikzpicture}
       % Draw all the grids
       \foreach \gj in {0,...,5}{
-        \foreach \i in {0,...,2}{
-          \foreach \j in {0,...,2}{
-            \gridbox{4*\gj + \j}{\i}{}
-          }
+          \foreach \i in {0,...,2}{
+              \foreach \j in {0,...,2}{
+                  \gridbox{4*\gj + \j}{\i}{}
+                }
+            }
         }
-      }
 
       % Place token circles
       \gridcirc{0}{2}
@@ -368,7 +347,7 @@
 }
 
 \def\card@xx@i{
-    How many odd numbers can you make (by writing digits next to each other, so 13, 1253, and 457 all count) using the digits 1, 2, 3, 4, 5, and 7 each at most once (and no other digits)?
+  How many odd numbers can you make (by writing digits next to each other, so 13, 1253, and 457 all count) using the digits 1, 2, 3, 4, 5, and 7 each at most once (and no other digits)?
 }
 
 \def\card@xx@ii{

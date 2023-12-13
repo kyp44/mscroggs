@@ -93,3 +93,85 @@
 
   How many ways are there to tile a $12 \times 2$ rectangle with $2 \times 1$ pieces?
 }
+
+\def\advent@xxiii@vii{
+  There are 8 sets (including the empty set) that contain numbers from $1$ to $4$ that don't include any consecutive integers:
+  \gath{
+    \braces{}, \braces{1}, \braces{2}, \braces{3}, \braces{4}, \braces{1,3}, \braces{1,4}, \braces{2, 4}
+  }
+  How many sets (including the empty set) are there that contain numbers from $1$ to $14$ that don't include any consecutive integers?
+}
+
+\def\advent@xxiii@viii{
+  Noel writes the numbers $1$ to $17$ in a row.
+  Underneath, he writes the same list without the first and last numbers, then continues this until he writes a row containing just one number:
+  \begin{center}
+    \begin{tabular}{ccccccccccccccccc}
+      1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 & 17 \\
+        & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 & 16 &    \\
+        &   & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 & 13 & 14 & 15 &    &    \\
+      \multicolumn{17}{c}{etc.}
+    \end{tabular}
+  \end{center}
+  What is the sum of all the numbers that Noel has written?
+}
+
+\def\advent@xxiii@ix{
+  The diagram below shows a rectangle.
+  Two of its sides have been colored blue.
+  A red line has been drawn from two of its vertices to the midpoint of a side.
+  \begin{center}
+    TODO DIAGRAM!
+  \end{center}
+  The total length of the blue lines is $50$~cm.
+  The total length of the red lines is also $50$~cm.
+  What is the area of the rectangle (in $\mathrm{cm^2}$)?
+}
+
+\def\advent@xxiii@x{
+  How many integers are there between $100$ and $1000$ whose digits add up to an even number?
+}
+
+\def\advent@xxiii@xi{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3  \times 2$ is $14$, not $10$.
+  Today's number is the product of the numbers in the red boxes.
+  \grid@advent@xxiii@xi{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xxiii@xii{
+  What is the smallest value of $n$ such that
+  \gath{
+    \frac{500! \times 499! \times 498! \times \cdots \times 1!}{n!}
+  }
+  is a square number?
+}
+
+\def\advent@xxiii@xiii{
+  Today's number is given in this crossnumber. No number in the completed grid starts with $0$.
+  \begin{multicols}{2}
+    \crossnumstd{}{}{}{}{}{}{}{}{}
+
+    \vfill\null
+    \columnbreak
+
+    \begin{center}
+      \textbf{Across}
+
+      \begin{tabular}{clc}
+        \textbf{1} & Today's number.                                      & (\textbf{3}) \\
+        \textbf{4} & A multiple of $5$ times the sum of the digits of 2D. & (\textbf{3}) \\
+        \textbf{5} & Greater than two times 3D.                           & (\textbf{3})
+      \end{tabular}
+
+      \textbf{Down}
+
+      \begin{tabular}{clc}
+        \textbf{1} & The sum of 5A and 3D.                   & (\textbf{3}) \\
+        \textbf{2} & Nine times the sum of the digits of 4A. & (\textbf{3}) \\
+        \textbf{3} & Greater than 2D.                        & (\textbf{3})
+      \end{tabular}
+    \end{center}
+  \end{multicols}
+}
