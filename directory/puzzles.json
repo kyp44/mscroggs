@@ -1281,6 +1281,26 @@
 				"tags": [
 					"geom"
 				]
+			},
+			{
+				"number": 10,
+				"tags": [
+					"dig",
+					"comb"
+				]
+			},
+			{
+				"number": 11,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 12,
+				"tags": [
+					"fact",
+					"num"
+				]
 			}
 		]
 	}
