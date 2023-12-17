@@ -368,7 +368,95 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   TODO
 }
 
-\aproblem{13}{TODO}{\advent@xxiii@xiii}{
+\aproblem{13}{812}{\advent@xxiii@xiii}{
+  \boxans{\crossnumstd{8}{1}{2}{7}{6}{5}{6}{2}{3}}
+}
+
+\aproblem{14}{399}{\advent@xxiii@xiv}{
+  First, define
+  \ali{
+    g(x) &= -x^3 + 2x^2 + 6x - 9 \\
+    h(x) &= x^2 - 2x + 3
+  }
+  So that $g(x) \leq f(x) \leq h(x)$ when $0 \leq x \leq 3$.
+  Next, let us have a look at $g$ and $h$ in this range:
+  \newcommand\plot@xiv[1]{
+    \begin{center}
+      \begin{tikzpicture}[scale=1.8]
+        \begin{axis}[
+            axis lines=middle,
+            xmin=0, xmax=3,
+            ymin=-9, ymax=6,
+            samples=100,
+          ]
+          \addplot[
+            blue,
+            thick,
+            domain=0:3,
+          ]
+          (x, x^2 - 2*x + 3);
+          \node [above] at (axis cs:1,2) {$h$};
+          \addplot[
+            red,
+            thick,
+            domain=0:3,
+          ]
+          (x, -x^3 + 2*x^2 + 6*x - 9);
+          \node [below right] at (axis cs:1,-2) {$g$};
+          #1
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
+  }
+  \plot@xiv{}
+
+  It appears as though these intersect at around $x = 2$.
+  Indeed, plugging in, we find that $g(2) = 3 = h(2)$.
+  From this, it is immediately clear that it must be that
+  \gath{
+    f(2) = 3 \label{eqn:14:f2}
+  }
+  as well since $0 \leq 2 \leq 3$ so that $3 = g(2) \leq f(2) \leq h(2) = 3$.
+  Since $g$ and $h$ touch at $(2, 3)$, we would expect their slopes here to be equal such that they only touch at this single point.
+  Indeed, we clearly have
+  \ali{
+    g'(x) &= -3x^2 + 4x + 6 \\
+    h'(x) &= 2x - 2
+  }
+  so that $g'(2) = 2 = h'(2)$.
+  It then follows that of course $f$ must have the same slope here as well:
+  \gath{
+    f'(2) = 2.
+  }
+  Since $f(x) = ax + b$, it follows that $f'(x) = a$ so that
+  \gath{
+    f'(2) = a = 2.
+  }
+  We can then use \eqref{eqn:14:f2} to find $b$:
+  \gath{
+    f(2) = 2 \cdot 2 + b = 3 \non
+    4 + b = 3 \non
+    b = -1.
+  }
+  Therefore, we have $f(x) = 2x - 1$.
+  Plotting this along with $g$ and $h$ illustrates that the inequality holds:
+  \plot@xiv{
+    \addplot[
+      black,
+      thick,
+      domain=0:3,
+    ]
+    (x, 2*x - 1);
+    \node [above left] at (axis cs:0.5,0) {$f$};
+  }
+  Hence, our answer is $f(200) = 2 \cdot 200 - 1 = 399$.
+}
+
+\aproblem{15}{TODO}{\advent@xxiii@xv}{
+  TODO
+}
+
+\aproblem{16}{TODO}{\advent@xxiii@xvi}{
   TODO
 }
 

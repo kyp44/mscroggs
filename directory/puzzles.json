@@ -1301,6 +1301,18 @@
 					"fact",
 					"num"
 				]
+			},
+			{
+				"number": 13,
+				"tags": [
+					"cross"
+				]
+			},
+			{
+				"number": 14,
+				"tags": [
+					"calc"
+				]
 			}
 		]
 	}

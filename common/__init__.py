@@ -72,10 +72,6 @@ class GenGrid:
         self.genchecks = genchecks
 
     def check(self, sol):
-        # Verify that solution uses each digit exactly once
-        if len(set(sol.flatten())) != 9 or np.min(sol) != 1 or np.max(sol) != 9:
-            return False
-
         # Check each row
         for row, check in zip(sol, self.rowchecks):
             if not check(row):
@@ -93,10 +89,10 @@ class GenGrid:
 
         return True
 
-    def brute(self):
+    def brute(self, grids=it.product(range(9+1), repeat=9)):
         # Try every possible gride configuration
         sols = []
-        for nums in it.permutations(range(1, 9+1), 9):
+        for nums in grids:
             sol = np.array(nums).reshape(3, 3)
             if self.check(sol):
                 sols.append(sol)
@@ -159,6 +155,16 @@ class EquGrid(GenGrid):
 
         super().__init__([lambda sol, r=r: checkf(self.rows[r], sol) for r in range(
             3)], [lambda sol, c=c: checkf(self.cols[c], sol) for c in range(3)])
+
+    def check(self, sol):
+        # Verify that solution uses each digit exactly once
+        if len(set(sol.flatten())) != 9 or np.min(sol) != 1 or np.max(sol) != 9:
+            return False
+
+        return super().check(sol)
+
+    def brute(self):
+        return super().brute(grids=it.permutations(range(1, 9+1), 9))
 
     def highlighted_sol(self, sol):
         """
