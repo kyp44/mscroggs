@@ -8,6 +8,7 @@ from functools import reduce
 from fractions import Fraction as frc
 from enum import Enum, auto
 import roman
+from multiprocessing.pool import ThreadPool
 
 
 def powerset(iterable):
@@ -44,7 +45,7 @@ def digits(n, nd=None):
 
 def number(ds):
     """
-    Converts a digit arrray into an integer number.
+    Converts a digit array into an integer number.
 
     The digits are assumed to be in order from least
     significant to most.
@@ -52,26 +53,52 @@ def number(ds):
     return sum([d*10**e for (e, d) in enumerate(ds)])
 
 
+def power_number(n, p):
+    """
+    Returns whether is another number to a certain power.
+    """
+    for k in it.count():
+        m = k**p
+        if m == n:
+            return True
+        elif m > n:
+            return False
+
+
+def square_number(n): return power_number(n, 2)
+def cubic_number(n): return power_number(n, 3)
+
+
 class GenGrid:
     """
-    Represents and can solve a general digit
+    Represents and can solve a general 3x3
     grid puzzle.
     """
 
-    def __init__(self, rowchecks, colchecks, genchecks=[]):
+    def __init__(self, rowchecks, colchecks, genchecks=[], digits=True):
         """
-        Each argument should be an iterable of three
+        The first three argument should be an iterable of three
         functions, that checks the corresponding rows
         and columns. Each of these functions should
         take a 3-element iterable for the row/col
         and should return a boolean, i.e. whether or not
         the row/col condition is satisfied.
+
+        The `digits` argument is whether or not each digit must
+        be used exactly once in the grid (True) or whether
+        duplicate digits are allows (False).
         """
         self.rowchecks = rowchecks
         self.colchecks = colchecks
         self.genchecks = genchecks
+        self.digits = digits
 
     def check(self, sol):
+        # Verify that solution uses each digit exactly once
+        if self.digits:
+            if len(set(sol.flatten())) != 9 or np.min(sol) != 1 or np.max(sol) != 9:
+                return False
+
         # Check each row
         for row, check in zip(sol, self.rowchecks):
             if not check(row):
@@ -89,15 +116,23 @@ class GenGrid:
 
         return True
 
-    def brute(self, grids=it.product(range(9+1), repeat=9)):
-        # Try every possible gride configuration
-        sols = []
-        for nums in grids:
+    def brute(self):
+        nums = it.permutations(
+            range(1, 9+1), 9) if self.digits else it.product(range(9+1), repeat=9)
+
+        def check_grid(nums):
+            """
+            Returns the solution or None if it fails the check.
+            """
             sol = np.array(nums).reshape(3, 3)
             if self.check(sol):
-                sols.append(sol)
+                return sol
+            else:
+                return None
 
-        return sols
+        # Try every possible grid configuration
+        with ThreadPool() as pool:
+            return list(filter(lambda s: s is not None, pool.imap_unordered(check_grid, nums, chunksize=10000)))
 
 
 class EquGrid(GenGrid):
@@ -156,20 +191,10 @@ class EquGrid(GenGrid):
         super().__init__([lambda sol, r=r: checkf(self.rows[r], sol) for r in range(
             3)], [lambda sol, c=c: checkf(self.cols[c], sol) for c in range(3)])
 
-    def check(self, sol):
-        # Verify that solution uses each digit exactly once
-        if len(set(sol.flatten())) != 9 or np.min(sol) != 1 or np.max(sol) != 9:
-            return False
-
-        return super().check(sol)
-
-    def brute(self):
-        return super().brute(grids=it.permutations(range(1, 9+1), 9))
-
     def highlighted_sol(self, sol):
         """
-        Returns list of highlightes cells in a solution.
-        Theye are ordered from left to right and top to
+        Returns list of highlighted cells in a solution.
+        They are ordered from left to right and top to
         bottom.
         """
         return [sol[c] for c in self.highlighted]
@@ -402,10 +427,10 @@ def box_solutions(year, day, sol, ansf, brute):
 def anumber(a): return number(a[::-1])
 
 
-def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute, genchecks=[]):
+def box_gen_solutions(rowchecks, colchecks, sol, ansf, brute, genchecks=[], digits=True):
     print("Solution:")
     print(sol)
-    grid = GenGrid(rowchecks, colchecks, genchecks)
+    grid = GenGrid(rowchecks, colchecks, genchecks, digits)
     print("Solution code:", "".join(
         ["{" + str(v) + "}" for v in sol.flatten()]))
     print("Solution verified:", grid.check(sol))

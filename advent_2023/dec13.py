@@ -43,4 +43,5 @@ box_gen_solutions(
         clue_2d,
         clue_3d,
     ],
+    digits=False,
 )
