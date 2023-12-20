@@ -6,9 +6,12 @@ import argparse
 import os
 from functools import reduce
 from fractions import Fraction as frc
+from math import factorial
 from enum import Enum, auto
 import roman
-from multiprocessing.pool import ThreadPool
+from tqdm import tqdm
+from multiset import Multiset
+from sympy import factorint
 
 
 def powerset(iterable):
@@ -117,22 +120,30 @@ class GenGrid:
         return True
 
     def brute(self):
-        nums = it.permutations(
-            range(1, 9+1), 9) if self.digits else it.product(range(9+1), repeat=9)
+        if self.digits:
+            numss = it.permutations(range(1, 9+1), 9)
+            numss_size = factorial(9)
+        else:
+            numss = it.product(range(9+1), repeat=9)
+            numss_size = 10**9
 
-        def check_grid(nums):
-            """
-            Returns the solution or None if it fails the check.
-            """
+        # Try every possible grid configuration.
+        # Tried to do this in parallel with a thread pool, but this is extremely broken
+        # in Python on Linux.
+        sols = []
+        for nums in tqdm(numss, total=numss_size, leave=False):
             sol = np.array(nums).reshape(3, 3)
             if self.check(sol):
-                return sol
-            else:
-                return None
+                sols.append(sol)
 
-        # Try every possible grid configuration
-        with ThreadPool() as pool:
-            return list(filter(lambda s: s is not None, pool.imap_unordered(check_grid, nums, chunksize=10000)))
+        return sols
+
+
+def check_grid(args):
+    """
+    Returns the solution or None if it fails the check.
+    """
+    gen_grid, nums = args
 
 
 class EquGrid(GenGrid):
@@ -323,7 +334,7 @@ def pans(a):
 
 def product(ns):
     """
-    Product (the number version doesn't work so well)
+    Product (the numpy version doesn't work so well)
     """
     p = 1
     for n in ns:
@@ -582,3 +593,77 @@ def digital_sums(s, num_digs=None, analytical=None):
                 nums.append(n)
 
     pans(len(nums))
+
+
+class NotDivisibleError(Exception):
+    pass
+
+
+class PrimeFactors:
+    """
+    Class that represents a positive integer as a multiset of its
+    unique prime factorization. Operations on these use these
+    multisets instead of the integers themselves. This is useful
+    for working with extremely large integers where actual integer
+    operations would be slow and cumbersome.
+    """
+
+    def __init__(self, arg):
+        if type(arg) is int:
+            self.multiset = Multiset(factorint(arg))
+        elif type(arg) is Multiset:
+            self.multiset = arg
+        elif type(arg) is PrimeFactors:
+            self.multiset = arg.multiset
+        else:
+            raise TypeError()
+
+    def __int__(self):
+        return product(list(self.multiset))
+
+    def __mul__(self, other):
+        return PrimeFactors(self.multiset + PrimeFactors(other).multiset)
+
+    __rmul__ = __mul__
+
+    def ismultiple(self, other):
+        """
+        Whether this is a multiple of another number.
+        """
+        return self.multiset.issuperset(PrimeFactors(other).multiset)
+
+    def isdivisor(self, other):
+        """
+        Whether this is a divisor of another number.
+        """
+        other.multiple(self)
+
+    def __truediv__(self, other):
+        if self.ismultiple(other):
+            return PrimeFactors(self.multiset - PrimeFactors(other).multiset)
+        else:
+            raise NotDivisibleError
+
+    def __pow__(self, other):
+        return PrimeFactors(int(other) * self.multiset)
+
+    def issquare(self):
+        """
+        Whether this is a square number.
+        """
+        # Verify that every exponent is even
+        for x in set(self.multiset):
+            if self.multiset[x] % 2 == 1:
+                return False
+
+        return True
+
+    def factorial(self):
+        p = 1
+        for k in range(2, int(self)+1):
+            p *= PrimeFactors(k)
+
+        return p
+
+    def __repr__(self):
+        return repr(self.multiset)

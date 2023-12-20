@@ -214,3 +214,91 @@
   Some numbers (for example $4$) cannot be written as the sum of two or more consecutive positive integers.
   What is the smallest three-digit number that cannot be written as the sum of two or more consecutive positive integers?
 }
+
+\def\advent@xxiii@xvii{
+  If you expand $(a + b + c)^2$, you get $a^2 + b^2 + c^2 + 2ab + 2ac + 2bc$.
+  This has $6$ terms.
+
+  How many terms does the expansion of $(a + b + c + d + e + f)^5$ have?
+}
+
+\def\advent@xxiii@xviii{
+  Some numbers can be written as the \textbf{product} of two or more consecutive integers, for example:
+  \gaths{
+    6 = 2 \times 3 \\
+    840 = 4 \times 5 \times 6 \times 7
+  }
+  What is the smallest three-digit number that can be written as the product of two or more consecutive integers?
+}
+
+\def\advent@xxiii@xix{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the product of the numbers in the red boxes.
+  \grid@advent@xxiii@xix{}{}{}{}{}{}{}{}{}
+}
+
+\def\xx@cuph{2.5}
+\def\xx@cupw{2.1}
+\def\xx@cupsp{3.2}
+\def\xx@cupnxt{9}
+\def\xx@cupnxtr{5}
+\def\xx@ballr{0.6}
+\def\xx@ballrp{0.7}
+\def\xx@ball@l{-\xx@cupw/2+\xx@ballrp}
+\def\xx@ball@r{\xx@cupw/2-\xx@ballrp}
+\def\xx@ballup{2.6*\xx@ballrp}
+\newcommand\xx@cup[3]{
+  \draw[black, ultra thick] (#1-\xx@cupw/2, #2+\xx@cuph) -- (#1-\xx@cupw/2, #2) -- (#1+\xx@cupw/2, #2) -- (#1+\xx@cupw/2, #2+\xx@cuph);
+  \node[below] at (#1, #2) {#3};
+}
+\newcommand\xx@ball[3]{
+  \draw[black, ultra thick](#1,#2) circle (\xx@ballr);
+  \node at (#1, #2) {#3};
+}
+\def\advent@xxiii@xx{
+  There are $6$ different ways that three balls labelled $1$ to $3$ can be put into two boxes labelled A and B so that no box is empty:
+  \begin{center}
+    \begin{tikzpicture}
+      % First row
+      \xx@cup{0}{\xx@cupnxtr}{A}
+      \xx@ball{0}{\xx@cupnxtr+\xx@ballrp}{1}
+      \xx@cup{\xx@cupsp}{\xx@cupnxtr}{B}
+      \xx@ball{\xx@cupsp+\xx@ball@r}{\xx@cupnxtr+\xx@ballrp}{2}
+      \xx@ball{\xx@cupsp+\xx@ball@l}{\xx@cupnxtr+\xx@ballup}{3}
+
+      \xx@cup{\xx@cupnxt}{\xx@cupnxtr}{A}
+      \xx@ball{\xx@cupnxt}{\xx@cupnxtr+\xx@ballrp}{2}
+      \xx@cup{\xx@cupnxt+\xx@cupsp}{\xx@cupnxtr}{B}
+      \xx@ball{\xx@cupnxt+\xx@cupsp+\xx@ball@l}{\xx@cupnxtr+\xx@ballrp}{1}
+      \xx@ball{\xx@cupnxt+\xx@cupsp+\xx@ball@r}{\xx@cupnxtr+\xx@ballup}{3}
+
+      \xx@cup{2*\xx@cupnxt}{\xx@cupnxtr}{A}
+      \xx@ball{2*\xx@cupnxt}{\xx@cupnxtr+\xx@ballrp}{3}
+      \xx@cup{2*\xx@cupnxt + \xx@cupsp}{\xx@cupnxtr}{B}
+      \xx@ball{2*\xx@cupnxt+\xx@cupsp+\xx@ball@l}{\xx@cupnxtr+\xx@ballrp}{2}
+      \xx@ball{2*\xx@cupnxt+\xx@cupsp+\xx@ball@r}{\xx@cupnxtr+\xx@ballup}{1}
+
+      % Second row
+      \xx@cup{0}{0}{A}
+      \xx@ball{\xx@ball@r}{\xx@ballrp}{1}
+      \xx@ball{\xx@ball@l}{\xx@ballup}{3}
+      \xx@cup{\xx@cupsp}{0}{B}
+      \xx@ball{\xx@cupsp}{\xx@ballrp}{2}
+
+      \xx@cup{\xx@cupnxt}{0}{A}
+      \xx@ball{\xx@cupnxt+\xx@ball@l}{\xx@ballrp}{3}
+      \xx@ball{\xx@cupnxt+\xx@ball@r}{\xx@ballup}{2}
+      \xx@cup{\xx@cupnxt+\xx@cupsp}{0}{B}
+      \xx@ball{\xx@cupnxt+\xx@cupsp}{\xx@ballrp}{1}
+
+      \xx@cup{2*\xx@cupnxt}{0}{A}
+      \xx@ball{2*\xx@cupnxt+\xx@ball@r}{\xx@ballrp}{1}
+      \xx@ball{2*\xx@cupnxt+\xx@ball@l}{\xx@ballup}{2}
+      \xx@cup{2*\xx@cupnxt + \xx@cupsp}{0}{B}
+      \xx@ball{2*\xx@cupnxt + \xx@cupsp}{\xx@ballrp}{3}
+    \end{tikzpicture}
+  \end{center}
+  How many ways can five balls labelled $1$ to $5$ be put into four boxes labelled A to D so that no box is empty?
+}

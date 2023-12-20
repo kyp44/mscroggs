@@ -1299,7 +1299,8 @@
 				"number": 12,
 				"tags": [
 					"fact",
-					"num"
+					"num",
+					"misc"
 				]
 			},
 			{
@@ -1319,6 +1320,38 @@
 				"tags": [
 					"dig",
 					"mod"
+				]
+			},
+			{
+				"number": 16,
+				"tags": [
+					"cons",
+					"sum"
+				]
+			},
+			{
+				"number": 17,
+				"tags": [
+					"comb"
+				]
+			},
+			{
+				"number": 18,
+				"tags": [
+					"cons",
+					"num"
+				]
+			},
+			{
+				"number": 19,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 20,
+				"tags": [
+					"comb"
 				]
 			}
 		]

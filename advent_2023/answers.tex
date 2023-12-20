@@ -270,7 +270,7 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
 
   A short digression before we proceed: for non-negative integers $a \leq b$, we have that
   \gath{
-    \sum_{i=a}^b i = \sum_{i=1}^b i - \sum_{i=1}^{a-1} i = \frac{b(b+1)}{2} - \frac{(a-1)a}{2} = \frac{b(b+1) - a(a-1)}{2}.
+    \sum_{i=a}^b i = \sum_{i=1}^b i - \sum_{i=1}^{a-1} i = \frac{b(b+1)}{2} - \frac{(a-1)a}{2} = \frac{b(b+1) - a(a-1)}{2}. \label{eqn:08:sumcons}
   }
   This still holds if $a = 0$ if we adopt the usual convention that $\sum_{i=a}^b f(i) = 0$ whenever $b < a$.
   So we then have that the sum of the numbers in row $r$ is
@@ -364,8 +364,30 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   \boxans{\gridsol@advent@xxiii@xi}
 }
 
-\aproblem{12}{TODO}{\advent@xxiii@xii}{
-  TODO
+\aproblem{12}{250}{\advent@xxiii@xii}{
+  This was solved using a Python program that deals with these extremely large numbers in terms of their prime factors.
+  The prime factors and their exponents are represented as a multiset in which the distinct prime factors are the members and their exponents are the multiplicities.
+  If $a$ is a positive integer, let $M(a)$ denote its prime factor multiset.
+  The integer operations and properties needed to solve this are equivalent to the following for their multiset representations.
+  \begin{center}
+    \begin{tabular}{cc}
+      Integer operation/property & Multiset operation/property                  \\
+      \hline
+      $a \cdot b$                & $M(a) \cup M(b)$                             \\
+      $a$ divides $b$            & $M(a) \ss M(b)$                              \\
+      $a / b$                    & $M(a) - M(b)$ (if $b$ divides $a$)           \\
+      $a^b$                      & Multiply all multiplicities of $M(a)$ by $b$ \\
+      $a$ is a square number     & All members of $M(a)$ have even multiplicity \\
+    \end{tabular}
+  \end{center}
+  The program then simply does the following:
+  \begin{enumerate}
+    \item Calculate the prime factor multiset $M(a)$ for $a = 500! \times 499! \times 498! \times \cdots \times 1!$.
+    \item For increasing $n$ starting at $n = 100$, calculate $M(n!)$.
+    \item If $n$ divides $a$, then calculate $b = a / b$, all using $M(a)$ and $M(n!)$.
+    \item If $b$ was calculated and found to be a square number (by testing $M(b)$), then $n$ is printed and the program exits.
+    \item Otherwise, jump back to step~2 for the next $n$.
+  \end{enumerate}
 }
 
 \aproblem{13}{812}{\advent@xxiii@xiii}{
@@ -502,7 +524,108 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   This answer was verified with a brute force Python program.
 }
 
-\aproblem{16}{TODO}{\advent@xxiii@xvi}{
+\aproblem{16}{128}{\advent@xxiii@xvi}{
+  We claim that those numbers that cannot be written as the sum of two or consecutive positive integers are exactly the powers of two.
+  To see this, first note that the sum of $n$ consecutive numbers starting at $a$ is
+  \ali{
+    c(a, n) &= \sum_{i=a}^{a+n-1} i = \frac{1}{2}\squares{(a + n - 1)(a + n) - a(a - 1)} = \frac{1}{2}\squares{a^2 + an + an + n^2 - a - n - a^2 + a} \non
+    &= \frac{1}{2}\squares{n^2 + (2a-1)n} = \frac{1}{2}n\squares{n + 2a - 1},
+  }
+  where we have used \eqref{eqn:08:sumcons} derived in the Dec~8 solution above.
+  For any positive integer $m$, clearly $m$ can be written as the sum of two or more consecutive integers if and only if there are integers $n > 1$ and $a > 0$ such that
+  \gath{
+    c(a, n) = m \non
+    \frac{1}{2}n\squares{n + 2a - 1} = m \non
+    n\squares{n + 2a - 1} = 2m \label{eqn:16:factors}
+  }
+  so that $n$ and $n + 2a - 1$ must be factors of $2m$.
+
+  Now, suppose that $m = 2^k$ is a power of two and assume that this can be written as the sum of two or more consecutive integers so that \eqref{eqn:16:factors} holds for some $n > 1$ and $a > 0$.
+  Then clearly $2m = 2^{k+1}$ can only have even factors, and hence $n$ must be even by \eqref{eqn:16:factors}.
+  However, since $n$ is even, it means that $n + 2a - 1$ is odd since clearly $2a - 1$ is odd.
+  As this must be another factor of $2m$ by \eqref{eqn:16:factors}, which has to be even, this shows that $m$ cannot be written as the sum of two or more consecutive integers since assuming so results in a contradiction.
+
+  Now suppose that $m > 1$ is \emph{not} a power of two so that $m$ must have a prime factor greater than two, say $k > 2$, which must of course be odd since $2$ is the only even prime.
+  Then let $l = m/k > 0$ be another factor of $m$, which may be even or odd.
+  Note that $k$ is odd and clearly $2l > 1$ is even so that it must be that $2l \neq k$.
+  Thus, we have the following exhaustive cases:
+
+  Case: $2l < k$.
+  Then, since $k$ is odd and $2l$ is even, it follows that $\D = k - 2l > 0$ is odd.
+  Then set
+  \gath{
+    a = \frac{\D + 1}{2} = \frac{k - 2l + 1}{2},
+  }
+  which is a positive integer since $\D > 0$ is odd so that $\D + 1$ is even.
+  We then have
+  \gath{
+    c(a, 2l) = \frac{1}{2}(2l)\squares{2l + 2a - 1} = l\squares{2l + 2\frac{k - 2l + 1}{2} - 1} = l\squares{2l + k - 2l + 1 - 1} = lk = m.
+  }
+  Thus the $2l$ consecutive integers starting with $a$ sum to $m$.
+
+  Case: $2l > k$.
+  Let $\D = 2l - k > 0$, which is odd since $2l$ is even but $k$ is odd.
+  Then set
+  \gath{
+    a = \frac{\D + 1}{2} = \frac{2l - k + 1}{2},
+  }
+  which is a positive integer since $\D > 0$ is odd so that $\D + 1 > 1$ is even.
+  Hence, we have
+  \gath{
+    c(a, k) = \frac{1}{2}k\squares{k + 2a - 1} = \frac{1}{2}k\squares{k + 2\frac{2l - k + 1}{2} - 1} = \frac{1}{2}k\squares{k + 2l - k + 1 - 1} = \frac{1}{2}k\squares{2l} = lk = m
+  }
+  so that the $k$ positive integers starting with $a$ sum to $m$.
+
+  Therefore, we have shown that our numbers of interest are exactly the powers of two:
+  \gath{
+    \braces{2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, \ldots}
+  }
+  Clearly then, the smallest such three-digit number is our answer $128$.
+
+}
+
+\aproblem{17}{252}{\advent@xxiii@xvii}{
+  This problem was solved generally in the 2020, Dec~18 advent problem, in which it was deduced that the number of terms $N(n, k)$ of $(x_1 + \cdots + x_n)^k$ is
+  \gath{
+    N(n, k) = \binom{n + k - 1}{k},
+  }
+  where of course the right side is a binomial coefficient.
+  So, in our case, the answer is
+  \gath{
+    N(6, 5) = \binom{6 + 5 - 1}{5} = \binom{10}{5} = \frac{10!}{5!(10-5)!} = \frac{10!}{(5!)^2} = 252.
+  }
+}
+
+\aproblem{18}{110}{\advent@xxiii@xviii}{
+  We can step through numbers manually and investigate products of consecutive factors, if there are any.
+  In the below, consecutive factors are in boldface, noting that we disregard the trivial factor of $1$:
+  \begin{center}
+    \begin{tabular}{clc}
+      Number & Factors                                                       & Consecutive products                                   \\
+      \hline
+      $100$  & $\braces{1, 2, \textbf{4, 5}, 10, 20, 25, 50, 100}$           & $4 \cdot 5 = 20$                                       \\
+      $101$  & $\braces{1, 101}$                                             &                                                        \\
+      $102$  & $\braces{1, \textbf{2, 3}, 6, 17, 34, 51, 102}$               & $2 \cdot 3 = 6$                                        \\
+      $103$  & $\braces{1, 103}$                                             &                                                        \\
+      $104$  & $\braces{1, 2, 4, 8, 13, 26, 52, 104}$                        &                                                        \\
+      $105$  & $\braces{1, 3, 5, 7, 15, 21, 35, 105}$                        &                                                        \\
+      $106$  & $\braces{1, 2, 53, 106}$                                      &                                                        \\
+      $107$  & $\braces{1, 107}$                                             &                                                        \\
+      $108$  & $\braces{1, \textbf{2, 3, 4}, 6, 9, 12, 18, 27, 36, 54, 108}$ & $2 \cdot 3 = 6,3 \cdot 4 = 12, 2 \cdot 3 \cdot 4 = 24$ \\
+      $109$  & $\braces{1, 109}$                                             &                                                        \\
+      $110$  & $\braces{1, 2, 5, \textbf{10, 11}, 22, 55, 110}$              & $10 \cdot 11 = 110$                                    \\
+    \end{tabular}
+  \end{center}
+  Thus, clearly our answer is $110$.
+  This was verified with a Python program that automates this manual process.
+}
+
+\aproblem{19}{504}{\advent@xxiii@xix}{
+  \boxans{\gridsol@advent@xxiii@xix}
+}
+
+
+\aproblem{20}{TODO}{\advent@xxiii@xx}{
   TODO
 }
 
