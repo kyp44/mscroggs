@@ -625,7 +625,42 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
 }
 
 
-\aproblem{20}{TODO}{\advent@xxiii@xx}{
+\aproblem{20}{240}{\advent@xxiii@xx}{
+  Let $N(k, n)$ be the number of different ways that balls labelled $1$ to $n$ can be put into $k \geq 1$ boxes so that no box is empty.
+  This is only valid when $n \geq k$ since, otherwise, at least one of the boxes would have to be empty.
+  We develop a recursive formula for $N(k, n)$.
+  First, there is clearly only single way to put $n$ balls in a single box (i.e. to put all the balls in the box), and thus $N(1, n) = 1$.
+  Now consider the first box.
+  This box can contain from $1$ to $n-k+1$ balls to ensure that the remaining boxes will contain at least one ball.
+  The number of ways to select $m$ balls from a choice of $n$ balls (where order does not matter) is of course the number of combinations, that is
+  \gath{
+    _n C_m = \binom{n}{m},
+  }
+  the binomial coefficient.
+  Now, for each way to choose $m$ balls to put in the first box, then there are $n-m$ balls to put into the remaining $k-1$ boxes, and there are of course $N(k-1, n-m)$ ways to do this.
+  Therefore, we have the following recursive formula:
+  \gath{
+    N(1, n) = 1 \non
+    N(k, n) = \sum_{m=1}^{n-k+1} {}_mC_n \cdot N(k-1, n-m) = \sum_{m=1}^{n-k+1} \binom{n}{m} N(k-1, n-m). \label{eqn:20:rec}
+  }
+  There does not seem to be an easy way to reduce or derive a closed form for this.
+  Hence, this recursive formula was implemented in Python and verified to match a brute force algorithm that generates the specific bin combinations and counts them.
+  Our answer is then $N(4, 5) = 240$.
+
+  We note that the number of ways of choosing $p_i$ balls to put into the $i$th bin for all bins $1 \leq i \leq k$ (and $k$ is the number of bins) is the multinomial coefficient:
+  \gath{
+    \binom{n}{p_1,\ldots,p_m} = \frac{n!}{p_1! p_2! \cdots p_k!},
+  }
+  where $p_1 + p_2 + \cdots + p_k = n$.
+  However, this does not simplify our problem, but merely shifts the complexity to dealing with all the ways to create the sum $n$ with $k$ positive integers.
+  This alternate solution can be expressed by
+  \gath{
+    N(k, n) = \sum_{p_1 + p_2 + \cdots + p_k = n} \binom{n}{p_1,\ldots,p_m},
+  }
+  but this is more difficult to actually evaluate than the recursive formula given by \eqref{eqn:20:rec} on account of needing to generate all the sums $p_1 + p_2 + \cdots + p_k = n$.
+}
+
+\aproblem{21}{TODO}{\advent@xxiii@xxi}{
   TODO
 }
 

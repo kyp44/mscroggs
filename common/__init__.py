@@ -7,6 +7,7 @@ import os
 from functools import reduce
 from fractions import Fraction as frc
 from math import factorial
+from math import comb as binom
 from enum import Enum, auto
 import roman
 from tqdm import tqdm
@@ -667,3 +668,11 @@ class PrimeFactors:
 
     def __repr__(self):
         return repr(self.multiset)
+
+
+def multinom(*params):
+    """
+    Multinomial coefficient:
+    https://en.wikipedia.org/wiki/Multinomial_theorem
+    """
+    return product(binom(sum(params[:i]), x) for i, x in enumerate(params, 1))
