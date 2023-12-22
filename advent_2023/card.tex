@@ -69,42 +69,34 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/108}{https://www.
 }
 
 \cproblem{7}{12}{\card@xxiii@vii}{
-  Let $N_d(n)$ denote the number of $n$-digit numbers such that all the digits are from $1$ to $d$, and one of those valid digits $1 \leq k \leq d$ (which may as well be $k=1$ as in our case) appears exactly $n-1$ times.
-  For a single digit number, it must be that $N_d(1) = d-1$ since $k$ must appear zero times so that there are $d-1$ valid digits left.
-
-  Now, for an $n$-digit number where $n > 1$, if the first digit is not $k$, then there are $d-1$ choices, i.e. all the valid digits except $k$.
-  In this case there are $n-1$ digits remaining but $n-1$ of them must be $k$, and hence the rest must \emph{all} be $k$.
-  On the other hand, if the first digit is $k$, then there are $n-1$ digits remaining and $n-2$ must be $k$ since we have already used one $k$.
-  Of course there are $N_d(n-1)$ such possible values for the remaining digits.
-  This leads to the following recursive formula:
+  We can generalize this a bit.
+  Let $N_d(k, n)$ denote the number of $n$-digit numbers such that all the digits are from $1$ to $d$, and one of those valid digits $1 \leq d_0 \leq d$ (which may as well be $d_0=1$ as in our case) appears exactly $n-k$ times.
+  Then there are $k$ digits that must \emph{not} be $d_0$, and we can choose any of the $n$ digits to select for these.
+  Hence, there are
   \gath{
-    N_d(1) = d - 1 \label{eqn:07:base} \\
-    N_d(n) = (d-1) + N_d(n-1).
+    \combos{n}{k} = \binom{n}{k} = \frac{n!}{k!(n-k)!}
   }
-
-  We claim that this results in the closed formula
+  choices for this, i.e. the number of ways to choose $k$ items from $n$ items.
+  The rest of the digits must then of course be fixed at $d_0$.
+  Now, for each of the $k$ selected digits, they can each take on one of $d-1$ values independently, that is, any digit except $d_0$.
+  Clearly there $(d-1)^k$ different ways to assign these.
+  Hence, it is reasoned that
   \gath{
-    N_d(n) = n(d-1), \label{eqn:07:closed}
+    N_d(k, n) = \binom{n}{k}(d-1)^k.
   }
-  which we show by induction on $n$.
-  First, for $n = 1$, we clearly have $N_d(1) = 1 \cdot(d-1) = d-1$ as in \eqref{eqn:07:base}.
-  Next, assume that \eqref{eqn:07:closed} is true for $n$.
-  Then we have that
+  Our answer is then
   \gath{
-    N_d(n+1) = (d-1) + N_d(n) = (d-1) + n(d-1) = (n+1)(d-1),
+    N_5(1, 3) = \binom{3}{1}(5-1)^1 = 4 \frac{3!}{1!2!} = 4 \cdot 3 = 12.
   }
-  which shows that \eqref{eqn:07:closed} holds for $n+1$, completing the proof.
-
-  Thus, our answer is $N_5(3) = 3 (5 - 1) = 3 \cdot 4 = 12$.
 }
 
 \cproblem{8}{75}{\card@xxiii@viii}{
   We can use the results of the previous problem.
-  There, it was derived that in which it was derived that the number of $n$-digit numbers with this property is
+  There, it was derived that the number of $n$-digit numbers with this property is
   \gath{
-    N_5(n) = 4n.
+    N_5(1, n) = \binom{n}{1}(5-1)^1 = 4 \frac{n!}{1!(n-1)!} = 4n.
   }
-  Eve has worked out that $N_5(n) = 300 = 4n$ so that, of course, $n = 300/4 = 75$.
+  Eve has worked out that $N_5(1, n) = 300 = 4n$ so that, of course, $n = 300/4 = 75$.
 }
 
 \cproblem{9}{TODO}{\card@xxiii@ix}{

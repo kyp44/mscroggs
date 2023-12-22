@@ -1360,6 +1360,13 @@
 					"comb",
 					"dig"
 				]
+			},
+			{
+				"number": 22,
+				"tags": [
+					"geom",
+					"comb"
+				]
 			}
 		]
 	},

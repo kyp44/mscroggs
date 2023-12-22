@@ -634,14 +634,14 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   This box can contain from $1$ to $n-k+1$ balls to ensure that the remaining boxes will contain at least one ball.
   The number of ways to select $m$ balls from a choice of $n$ balls (where order does not matter) is of course the number of combinations, that is
   \gath{
-    _n C_m = \binom{n}{m},
+    \combos{n}{m} = \binom{n}{m},
   }
   the binomial coefficient.
   Now, for each way to choose $m$ balls to put in the first box, then there are $n-m$ balls to put into the remaining $k-1$ boxes, and there are of course $N(k-1, n-m)$ ways to do this.
   Therefore, we have the following recursive formula:
   \gath{
     N(1, n) = 1 \non
-    N(k, n) = \sum_{m=1}^{n-k+1} {}_mC_n \cdot N(k-1, n-m) = \sum_{m=1}^{n-k+1} \binom{n}{m} N(k-1, n-m). \label{eqn:20:rec}
+    N(k, n) = \sum_{m=1}^{n-k+1} \combos{n}{m} \cdot N(k-1, n-m) = \sum_{m=1}^{n-k+1} \binom{n}{m} N(k-1, n-m). \label{eqn:20:rec}
   }
   There does not seem to be an easy way to reduce or derive a closed form for this.
   Hence, this recursive formula was implemented in Python and verified to match a brute force algorithm that generates the specific bin combinations and counts them.
@@ -689,6 +689,24 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   \gath{
     N(20, 3) = \frac{22!}{20!2!} = \frac{22 \cdot 21}{2} = 231.
   }
+}
+
+\aproblem{22}{TODO}{\advent@xxiii@xxii}{
+  Right triangles can only be formed within rectangles, a single rectangle forming $4$ right triangles as in the example.
+  So the question can be rephrased as how many rectangles can be formed from the vertices of a regular $n$-gon?
+  I suspect that $n$-gons with odd $n$ can form no rectangles on account of having no two sides that are parallel.
+  For an even $n$-gon, there are clearly $n/2$ distinct pairs of parallel sides between which the vertices form a distinct rectangle.
+  So, if $N(n)$ denotes the number of right triangles that can be formed from the vertices of an even $n$-gon, then it follows that
+  \gath{
+    N(n) = 4 \cdot \frac{n}{2} = 2n,
+  }
+  noting that this is only valid when $n > 4$ since, as in the example, $N(4) = 4 \neq 2 \cdot 4 = 8$.
+  Thus, regarding the actual question, we have our answer:
+  \gath{
+    N(n) = 2n = 14620 \non
+    n = 14620/2 = 7310.
+  }
+  TODO!!! Not correct, see octagon, which has more rectangles than just parallel sides!
 }
 
 \end{document}

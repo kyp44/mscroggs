@@ -316,6 +316,36 @@
   How many $20$-digit numbers are there whose digits are all $1$, $2$, or $3$ and whose second digit onwards are all less than or equal to the previous digit?
 }
 
+\def\xxii@size{5}
+\def\xxii@spc{1.6*\xxii@size}
+\definecolor{xxii@purp}{rgb}{0.799,0.601,0.999}
+\newcommand\xxii@dot[2]{\filldraw[black,fill=xxii@purp] (#1, #2) circle (0.15);}
+\newcommand\xxii@square[8]{
+  % Square
+  \draw[black,thick] (#1,#2) rectangle (#1+\xxii@size,#2+\xxii@size);
+
+  % Triangle
+  \filldraw[black,thick,fill=xxii@purp] (#1+\xxii@size*#3, #2+\xxii@size*#4) -- (#1+\xxii@size*#5, #2+\xxii@size*#6) -- (#1+\xxii@size*#7, #2+\xxii@size*#8) -- cycle;
+
+  % Dots
+  \xxii@dot{#1+\xxii@size*#3}{#2+\xxii@size*#4}
+  \xxii@dot{#1+\xxii@size*#5}{#2+\xxii@size*#6}
+  \xxii@dot{#1+\xxii@size*#7}{#2+\xxii@size*#8}
+}
+\def\advent@xxiii@xxii{
+  There are $4$ ways to pick three vertices of a regular quadrilateral so that they form a right-angled triangle:
+  \begin{center}
+    \begin{tikzpicture}
+      \xxii@square{0}{0}{0}{1}{0}{0}{1}{0}
+      \xxii@square{\xxii@spc}{0}{1}{1}{0}{0}{1}{0}
+      \xxii@square{2*\xxii@spc}{0}{0}{1}{1}{1}{1}{0}
+      \xxii@square{3*\xxii@spc}{0}{0}{1}{1}{1}{0}{0}
+    \end{tikzpicture}
+  \end{center}
+  In another regular polygon with $n$ sides, there are $14620$ ways to pick three vertices so that they form a right-angled triangle.
+  What is $n$?
+}
+
 \def\card@xxiii@i{
   What is the largest value of $n$ such that $(n!-1)/(n-1)$ is an integer?
 }
