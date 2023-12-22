@@ -1,0 +1,74 @@
+\documentclass{article}
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+
+\begin{document}
+
+\title{MS Scroggs 2023 Christmas Card Solutions}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Link to the online card: \href{https://www.mscroggs.co.uk/blog/108}{https://www.mscroggs.co.uk/blog/108}
+
+\newcommand\factorial@minus[2]{
+  We can utilize the results of the Dec 2023, Dec 4 problem.
+  In this, it was proven that the largest possible $n$ for which $(n!-a)/(n-a)$ is an integer is $n = 2a$.
+  So, in our case we have $a = #1$ so that our answer is $n = 2 \cdot #1 = #2$.
+}
+
+\cproblem{1}{2}{\card@xxiii@i}{
+  \factorial@minus{1}{2}
+}
+
+\cproblem{2}{88}{\card@xxiii@ii}{
+  \factorial@minus{44}{88}
+}
+
+\cproblem{3}{64}{\card@xxiii@iii}{
+  We can utilize the results of the Dec 2023, Dec 2 problem.
+  It was derived there that the sum of the first $n$ even numbers plus half of the next even number is
+  \gath{
+    s_n = (n+1)^2
+  }
+  so that our answer is $s_7 = (7+1)^2 = 8^2 = 64$.
+}
+
+\cproblem{4}{94}{\card@xxiii@iv}{
+  We can utilize the results of the Dec 2023, Dec 2 problem.
+  It was derived there that, if the sum of the first $n$ even numbers plus half of the next even number is $s_n$, then
+  \gath{
+    n = \sqrt{s_n} - 1.
+  }
+  Thus, our answer is $n = \sqrt{9025}-1 = 95-1 = 94$.
+}
+
+\cproblem{5}{TODO}{\card@xxiii@v}{
+  TODO
+}
+
+\cproblem{6}{TODO}{\card@xxiii@vi}{
+  TODO
+}
+
+\cproblem{7}{TODO}{\card@xxiii@vii}{
+  TODO
+}
+
+\cproblem{8}{TODO}{\card@xxiii@viii}{
+  TODO
+}
+
+\cproblem{9}{TODO}{\card@xxiii@ix}{
+  TODO
+}
+
+\cproblem{10}{TODO}{\card@xxiii@x}{
+  TODO
+}
+
+\end{document}

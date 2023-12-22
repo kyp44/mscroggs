@@ -4,27 +4,25 @@ from math import gcd
 from scipy.special import binom
 from common import *
 
-def prob(n) :
-    sep = "".join(["-" for i in range(20)])
-    print(sep + " Problem " + str(n) + " " + sep)
-
 prob(1)
 N = 6
 no = sum([4*fact(N-1) // fact(N - nd) for nd in range(1, N+1)])
 print("Analytical:", no)
 no = 0
 digits = (1, 2, 3, 4, 5, 7)
-for nd in range(1, N+1) :
-    for ds in it.permutations(digits, nd) :
+for nd in range(1, N+1):
+    for ds in it.permutations(digits, nd):
         n = number(ds)
-        if n % 2 == 1 :
+        if n % 2 == 1:
             no += 1
 pans(no)
 
 prob(2)
 Ns = 40300
 N = 4*Ns
-pns = lambda n : (2*n-1, 2*n, N + 2*(1-n) - 1, N + 2*(1-n))
+def pns(n): return (2*n-1, 2*n, N + 2*(1-n) - 1, N + 2*(1-n))
+
+
 print("Analytical:", 2*(N+1))
 ss = [sum(pns(n)) for n in range(1, Ns+1)]
 pans(max(ss))
@@ -39,7 +37,7 @@ prob(4)
 b = np.array([31, 35, 36])
 A = np.array([[1, 1, 0], [1, 0, 1], [0, 1, 1]])
 Ar = [[1, 0, 1], [1, 1, 0], [0, 1, 1]]
-for Arc in it.permutations(Ar) :
+for Arc in it.permutations(Ar):
     A = np.array(Arc)
     x = np.linalg.solve(A, b)
     print("Sum of cards:", sum(x))
@@ -79,16 +77,18 @@ for i in range(5*n+1) :
 """
 
 prob(8)
-Nk = lambda k, n, m : (n - k + 1)*(m - k + 1) if n >= k and m >= k else 0
+def Nk(k, n, m): return (n - k + 1)*(m - k + 1) if n >= k and m >= k else 0
+
+
 n, m = 14, 16
 p = min(n, m)
 print("Analytical:", p*n*m + (p*(p-1)*(2*p - 3*n - 3*m - 1)) // 6)
-pans(sum([Nk(k, n, m) for k in range(1,p+1)]))
+pans(sum([Nk(k, n, m) for k in range(1, p+1)]))
 
 prob(9)
 s = 155667
-for d0 in range(10) :
+for d0 in range(10):
     N = 10*s + d0
-    if N % 11 == 0 :
+    if N % 11 == 0:
         print(d0)
         pans(N // 11)

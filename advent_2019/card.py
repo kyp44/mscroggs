@@ -3,94 +3,95 @@ from math import factorial
 from math import gcd
 from common import *
 
-def prob(n) :
-    sep = "".join(["-" for i in range(20)])
-    print(sep + " Problem " + str(n) + " " + sep)
-    
-    return True
+prob(1)
+N = 10000
+cnt = 0
+for n in range(1, N+1):
+    s = str(n)
+    cnt += len([d for d in s if d == "1"])
 
-def pans(a) :
-    print("Answer:", a)
+pans(cnt)
 
-if prob(1) :
-    N = 10000
-    cnt = 0
-    for n in range(1,N+1) :
-        s = str(n)
-        cnt += len([d for d in s if d == "1"])
+prob(2)
+a = sum([n for n in range(86) if n % 2 == 1])
+pans(a)
 
-    pans(cnt)
+prob(3)
 
-if prob(2) :
-    a = sum([n for n in range(86) if n % 2 == 1])
-    pans(a)
 
-if prob(3) :
-    def factors(n) :
-        if n == 1 :
-            return set((1,))
-        fs = set()
-        for k in range(1,n//2+1) :
-            if n % k == 0 :
-                fs.add(k)
-                fs.add(n // k)
+def factors(n):
+    if n == 1:
+        return set((1,))
+    fs = set()
+    for k in range(1, n//2+1):
+        if n % k == 0:
+            fs.add(k)
+            fs.add(n // k)
 
-        return fs
+    return fs
 
-    N = 4008004
 
-    ns = []
+N = 4008004
 
-    """
-    # Brute force method (very slow)
-    for n in range(1, N+1) :
-        if len(factors(n)) % 2 == 1 :
-            ns.append(n)
-    """
+ns = []
 
-    # Insightful shortcut
-    ns = [k**2 for k in range(1, int(np.ceil(np.sqrt(N)))+1) if k**2 <= N]
+"""
+# Brute force method (very slow)
+for n in range(1, N+1) :
+    if len(factors(n)) % 2 == 1 :
+        ns.append(n)
+"""
 
-    #print(ns)
-    pans(len(ns))
+# Insightful shortcut
+ns = [k**2 for k in range(1, int(np.ceil(np.sqrt(N)))+1) if k**2 <= N]
 
-if prob(4) :
-    N = 130404
+# print(ns)
+pans(len(ns))
 
-    pans(N+1)
+prob(4)
+N = 130404
 
-if prob(5) :
-    rs = 60153
-    pans(2*rs)
+pans(N+1)
 
-if prob(6) :
-    def f(n) :
-        if n < 1 :
-            raise ValueError("invalid parameter: " + str(n))
-        if n == 1 :
-            return 1
-        elif n == 2 :
-            return 2
-        else :
-            return f(n-1) + f(n-2)
+prob(5)
+rs = 60153
+pans(2*rs)
 
-    pans(f(28))
+prob(6)
 
-if prob(7) :
-    def lcm(a, b) :
-        return a*b // gcd(a,b)
-    pans(lcm(1025, 835))
 
-if prob(8) :
-    pans(count_ending_zeros(factorial(245)))
+def f(n):
+    if n < 1:
+        raise ValueError("invalid parameter: " + str(n))
+    if n == 1:
+        return 1
+    elif n == 2:
+        return 2
+    else:
+        return f(n-1) + f(n-2)
 
-if prob(9) :
-    for n in range(10**5, 10**6) :
-        for dd in range(6+1) :
-            ds = digits(n)
-            if dd > len(ds)-1 :
-                continue
-            ds.pop(dd)
-            nd = number(ds)
-            if n + nd == 334877 :
-                pans(n)
+
+pans(f(28))
+
+prob(7)
+
+
+def lcm(a, b):
+    return a*b // gcd(a, b)
+
+
+pans(lcm(1025, 835))
+
+prob(8)
+pans(count_ending_zeros(factorial(245)))
+
+prob(9)
+for n in range(10**5, 10**6):
+    for dd in range(6+1):
+        ds = digits(n)
+        if dd > len(ds)-1:
+            continue
+        ds.pop(dd)
+        nd = number(ds)
+        if n + nd == 334877:
+            pans(n)

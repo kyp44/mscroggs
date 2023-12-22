@@ -1353,6 +1353,48 @@
 				"tags": [
 					"comb"
 				]
+			},
+			{
+				"number": 21,
+				"tags": [
+					"comb",
+					"dig"
+				]
+			}
+		]
+	},
+	{
+		"type": "card",
+		"year": 2023,
+		"number": 10,
+		"puzzles": [
+			{
+				"number": 1,
+				"tags": [
+					"fact",
+					"mod"
+				]
+			},
+			{
+				"number": 2,
+				"tags": [
+					"fact",
+					"mod"
+				]
+			},
+			{
+				"number": 3,
+				"tags": [
+					"sum",
+					"cons"
+				]
+			},
+			{
+				"number": 4,
+				"tags": [
+					"sum",
+					"cons"
+				]
 			}
 		]
 	}

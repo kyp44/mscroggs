@@ -1,5 +1,4 @@
 from common import *
-from math import comb
 import itertools as it
 
 
