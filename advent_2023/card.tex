@@ -16,7 +16,7 @@
 Link to the online card: \href{https://www.mscroggs.co.uk/blog/108}{https://www.mscroggs.co.uk/blog/108}
 
 \newcommand\factorial@minus[2]{
-  We can utilize the results of the Dec 2023, Dec 4 problem.
+  We can utilize the results of the \xref@advent{2023}{4}.
   In this, it was proven that the largest possible $n$ for which $(n!-a)/(n-a)$ is an integer is $n = 2a$.
   So, in our case we have $a = #1$ so that our answer is $n = 2 \cdot #1 = #2$.
 }
@@ -30,7 +30,7 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/108}{https://www.
 }
 
 \cproblem{3}{64}{\card@xxiii@iii}{
-  We can utilize the results of the Dec 2023, Dec 2 problem.
+  We can utilize the results of the \xref@advent{2023}{2}.
   It was derived there that the sum of the first $n$ even numbers plus half of the next even number is
   \gath{
     s_n = (n+1)^2
@@ -39,7 +39,7 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/108}{https://www.
 }
 
 \cproblem{4}{94}{\card@xxiii@iv}{
-  We can utilize the results of the Dec 2023, Dec 2 problem.
+  We can utilize the results of the \xref@advent{2023}{2}.
   It was derived there that, if the sum of the first $n$ even numbers plus half of the next even number is $s_n$, then
   \gath{
     n = \sqrt{s_n} - 1.
@@ -47,20 +47,64 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/108}{https://www.
   Thus, our answer is $n = \sqrt{9025}-1 = 95-1 = 94$.
 }
 
-\cproblem{5}{TODO}{\card@xxiii@v}{
-  TODO
+\cproblem{5}{40}{\card@xxiii@v}{
+  We can utilize the results of the \xref@card{2019}{5}.
+  There it was derived that the largest quadrilateral is a square with area
+  \gath{
+    A = 2r^2,
+  }
+  where $r$ is the radius of the circle.
+  In our case the circle has an area of $A_c = \pi r^2 = 20 \pi$ so that clearly $r^2 = 20$.
+  Thus, the area of our square is $A = 2r^2 = 2 \cdot 20 = 40$.
 }
 
-\cproblem{6}{TODO}{\card@xxiii@vi}{
-  TODO
+\cproblem{6}{60}{\card@xxiii@vi}{
+  We can utilize the results of the \xref@advent{2018}{2}.
+  There it was derived that the largest dodecagon is that with a circumradius $r$ the same as the circle with area
+  \gath{
+    A_d = 3r^2,
+  }
+  Our circle has an area of $A_c = \pi r^2 = 20\pi$ so that clearly $r^2 = 20$.
+  Hence, the area of the largest dodecagon is $A_d = 3r^2 = 3 \cdot 20 = 60$.
 }
 
-\cproblem{7}{TODO}{\card@xxiii@vii}{
-  TODO
+\cproblem{7}{12}{\card@xxiii@vii}{
+  Let $N_d(n)$ denote the number of $n$-digit numbers such that all the digits are from $1$ to $d$, and one of those valid digits $1 \leq k \leq d$ (which may as well be $k=1$ as in our case) appears exactly $n-1$ times.
+  For a single digit number, it must be that $N_d(1) = d-1$ since $k$ must appear zero times so that there are $d-1$ valid digits left.
+
+  Now, for an $n$-digit number where $n > 1$, if the first digit is not $k$, then there are $d-1$ choices, i.e. all the valid digits except $k$.
+  In this case there are $n-1$ digits remaining but $n-1$ of them must be $k$, and hence the rest must \emph{all} be $k$.
+  On the other hand, if the first digit is $k$, then there are $n-1$ digits remaining and $n-2$ must be $k$ since we have already used one $k$.
+  Of course there are $N_d(n-1)$ such possible values for the remaining digits.
+  This leads to the following recursive formula:
+  \gath{
+    N_d(1) = d - 1 \label{eqn:07:base} \\
+    N_d(n) = (d-1) + N_d(n-1).
+  }
+
+  We claim that this results in the closed formula
+  \gath{
+    N_d(n) = n(d-1), \label{eqn:07:closed}
+  }
+  which we show by induction on $n$.
+  First, for $n = 1$, we clearly have $N_d(1) = 1 \cdot(d-1) = d-1$ as in \eqref{eqn:07:base}.
+  Next, assume that \eqref{eqn:07:closed} is true for $n$.
+  Then we have that
+  \gath{
+    N_d(n+1) = (d-1) + N_d(n) = (d-1) + n(d-1) = (n+1)(d-1),
+  }
+  which shows that \eqref{eqn:07:closed} holds for $n+1$, completing the proof.
+
+  Thus, our answer is $N_5(3) = 3 (5 - 1) = 3 \cdot 4 = 12$.
 }
 
-\cproblem{8}{TODO}{\card@xxiii@viii}{
-  TODO
+\cproblem{8}{75}{\card@xxiii@viii}{
+  We can use the results of the previous problem.
+  There, it was derived that in which it was derived that the number of $n$-digit numbers with this property is
+  \gath{
+    N_5(n) = 4n.
+  }
+  Eve has worked out that $N_5(n) = 300 = 4n$ so that, of course, $n = 300/4 = 75$.
 }
 
 \cproblem{9}{TODO}{\card@xxiii@ix}{

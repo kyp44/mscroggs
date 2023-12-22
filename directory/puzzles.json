@@ -1395,6 +1395,32 @@
 					"sum",
 					"cons"
 				]
+			},
+			{
+				"number": 5,
+				"tags": [
+					"geom"
+				]
+			},
+			{
+				"number": 6,
+				"tags": [
+					"geom"
+				]
+			},
+			{
+				"number": 7,
+				"tags": [
+					"dig",
+					"comb"
+				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"dig",
+					"comb"
+				]
 			}
 		]
 	}

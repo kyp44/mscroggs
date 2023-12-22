@@ -199,7 +199,7 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   \end{center}
 }
 \aproblem{7}{987}{\advent@xxiii@vii}{
-  For $n \geq 0$, let $I_n$ be the set containing the numbers $1$ to $n$ inclusive, that is
+  For $n \geq 0$, let $I_n$ be the set containing the numbers $1$ to $n$, that is
   \gath{
     I_n = \braces{k \in \ints \mid 1 \leq k \leq n}.
   }
@@ -661,11 +661,11 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
 }
 
 \aproblem{21}{231}{\advent@xxiii@xxi}{
-  Let $N(n, k)$ be the number of $n$-digit numbers whose digits are all $1$ through $k$ inclusive, and whose second digit onwards are less than or equal to the previous digit.
+  Let $N(n, k)$ be the number of $n$-digit numbers whose digits are all $1$ through $k$, and whose second digit onwards are less than or equal to the previous digit.
   Of course, it must be that $1 \leq k \leq 9$, and we are specifically interested in $k = 3$, but we can derive a more general formula.
   Clearly there are $N(1, k) = k$ such single-digit numbers, which will serve as our base case.
   Now consider an $n$-digit number.
-  The first digit $d$ can be $1$ through $k$ inclusive, and, for each the there are then $N(n-1, d)$ $(n-1)$-digit numbers to fill out the remaining digits since the remaining digits can be no larger than $d$.
+  The first digit $d$ can be $1$ through $k$, and, for each the there are then $N(n-1, d)$ $(n-1)$-digit numbers to fill out the remaining digits since the remaining digits can be no larger than $d$.
   This gives rise to the following recursive formula:
   \gath{
     N(n, k) = \sum_{d=1}^k N(n-1, d).
