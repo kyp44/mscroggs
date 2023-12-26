@@ -1367,6 +1367,19 @@
 					"geom",
 					"comb"
 				]
+			},
+			{
+				"number": 23,
+				"tags": [
+					"comb"
+				]
+			},
+			{
+				"number": 24,
+				"tags": [
+					"base",
+					"dig"
+				]
 			}
 		]
 	},

@@ -1,4 +1,5 @@
 \documentclass{article}
+
 \input{common/prelude}
 
 % Macros
@@ -127,12 +128,12 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   Clearly the number of ways to tile a $1 \times 2$ rectangle is just one, and hence $N_1 = 1$.
   Similarly, there are obviously only two ways to tile a $2 \times 2$ square, namely the following:
   \begin{center}
-    \begin{tikzpicture}[scale=\crscale]
-      \crvert{cry}{0}{0}
-      \crvert{crb}{1}{0}
+    \begin{tikzpicture}[scale=\vi@scale]
+      \vi@vert{vi@y}{0}{0}
+      \vi@vert{vi@b}{1}{0}
 
-      \crhorz{cry}{3}{0}
-      \crhorz{crb}{3}{-1}
+      \vi@horz{vi@y}{3}{0}
+      \vi@horz{vi@b}{3}{-1}
     \end{tikzpicture}
   \end{center}
   Therefore, of course, $N_2 = 2$.
@@ -140,9 +141,9 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   Now, if we consider $N_n$, we have two cases, either the first $2 \times 1$ tile is oriented vertically or horizontally.
   In the first case, the width of the first tile is only~1 so that the remaining part is an $(n-1) \times 2$ rectangle as shown below:
   \begin{center}
-    \begin{tikzpicture}[scale=\crscale]
-      \crvert{cry}{0}{0}
-      \filldraw[ultra thick,fill=crg] (1,0) rectangle (10,-2);
+    \begin{tikzpicture}[scale=\vi@scale]
+      \vi@vert{vi@y}{0}{0}
+      \filldraw[ultra thick,fill=vi@g] (1,0) rectangle (10,-2);
       \node at (6, -1) {$(n-1) \times 2$};
     \end{tikzpicture}
   \end{center}
@@ -150,10 +151,10 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   In the second case in which the first tile is horizontal, the second tile must also be horizontal beneath, and their width is~2 so that the remaining part is an $(n-2) \times 2$ rectangle.
   This is illustrated below:
   \begin{center}
-    \begin{tikzpicture}[scale=\crscale]
-      \crhorz{cry}{0}{0}
-      \crhorz{crb}{0}{-1}
-      \filldraw[ultra thick,fill=crg] (2,0) rectangle (10,-2);
+    \begin{tikzpicture}[scale=\vi@scale]
+      \vi@horz{vi@y}{0}{0}
+      \vi@horz{vi@b}{0}{-1}
+      \filldraw[ultra thick,fill=vi@g] (2,0) rectangle (10,-2);
       \node at (6, -1) {$(n-2) \times 2$};
     \end{tikzpicture}
   \end{center}
@@ -388,6 +389,8 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
     \item If $b$ was calculated and found to be a square number (by testing $M(b)$), then $n$ is printed and the program exits.
     \item Otherwise, jump back to step~2 for the next $n$.
   \end{enumerate}
+
+  TODO: See if we can do prove this analytically, using $x = 250$ and dealing with pairs $(x-1)!(x+1)!$.
 }
 
 \aproblem{13}{812}{\advent@xxiii@xiii}{
@@ -658,6 +661,9 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
     N(k, n) = \sum_{p_1 + p_2 + \cdots + p_k = n} \binom{n}{p_1,\ldots,p_m},
   }
   but this is more difficult to actually evaluate than the recursive formula given by \eqref{eqn:20:rec} on account of needing to generate all the sums $p_1 + p_2 + \cdots + p_k = n$.
+
+  TODO: Can this be done with a closed form by first consider all the ways to fill each box with a single ball, then ways to distribute the extra balls, accounting for double counting if necessary?
+  Can verify against the current recursive solution at first.
 }
 
 \aproblem{21}{231}{\advent@xxiii@xxi}{
@@ -691,22 +697,202 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
   }
 }
 
-\aproblem{22}{TODO}{\advent@xxiii@xxii}{
-  Right triangles can only be formed within rectangles, a single rectangle forming $4$ right triangles as in the example.
+\def\xxii@octrad{3}
+\def\xxii@octlabelrad{0.9*\xxii@octrad}
+\newcommand\xxii@oct[1]{
+  \begin{tikzpicture}
+    % Octogon
+    \foreach \th in {0,...,7}{
+        \coordinate (A) at (22.5 + \th*45:\xxii@octrad);
+        \coordinate (B) at (22.5 + \th*45 + 45:\xxii@octrad);
+        \draw[black,thick] (A) -- (B);
+        \xxii@dot{A}{white}
+        \xxii@dot{B}{white}
+      }
+
+    % Side labels
+    \node[left] at (180:\xxii@octlabelrad) {$s_1$};
+    \node[above left] at (180-45:\xxii@octlabelrad) {$s_2$};
+    \node[above] at (180-90:\xxii@octlabelrad) {$s_3$};
+    \node[above right] at (180-135:\xxii@octlabelrad) {$s_4$};
+    \node[right] at (0:\xxii@octlabelrad) {$s_1'$};
+    \node[below right] at (-45:\xxii@octlabelrad) {$s_2'$};
+    \node[below] at (-90:\xxii@octlabelrad) {$s_3'$};
+    \node[below left] at (-135:\xxii@octlabelrad) {$s_4'$};
+
+    #1
+
+    % Cut line
+    \draw[black,thick,dashed] (180+22.5:1.5*\xxii@octrad) -- (22.5:1.5*\xxii@octrad);
+  \end{tikzpicture}
+}
+\newcommand\xxii@octsquare[4]{
+  % Rectangle
+  \coordinate (A) at (202.5-45*#1:\xxii@octrad);
+  \coordinate (B) at (202.5-45*#2:\xxii@octrad);
+  \coordinate (C) at (202.5-45*#3:\xxii@octrad);
+  \coordinate (D) at (202.5-45*#4:\xxii@octrad);
+  \filldraw[black,thick,fill=xxii@purp] (A) -- (B) -- (C) -- (D) -- cycle;
+  \draw[blue,ultra thick] (A) -- (B);
+
+  % Dots
+  \xxii@dot{A}{xxii@purp}
+  \xxii@dot{B}{xxii@purp}
+  \xxii@dot{C}{xxii@purp}
+  \xxii@dot{D}{xxii@purp}
+}
+\aproblem{22}{172}{\advent@xxiii@xxii}{
+  Right triangles can only be formed from points that define a rectangle, a single rectangle forming $4$ right triangles as in the example.
   So the question can be rephrased as how many rectangles can be formed from the vertices of a regular $n$-gon?
-  I suspect that $n$-gons with odd $n$ can form no rectangles on account of having no two sides that are parallel.
-  For an even $n$-gon, there are clearly $n/2$ distinct pairs of parallel sides between which the vertices form a distinct rectangle.
-  So, if $N(n)$ denotes the number of right triangles that can be formed from the vertices of an even $n$-gon, then it follows that
+  It seems that $n$-gons with odd $n$ can form no rectangles, and therefore also no right triangles, on account of having no two sides that are parallel.
+
+  So, suppose that $n = 2k$ is an $n$-gon with an even number of sides, and label the half of the adjacent sides from $s_1$ to $s_k$ in order, going around the polygon.
+  Since the polygon is even, each side $s_i$ will have an opposite, parallel side $s_i'$, where of course $1 \leq i \leq k$.
+  This effectively cuts the $n$-gon into two similar halves.
+  This all illustrated below for an octagon:
+  \begin{center}
+    \xxii@oct{}
+  \end{center}
+  Now, a circumscribed rectangle within the $n$-gon can be effectively defined by connecting the very first vertex with any of the $k-1$ other vertices in the main half, ignoring the vertex opposite to the very first vertex since this does not create a rectangle.
+  The rest of the rectangle is then determined such that the center of the rectangle coincides with the center of the $n$-gon.
+  For each of these, there are $k$ ways to rotate the rectangle around the $n$-gon before we start duplicating rectangles.
+  Let $1 \leq i \leq k-1$ index which of the other vertices to which the first is connected, and $j$ index the $k$ rotations of the rectangles.
+  These $k(k-1)$ rectangles are illustrated below for the $k=4$ octagon, in which the main defining line segment is highlighted:
+  \begin{center}
+    \begin{tabular}{cccc}
+      $i=1$, $j=1$ & $i=1$, $j=2$ & $i=1$, $j=3$ & $i=1$, $j=4$ \\
+      \xxii@oct{
+        \xxii@octsquare{0}{1}{4}{5}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{1}{2}{5}{6}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{2}{3}{6}{7}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{3}{4}{7}{8}
+      }                                                         \\
+      $i=2$, $j=1$ & $i=2$, $j=2$ & $i=2$, $j=3$ & $i=2$, $j=4$ \\
+      \xxii@oct{
+        \xxii@octsquare{0}{2}{4}{6}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{1}{3}{5}{7}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{2}{4}{6}{8}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{3}{5}{7}{9}
+      }                                                         \\
+      $i=3$, $j=1$ & $i=3$, $j=2$ & $i=3$, $j=3$ & $i=3$, $j=4$ \\
+      \xxii@oct{
+        \xxii@octsquare{0}{3}{4}{7}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{1}{4}{5}{8}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{2}{5}{6}{9}
+      }
+                   &
+      \xxii@oct{
+        \xxii@octsquare{3}{6}{7}{10}
+      }                                                         \\
+    \end{tabular}
+  \end{center}
+  The astute observer will notice that, regarding distinct rectangles, there are still duplicates here.
+  For example, the $i=1, j=4$ rectangle is the same as the $i=3,j=1$ rectangle, and the $i=2,j=2$ rectangle is the same as the $i=2,j=4$ rectangle.
+  In fact, we have counted each distinct rectangle exactly twice!
+
+  Therefore, the number of distinct rectangles is
   \gath{
-    N(n) = 4 \cdot \frac{n}{2} = 2n,
+    N_r(k) = \frac{k(k-1)}{2},
   }
-  noting that this is only valid when $n > 4$ since, as in the example, $N(4) = 4 \neq 2 \cdot 4 = 8$.
-  Thus, regarding the actual question, we have our answer:
+  noting that these are the triangular numbers.
+  Since each rectangle forms $4$ right triangles, a regular polygon with $n = 2k$ sides can form exactly
   \gath{
-    N(n) = 2n = 14620 \non
-    n = 14620/2 = 7310.
+    N_t(k) = 4 N_r(k) = 4\frac{k(k-1)}{2} = 2k(k-1)
   }
-  TODO!!! Not correct, see octagon, which has more rectangles than just parallel sides!
+  right triangles.
+
+  Thus, for the polygon with $n = 2k$ sides, in which $N_t(k) = 14620$ triangles can be formed, we have
+  \gath{
+    N_t(k) = 2k(k-1) = 14620 \non
+    2k^2 - 2k - 14620 = 0 \non
+    k^2 - k - 7310 = 0.
+  }
+  Solving this quadratic and taking the positive root, gives $k = 86$ so that our answer is $n = 2k = 2 \cdot 86 = 172$.
+}
+
+\aproblem{23}{396}{\advent@xxiii@xxiii}{
+  Suppose that we have an $n$ by $n$ square.
+  We focus not on the rectangles, but on the line segments that form them.
+  In order for there to be three rectangles, there must two line segments, and at least one of them must go straight across the entire length of the square.
+  If this were not the case, then we would have a section of the square that is not rectangular.
+  So, first, consider the case where the two lines are both vertical across the entire square.
+  As there are $n-1$ vertical positions within the square, there are of course
+  \gath{
+    N_v(n) = \combos{n-1}{2} = \binom{n-1}{2} = \frac{(n-1)!}{2!(n-1-2)!} = \frac{(n-1)!}{2(n-3)!} = \frac{(n-1)(n-2)}{2}
+  }
+  ways to choose two of them.
+  There of course also $N_v(n)$ ways again in the analogous case in which both lines are horizontal instead.
+
+  Now we turn our attention to the case in which the main line is vertical across the entire square and the other line is horizontal from either side of the square, stopping when it hits the main line.
+  There are clearly $n-1$ ways to choose the main line.
+  For each of these, then, there are $2(n-1)$ ways to choose the horizontal line since it can be on either side of the main vertical line.
+  Thus, there are
+  \gath{
+    N_m(n) = (n-1) \cdot 2(n-1) = 2(n-1)^2
+  }
+  configurations of this case.
+  This is again doubled to account for the analogous case when the main line is horizontal and the secondary line is vertical.
+
+  Therefore, the total number of configurations is
+  \ali{
+    N(n) &= 2N_v(n) + 2N_m(n) = 2 \frac{(n-1)(n-2)}{2} + 2 \cdot 2(n-1)^2 \non
+    &= (n-1)(n-2) + 4(n-1)^2 = (n-1)(n - 2 + 4(n-1)) \non
+    &= (n-1)(n-2 + 4n - 4) = (n-1)(5n - 6).
+  }
+  This yields
+  \gath{
+    N(3) = (3-1)(5\cdot3 - 6) = 2(15-6) = 2 \cdot 9 = 18
+  }
+  as expected from the example.
+  Our answer is of course then
+  \gath{
+    N(10) = (10-1)(5\cdot 10 - 6) = 9(50-6) = 9 \cdot 44 = 396.
+  }
+}
+
+\aproblem{24}{107}{\advent@xxiii@xxiv}{
+  Since we are interested only in three-digit numbers, we begin with $100$, which is $1100100$ in binary.
+  In general, we want as many digits to be zero as possible as this decreases the number, since we are interested in minimizing the number.
+  However, we cannot make the first two \mn{1} zero as this would drop the number below $100$ decimal so that it would no longer have three decimal digits.
+  We like the two \mn{0} following the two \mn{1}, but these violate the required property of the binary representation, so we need to make one of them a $1$.
+  Since it has a lower place value, we should change the second $0$ to a $1$ (the fourth binary digit) to get $1101100$.
+  Since we have flipped this to a $1$, we are free to change any subsequent binary digits while still ensuring that we have a three-digit decimal number.
+  Of course, our desired number needs to end in a $1$, so we can go ahead flip that bit to get $1101101$.
+  This number does meet our requirements, but can be made smaller.
+  Since the fourth digit is not $0$, we can decrease the fifth digit from a $1$ to a $0$ to get $1101001$, but now we have a double zero again.
+  To remedy this, we simply change the next (i.e. the sixth) digit from a $0$ to a $1$ to get $1101011$.
+  This is fact our minimal answer as there is no further way to decrease it by flipping any \mn{1} to \mn{0} without doing one of the following
+  \begin{enumerate}[label=(a)]
+    \item Making the decimal number only two digits.
+    \item Making the binary number contain two \mn{0} in a row.
+    \item Making the binary number not end in a $1$.
+  \end{enumerate}
+  Thus, our answer is the decimal representation of $1101011$, which is $107$.
+  This was verified with a brute force Python program.
 }
 
 \end{document}

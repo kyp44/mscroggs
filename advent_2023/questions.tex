@@ -36,58 +36,58 @@
   \grid@advent@xxiii@v{}{}{}{}{}{}{}{}{}
 }
 
-\def\crscale{1.5}
-\definecolor{cry}{rgb}{1,1,0.663}
-\definecolor{crb}{rgb}{0.667,1,1}
-\definecolor{crg}{rgb}{0.671,1,0.663}
-\definecolor{crp}{rgb}{1,0.667,1}
-\newcommand\crvert[3]{\filldraw[ultra thick,fill=#1] (#2,#3) rectangle (#2+1,#3-2);}
-\newcommand\crhorz[3]{\filldraw[ultra thick,fill=#1] (#2,#3) rectangle (#2+2,#3-1);}
-\newcommand\crfour@i[2]{
-  \crvert{cry}{#1}{#2}
-  \crvert{crb}{#1+1}{#2}
-  \crvert{crg}{#1+2}{#2}
-  \crvert{crp}{#1+3}{#2}
+\def\vi@scale{1.5}
+\definecolor{vi@y}{rgb}{1,1,0.663}
+\definecolor{vi@b}{rgb}{0.667,1,1}
+\definecolor{vi@g}{rgb}{0.671,1,0.663}
+\definecolor{vi@p}{rgb}{1,0.667,1}
+\newcommand\vi@vert[3]{\filldraw[ultra thick,fill=#1] (#2,#3) rectangle (#2+1,#3-2);}
+\newcommand\vi@horz[3]{\filldraw[ultra thick,fill=#1] (#2,#3) rectangle (#2+2,#3-1);}
+\newcommand\vi@four@i[2]{
+  \vi@vert{vi@y}{#1}{#2}
+  \vi@vert{vi@b}{#1+1}{#2}
+  \vi@vert{vi@g}{#1+2}{#2}
+  \vi@vert{vi@p}{#1+3}{#2}
 }
-\newcommand\crfour@ii[2]{
-  \crvert{cry}{#1}{#2}
-  \crvert{crb}{#1+1}{#2}
-  \crhorz{crg}{#1+2}{#2}
-  \crhorz{crp}{#1+2}{#2-1}
+\newcommand\vi@four@ii[2]{
+  \vi@vert{vi@y}{#1}{#2}
+  \vi@vert{vi@b}{#1+1}{#2}
+  \vi@horz{vi@g}{#1+2}{#2}
+  \vi@horz{vi@p}{#1+2}{#2-1}
 }
-\newcommand\crfour@iii[2]{
-  \crhorz{cry}{#1}{#2}
-  \crhorz{crb}{#1}{#2-1}
-  \crvert{crg}{#1+2}{#2}
-  \crvert{crp}{#1+3}{#2}
+\newcommand\vi@four@iii[2]{
+  \vi@horz{vi@y}{#1}{#2}
+  \vi@horz{vi@b}{#1}{#2-1}
+  \vi@vert{vi@g}{#1+2}{#2}
+  \vi@vert{vi@p}{#1+3}{#2}
 }
-\newcommand\crfour@iv[2]{
-  \crhorz{cry}{#1}{#2}
-  \crhorz{crb}{#1}{#2-1}
-  \crhorz{crg}{#1+2}{#2}
-  \crhorz{crp}{#1+2}{#2-1}
+\newcommand\vi@four@iv[2]{
+  \vi@horz{vi@y}{#1}{#2}
+  \vi@horz{vi@b}{#1}{#2-1}
+  \vi@horz{vi@g}{#1+2}{#2}
+  \vi@horz{vi@p}{#1+2}{#2-1}
 }
-\newcommand\crfour@v[2]{
-  \crvert{cry}{#1}{#2}
-  \crhorz{crb}{#1+1}{#2}
-  \crhorz{crg}{#1+1}{#2-1}
-  \crvert{crp}{#1+3}{#2}
+\newcommand\vi@four@v[2]{
+  \vi@vert{vi@y}{#1}{#2}
+  \vi@horz{vi@b}{#1+1}{#2}
+  \vi@horz{vi@g}{#1+1}{#2-1}
+  \vi@vert{vi@p}{#1+3}{#2}
 }
 \def\advent@xxiii@vi{
   There are $5$ ways to tile a $4 \times 2$ rectangle with $2 \times 1$ pieces:
 
   \begin{center}
-    \begin{tikzpicture}[scale=\crscale]
-      \crfour@i{0}{0}
-      \crfour@ii{5}{0}
-      \crfour@iii{10}{0}
+    \begin{tikzpicture}[scale=\vi@scale]
+      \vi@four@i{0}{0}
+      \vi@four@ii{5}{0}
+      \vi@four@iii{10}{0}
     \end{tikzpicture}
 
     \vspace{0.3cm}
 
-    \begin{tikzpicture}[scale=\crscale]
-      \crfour@iv{0}{0}
-      \crfour@v{5}{0}
+    \begin{tikzpicture}[scale=\vi@scale]
+      \vi@four@iv{0}{0}
+      \vi@four@v{5}{0}
     \end{tikzpicture}
   \end{center}
 
@@ -319,7 +319,7 @@
 \def\xxii@size{5}
 \def\xxii@spc{1.6*\xxii@size}
 \definecolor{xxii@purp}{rgb}{0.799,0.601,0.999}
-\newcommand\xxii@dot[2]{\filldraw[black,fill=xxii@purp] (#1, #2) circle (0.15);}
+\newcommand\xxii@dot[2]{\filldraw[black,fill=#2] (#1) circle (0.15);}
 \newcommand\xxii@square[8]{
   % Square
   \draw[black,thick] (#1,#2) rectangle (#1+\xxii@size,#2+\xxii@size);
@@ -328,9 +328,9 @@
   \filldraw[black,thick,fill=xxii@purp] (#1+\xxii@size*#3, #2+\xxii@size*#4) -- (#1+\xxii@size*#5, #2+\xxii@size*#6) -- (#1+\xxii@size*#7, #2+\xxii@size*#8) -- cycle;
 
   % Dots
-  \xxii@dot{#1+\xxii@size*#3}{#2+\xxii@size*#4}
-  \xxii@dot{#1+\xxii@size*#5}{#2+\xxii@size*#6}
-  \xxii@dot{#1+\xxii@size*#7}{#2+\xxii@size*#8}
+  \xxii@dot{#1+\xxii@size*#3,#2+\xxii@size*#4}{xxii@purp}
+  \xxii@dot{#1+\xxii@size*#5,#2+\xxii@size*#6}{xxii@purp}
+  \xxii@dot{#1+\xxii@size*#7,#2+\xxii@size*#8}{xxii@purp}
 }
 \def\advent@xxiii@xxii{
   There are $4$ ways to pick three vertices of a regular quadrilateral so that they form a right-angled triangle:
@@ -344,6 +344,129 @@
   \end{center}
   In another regular polygon with $n$ sides, there are $14620$ ways to pick three vertices so that they form a right-angled triangle.
   What is $n$?
+}
+
+\def\xxiii@cs{0.7}
+\def\xxiii@spc{4*\xxiii@cs}
+\def\xxiii@grid{
+  % Horizontal lines
+  \draw[very thick,gray,densely dotted] (0, 2*\xxiii@cs) -- (3*\xxiii@cs, 2*\xxiii@cs);
+  \draw[very thick,gray,densely dotted] (0, \xxiii@cs) -- (3*\xxiii@cs, \xxiii@cs);
+  % Vertical lines
+  \draw[very thick,gray,densely dotted] (\xxiii@cs, 3*\xxiii@cs) -- (\xxiii@cs, 0);
+  \draw[very thick,gray,densely dotted] (2*\xxiii@cs, 3*\xxiii@cs) -- (2*\xxiii@cs, 0);
+  % Outline
+  \draw[very thick,black] (0, 0) rectangle (3*\xxiii@cs, 3*\xxiii@cs);
+}
+\newcommand\xxiii@line[4]{
+  \draw[very thick,black] (#1*\xxiii@cs, #2*\xxiii@cs) -- (#3*\xxiii@cs, #4*\xxiii@cs);
+}
+\def\advent@xxiii@xxiii{
+  There are $18$ ways to split a $3$ by $3$ square into $3$ rectangles whose sides all have integer length:
+  \begin{center}
+    \begin{tikzpicture}
+      % Row 1
+      \xxiii@grid
+      \xxiii@line{1}{0}{1}{3}
+      \xxiii@line{1}{2}{3}{2}
+      \begin{scope}[shift={(\xxiii@spc,0)}]
+        \xxiii@grid
+        \xxiii@line{0}{2}{2}{2}
+        \xxiii@line{2}{0}{2}{3}
+      \end{scope}
+      \begin{scope}[shift={(2*\xxiii@spc,0)}]
+        \xxiii@grid
+        \xxiii@line{0}{2}{1}{2}
+        \xxiii@line{1}{0}{1}{3}
+      \end{scope}
+      \begin{scope}[shift={(3*\xxiii@spc,0)}]
+        \xxiii@grid
+        \xxiii@line{0}{2}{3}{2}
+        \xxiii@line{2}{2}{2}{3}
+      \end{scope}
+      \begin{scope}[shift={(4*\xxiii@spc,0)}]
+        \xxiii@grid
+        \xxiii@line{0}{1}{3}{1}
+        \xxiii@line{0}{2}{3}{2}
+      \end{scope}
+      \begin{scope}[shift={(5*\xxiii@spc,0)}]
+        \xxiii@grid
+        \xxiii@line{0}{1}{3}{1}
+        \xxiii@line{1}{0}{1}{1}
+      \end{scope}
+      % Row 2
+      \begin{scope}[shift={(0,-1*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{0}{1}{3}{1}
+        \xxiii@line{1}{1}{1}{3}
+      \end{scope}
+      \begin{scope}[shift={(1*\xxiii@spc,-1*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{2}{0}{2}{3}
+        \xxiii@line{2}{2}{3}{2}
+      \end{scope}
+      \begin{scope}[shift={(2*\xxiii@spc,-1*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{1}{0}{1}{3}
+        \xxiii@line{0}{1}{1}{1}
+      \end{scope}
+      \begin{scope}[shift={(3*\xxiii@spc,-1*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{0}{2}{3}{2}
+        \xxiii@line{1}{0}{1}{2}
+      \end{scope}
+      \begin{scope}[shift={(4*\xxiii@spc,-1*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{0}{1}{3}{1}
+        \xxiii@line{2}{0}{2}{1}
+      \end{scope}
+      \begin{scope}[shift={(5*\xxiii@spc,-1*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{2}{0}{2}{3}
+        \xxiii@line{2}{1}{3}{1}
+      \end{scope}
+      % Row 3
+      \begin{scope}[shift={(0,-2*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{0}{2}{3}{2}
+        \xxiii@line{1}{2}{1}{3}
+      \end{scope}
+      \begin{scope}[shift={(1*\xxiii@spc,-2*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{0}{2}{3}{2}
+        \xxiii@line{2}{0}{2}{2}
+      \end{scope}
+      \begin{scope}[shift={(2*\xxiii@spc,-2*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{1}{0}{1}{3}
+        \xxiii@line{2}{0}{2}{3}
+      \end{scope}
+      \begin{scope}[shift={(3*\xxiii@spc,-2*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{0}{1}{2}{1}
+        \xxiii@line{2}{0}{2}{3}
+      \end{scope}
+      \begin{scope}[shift={(4*\xxiii@spc,-2*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{1}{0}{1}{3}
+        \xxiii@line{1}{1}{3}{1}
+      \end{scope}
+      \begin{scope}[shift={(5*\xxiii@spc,-2*\xxiii@spc)}]
+        \xxiii@grid
+        \xxiii@line{0}{1}{3}{1}
+        \xxiii@line{2}{1}{2}{3}
+      \end{scope}
+    \end{tikzpicture}
+  \end{center}
+
+  How many ways are there to split a $10$ by $10$ square into $3$ rectangles whose sides all have integer length?
+}
+
+\def\advent@xxiii@xxiv{
+  When written in binary, the number $235$ is $11101011$.
+  This binary representation starts and ends with 1 and does not contain two \mn{0} in a row.
+
+  What is the smallest three-digit number whose binary representation starts and ends with $1$ and does not contain two \mn{0} in a row?
 }
 
 \def\card@xxiii@i{
