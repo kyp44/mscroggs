@@ -21,6 +21,10 @@ Each December I really enjoy working the advent and Christmas card puzzles, but 
 - **Christmas Card 2020** - Complete.
 - **Advent 2021** - Complete.
 - **Christmas Card 2021** - Complete.
+- **Advent 2022** - Complete.
+- **Christmas Card 2022** - Complete.
+- **Advent 2023** - Complete.
+- **Christmas Card 2023** - Complete.
 - **Sunday Afternoon Maths** - So far I have only solved very few of these, and just with a couple of stray Python scripts. Will go back and work on these once the advent and Christmas card puzzles are all in order.
 
 ## Logic Assistant
