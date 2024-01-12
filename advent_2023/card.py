@@ -30,5 +30,24 @@ prob(8)
 d, k, n = (5, 1, 75)
 print("Verification:", binom(n, k)*(d-1)**k)
 # Takes too long
-print("Brute force verification:", prob7_brute(d, k, n))
+# print("Brute force verification:", prob7_brute(d, k, n))
 pans(300//4)
+
+prob(9)
+prob9_table = {
+    0: 1,
+    1: 7,
+    2: 49,
+    3: 43,
+}
+def prob9_ans(n): return prob9_table[n % 4]
+
+
+for n in range(5):
+    x = 7**n
+    latex_row(n, x, x % 100)
+pans(prob9_ans(3))
+
+
+prob(10)
+pans(prob9_ans(9876543210))

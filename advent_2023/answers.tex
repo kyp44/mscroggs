@@ -15,7 +15,7 @@
 
 \maketitle
 
-Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.uk/adventcode/yglswiTw}
+Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2023}{https://www.mscroggs.co.uk/puzzles/advent2023}
 
 \aproblem{1}{180}{\advent@xxiii@i}{
   A regular $n$-gon has interior angles that are each
@@ -249,7 +249,7 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
       14  & 987         \\
     }
   \end{multicols}
-  Note hat $\abs{C_4} = 8$ as expected from the example.
+  Note that $\abs{C_4} = 8$ as expected from the example.
   Our answer is then $\abs{C_{14}} = 987$, which was verified using a brute force Python program that filters the power sets of $I_n$ to only those subsets containing non-consecutive integer.
 }
 
@@ -366,7 +366,20 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
 }
 
 \aproblem{12}{250}{\advent@xxiii@xii}{
-  This was solved using a Python program that deals with these extremely large numbers in terms of their prime factors.
+  We have the following:
+  \ali{
+    500! \times 499! \times 498! \times \cdots \times 1! &= \prod_{i=1}^{500} i! = \prod_{i=1}^{250} (2i)!(2i-1)! = \prod_{i=1}^{250} (2i)\squares{(2i-1)!}^2 \non
+    &= \parens{\prod_{i=1}^{250} 2}\parens{\prod_{i=1}^{250} i} \parens{\prod_{i=1}^{250} \squares{(2i-1)!}^2} \non
+    &= 2^{250} \times 250! \times \parens{\prod_{i=1}^{250}(2i-1)!}^2 \non
+    &= \parens{2^{125} \times \prod_{i=1}^{250} (2i-1)!}^2 \times 250!.
+  }
+  Thus, clearly
+  \gath{
+    \frac{500! \times 499! \times 498! \times \cdots \times 1!}{250!}
+  }
+  is a square number so that our answer is $n = 250$.
+
+  This was verified using a Python program that deals with these extremely large numbers in terms of their prime factors.
   The prime factors and their exponents are represented as a multiset in which the distinct prime factors are the members and their exponents are the multiplicities.
   If $a$ is a positive integer, let $M(a)$ denote its prime factor multiset.
   The integer operations and properties needed to solve this are equivalent to the following for their multiset representations.
@@ -389,8 +402,6 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
     \item If $b$ was calculated and found to be a square number (by testing $M(b)$), then $n$ is printed and the program exits.
     \item Otherwise, jump back to step~2 for the next $n$.
   \end{enumerate}
-
-  TODO: See if we can do prove this analytically, using $x = 250$ and dealing with pairs $(x-1)!(x+1)!$.
 }
 
 \aproblem{13}{812}{\advent@xxiii@xiii}{
@@ -631,39 +642,38 @@ Magic Link: \href{http://mscroggs.co.uk/adventcode/yglswiTw}{http://mscroggs.co.
 \aproblem{20}{240}{\advent@xxiii@xx}{
   Let $N(k, n)$ be the number of different ways that balls labelled $1$ to $n$ can be put into $k \geq 1$ boxes so that no box is empty.
   This is only valid when $n \geq k$ since, otherwise, at least one of the boxes would have to be empty.
-  We develop a recursive formula for $N(k, n)$.
-  First, there is clearly only single way to put $n$ balls in a single box (i.e. to put all the balls in the box), and thus $N(1, n) = 1$.
-  Now consider the first box.
-  This box can contain from $1$ to $n-k+1$ balls to ensure that the remaining boxes will contain at least one ball.
-  The number of ways to select $m$ balls from a choice of $n$ balls (where order does not matter) is of course the number of combinations, that is
+  Now, since each box must be filled with at least one ball, there are clearly
   \gath{
-    \combos{n}{m} = \binom{n}{m},
+    \frac{n!}{(n-k)!}
   }
-  the binomial coefficient.
-  Now, for each way to choose $m$ balls to put in the first box, then there are $n-m$ balls to put into the remaining $k-1$ boxes, and there are of course $N(k-1, n-m)$ ways to do this.
-  Therefore, we have the following recursive formula:
+  ways to put a single ball in each box since the order matters.
+  For each of these, there are $n-k$ extra balls that can each be put in any of the $k$ boxes, and there are
   \gath{
-    N(1, n) = 1 \non
-    N(k, n) = \sum_{m=1}^{n-k+1} \combos{n}{m} \cdot N(k-1, n-m) = \sum_{m=1}^{n-k+1} \binom{n}{m} N(k-1, n-m). \label{eqn:20:rec}
+    k^{n-k}
   }
-  There does not seem to be an easy way to reduce or derive a closed form for this.
-  Hence, this recursive formula was implemented in Python and verified to match a brute force algorithm that generates the specific bin combinations and counts them.
-  Our answer is then $N(4, 5) = 240$.
+  ways to do this.
+  However, relative to $N(k, n)$, we are over counting.
+  As an example, suppose we have $k = 2$ boxes and $n = 4$ balls.
+  Suppose that balls $1$ and $2$ are placed in boxes $1$ and $2$, respectively, and the extra balls $3$ and $4$ are tossed into box $2$.
+  This is equivalent to balls $1$ and $3$ first being put into boxes $1$ and $2$, respectively, and then the extra balls $2$ and $4$ added to box $2$.
+  These are both equivalent to balls $1$ and $4$ first being put into boxes $1$ and $2$, respectively, and then the extra balls $2$ and $3$ added to box $2$.
+  Each of these cases is counted as separate, but all result in ball $1$ in box $1$, and balls $2$, $3$, and $4$ in box $2$.
+  In this case we are over counting by a factor of $3$, and, in general, we over count by a factor of $n-k+1$.
 
-  We note that the number of ways of choosing $p_i$ balls to put into the $i$th bin for all bins $1 \leq i \leq k$ (and $k$ is the number of bins) is the multinomial coefficient:
+  Putting this all together, we have that
   \gath{
-    \binom{n}{p_1,\ldots,p_m} = \frac{n!}{p_1! p_2! \cdots p_k!},
+    N(k, n) = \squares{\frac{n!}{(n-k)!}} k^{n-k} \parens{\frac{1}{n-k+1}} = \frac{n!}{(n-k+1)!} k^{n-k}.
   }
-  where $p_1 + p_2 + \cdots + p_k = n$.
-  However, this does not simplify our problem, but merely shifts the complexity to dealing with all the ways to create the sum $n$ with $k$ positive integers.
-  This alternate solution can be expressed by
+  Per the example, we have
   \gath{
-    N(k, n) = \sum_{p_1 + p_2 + \cdots + p_k = n} \binom{n}{p_1,\ldots,p_m},
+    N(2, 3) = (3! / 2!) 2^1 = 3 \cdot 2 = 6
   }
-  but this is more difficult to actually evaluate than the recursive formula given by \eqref{eqn:20:rec} on account of needing to generate all the sums $p_1 + p_2 + \cdots + p_k = n$.
-
-  TODO: Can this be done with a closed form by first consider all the ways to fill each box with a single ball, then ways to distribute the extra balls, accounting for double counting if necessary?
-  Can verify against the current recursive solution at first.
+  as expected.
+  Our answer is then
+  \gath{
+    N(4, 5) = (5! / 2!) 4^1 = 5 \cdot 4 \cdot 3 \cdot 4 = 240.
+  }
+  This answer was verified using a brute force Python program that constructs and counts every combination.
 }
 
 \aproblem{21}{231}{\advent@xxiii@xxi}{

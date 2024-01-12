@@ -1441,6 +1441,20 @@
 					"dig",
 					"comb"
 				]
+			},
+			{
+				"number": 9,
+				"tags": [
+					"dig",
+					"mod"
+				]
+			},
+			{
+				"number": 10,
+				"tags": [
+					"dig",
+					"mod"
+				]
 			}
 		]
 	}

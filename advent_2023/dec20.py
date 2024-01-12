@@ -40,12 +40,8 @@ for boxes in box_combos(k, n):
     cnt += 1
 
 
-def N(k, n):
-    if k == 1:
-        return 1
-
-    return sum([binom(n, i) * N(k-1, n - i) for i in range(1, n-k+1+1)])
+def N(k, n): return factorial(n) / factorial(n-k+1) * k**(n-k)
 
 
-print("Recursion verification:", N(k, n))
+print("Formula verification:", N(k, n))
 pans(cnt)

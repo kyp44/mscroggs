@@ -99,12 +99,34 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/108}{https://www.
   Eve has worked out that $N_5(1, n) = 300 = 4n$ so that, of course, $n = 300/4 = 75$.
 }
 
-\cproblem{9}{TODO}{\card@xxiii@ix}{
-  TODO
+\cproblem{9}{43}{\card@xxiii@ix}{
+  The last two digits of any number $n$ are of course simply $n$ modulo $100$.
+  So let us examine the first few powers of $7$:
+  \ali{
+    7^0 &\equiv 1 \pmod{100} & 7^3 &\equiv 7 \cdot 49 \equiv 343 \equiv 43 \pmod{100} \non
+    7^1 &\equiv 7 \pmod{100} & 7^4 &\equiv 7 \cdot 43 \equiv 301 \equiv 1 \pmod{100}. \non
+    7^2 &\equiv 49 \pmod{100}
+  }
+  Clearly, beyond this, the powers of $7$ modulo $100$ will repeat in a cycle.
+  Hence, the last two digits of $7^n$ are $f(n \mod 4)$ where $f$ is given by the following table.
+  \begin{center}
+    \begin{tabular}{cc}
+      $k$ & $f(k)$ \\
+      \hline
+      0   & 1      \\
+      1   & 7      \\
+      2   & 49     \\
+      3   & 43     \\
+    \end{tabular}
+  \end{center}
+  Thus, for this problem, our answer is $f(3 \mod 4) = f(3) = 43$.
 }
 
-\cproblem{10}{TODO}{\card@xxiii@x}{
-  TODO
+\cproblem{10}{49}{\card@xxiii@x}{
+  Utilizing what was derived in the previous problem, our answer is
+  \gath{
+    f(9876543210 \mod 4) = f(2) = 49.
+  }
 }
 
 \end{document}
