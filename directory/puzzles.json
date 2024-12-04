@@ -1457,5 +1457,51 @@
 				]
 			}
 		]
+	},
+	{
+		"type": "advent",
+		"year": 2024,
+		"number": 24,
+		"puzzles": [
+			{
+				"number": 1,
+				"tags": [
+					"misc"
+				]
+			},
+			{
+				"number": 2,
+				"tags": [
+					"num"
+				]
+			},
+			{
+				"number": 3,
+				"tags": [
+					"comb",
+					"sum"
+				]
+			},
+			{
+				"number": 4,
+				"tags": [
+					"num",
+					"sum"
+				]
+			}
+		]
+	},
+	{
+		"type": "card",
+		"year": 2024,
+		"number": 10,
+		"puzzles": [
+			{
+				"number": 1,
+				"tags": [
+					"mod"
+				]
+			}
+		]
 	}
 ]

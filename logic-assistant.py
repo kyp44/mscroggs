@@ -175,11 +175,11 @@ class CellWidget(QtWidgets.QFrame):
         i = 1
         for val in work.symbols:
             if val in self.values:
-                os += val
+                os += str(val) + ","
                 if i % val_cols == 0 and i < len(self.values):
                     os += "\n"
                 i += 1
-        return os
+        return os[:-1]
 
     def set_values(self, vals):
         self.values = vals

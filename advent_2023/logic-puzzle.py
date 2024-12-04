@@ -1,5 +1,5 @@
 """
-Tried to solve the logic puzzle using a brute-force program because
+Tried to solve the logic puzzle using a brute force program because
 solving it via logical deduction seemed to require a lot of
 guesswork.
 

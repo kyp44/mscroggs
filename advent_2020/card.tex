@@ -7,7 +7,7 @@
 
 \begin{document}
 
-\title{MS Scroggs 2020 Christmas Card Solutions}
+\title{Matthew Scroggs 2020 Christmas Card Solutions}
 \author{Dan Whitman}
 \date{}
 
@@ -27,28 +27,28 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/87}{https://www.m
 }
 
 \cproblem{2}{322402}{\card@xx@ii}{
-  Each sheet of paper has four numbers on it.
-  For example, the bottom sheet would have the numbers 1 and 2 on the front half and 161199 and 161200 on the back half.
-  In general, it is reasoned the that $n$th sheet, where the bottom is sheet 1, has the following numbers on it:
-  \ali{
-    & 2n -1 &
-    & 2n &
-    & N - 2(n-1) - 1 &
-    & N - 2(n-1) \,,
-  }
-  where $N = 161200$.
-  Therefore the sum of the numbers on the $n$th sheet is
-  \ali{
-    s_n &= [2n - 1] + [2n] + [N - 2(n-1) - 1] + [N - 2(n-1)] \non
-    &= 4n - 2 + 2N - 4(n-1) \non
-    &= 4n - 2 + 2N - 4n + 4 \non
-    &= 2N + 2 \non
-    &= 2(N+1) \non
-    &= 322402 \,.
-  }
-  So evidently all sheets have this same sum, which means that it is of course also the largest number since it is the only number!
+Each sheet of paper has four numbers on it.
+For example, the bottom sheet would have the numbers 1 and 2 on the front half and 161199 and 161200 on the back half.
+In general, it is reasoned the that $n$th sheet, where the bottom is sheet 1, has the following numbers on it:
+\ali{
+  & 2n -1 &
+  & 2n &
+  & N - 2(n-1) - 1 &
+  & N - 2(n-1) \,,
+}
+where $N = 161200$.
+Therefore the sum of the numbers on the $n$th sheet is
+\ali{
+s_n &= [2n - 1] + [2n] + [N - 2(n-1) - 1] + [N - 2(n-1)] \non
+&= 4n - 2 + 2N - 4(n-1) \non
+&= 4n - 2 + 2N - 4n + 4 \non
+&= 2N + 2 \non
+&= 2(N+1) \non
+&= 322402 \,.
+}
+So evidently all sheets have this same sum, which means that it is of course also the largest number since it is the only number!
 
-  This answer was also verified using a brute force Python program.
+This answer was also verified using a brute force Python program.
 }
 
 \cproblem{3}{4249475344}{\card@xx@iii}{
@@ -57,7 +57,7 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/87}{https://www.m
   \ali{
     s &= \sum_{n=1}^N (2n - 1) = \sum_{n=1}^N 2n - \sum_{n=1}^N 1 = 2 \sum_{n=1}^N n - N \non
     &= 2 \frac{N(N+1)}{2} - N = N(N+1) - N = N^2 + N - N \non
-    &= N^2 = 4249475344 
+    &= N^2 = 4249475344
   }
 
   This answer was also verified using a brute force Python program.
@@ -143,7 +143,7 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/87}{https://www.m
   Thus this linear system can be solved:
   \gath{
     \begin{bmatrix}
-      1 & 1 \\
+      1 & 1  \\
       6 & -1
     \end{bmatrix}
     \begin{bmatrix}
@@ -158,23 +158,23 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/87}{https://www.m
 }
 
 \cproblem{8}{1225}{\card@xx@viii}{
-  For an $n \times m$ grid, it is reasoned that the number of different squares with sides of $k$ spaces is
-  \gath{
-    N_k = (n - k + 1)(m - k + 1) \,,
-  }
-  assuming that $n \geq k$ and $m \geq k$ (where $N_k = 0$ otherwise since no $N_k$ squares can fit in the grid).
-  Letting $p = \min(n,m)$, it is reasoned that the total number of squares in the grid is
-  \ali{
-    N &= \sum_{k=1}^{p} N_k = \sum_{k=1}^p (n - k + 1)(m - k + 1) = \sum_{k=1}^p [n - (k - 1)][m - (k - 1)] \non
-    &= \sum_{k=0}^{p-1} (n - k)(m - k) = \sum_{k=0}^{p-1} \left[nm - k(n + m) + k^2\right] \non
-    &= nm \sum_{k=0}^{p-1} 1 - (n + m) \sum_{k=0}^{p-1} k + \sum_{k=0}^{p-1} k^2 \non
-    &= pnm - (n + m) \frac{p(p-1)}{2} + \frac{p(p-1)(2p-1)}{6} \non
-    &= pnm + \frac{p(p-1)}{6} \left(2p - 3n - 3m - 1\right)
-  }
-  noting that this formula is symmetric with respect to $n$ and $m$, which is to be expected.
-  In our case of course $n = 14$ and $m = 16$ so that $p = \min(14, 16) = 14$, which results in $N = 1225$.
+For an $n \times m$ grid, it is reasoned that the number of different squares with sides of $k$ spaces is
+\gath{
+  N_k = (n - k + 1)(m - k + 1) \,,
+}
+assuming that $n \geq k$ and $m \geq k$ (where $N_k = 0$ otherwise since no $N_k$ squares can fit in the grid).
+Letting $p = \min(n,m)$, it is reasoned that the total number of squares in the grid is
+\ali{
+N &= \sum_{k=1}^{p} N_k = \sum_{k=1}^p (n - k + 1)(m - k + 1) = \sum_{k=1}^p [n - (k - 1)][m - (k - 1)] \non
+&= \sum_{k=0}^{p-1} (n - k)(m - k) = \sum_{k=0}^{p-1} \left[nm - k(n + m) + k^2\right] \non
+&= nm \sum_{k=0}^{p-1} 1 - (n + m) \sum_{k=0}^{p-1} k + \sum_{k=0}^{p-1} k^2 \non
+&= pnm - (n + m) \frac{p(p-1)}{2} + \frac{p(p-1)(2p-1)}{6} \non
+&= pnm + \frac{p(p-1)}{6} \left(2p - 3n - 3m - 1\right)
+}
+noting that this formula is symmetric with respect to $n$ and $m$, which is to be expected.
+In our case of course $n = 14$ and $m = 16$ so that $p = \min(14, 16) = 14$, which results in $N = 1225$.
 
-  The sum was also verified in its original form with Python.
+The sum was also verified in its original form with Python.
 }
 
 \cproblem{9}{141516}{\card@xx@ix}{
