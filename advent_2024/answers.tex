@@ -206,7 +206,62 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   This result was also verified with a brute force Python program.
 }
 
-\aproblem{5}{TODO}{\advent@xxiv@v}{
+\aproblem{5}{179}{\advent@xxiv@v}{
+  We can leverage the results of the 2021, Dec~9 problem.
+  There, the sum of the $n$ consecutive integers starting at (and including) $a$ was derived to be
+  \gath{
+    \sum_{k=a}^{a+n-1} k = \frac{1}{2} n (n + 2a - 1) \label{eqn:pv:sum}
+  }
+  Suppose that this sum is given as $s$ and that $n$ is also known.
+  Then we can solve \eqref{eqn:pv:sum} for $a$ to get
+  \gath{
+    \frac{1}{2} n (n + 2a - 1) = s \non
+    n + 2a - 1 = \frac{2s}{n} \non
+    2a = \frac{2s}{n} - n + 1 \non
+    a = \frac{s}{n} + \frac{1 - n}{2} \label{eqn:pv:solved}
+  }
+  In our case we have $n = 11$ and $s = 2024$ so that \eqref{eqn:pv:solved} evaluates to our answer $a = 179$.
+}
+
+\aproblem{6}{990}{\advent@xxiv@vi}{
+  Suppose that $a_k$ is the $k$-digit number whose digits are all $9$, which is to say that $a_k = 10^k - 1$.
+  Also, let $e(m)$ denote the number of digital nines in $m$.
+  We show these below for $1 \leq k \leq 10$:
+
+  \begin{center}
+    \begin{tabular}{c|c|c|c}
+      $k$ & $a_k$      & $a_k^3$                        & $e(a_k^3)$ \\
+      \hline
+      1   & 9          & 729                            & 1          \\
+      2   & 99         & 970299                         & 3          \\
+      3   & 999        & 997002999                      & 5          \\
+      4   & 9999       & 999700029999                   & 7          \\
+      5   & 99999      & 999970000299999                & 9          \\
+      6   & 999999     & 999997000002999999             & 11         \\
+      7   & 9999999    & 999999700000029999999          & 13         \\
+      8   & 99999999   & 999999970000000299999999       & 15         \\
+      9   & 999999999  & 999999997000000002999999999    & 17         \\
+      10  & 9999999999 & 999999999700000000029999999999 & 19         \\
+    \end{tabular}
+  \end{center}
+
+  In the context of the digital sum of $a_k^3$, we can observe that $a_k^3$ has one seven, one two, some irrelevant number of zeros, and some number of nines.
+  Though we do not attempt to prove it, it seems that the number of nines $e(a_k^3)$ is simply the odd numbers.
+  That is
+  \gath{
+    e(a_k^3) = 2k - 1.
+  }
+  Letting $s(m)$ denote the digital sum of $m$, the digital sum of $a_k^3$ should then be
+  \ali{
+    s(a_k^3) &= 9e(a_k^3) + 7 + 2 = 9e(a_k^3) + 9 \non
+    &= 9(2k - 1) + 9 = 9(2k - 1 + 1) \non
+    &=18k
+  }
+  This result was verified using a Python program for all $1 \leq k \leq 1000$.
+  This of course included our particular case of $s(n) = s(a_{55}^3) = 18 \cdot 55 = 990$, which is our answer.
+}
+
+\aproblem{7}{TODO}{\advent@xxiv@vii}{
   TODO
 }
 

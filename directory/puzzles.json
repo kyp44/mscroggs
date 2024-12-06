@@ -1488,6 +1488,19 @@
 					"num",
 					"sum"
 				]
+			},
+			{
+				"number": 5,
+				"tags": [
+					"cons",
+					"sum"
+				]
+			},
+			{
+				"number": 6,
+				"tags": [
+					"dig"
+				]
 			}
 		]
 	},
