@@ -261,7 +261,22 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   This of course included our particular case of $s(n) = s(a_{55}^3) = 18 \cdot 55 = 990$, which is our answer.
 }
 
-\aproblem{7}{TODO}{\advent@xxiv@vii}{
+\aproblem{7}{119}{\advent@xxiv@vii}{
+  In what follows, we take 12 o'clock to be at zero degrees, with increasing angles going clockwise, in opposition to the standard counter-clockwise on the polar plane.
+
+  Regarding the minute hand, each revolution of the hand around the clock face is an hour, which is of course 60 minutes.
+  Thus, each minute advances the minute hand by $m = 360/60 = 6\unit{degrees}$.
+  This means that position of the minute hand at 08:22 would be $p_m = 22m = 132$ degrees relative to (12 o'clock).
+
+  For the hour hand, each revolution around the clock face is $12$ hours, during which time $60 \cdot 12 = 720$ minutes pass.
+  Hence, every minute advances the hour hand by $h = 360 / 720 = 1/2$ a degree.
+  The time 08:22 is of course 8 hours and 22 minutes past midnight (12 o'clock on the clock face), which is equivalent to $m_h = 60 \cdot 8 + 22 = 502$ total minutes.
+  Thus, the position of the hour hand is $p_h = m_h h = 502 /2 = 251$ degrees.
+
+  The angle between them is then $\abs{p_h - p_m} = \abs{251 - 132} = 119$ degrees, which is indeed obtuse.
+}
+
+\aproblem{8}{TODO}{\advent@xxiv@viii}{
   TODO
 }
 
