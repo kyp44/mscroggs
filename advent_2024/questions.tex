@@ -48,6 +48,51 @@
 }
 
 \def\advent@xxiv@viii{
+  It is possible to arrange $4$ points on a plane and draw non-intersecting lines between them to form $3$ non-overlapping triangles:
+
+  \begin{center}
+    \begin{tikzpicture}
+      \def\ds{3}
+      \def\pa{(0: 0)}
+      \def\pb{(90: \ds)}
+      \def\pc{(215: 1.4*\ds)}
+      \def\pd{(-30: 1.2*\ds)}
+
+      \def\bcr{3}
+      \def\scr{0.55*\bcr}
+      \def\sca{34}
+      \def\mcr{0.7*\bcr}
+      \def\mca{142}
+      \def\pr{0.1}
+
+      % Triangles
+      \draw[fill=blue,fill opacity=0.3] \pa -- \pb -- \pc -- cycle;
+      \draw[fill=red,fill opacity=0.3] \pa -- \pb -- \pd -- cycle;
+      \draw[fill=yellow,fill opacity=0.3] \pa -- \pd -- \pc -- cycle;
+
+      % Points
+      \fill \pa circle (\pr);
+      \fill \pb circle (\pr);
+      \fill \pc circle (\pr);
+      \fill \pd circle (\pr);
+    \end{tikzpicture}
+  \end{center}
+
+  It is not possible to make more than $3$ triangles with $4$ points.
+
+  What is the maximum number of non-overlapping triangles that can be made by arranging $290$ points on a plane and drawing non-intersecting lines between them?
+}
+
+\def\advent@xxiv@ix{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the product of the numbers in the red boxes.
+
+  \grid@advent@xxiv@ix{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xxiv@x{
   TODO
 }
 

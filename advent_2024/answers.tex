@@ -276,7 +276,49 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   The angle between them is then $\abs{p_h - p_m} = \abs{251 - 132} = 119$ degrees, which is indeed obtuse.
 }
 
-\aproblem{8}{TODO}{\advent@xxiv@viii}{
+\aproblem{8}{575}{\advent@xxiv@viii}{
+  Suppose that we have $n$ points in a plane forming $T(n)$ triangles with a convex overall boundary.
+  If we then add a point somewhere \emph{inside} one of the triangles (i.e. not on an edge or at a vertex) and connect this new point to each of the three vertices of the triangle, then this divides that triangle into three smaller triangles.
+  Hence, we have created two additional triangles (the third simply replacing the one that was subdivided) so that
+  \gath{
+    T(n+1) = T(n) + 2. \label{eqn:pviii:rec}
+  }
+  It is easy to see that this is a way to create the \emph{most} new triangles since putting the new point \emph{outside} the entire shape will only create one new triangle since the shape is convex.
+  The point could also be added on the edge of an existing triangle (but not on an existing vertex) as this subdivides \emph{two} original triangles each into two sub-triangles, again adding two additional triangles overall.
+
+  Now, for three points, clearly the maximum number of triangles is simply one, noting that this is also always convex.
+  Therefore, we have
+  \gath{
+    T(3) = 1. \label{eqn:pviii:base}
+  }
+
+  From \eqref{eqn:pviii:rec} and \eqref{eqn:pviii:base} it is easy to deduce that
+  \gath{
+    T(n) = 2n - 5. \label{eqn:pviii:closed}
+  }
+  This is also easy to prove using induction.
+  First, clearly for $n = 3$ we have
+  \gath{
+    T(n) = T(3) = 2 \cdot 3 - 5 = 6 - 5 = 1,
+  }
+  which comports with \eqref{eqn:pviii:base}.
+  Now suppose that \eqref{eqn:pviii:closed} is true for $n$.
+  Then we have
+  \ali{
+    T(n+1) &= T(n) + 2 & \text{(by \eqref{eqn:pviii:rec})} \non
+    &= 2n - 5 + 2 & \text{(by the induction hypothesis)} \non
+    &= 2(n+1) - 5,
+  }
+  which shows that \eqref{eqn:pviii:closed} is true for $n+1$ as well, completing the induction.
+
+  Finally, the answer we seek is then $T(290) = 2 \cdot 290 - 5 = 575$, noting that also $T(4) = 2 \cdot 4 - 5 = 3$ as expected per the example and diagram above.
+}
+
+\aproblem{9}{252}{\advent@xxiv@ix}{
+  \boxans{\gridsol@advent@xxiv@ix}
+}
+
+\aproblem{10}{TODO}{\advent@xxiv@x}{
   TODO
 }
 

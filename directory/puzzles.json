@@ -1501,6 +1501,26 @@
 				"tags": [
 					"dig"
 				]
+			},
+			{
+				"number": 7,
+				"tags": [
+					"misc",
+					"geom"
+				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"geom",
+					"comb"
+				]
+			},
+			{
+				"number": 9,
+				"tags": [
+					"box"
+				]
 			}
 		]
 	},
