@@ -49,6 +49,7 @@ class Tag(Enum):
     CONS = "cons"
     CROSS = "cross"
     DIG = "dig"
+    EXP = "exp"
     FACT = "fact"
     GEOM = "geom"
     MISC = "misc"
@@ -69,6 +70,7 @@ tag_labels = {
     Tag.CONS: "Consecutive numbers",
     Tag.CROSS: "Cross number",
     Tag.DIG: "Digits",
+    Tag.EXP: "Polynomial expansion",
     Tag.FACT: "Factorial",
     Tag.GEOM: "Geometry",
     Tag.MISC: "Miscellaneous",

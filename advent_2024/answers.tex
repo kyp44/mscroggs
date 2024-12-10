@@ -318,7 +318,21 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   \boxans{\gridsol@advent@xxiv@ix}
 }
 
-\aproblem{10}{TODO}{\advent@xxiv@x}{
+\aproblem{10}{495}{\advent@xxiv@x}{
+  We can ignore $100$ since this is clearly not a palindrome.
+  Thus, we consider all two-digit numbers: $10$ through $99$.
+  It is apparent that these can be a palindrome if and only if both digits are the same.
+  These are exactly the numbers $x_n = 10n + n$ where $1 \leq n \leq 9$.
+  Hence, the sum of these is
+  \gath{
+    \sum_{n=1}^9 x_n = \sum_{n=1}^9 (10n + n) = \sum_{n=1}^9 11n = 11 \sum_{n=1}^9 n = 11 \frac{9 \cdot 10}{2} = 55 \cdot 9 = 495,
+  }
+  which is our answer.
+
+  This result was verified with a brute force Python program.
+}
+
+\aproblem{11}{TODO}{\advent@xxiv@xi}{
   TODO
 }
 

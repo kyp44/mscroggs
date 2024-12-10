@@ -331,7 +331,7 @@
 			{
 				"number": 7,
 				"tags": [
-					"comb",
+					"exp",
 					"sum"
 				]
 			},
@@ -622,6 +622,7 @@
 			{
 				"number": 18,
 				"tags": [
+					"exp",
 					"comb"
 				]
 			},
@@ -936,12 +937,14 @@
 			{
 				"number": 7,
 				"tags": [
+					"exp",
 					"comb"
 				]
 			},
 			{
 				"number": 8,
 				"tags": [
+					"exp",
 					"comb"
 				]
 			},
@@ -1138,8 +1141,8 @@
 			{
 				"number": 24,
 				"tags": [
-					"comb",
-					"misc"
+					"exp",
+					"sum"
 				]
 			}
 		]
@@ -1332,6 +1335,7 @@
 			{
 				"number": 17,
 				"tags": [
+					"exp",
 					"comb"
 				]
 			},
@@ -1521,6 +1525,13 @@
 				"tags": [
 					"box"
 				]
+			},
+			{
+				"number": 10,
+				"tags": [
+					"dig",
+					"sum"
+				]
 			}
 		]
 	},
@@ -1532,7 +1543,27 @@
 			{
 				"number": 1,
 				"tags": [
-					"mod"
+					"dig"
+				]
+			},
+			{
+				"number": 2,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 3,
+				"tags": [
+					"exp",
+					"sum"
+				]
+			},
+			{
+				"number": 4,
+				"tags": [
+					"exp",
+					"sum"
 				]
 			}
 		]

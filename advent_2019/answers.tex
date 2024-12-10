@@ -19,9 +19,9 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2019}{https://www.mscrog
 \aproblem{1}{301}{\advent@xix@i}{
   Each of the digits will be one 100 times since there are 100 combinations of the other two digits.
   Thus the total number of ones written in the numbers 1 to 999 are
-  $$
+  \gath{
     100 + 100 + 100 = 300 \,.
-  $$
+  }
   Then of course 1000 only has one 1 so that the final answer is $300 + 1 = 301$.
 
   This answer was verified using Python.
@@ -90,9 +90,9 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2019}{https://www.mscrog
   For each of the first two of these ways we must cover the remaining $(n-2) \times 2$ grid and there are of course $s_{n-2}$ ways to do this.
   For the third we must cover the remaining $(n-1) \times 2$ grid, of which there are $s_{n-1}$ ways.
   Therefore the total number of ways to cover an $n \times 2$ grid is
-  $$
+  \gath{
     s_n = s_{n-2} + s_{n-2} + s_{n-1} = s_{n-1} + 2s_{n-2} \,.
-  $$
+  }
   This forms a sequence not unlike the Fibonacci sequence.
   The first ten elements of the sequence are:
   \begin{center}
@@ -138,9 +138,9 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2019}{https://www.mscrog
 \aproblem{6}{221}{\advent@xix@vi}{
   Suppose that Noel has $N$ grandchildren, and let $t_n$ be the total number of pounds given to all his grandchildren on the year that the \emph{youngest} is $n$ years old (and therefore gets $n$ pounds).
   As the children were all born on consecutive years, the total they are given on year $n$ is
-  $$
+  \gath{
     t_n = \sum_{i=0}^{N-1} (n+i) = \sum_{i=0}^{N-1} n + \sum_{i=0}^{N-1} i = Nn + \sum_{i=1}^{N-1} i = Nn + \frac{N(N-1)}{2} = \frac{N(N + 2n - 1)}{2} \,,
-  $$
+  }
   noting that this is monotonically increasing in both $N$ and $n$.
   Python was used to evaluate $t_n$ for all combinations of $N,n \in \{1, 2, \ldots, 20\}$.
   It showed that the only combination where $t_n = 208$ is for $N = 13$ and $n = 10$.
@@ -150,27 +150,28 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2019}{https://www.mscrog
 
 \aproblem{7}{243}{\advent@xix@vii}{
   In general, the binomial theorem states that
-  $$
-    (x+y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k \,,
-  $$
+  \gath{
+    (x+y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k \,, \label{eqn:pvii:gen}
+  }
   where of course $\binom{n}{k}$ are the binomial coefficients.
-  Hence, for the example we have
-  $$
-    (x+1)^5 = (1+x)^5 = \sum_{k=0}^5 \binom{5}{k} 1^{5-k} x^k = \sum_{k=0}^5 \binom{5}{k} x^k
-  $$
-  so that the sum of coefficients is simply
-  $$
-    \sum_{k=0}^5 \binom{5}{k} = 32
-  $$
-  as confirmed using Python.
+  Consider now the special case of $x \to ax$ and $y \to b$.
+  Then \eqref{eqn:pvii:gen} becomes
+  \gath{
+    (ax + b)^n = \sum_{k=0}^n \binom{n}{k} (ax)^{n - k} b^k = \sum_{k=0}^n \binom{n}{k} a^{n - k} b^k x^{n - k}
+  }
+  so that the sum of coefficients is clearly
+  \gath{
+    S(a, b, n) = \sum_{k=0}^n \binom{n}{k} a^{n - k} b^k.
+  }
+  Hence, for the example, we have
+  \gath{
+    S(1, 1, 5) = \sum_{k=0}^5 \binom{5}{k} = 32
+  }
+  as expected, which was verified using Python.
   For the main problem we then have
-  $$
-    (2x+1)^5 = (1+2x)^5 = \sum_{k=0}^5 \binom{5}{k} 1^{5-k} (2x)^k = \sum_{k=0}^5 \binom{5}{k} 2^k x^k \,,
-  $$
-  and thus the sum of the coefficients is
-  $$
-    \sum_{k=0}^5 \binom{5}{k} 2^k = 243
-  $$
+  \gath{
+    S(2, 1, 5) = \sum_{k=0}^5 \binom{5}{k} 2^{5-k} = \sum_{k=0}^5 \binom{5}{k} 2^k = 243
+  }
   as calculated in Python.
   This answer was also verified by expanding $(2x+1)^5$ in Wolfram Alpha and summing the $6$ coefficients manually.
 }
@@ -299,9 +300,9 @@ Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2019}{https://www.mscrog
     \end{tabular}
   \end{center}
   Looking it up on OEIS, this is the Bell sequence, given by the recurrence relation
-  $$
+  \gath{
     f(n) = \sum_{k=0}^n \binom{n}{k} f(k) \,.
-  $$
+  }
   I struggled to deduce this relation but failed.
 }
 

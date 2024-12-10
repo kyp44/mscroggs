@@ -576,24 +576,20 @@ This result was verified using a brute force Python program.
 }
 
 \aproblem{24}{128}{\advent@xxii@xxiv}{
-  In general, the Binomial Theorem states that
+  From the 2019, Dec 7 problem, the sum of the coefficients of $(ax + b)^n$ is
   \gath{
-    (x + y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k,
+    S(a, b, n) = \sum_{k=0}^n \binom{n}{k} a^{n - k} b^k.
   }
-  where of course
+  So the example becomes
   \gath{
-    \binom{n}{k} = \frac{n!}{k!(n - k)!}
+    S(3, 1, 2) = \sum_{k=0}^2 \binom{2}{k} 3^{2 - k} (-1)^k = 9 - 2 \cdot 3 + 1 = 4
   }
-  is the binomial coefficient.
-  In our case we have
+  as expected.
+  In our case, our answer is
   \gath{
-    (3x - 1)^7 = \sum_{k=0}^7 \binom{7}{k} (3x)^{7-k} (-1)^k
+    S(3, 1, 7) = \sum_{k=0}^7 \binom{7}{k} 3^{7 - k} (-1)^k = 128,
   }
-  so that clearly the sum of the coefficients is
-  \gath{
-    S = \sum_{k=0}^7 \binom{7}{k} 3^{7-k} (-1)^k .
-  }
-  While it would not be too hateful to expand this sum out by hand, we avoid this tedium and simply calculate the result using Python: $S = 128$.
+  which was calculated using Python.
 }
 
 \end{document}

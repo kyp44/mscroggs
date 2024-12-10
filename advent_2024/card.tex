@@ -28,12 +28,28 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/112}{https://www.
   }
 }
 
-\cproblem{3}{TODO}{\card@xxiv@iii}{
-  TODO: Make a new tag for polynomial expansions and go back and tag applicable old problems.
+\cproblem{3}{1225}{\card@xxiv@iii}{
+  Drawing from the 2019, Dec 7 problem, the sum of the coefficients of $(ax + b)^n$ is
+  \gath{
+    S(a, b, n) = \sum_{k=0}^n \binom{n}{k} a^{n - k} b^k.
+  }
+  So, for the example, we have
+  \gath{
+    S(2, 3, 2) = \sum_{k=0}^2 \binom{2}{k} 2^{2 - k} 3^k =  2^2 \cdot 3^0 + 2 \cdot 2^1 \cdot 3^1 + 2^0 \cdot 3^2 = 4 + 12 + 9 = 25
+  }
+  as expected.
+  For the main problem we have our answer:
+  \gath{
+    S(30, 5, 2) = \sum_{k=0}^2 \binom{2}{k} 30^{2 - k} 5^k =  30^2 \cdot 5^0 + 2 \cdot 30^1 \cdot 5^1 + 30^0 \cdot 5^2 = 900 + 300 + 25 = 1225.
+  }
 }
 
-\cproblem{4}{TODO}{\card@xxiv@iv}{
-  TODO
+\cproblem{4}{177147}{\card@xxiv@iv}{
+  From the previous problem, we have our answer as
+  \gath{
+    S(2, 1, 11) = \sum_{k=0}^{11} \binom{11}{k} 2^{11 - k} 1^k = \sum_{k=0}^{11} \binom{11}{k} 2^{11 - k} = \sum_{k=0}^{11} \binom{11}{k} 2^k = 177147,
+  }
+  which was calculated using Python.
 }
 
 \cproblem{5}{TODO}{\card@xxiv@v}{
