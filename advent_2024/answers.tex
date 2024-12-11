@@ -332,7 +332,37 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   This result was verified with a brute force Python program.
 }
 
-\aproblem{11}{TODO}{\advent@xxiv@xi}{
+\aproblem{11}{210}{\advent@xxiv@xi}{
+  Suppose that we consider the integers between $1$ and an odd $N = 2k+1$ inclusive.
+  Consider the number of sets of odd size $n = 2l+1$ whose median value is $m$ (where of course $1 \leq m \leq N$).
+  Since $m$ is the median value, there must be $l$ values less than $m$ and $l$ values greater than $m$.
+  For values less than $m$ there are $m-1$ possible numbers, from which we must choose $l$.
+  Thus, there are
+  \gath{
+    P_<(m, l) = \binom{m-1}{l}
+  }
+  possibilities.
+  For values greater than $m$ there are $N - m$ possible numbers, from which $l$ must be chosen again.
+  Here there are
+  \gath{
+    P_>(m, l) = \binom{N-m}{l} = \binom{2k+1-m}{l}
+  }
+  possibilities.
+  Since these choices are independent of each other, there are clearly
+  \gath{
+    P(m, l) = P_<(m, l) \cdot P_>(m, l) = \binom{m-1}{l} \binom{2k+1-m}{l}
+  }
+  total possible sets of $2l +1$ elements such that $m$ is the median.
+  It then follows that the total number of possible sets of integers in $[1, 2k+1]$ where $m$ is the median is
+  \gath{
+    S(k, m) = \sum_{l=0}^k P(m, l) = \sum_{l=0}^k \binom{m-1}{l} \binom{2k+1-m}{l}.
+  }
+  For the example, this evaluates to the expected $S(2, 3) = 6$, noting that here $N = 5 = 2 \cdot 2 + 1$.
+  For the main problem, we have $N = 11 = 2 \cdot 5 + 1$ so that $S(5, 5) = 210$ is our answer.
+  These were calculated using Python.
+}
+
+\aproblem{12}{TODO}{\advent@xxiv@xii}{
   TODO
 }
 
