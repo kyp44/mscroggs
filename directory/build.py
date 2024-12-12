@@ -51,6 +51,7 @@ class Tag(Enum):
     DIG = "dig"
     EXP = "exp"
     FACT = "fact"
+    FACTS = "facts"
     GEOM = "geom"
     MISC = "misc"
     MOD = "mod"
@@ -72,6 +73,7 @@ tag_labels = {
     Tag.DIG: "Digits",
     Tag.EXP: "Polynomial expansion",
     Tag.FACT: "Factorial",
+    Tag.FACTS: "Factors",
     Tag.GEOM: "Geometry",
     Tag.MISC: "Miscellaneous",
     Tag.MOD: "Modulo",

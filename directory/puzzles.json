@@ -52,7 +52,7 @@
 			{
 				"number": 8,
 				"tags": [
-					"num"
+					"facts"
 				]
 			},
 			{
@@ -463,8 +463,7 @@
 			{
 				"number": 3,
 				"tags": [
-					"num",
-					"comb"
+					"facts"
 				]
 			},
 			{
@@ -737,13 +736,14 @@
 			{
 				"number": 1,
 				"tags": [
+					"facts",
 					"num"
 				]
 			},
 			{
 				"number": 2,
 				"tags": [
-					"num"
+					"facts"
 				]
 			},
 			{
@@ -977,15 +977,15 @@
 			{
 				"number": 13,
 				"tags": [
-					"num",
-					"sum"
+					"facts",
+					"num"
 				]
 			},
 			{
 				"number": 14,
 				"tags": [
-					"num",
-					"sum"
+					"facts",
+					"num"
 				]
 			}
 		]
@@ -1110,7 +1110,7 @@
 			{
 				"number": 19,
 				"tags": [
-					"num"
+					"facts"
 				]
 			},
 			{
@@ -1489,8 +1489,8 @@
 			{
 				"number": 4,
 				"tags": [
-					"num",
-					"sum"
+					"facts",
+					"num"
 				]
 			},
 			{
@@ -1538,6 +1538,44 @@
 				"tags": [
 					"comb"
 				]
+			},
+			{
+				"number": 12,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 13,
+				"tags": [
+					"cross"
+				]
+			},
+			{
+				"number": 14,
+				"tags": [
+					"dig",
+					"mod"
+				]
+			},
+			{
+				"number": 15,
+				"tags": [
+					"misc",
+					"dig"
+				]
+			},
+			{
+				"number": 16,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 17,
+				"tags": [
+					"facts"
+				]
 			}
 		]
 	},
@@ -1570,6 +1608,33 @@
 				"tags": [
 					"exp",
 					"sum"
+				]
+			},
+			{
+				"number": 5,
+				"tags": [
+					"facts",
+					"num"
+				]
+			},
+			{
+				"number": 6,
+				"tags": [
+					"facts",
+					"num"
+				]
+			},
+			{
+				"number": 7,
+				"tags": [
+					"facts",
+					"sum"
+				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"facts"
 				]
 			}
 		]

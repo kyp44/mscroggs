@@ -251,46 +251,13 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/92}{https://www.m
 }
 
 \cproblem{13}{4}{\card@xxi@xiii}{
-  Call our answer $x$ and suppose that it has $n$ factors $\braces{f_i}$ so that we clearly have
-  \gath{
-    \prod_{i = 1}^n f_i = 2^n \,.
-  }
-  Since $2$ is prime, the factors, and thus $x$ itself can only be some power of $2$ so that $x = 2^m$.
-  This clearly has the $n = m + 1$ factors $f_i = 2^i$ where $0 \leq i \leq m$.
-  Therefore we have
-  \gath{
-    \prod_{i = 1}^n f_i = \prod_{i=0}^m 2^i = 2^n = 2^{m+1} \non
-    2^{\sum_{i=0}^m i} = 2^{m+1} \non
-    \sum_{i=0}^m i = m+1 \non
-    \frac{m(m+1)}{2} = m + 1 \non
-    m^2 + m = 2m + 2 \non
-    m^2 - m - 2 = 0 \non
-    (m + 1)(m - 2) = 0
-  }
-  so that it must be that $m = 2$ since the other solution is negative.
-  Hence our answer is $x = 2^m = 2^2 = 4$.
-  This result was verified with Python with brute force.
+  We know from the 2021, Dec~1 problem that our answer must be $2^2 = 4$.
+  This was verified using a brute force Python program.
 }
 
 \cproblem{14}{625}{\card@xxi@xiv}{
-Similarly to the previous problem, we have
-\gath{
-  \prod_{i = 1}^n f_i = 25^n = 5^{2n} \,.
-}
-So that our answer $x$ and its factors must be powers of $5$ since $5$ is prime.
-Therefore $x = 5^m$, which again has the $n = m + 1$ factors $f_i = 5^i$ for $0 \leq i \leq m$.
-Thus
-\gath{
-  \prod_{i = 1}^n f_i = \prod_{i=0}^m 5^i = 5^{2n} = 5^{2m+2} \non
-      5^{\sum_{i=0}^m i} = 5^{2m+2} \non
-      \sum_{i=0}^m i = 2m + 2 \non
-      \frac{m(m+1)}{2} = 2m + 2 \non
-      m^2 + m = 4m + 4 \non
-      m^2 - 3m - 4 = 0 \non
-      (m + 1)(m - 4) = 0
-    }
-  Since the other solution is negative, we must have $m = 4$ so that our answer is $x = 5^m = 5^4 = 625$.
-  This result was also verified with Python with brute force.
+  We know from the 2021, Dec~1 problem that our answer must be $25^2 = 625$.
+  This was verified using a brute force Python program.
 }
 
 \end{document}

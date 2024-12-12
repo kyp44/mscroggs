@@ -35,17 +35,26 @@ Link to the online card: \href{http://mscroggs.co.uk/blog/70}{http://mscroggs.co
 }
 
 \cproblem{3}{2002}{\card@xix@iii}{
-  The number $4008004$ may seem like a very random choice for an upper bound of this problem, but it is not at all.
-  The key insight is that for any number $n$ a factor $k$ of $n$ must always result in two factors, namely $k$ and $n/k$, noting that this is also the case for $k=1$.
-  So it seems that the number of factors of $n$ must always be even.
-  However, the only exception to this occurs when $n$ is a perfect square, in which case one integer factor $k = \sqrt{n}$ generates only one distinct factor instead of two.
-  Therefore only the set of integers with an odd number of factors is exactly the set of perfect squares!
+We know that if $n$ has a prime factorization of
+\gath{
+n = \prod_{i=1}^N p_i^{e_i},
+}
+then the number of factors is
+\gath{
+  N(n) = \prod_{i=1}^N (e_i + 1).
+}
+Now, the only way to get an odd product is if both of the multiplicands are odd.
+From this it follows that every $e_i + 1$ must be odd in order to get an odd number of factors.
+Hence, every $e_i$ must be even.
+So, supposing that every $e_i = 2k_i$, then we have that
+\gath{
+n = \prod_{i=1}^N p_i^{e_i} = \prod_{i=1}^N p_i^{2 k_i} = \parens{\prod_{i=1}^N p_i^{k_i}}^2 = k^2,
+}
+where we set $k = \prod_{i=1}^N p_i^{k_i}$.
+This is to say that $n$ must be a square number.
 
-  Moreover if we are interested in the number of integers between $1$ and $N^2$ (inclusive) with an odd number of factors, then this is the number of perfect squares between $1$ and $N^2$.
-  Of course this will simply be the set $\{k^2 \mid 1 \leq k \leq N\}$, which of course has $N$ elements.
-  We then notice that $N^2 = 4008004$ is a perfect square so that the number we seek is $N = \sqrt{4008004} = 2002$.
-
-  This result was verified using Python using a quasi-brute force approach.
+Thus, the question can be rephrased as how many square numbers are there between $1$ and $m = 4008004$.
+The square root of $m$ is exactly $2002$, hence our answer is that there are $2002$ square numbers between $1$ and $m$, namely the numbers $i^2$ where $1 \leq i \leq 2002$.
 }
 
 \cproblem{4}{130405}{\card@xix@iv}{

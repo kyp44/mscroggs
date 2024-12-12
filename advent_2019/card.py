@@ -16,38 +16,6 @@ prob(2)
 a = sum([n for n in range(86) if n % 2 == 1])
 pans(a)
 
-prob(3)
-
-
-def factors(n):
-    if n == 1:
-        return set((1,))
-    fs = set()
-    for k in range(1, n//2+1):
-        if n % k == 0:
-            fs.add(k)
-            fs.add(n // k)
-
-    return fs
-
-
-N = 4008004
-
-ns = []
-
-"""
-# Brute force method (very slow)
-for n in range(1, N+1) :
-    if len(factors(n)) % 2 == 1 :
-        ns.append(n)
-"""
-
-# Insightful shortcut
-ns = [k**2 for k in range(1, int(np.ceil(np.sqrt(N)))+1) if k**2 <= N]
-
-# print(ns)
-pans(len(ns))
-
 prob(4)
 N = 130404
 

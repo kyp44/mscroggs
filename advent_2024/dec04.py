@@ -2,12 +2,9 @@ from common import *
 
 p = 13
 
-ms = []
-for m in range(1, 1000):
+for m in it.count(2):
     fs = list(factors(m))
 
     if product(fs) == p**len(fs):
-        ms.append(m)
-
-print(ms)
-pans(ms[0])
+        pans(m)
+        break

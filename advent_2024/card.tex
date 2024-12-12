@@ -52,20 +52,34 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/112}{https://www.
   which was calculated using Python.
 }
 
-\cproblem{5}{TODO}{\card@xxiv@v}{
-  TODO
+\cproblem{5}{6427}{\card@xxiv@v}{
+  It turns out that $41306329 = 6427^2$ and $6427$ is prime.
+  Therefore, the only factors of $41306329$ are $1$, $6427$, and $41306329$ itself.
+  The geometric mean of these factors is then our answer:
+  \gath{
+    \sqrt[3]{1 \cdot 6427 \cdot 41306329} = \sqrt[3]{6427 \cdot 6427^2} = \sqrt[3]{6427^3} = 6427
+  }
 }
 
-\cproblem{6}{TODO}{\card@xxiv@vi}{
-  TODO
+\cproblem{6}{8464}{\card@xxiv@vi}{
+  We know from the 2021, Dec~1 problem that \emph{only} such number is $92^2 = 8464$.
+  This was verified using a brute force Python program.
 }
 
-\cproblem{7}{TODO}{\card@xxiv@vii}{
-  TODO
+\cproblem{7}{2801}{\card@xxiv@vii}{
+  Since $n = 7^4 = 2401$ is a prime factorization, we know that there are $4 + 1 = 5$ factors (including $1$ and itself).
+  These factors are exactly the $5$ numbers $f_i = 7^i$ where $0 \leq i \leq 4$.
+  Thus, their sum is
+  \gath{
+    \sum_{i=0}^4 f_i = \sum_{i=0}^4 7^i = \frac{7^5 - 1}{7 - 1} = \frac{16806}{6} = 2801.
+  }
+  This was verified using Python.
 }
 
-\cproblem{8}{TODO}{\card@xxiv@viii}{
-  TODO
+\cproblem{8}{170260}{\card@xxiv@viii}{
+  From the 2019, Dec~3 problem, we know that this is equivalent to the easier problem of how many square numbers there are between $1$ and $m = 28988500000$.
+  Now, the square root of $m$ is a little over $170260$ so that $170260^2$ is less than $m$ but $170261^2$ is over it.
+  Therefore, our answer is that there are $170260$ square numbers between $1$ and $m$, namely the numbers $i^2$ where $1 \leq i \leq 170260$.
 }
 
 \cproblem{9}{TODO}{\card@xxiv@ix}{

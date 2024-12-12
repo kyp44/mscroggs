@@ -172,38 +172,8 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
 }
 
 \aproblem{4}{169}{\advent@xxiv@iv}{
-  Suppose that $p$ is any prime number, noting that both $3$ and $13$ are prime.
-  Suppose a that positive integer $m$ has $n$ factors: $\braces{a_k \mid 1 \leq k \leq n}$.
-  We would like the geometric mean of the factors to be equal to $p$ so that
-  \gath{
-    \sqrt[n]{\prod_{k=1}^n a_k} = p \non
-    \prod_{k=1}^n a_k = p^n.
-  }
-  Now, since $p$ is prime, every $a_k$ must be some power of $p$.
-  This implies that $m$ itself must also be a power of $p$.
-
-  So suppose that $m = p^n$ for some unknown $n$.
-  Then the factors of $m$ are exactly the set of $n+1$ powers $\braces{p^k \mid 0 \leq k \leq n}$.
-  Therefore, we have
-  \gath{
-    \sqrt[n+1]{\prod_{k=0}^n p^k} = p \non
-    \prod_{k=0}^n p^k = p^{n+1} \non
-    p^0 \cdot p^1 \cdot p^2 \cdots p^n = p^{n+1} \non
-    p^{\sum_{k=0}^n k} = p^{n+1}.
-  }
-  Since $p^x$ is strictly increasing, this implies that
-  \gath{
-    \sum_{k=0}^n k = n + 1 \non
-    \frac{n(n+1)}{2} = n+1 \non
-    n^2 + n = 2n + 2 \non
-    n^2 - n - 2 = 0 \non
-    (n - 2)(n + 1) = 0.
-  }
-  Since $n$ must be positive, this means that $n = 2$ so that $m = p^2$.
-  Evidently this is not just the smallest number such that the geometric mean of its factors is $p$, but the \emph{only} such number.
-  In our case we have $p = 13$ so that the answer we seek is $m = p^2 = 13^2 = 169$.
-
-  This result was also verified with a brute force Python program.
+  We know from the 2021, Dec~1 problem that \emph{only} such number is $13^2 = 169$.
+  This was verified using a brute force Python program.
 }
 
 \aproblem{5}{179}{\advent@xxiv@v}{
@@ -362,7 +332,139 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   These were calculated using Python.
 }
 
-\aproblem{12}{TODO}{\advent@xxiv@xii}{
+\aproblem{12}{281}{\advent@xxiv@xii}{
+  Suppose that the original three-digit number has digits $d_2 d_1 d_0$, which is to say that the number itself is $100d_2 + 10d_1 + d_0$.
+  First, it must be that the digit that is removed is the least significant $d_0$ since otherwise the sum of the numbers would end in an even digit.
+  Hence, we have the following addition
+  \begin{center}
+    \begin{tabular}{c@{}c@{}c@{}c}
+        & $d_2$ & $d_1$ & $d_0$ \\
+      + &       & $d_2$ & $d_1$ \\
+      \hline
+        & 3     & 0     & 9
+    \end{tabular}
+  \end{center}
+  Since $9 + 9 = 18 < 19$, the ones place column can only sum to $9$ and not $19$, thus there cannot be a carry to the tens place.
+  Moreover, noting that $d_2$ cannot be zero (since then we would not have a three-digit number at all), the tens place column can sum to zero only if the digits $d_1$ and $d_2$ sum to $10$ since there is no carried value to account for.
+
+  It then follows that there is a carried value of $1$ added to $d_2$ in the hundreds place so that $d_2 + 1 = 3$ and, therefore, $d_2 = 2$.
+  From before, we then have $d_1 + d_2 = d_1 + 2 = 10$ so that $d_1 = 8$.
+  Lastly, we know that $d_0 + d_1 = d_0 + 8 = 9$, thus $d_0 = 1$.
+  So our addition has to be
+  \begin{center}
+    \begin{tabular}{c@{}c@{}c@{}c}
+        & 2 & 8 & 1 \\
+      + &   & 2 & 8 \\
+      \hline
+        & 3 & 0 & 9
+    \end{tabular}
+  \end{center}
+  and Holly's original three-digit number is of course $281$.
+}
+
+\aproblem{13}{997}{\advent@xxiv@xiii}{
+  \boxans{\crossnumstd{9}{9}{7}{4}{7}{0}{2}{3}{5}}
+}
+
+\aproblem{14}{625}{\advent@xxiv@xiv}{
+  Let $D(n)$ denote $15^n$ modulo $1000$ for a natural number $n$, so that it is effectively only the last three digits of $15^n$.
+  We will prove that
+  \gath{
+    D(n) =
+    \begin{cases}
+      375 & \text{$n$ is odd}  \\
+      625 & \text{$n$ is even}
+    \end{cases} \label{eqn:pxiv:dn}
+  }
+  for all $n \geq 3$.
+  We show this by induction on $n$.
+  First, clearly
+  \gath{
+    D(3) = 15^3 \pmod{1000} = 3375 \pmod{1000} = 375
+  }
+  so that \eqref{eqn:pxiv:dn} holds in the base case.
+  Now assume that \eqref{eqn:pxiv:dn} holds for $n$.
+  If $n$ is odd then $D(n) = 15^n \pmod{1000} = 375$ so that
+  \ali{
+    D(n+1) &= 15^{n+1} \pmod{1000} \non
+    &= 15 \cdot 15^n \pmod{1000} \non
+    &= 15 \cdot 375 \pmod{1000} \non
+    &= 5625 \pmod{1000} \non
+    &= 625,
+  }
+  noting that $n+1$ is even since $n$ is odd.
+  On the other hand, if $n$ is even, then $D(n) = 15^n \pmod{1000} = 625$, and hence
+  \ali{
+    D(n+1) &= 15^{n+1} \pmod{1000} \non
+    &= 15 \cdot 15^n \pmod{1000} \non
+    &= 15 \cdot 625 \pmod{1000} \non
+    &= 9375 \pmod{1000} \non
+    &= 375,
+  }
+  noting that $n+1$ is odd since $n$ is even.
+  Thus $D(n+1)$ holds for either parity of $n$, completing the induction.
+
+  Our answer is then
+  \gath{
+    15^{1234567890} \pmod{1000} = D(1234567890) = 625
+  }
+  since $1234567890$ is even.
+}
+
+\aproblem{15}{976}{\advent@xxiv@xv}{
+  Let $R(n)$ denote the number obtained by reversing the digits of $n$.
+  We can simply enumerate the first ten square numbers and the product of the square and its reversed-digit number:
+  \begin{center}
+    \begin{tabular}{c|cc|cc}
+      $n$ & $n^2$ & $R(n^2)$ & $n^2 \cdot R(n^2)$ & Three digits? \\
+      \hline
+      1   & 1     & 1        & 1                  & No            \\
+      2   & 4     & 4        & 16                 & No            \\
+      3   & 9     & 9        & 81                 & No            \\
+      4   & 16    & 61       & 976                & Yes           \\
+      5   & 25    & 52       & 1300               & No            \\
+      6   & 36    & 63       & 2268               & No            \\
+      7   & 49    & 94       & 4606               & No            \\
+      8   & 64    & 46       & 2944               & No            \\
+      9   & 81    & 18       & 1458               & No            \\
+    \end{tabular}
+  \end{center}
+  The next square is $10^2 = 100$ which cannot be used (since it ends in not one, but two zeros), then comes $11^2 = 121$, which is palindromic so that $121 \cdot 121 = 14641$ is itself a square number.
+  Regardless of these interesting properties, clearly we are getting into products that are far too large, and so there is no need to continue.
+  Looking at the table above, evidently there is only \emph{one} square number such that the product of it and its reversed-digit number is exactly three digits!
+  Thus, our answer must be $4^2 \cdot R(4^2) = 16 \cdot 61 = 976$.
+}
+
+\aproblem{16}{336}{\advent@xxiv@xvi}{
+  \boxans{\gridsol@advent@xxiv@xvi}
+}
+
+\aproblem{17}{972}{\advent@xxiv@xvii}{
+Let $N(n)$ denote the number of factors of a positive integer $n$.
+If $n$ has the prime factorization of
+\gath{
+n = \prod_{i=1}^N p_i^{e_i},
+}
+then the number of factors is
+\gath{
+  N(n) = \prod_{i=1}^N (e_i + 1).
+}
+So, for the example, the prime factorization of $40$ is $2^3 \cdot 5$ so that
+\gath{
+  N(40) = (3+1)(1+1) = 4 \cdot 2 = 8.
+}
+Our actual number is already given in terms of its prime factorization, i.e.
+\gath{
+  n = 2^{26} \cdot 5 \cdot 7^5 \cdot 11^2,
+}
+so that clearly
+\gath{
+  N(n) = (26+1)(1+1)(5+1)(2+1) = 27 \cdot 2 \cdot 6 \cdot 3 = 972
+}
+is our answer.
+}
+
+\aproblem{18}{TODO}{\advent@xxiv@xviii}{
   TODO
 }
 

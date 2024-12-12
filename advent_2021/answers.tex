@@ -17,46 +17,69 @@
 Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2021}{https://www.mscroggs.co.uk/puzzles/advent2021}
 
 \aproblem{1}{484}{\advent@xxi@i}{
-  We have an unknown, three-digit number $x$ with $n$ factors $f_i$ for $1 \leq i \leq n$.
-  From the given geometric mean, we have that
-  \gath{
-    \prod_{i=1}^n f_i = 22^n = 2^n 11^n \,, \label{eqn:01:prod}
-  }
-  where we note that $2 \cdot 11$ is the prime factorization of $22$.
-  It follows that the factors $f_i$ and, as a result, $x$ itself can only have prime factors of $2$ and $11$.
-  Therefore
-  \gath{
-    x = 2^m 11^k
-  }
-  for some positive integers $m$ and $k$.
-  Moreover, there are
-  \gath{
-    n = (m+1)(k+1)
-  }
-  factors of $x$, which we can index as $f_{ij} = 2^i 11^j$ for $(i,j) \in I_m \times I_k$, where $I_n = \braces{0, 1, \ldots, n}$.
-  The product of these factors is then
-  \ali{
-    \prod_{(i,j) \in I_m \times I_k} f_{ij} &= \prod_{i=0}^m \parens{\prod_{j=0}^k f_{ij}} = \prod_{i=0}^m \parens{\prod_{j=0}^k 2^i 11^j} = 2^{\sum_{i=0}^m \sum_{j=0}^k i} 11^{\sum_{i=0}^m \sum_{j=0}^k j} = 2^\frac{m(m+1)(k+1)}{2} 11^\frac{k(k+1)(m+1)}{2} \non
-    &= 2^n 11^n
-  }
-  from \eqref{eqn:01:prod}.
-  It follows from this that
-  \gath{
-    n = \frac{m(m+1)(k+1)}{2} = \frac{k(k+1)(m+1)}{2} \label{eqn:01:km} \\
-    m = k \,.
-  }
-  So it seems that $x = 2^m 11^m$ and hence the number of factors becomes
-  \gath{
-    n = (m+1)^2 \,. \label{eqn:01:nm}
-  }
-  Combining \eqref{eqn:01:km} and \eqref{eqn:01:nm} gives
-  \gath{
-    n = (m+1)^2 = \frac{m(m+1)(k+1)}{2} = \frac{m(m+1)^2}{2} \non
-    1 = \frac{m}{2} \non
-    m = 2 \,.
-  }
-  Therefore $x = 2^m 11^m = 2^2 11^2 = 4 \cdot 121 = 484$.
-  This result was verified with Python.
+Let $a$ be any positive integer greater than 1 that has the unique prime factor decomposition
+\gath{
+a = \prod_{i=1}^N p_i^{e_i}.
+}
+Let $b$ be any number for which the geometric mean of its factors is $a$.
+If $b$ has $n$ factors $\braces{f_k \mid 1 \leq k \leq n}$ then we have
+\gath{
+\sqrt[n]{\prod_{k=1}^n f_k} = a \non
+\prod_{k=1}^n f_k = a^n \non
+\prod_{k=1}^n f_k = \parens{\prod_{i=1}^N p_i^{e_i}}^n \non
+\prod_{k=1}^n f_k = \prod_{i=1}^N p_i^{n e_i}.
+}
+This means that each factor of $b$ has to be composed of the same prime factors as $a$.
+It then follows that $b$ itself must also be composed of these prime factors.
+Therefore,
+\gath{
+b = \prod_{i=1}^N p_i^{m_i},
+}
+for some set of natural numbers $\braces{m_i \mid 1 \leq i \leq N}$.
+The factors of $b$ are then every possible combination of powers of the primes, where the exponents for the prime $p_i$ run from $0$ to $m_i$ inclusive.
+So, if we consider the number $m_i+1$ as the set of smaller natural numbers $m_i + 1 = \braces{k \mid 0 \leq k \leq m_i}$ (which is typically how the natural numbers are defined in set theory), then let $M = \prod_{i=1}^N (m_i + 1)$ be the Cartesian product of these sets.
+Each factor of $b$ then corresponds to a vector $x$ of length $N$ chosen from $M$, and there are a total of $n = \prod_{i=1}^N (m_i + 1)$ factors, where we here mean normal multiplication.
+In particular, for a given $x \in M$, the corresponding factor of $b$ is
+\gath{
+\prod_{i=1}^N p_i^{x_i}
+}
+Hence, the geometric mean of all the factors is
+\gath{
+\sqrt[n]{\prod_{x \in M} \parens{\prod_{i=1}^N p_i^{x_i}}} = a \non
+\prod_{x \in M} \parens{\prod_{i=1}^N p_i^{x_i}} = a^n \non
+\prod_{x \in M} \parens{\prod_{i=1}^N p_i^{x_i}} = \prod_{i=1}^N p_i^{n e_i}.
+}
+Since every $p_i$ is prime, clearly the prime exponent on the left side must equal the prime exponent on the right side for each $1 \leq i \leq N$.
+So, if we fix $i$ to consider any one of the prime factors, then it has to be that
+\gath{
+\prod_{x \in M} p_i^{x_i} = p_i^{n e_i}.
+}
+Now, how many vectors are we dealing with on the left side?
+Well, we know that the $i$th component of the vectors runs from $0$ to $m_i$ inclusive.
+However, for each of these values, every other component takes all the possible combinations of values!
+There are $\prod_{k \neq i} (m_k + 1)$ (taken as multiplication) such combinations.
+Therefore, we have
+\gath{
+\prod_{x \in M} p_i^{x_i} = p_i^{\sum_{j=0}^{m_i}\squares{\prod_{k \neq i} (m_k + 1) j}} = p_i^{n e_i}.
+}
+Since the exponents must be equal, we get
+\gath{
+  \sum_{j=0}^{m_i}\squares{\prod_{k \neq i} (m_k + 1) j} = n e_i \non
+  \squares{\prod_{k \neq i} (m_k + 1)}\sum_{j=0}^{m_i} j = e_i \prod_{k=1}^N (m_k + 1) \non
+  \squares{\prod_{k \neq i} (m_k + 1)} \frac{m_i(m_i + 1)}{2} = e_i \prod_{k=1}^N (m_k + 1) \non
+  \frac{m_i}{2} \prod_{k=1}^N (m_k + 1) = e_i \prod_{k=1}^N (m_k + 1) \non
+  \frac{m_i}{2} = e_i \non
+  m_i = 2e_i
+}
+recalling that $n = \prod_{k=1}^N (m_k + 1)$, and noting that clearly each $m_k$ cannot be $-1$, so that $m_k + 1 \neq 0$ and hence we can divide by these without an issue.
+Since this is the case for every $1 \leq i \leq N$, it follows that
+\gath{
+b = \prod_{i=1}^N p_i^{m_i} = \prod_{i=1}^N p_i^{2e_i} = \parens{\prod_{i=1}^N p_i^{e_i}}^2 = a^2.
+}
+Therefore, for any $a > 1$, the \emph{only} number $b$ for which the geometric mean of its factors equals $a$ is $b = a^2$.
+
+In our case we have $a = 22$ so that our answer is $b = a^2 = 22^2 = 484$.
+This result was verified with Python.
 }
 
 \aproblem{2}{144}{\advent@xxi@ii}{
