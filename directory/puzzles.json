@@ -1576,6 +1576,12 @@
 				"tags": [
 					"facts"
 				]
+			},
+			{
+				"number": 18,
+				"tags": [
+					"misc"
+				]
 			}
 		]
 	},
@@ -1635,6 +1641,12 @@
 				"number": 8,
 				"tags": [
 					"facts"
+				]
+			},
+			{
+				"number": 9,
+				"tags": [
+					"cons"
 				]
 			}
 		]

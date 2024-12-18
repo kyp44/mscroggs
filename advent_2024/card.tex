@@ -82,8 +82,28 @@ Link to the online card: \href{https://www.mscroggs.co.uk/blog/112}{https://www.
   Therefore, our answer is that there are $170260$ square numbers between $1$ and $m$, namely the numbers $i^2$ where $1 \leq i \leq 170260$.
 }
 
-\cproblem{9}{TODO}{\card@xxiv@ix}{
-  TODO
+\cproblem{9}{133225}{\card@xxiv@ix}{
+  In the 2021, Dec~9 problem, it was found that the sum of the $n$ consecutive integers starting at (and including) $a$ is given by
+  \gath{
+    \sum_{k=a}^{a+n-1} k = \frac{1}{2} n (n + 2a - 1) \label{eqn:09:sum}
+  }
+  If we call this sum $s_1$, we of course get
+  \gath{
+    s_1 = \frac{1}{2} n (n + 2a - 1).
+  }
+  The first integer after this initial set is of course $a + n$.
+  So, if we start here and sum the next $n$ integers, calling this $s_2$, then we can again apply \eqref{eqn:09:sum} to get
+  \gath{
+    s_2 = \frac{1}{2} n \squares{n + 2(a + n) - 1} = \frac{1}{2} n \squares{3n + 2a - 1}.
+  }
+  Clearly, $s_2$ will be larger than $s_1$ since every integer in the sum of $s_2$ is larger than those added to make $s_1$.
+  Subtracting $s_1$ from $s_2$ then results in the positive integer
+  \gath{
+    s_2 - s_1 = \frac{1}{2} n \squares{3n + 2a - 1} - \frac{1}{2} n (n + 2a - 1) = \frac{1}{2} n (2n) = n^2.
+  }
+  Interestingly, this difference is simple and does not depend on the starting integer $a$.
+  Eve has $n = 365$ so that her result must be $n^2 = 365^2 = 133225$.
+  This was verified using a brute force Python program.
 }
 
 \cproblem{10}{TODO}{\card@xxiv@x}{

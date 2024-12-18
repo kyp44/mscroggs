@@ -101,14 +101,14 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   such that all the numbers still sum to $n$, and there are of course $f\squares{2(m-k)}$ ways to express this value as the sum of odd numbers.
   Thus, the total number of ways to express $n$ is to sum over all the choices of $k$, which becomes the recursive formula
   \gath{
-    f(2m+1) = \sum_{l=0}^m f\squares{2(m-l)}. \label{eqn:piii:odd:pre}
+    f(2m+1) = \sum_{l=0}^m f\squares{2(m-l)}. \label{eqn:03:odd:pre}
   }
   We can simplify this by setting $k = m-l$ so that $l = 0 \to k = m$ and $l = m \to k = 0$, and hence
   \gath{
-    f(2m+1) = \sum_{k=0}^m f(2k). \label{eqn:piii:odd}
+    f(2m+1) = \sum_{k=0}^m f(2k). \label{eqn:03:odd}
   }
-  Note that the first number in the sum being $n$ itself corresponds to $l = m$ in \eqref{eqn:piii:odd:pre} and $k = 0$ in \eqref{eqn:piii:odd} so that the remaining value is $0$ and hence $f(2k) = f(0) = 1$ since overall there is only one of these sums.
-  Thus, we set $f(0) = 1$ above to make \eqref{eqn:piii:odd:pre} and \eqref{eqn:piii:odd} more concise.
+  Note that the first number in the sum being $n$ itself corresponds to $l = m$ in \eqref{eqn:03:odd:pre} and $k = 0$ in \eqref{eqn:03:odd} so that the remaining value is $0$ and hence $f(2k) = f(0) = 1$ since overall there is only one of these sums.
+  Thus, we set $f(0) = 1$ above to make \eqref{eqn:03:odd:pre} and \eqref{eqn:03:odd} more concise.
 
   Now suppose that $n = 2m$ is even.
   Here there are $m$ choices for the first number, namely the odd numbers $2k+1$ where $0 \leq k \leq m-1$.
@@ -122,17 +122,17 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   }
   We can again change variables to $k = m-l$ so that $l = 0 \to k = m$ and $l = m-1 \to k = 1$, and hence
   \gath{
-    f(2m) = \sum_{k=1}^m f(2k-1). \label{eqn:piii:even}
+    f(2m) = \sum_{k=1}^m f(2k-1). \label{eqn:03:even}
   }
 
   Now, if again $n = 2m+1$ is odd then we clearly have
   \ali{
-    n - 1 &= 2m \label{eqn:piii:onmo} \\
+    n - 1 &= 2m \label{eqn:03:onmo} \\
     n - 2 &= 2m - 1 = 2m - 1 + 2 - 2 = 2(m-1) + 1.
   }
-  Therefore, by \eqref{eqn:piii:odd}, we get
+  Therefore, by \eqref{eqn:03:odd}, we get
   \gath{
-    f(n-2) = f\squares{2(m-1)+1} = \sum_{k=1}^{m-1} f(2k) \label{eqn:piii:omt}
+    f(n-2) = f\squares{2(m-1)+1} = \sum_{k=1}^{m-1} f(2k) \label{eqn:03:omt}
   }
   so that
   \ali{
@@ -140,25 +140,25 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
     &= \sum_{k=0}^{m-1} f(2k) + f(2m) \non
     &= f(n-2) + f(n-1)
   }
-  by \eqref{eqn:piii:omt} and \eqref{eqn:piii:onmo}, which is the recursive Fibonacci relation!
+  by \eqref{eqn:03:omt} and \eqref{eqn:03:onmo}, which is the recursive Fibonacci relation!
   What happens though when $n = 2m$ is even?
   In this case we have
   \ali{
-    n - 1 &= 2m - 1 \label{eqn:piii:emo} \\
+    n - 1 &= 2m - 1 \label{eqn:03:emo} \\
     n - 2 &= 2m - 2 = 2(m-1)
   }
   and
   \gath{
-    f(n-2) = f\squares{2(m-1)} = \sum_{k=1}^{m-1} f(2k-1) \label{eqn:piii:emt}
+    f(n-2) = f\squares{2(m-1)} = \sum_{k=1}^{m-1} f(2k-1) \label{eqn:03:emt}
   }
-  by \eqref{eqn:piii:even}.
+  by \eqref{eqn:03:even}.
   Hence,
   \ali{
     f(n) &= f(2m) = \sum_{k=1}^m f(2k-1) \non
     &= \sum_{k=1}^{m-1} f(2k-1) + f(2m-1) \non
     &= f(n-2) + f(n-1)
   }
-  by \eqref{eqn:piii:emt} and \eqref{eqn:piii:emo}, which is the same relation!
+  by \eqref{eqn:03:emt} and \eqref{eqn:03:emo}, which is the same relation!
 
   Therefore, we have the standard Fibonacci sequence:
   \ali{
@@ -180,17 +180,17 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   We can leverage the results of the 2021, Dec~9 problem.
   There, the sum of the $n$ consecutive integers starting at (and including) $a$ was derived to be
   \gath{
-    \sum_{k=a}^{a+n-1} k = \frac{1}{2} n (n + 2a - 1) \label{eqn:pv:sum}
+    \sum_{k=a}^{a+n-1} k = \frac{1}{2} n (n + 2a - 1) \label{eqn:05:sum}
   }
   Suppose that this sum is given as $s$ and that $n$ is also known.
-  Then we can solve \eqref{eqn:pv:sum} for $a$ to get
+  Then we can solve \eqref{eqn:05:sum} for $a$ to get
   \gath{
     \frac{1}{2} n (n + 2a - 1) = s \non
     n + 2a - 1 = \frac{2s}{n} \non
     2a = \frac{2s}{n} - n + 1 \non
-    a = \frac{s}{n} + \frac{1 - n}{2} \label{eqn:pv:solved}
+    a = \frac{s}{n} + \frac{1 - n}{2} \label{eqn:05:solved}
   }
-  In our case we have $n = 11$ and $s = 2024$ so that \eqref{eqn:pv:solved} evaluates to our answer $a = 179$.
+  In our case we have $n = 11$ and $s = 2024$ so that \eqref{eqn:05:solved} evaluates to our answer $a = 179$.
 }
 
 \aproblem{6}{990}{\advent@xxiv@vi}{
@@ -251,7 +251,7 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   If we then add a point somewhere \emph{inside} one of the triangles (i.e. not on an edge or at a vertex) and connect this new point to each of the three vertices of the triangle, then this divides that triangle into three smaller triangles.
   Hence, we have created two additional triangles (the third simply replacing the one that was subdivided) so that
   \gath{
-    T(n+1) = T(n) + 2. \label{eqn:pviii:rec}
+    T(n+1) = T(n) + 2. \label{eqn:05iii:rec}
   }
   It is easy to see that this is a way to create the \emph{most} new triangles since putting the new point \emph{outside} the entire shape will only create one new triangle since the shape is convex.
   The point could also be added on the edge of an existing triangle (but not on an existing vertex) as this subdivides \emph{two} original triangles each into two sub-triangles, again adding two additional triangles overall.
@@ -259,27 +259,27 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   Now, for three points, clearly the maximum number of triangles is simply one, noting that this is also always convex.
   Therefore, we have
   \gath{
-    T(3) = 1. \label{eqn:pviii:base}
+    T(3) = 1. \label{eqn:05iii:base}
   }
 
-  From \eqref{eqn:pviii:rec} and \eqref{eqn:pviii:base} it is easy to deduce that
+  From \eqref{eqn:05iii:rec} and \eqref{eqn:05iii:base} it is easy to deduce that
   \gath{
-    T(n) = 2n - 5. \label{eqn:pviii:closed}
+    T(n) = 2n - 5. \label{eqn:05iii:closed}
   }
   This is also easy to prove using induction.
   First, clearly for $n = 3$ we have
   \gath{
     T(n) = T(3) = 2 \cdot 3 - 5 = 6 - 5 = 1,
   }
-  which comports with \eqref{eqn:pviii:base}.
-  Now suppose that \eqref{eqn:pviii:closed} is true for $n$.
+  which comports with \eqref{eqn:05iii:base}.
+  Now suppose that \eqref{eqn:05iii:closed} is true for $n$.
   Then we have
   \ali{
-    T(n+1) &= T(n) + 2 & \text{(by \eqref{eqn:pviii:rec})} \non
+    T(n+1) &= T(n) + 2 & \text{(by \eqref{eqn:05iii:rec})} \non
     &= 2n - 5 + 2 & \text{(by the induction hypothesis)} \non
     &= 2(n+1) - 5,
   }
-  which shows that \eqref{eqn:pviii:closed} is true for $n+1$ as well, completing the induction.
+  which shows that \eqref{eqn:05iii:closed} is true for $n+1$ as well, completing the induction.
 
   Finally, the answer we seek is then $T(290) = 2 \cdot 290 - 5 = 575$, noting that also $T(4) = 2 \cdot 4 - 5 = 3$ as expected per the example and diagram above.
 }
@@ -374,7 +374,7 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
     \begin{cases}
       375 & \text{$n$ is odd}  \\
       625 & \text{$n$ is even}
-    \end{cases} \label{eqn:pxiv:dn}
+    \end{cases} \label{eqn:14:dn}
   }
   for all $n \geq 3$.
   We show this by induction on $n$.
@@ -382,8 +382,8 @@ Sync answers: \href{http://mscroggs.co.uk/adventcode/O7IMqY4B}{http://mscroggs.c
   \gath{
     D(3) = 15^3 \pmod{1000} = 3375 \pmod{1000} = 375
   }
-  so that \eqref{eqn:pxiv:dn} holds in the base case.
-  Now assume that \eqref{eqn:pxiv:dn} holds for $n$.
+  so that \eqref{eqn:14:dn} holds in the base case.
+  Now assume that \eqref{eqn:14:dn} holds for $n$.
   If $n$ is odd then $D(n) = 15^n \pmod{1000} = 375$ so that
   \ali{
     D(n+1) &= 15^{n+1} \pmod{1000} \non
@@ -464,7 +464,27 @@ so that clearly
 is our answer.
 }
 
-\aproblem{18}{TODO}{\advent@xxiv@xviii}{
+\aproblem{18}{756}{\advent@xxiv@xviii}{
+  Let $\a = 28$, so that we have
+  \gath{
+    \frac{\a k}{\a + k} = m \label{eqn:18:m}
+  }
+  for some integer $m$, noting that $m$ must be positive since $k$ is (since then both $\a k > 0$ and $\a + k > 0$).
+  We can rearrange \eqref{eqn:18:m} to obtain
+  \gath{
+    k = \frac{\a m}{\a - m}. \label{eqn:18:k}
+  }
+  Now, the denominator must be positive since we would like our $k$ to be positive (and finite!).
+  Hence, it has to be that $0 < a - m$ so that $m < \a$.
+  Moreover, larger $m$ will result in a larger numerator (i.e. $\a m$) and a smaller denominator (i.e. $\a - m$) so that the fraction $k$ will be larger.
+  That is, we want $m$ to be as large as it can be since we are interested in the largest qualifying $k$.
+
+  Since also $m < \a$, how about the largest possible $m$ of $m = \a - 1 = 27$?
+  Indeed, $m = 27$ results in $k = 756$ from \eqref{eqn:18:k}, noting that this simply makes the denominator $1$ so that of course $k = \a m = \a (\a - 1)$ is an integer.
+  Hence, $k = 756$ has to be the answer we seek.
+}
+
+\aproblem{19}{TODO}{\advent@xxiv@xix}{
   TODO
 }
 

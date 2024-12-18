@@ -44,3 +44,10 @@ for k in it.count(1):
         break
     count += 1
 pans(count)
+
+prob(9)
+n = 365
+def sf(a): return sum([k for k in range(a, a+n)])
+
+
+pans(sf(500+n) - sf(500))
