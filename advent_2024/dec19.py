@@ -1,3 +1,3 @@
 from common.probs import digital_sums
 
-digital_sums(8)
+digital_sums(9)

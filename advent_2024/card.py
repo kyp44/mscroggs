@@ -2,17 +2,19 @@ from scipy.special import binom
 from scipy.stats import gmean
 from common import *
 
-maxp = 0
-
 prob(1)
-for ds in it.product(range(1, 4+1), repeat=4):
-    a = number(ds[:2])
-    b = number(ds[2:])
-    p = a*b
+nss = [(number(ds[:2]), number(ds[2:]))
+       for ds in it.permutations(range(1, 4+1))]
+(x, y) = max(nss, key=lambda ns: ns[0] * ns[1])
+print("Best numbers:", x, y)
+pans(x * y)
 
-    if p > maxp:
-        maxp = p
-pans(maxp)
+prob(2)
+nss = [(number(ds[:2]), number(ds[2:]))
+       for ds in it.permutations(range(0, 9+1))]
+(x, y) = max(nss, key=lambda ns: ns[0] * ns[1])
+print("Best numbers:", x, y)
+pans(x * y)
 
 prob(3)
 def S(a, b, n): return sum([binom(n, k) * a**(n-k) * b**k for k in range(n+1)])

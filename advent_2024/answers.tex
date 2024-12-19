@@ -484,7 +484,33 @@ is our answer.
   Hence, $k = 756$ has to be the answer we seek.
 }
 
-\aproblem{19}{TODO}{\advent@xxiv@xix}{
+\aproblem{19}{256}{\advent@xxiv@xix}{
+  Suppose that $1 \leq s \leq 9$ is a digital sum, and let $N_m(s)$ denote the number of $m$-digit numbers such that the digits are all non-zero digits and add to $s$.
+  Let $N_s$ denote the total number of qualifying integers, with any number of digits.
+  Then it was derived in the 2022, Dec~6 problem that
+  \gath{
+    N_s = \sum_{m=1}^s N_m(s), \label{eqn:19:Ns}
+  }
+  where $N_m(s)$ is given by the recursive
+  \gath{
+    N_m(s) = \sum_{j=m-1}^{s-1} N_{m-1}(j)
+  }
+  with the base case
+  \gath{
+    N_1(s) = 1.
+  }
+  It was discussed in that problem that $N_m(s)$ can be found for successive values of $m$, needed to evaluate \eqref{eqn:19:Ns}, using algebra and summation formulae, but that this quickly gets very tedious.
+  So, instead we implement and evaluate the recursive function and \eqref{eqn:19:Ns} in Python.
+  This results in our answer $N_9 = 256$.
+
+  The answer was also verified with a brute force search in the Python program.
+
+  Based on this answer ($N_9 = 256$) and that of the 2022, Dec~6 problem ($N_8 = 128$), it would seem that $N_s = 2^{s-1}$.
+  Tests show that indeed this also holds for other values of $s$ below $8$.
+  However, no approach was found to be able to prove this, so it remains simply a conjecture.
+}
+
+\aproblem{20}{TODO}{\advent@xxiv@xx}{
   TODO
 }
 

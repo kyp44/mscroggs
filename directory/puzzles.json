@@ -1582,6 +1582,14 @@
 				"tags": [
 					"misc"
 				]
+			},
+			{
+				"number": 19,
+				"tags": [
+					"dig",
+					"comb",
+					"sum"
+				]
 			}
 		]
 	},
@@ -1593,13 +1601,15 @@
 			{
 				"number": 1,
 				"tags": [
-					"dig"
+					"dig",
+					"comb"
 				]
 			},
 			{
 				"number": 2,
 				"tags": [
-					"dig"
+					"dig",
+					"comb"
 				]
 			},
 			{
@@ -1645,6 +1655,12 @@
 			},
 			{
 				"number": 9,
+				"tags": [
+					"cons"
+				]
+			},
+			{
+				"number": 10,
 				"tags": [
 					"cons"
 				]
