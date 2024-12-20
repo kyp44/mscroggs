@@ -510,7 +510,94 @@ is our answer.
   However, no approach was found to be able to prove this, so it remains simply a conjecture.
 }
 
-\aproblem{20}{TODO}{\advent@xxiv@xx}{
+\aproblem{20}{484}{\advent@xxiv@xx}{
+  Define the following functions of real numbers:
+  \ali{
+    f(x) &= x^2 - 2x + 2 \\
+    g(x) &= 4x - 9
+  }
+  so that our second condition requires that $g(x) < p(x) < f(x)$.
+  Let us have a look at $f$ and $g$:
+  \newcommand\plot@xx[1]{
+    \begin{center}
+      \begin{tikzpicture}[scale=1.8]
+        \begin{axis}[
+            axis lines=middle,
+            xmin=-2, xmax=10,
+            ymin=-20, ymax=80,
+            samples=100,
+          ]
+          \addplot[
+            blue,
+            thick,
+            domain=-2:10,
+          ]
+          (x, x^2 - 2*x + 2);
+          \node [above] at (axis cs:2,3) {$f$};
+          \addplot[
+            red,
+            thick,
+            domain=-2:10,
+          ]
+          (x, 4*x - 9);
+          \node [below right] at (axis cs:8,23) {$g$};
+          #1
+        \end{axis}
+      \end{tikzpicture}
+    \end{center}
+  }
+  \plot@xx{}
+
+  Obviously our function $p$ will need to squeeze between these over the entire domain.
+  Even though we do not even know what degree polynomial $p$ needs to be, what if we simply shift $f$ down one, would this work?
+  This of course results in
+  \gath{
+    p(x) = x^2 - 2x + 1,
+  }
+  noting that this does indeed have integer coefficients.
+  Looking at our functions all together, this seems to fit the bill:
+  \plot@xx{
+    \addplot[
+      black,
+      thick,
+      domain=-2:10,
+    ]
+    (x, x^2 - 2*x + 1);
+    \node [below right] at (axis cs:8,50) {$p$};
+  }
+  Regarding the first condition on $p$, clearly we have $p(0) = 1 > 0$ so that this is met.
+  Regarding the second condition, $1 < 2$ obviously implies that
+  \gath{
+    x^2 - 2x + 1 < x^2 - 2x + 2 \non
+    p(x) < f(x)
+  }
+  so that the upper bound is met.
+  For the lower bound, we take a more roundabout approach by first defining
+  \gath{
+    h(x) = x^2 - 6x + 10.
+  }
+  We then have the derivatives
+  \ali{
+    h'(x) &= 2x - 6 \\
+    h''(x) &= 2.
+  }
+  Setting $h'(x) = 0$ and solving gives $x = 3$, and plugging this back in gives $h(3) = 1$.
+  We also note that $h''(3) = 2$ of course.
+  Since this is a parabola, these all mean that its absolute minimum is at $(3, 1)$.
+  So, in particular, we have
+  \gath{
+    0 < 1 \leq h(x) = x^2 - 6x + 10 \non
+    0 < x^2 - 2x + 1 - 4x + 9 \non
+    4x - 9 < x^2 - 2x + 1 \non
+    g(x) < p(x),
+  }
+  which shows that the lower bound holds as well.
+  So it seems that our parabola $p$ qualifies!
+  We do not prove that this is the only qualifying polynomial, trusting that any other such polynomials (if they exist) would yield the same answer.
+  Our answer is then of course $p(23) = 484$.
+}
+
+\aproblem{21}{TODO}{\advent@xxiv@xxi}{
   TODO
 }
 
