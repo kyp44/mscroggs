@@ -597,7 +597,51 @@ is our answer.
   Our answer is then of course $p(23) = 484$.
 }
 
-\aproblem{21}{TODO}{\advent@xxiv@xxi}{
+\aproblem{21}{138}{\advent@xxiv@xxi}{
+  First, label the digits in the boxes as
+
+  \advent@xxiv@xxi@grid{$c$}{$a$}{$x$}{$b$}{$d$}
+
+  We require that the products of the down and across digits be the same, hence
+  \gath{
+    axb = cxd \non
+    ab = cd
+  }
+  since $x$ is nonzero.
+  As long as the above holds, $x$ can really be any remaining digit.
+  Next, we would like the across number to be as small as possible, so can we get away with $a = 1$?
+  This would mean that
+  \gath{
+    b = 1 \cdot b = ab = cd
+  }
+  so that the digit $b$ must be a composite number.
+  The only composite digits are $4$, $6$, $8$, and $9$.
+  Furthermore $b \in \braces{4, 9}$ would require that $c$ and $d$ be the same digit, which is not allowed.
+  Thus $b \in \braces{6, 8}$.
+
+  We will investigate the implications of these two choices.
+  If $b = 6$ then it has to be that one of $c$ or $d$ has to be $2$ and the other $3$.
+  Since we do not really care about the vertical three-digit number, it does not matter which is which, so set $c = 2$ and $d = 3$.
+  Since $1$, $2$, and $3$ have already been used, the smallest digit we can use for $x$ is $4$ (in the interest of making the across number as small as possible).
+  Thus, we have $(a, x, b) = (1, 4, 6)$ so that our across number is $146$.
+
+  If instead we set $b = 8$ then it must be that $b = 2$ and $d = 4$, again noting that it does not matter which is which.
+  Now $3$ is available to assign to $x$ so that $(a, x, b) = (1, 3, 8)$ so our across number is $138$.
+  This is smaller than in the previous case, so this must be our answer!
+  Our completed boxes are then
+
+  \advent@xxiv@xxi@grid{2}{1}{3}{8}{4}
+}
+
+\aproblem{22}{851}{\advent@xxiv@xxii}{
+  \boxans{\gridsol@advent@xxiv@xxii}
+}
+
+\aproblem{23}{TODO}{\advent@xxiv@xxiii}{
+  TODO
+}
+
+\aproblem{24}{TODO}{\advent@xxiv@xxiv}{
   TODO
 }
 

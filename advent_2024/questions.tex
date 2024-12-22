@@ -201,7 +201,40 @@
   What is $p(23)$?
 }
 
+\newcommand\advent@xxiv@xxi@grid[5]{
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      \gridbox{0}{1}{#1}
+      \gridbox{-1}{0}{#2}
+      \gridbox{0}{0}{#3}
+      \gridbox{1}{0}{#4}
+      \gridbox{0}{-1}{#5}
+    \end{tikzpicture}
+  \end{center}
+}
+
 \def\advent@xxiv@xxi{
+  Noel wants to write a different non-zero digit in each of the five boxes below so that the products of the digits of the three-digit numbers reading across and down are the same.
+
+  \advent@xxiv@xxi@grid{}{}{}{}{}
+
+  What is the smallest three-digit number that Noel could write in the boxes going across?
+}
+
+\def\advent@xxiv@xxii{
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the largest number that can be formed using the three digits in the red boxes.
+
+  \grid@advent@xxiv@xxii{}{}{}{}{}{}{}{}{}
+}
+
+\def\advent@xxiv@xxiii{
+  TODO
+}
+
+\def\advent@xxiv@xxiv{
   TODO
 }
 
