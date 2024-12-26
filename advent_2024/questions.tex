@@ -230,20 +230,51 @@
   \grid@advent@xxiv@xxii{}{}{}{}{}{}{}{}{}
 }
 
+\definecolor{xxiii@color}{RGB}{0, 162, 204}
+\newcommand\xxiii@gridbox[2]{\draw (#1,#2) rectangle (#1+1,#2+1);}
+\newcommand\xxiii@gridboxc[2]{\draw[fill=xxiii@color] (#1,#2) rectangle (#1+1,#2+1);}
+
 \def\advent@xxiv@xxiii{
-  TODO
+  In a grid of squares, each square is friendly with itself and friendly with every square that is horizontally, vertically, or diagonally adjacent to it (and is not friendly with any other squares).
+  In a $5 \times 5$ grid, it is possible to color $8$ squares so that every square is friendly with at least two colored squares:
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.25]
+      % Basic grid
+      \foreach \y in {0,...,4} {
+          \foreach \x in {0,...,4} {
+              \xxiii@gridbox{\x}{\y}
+            }
+        }
+
+      % Colored boxes
+      \xxiii@gridboxc{1}{4}
+      \xxiii@gridboxc{3}{4}
+      \xxiii@gridboxc{0}{3}
+      \xxiii@gridboxc{3}{3}
+
+      \xxiii@gridboxc{1}{1}
+      \xxiii@gridboxc{3}{1}
+      \xxiii@gridboxc{1}{0}
+      \xxiii@gridboxc{3}{0}
+    \end{tikzpicture}
+  \end{center}
+
+  It it not possible to do this by coloring fewer than $8$ squares.
+  What is the fewest number of squares that need to be colored in a $23 \times 23$ grid so that every square is friendly with at least two colored squares?
 }
 
 \def\advent@xxiv@xxiv{
-  TODO
+  There are $343$ three-digit numbers whose digits are all $1$, $2$, $3$, $4$, $5$, $6$, or $7$.
+  What is the mean of all these numbers?
 }
 
 \def\card@xxiv@i{
-  What is the largest number you can make by using the digits $1$ to $4$ to make two $2$-digit numbers, then mutiplying the two numbers together?
+  What is the largest number you can make by using the digits $1$ to $4$ to make two $2$-digit numbers, then multiplying the two numbers together?
 }
 
 \def\card@xxiv@ii{
-  What is the largest number you can make by using the digits $0$ to $9$ to make a $2$-digit number and an $8$-digit number, then mutiplying the two numbers together?
+  What is the largest number you can make by using the digits $0$ to $9$ to make a $2$-digit number and an $8$-digit number, then multiplying the two numbers together?
 }
 
 \def\card@xxiv@iii{

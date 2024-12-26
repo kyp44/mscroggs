@@ -637,12 +637,253 @@ is our answer.
   \boxans{\gridsol@advent@xxiv@xxii}
 }
 
-\aproblem{23}{TODO}{\advent@xxiv@xxiii}{
-  TODO
+\newcommand\xxiii@row[2]{
+  \begin{tikzpicture}[scale=1.25]
+    % Basic grid
+    \foreach \x in {1,...,#1} {
+        \xxiii@gridbox{\x}{0}
+      }
+
+    #2
+  \end{tikzpicture}
 }
 
-\aproblem{24}{TODO}{\advent@xxiv@xxiv}{
-  TODO
+\aproblem{23}{128}{\advent@xxiv@xxiii}{
+  Consider an $n \times n$ grid of squares, where we typically take $n$ to be odd.
+  We can decouple the horizontal dimension (for brevity, call this the $x$ dimension) and vertical dimension (call this the $y$ dimension) in the following way: we color our squares in columns in which every column is identical.
+  The colored columns are then spaced such that every square is friendly with at least one colored column.
+  We can symbolize the colored columns with a single row in which colored squares represent colored columns.
+  The question is then how sparsely can the colored squares be spaced such that every square in the row is friendly with at least one colored square in the row?
+
+  Well, clearly the second square must be colored in order for the first to be friendly with one.
+  The third square is then friendly with the second so does not need colored.
+  The fourth though is not, so either it or the fifth (if there is one) needs to be colored.
+  In general, the colored squares can be spaced two apart but with the second square and either the second-to-last or the last square needing colored in order for the last square to have a friendly colored square.
+  We show this pattern below for $n \in \braces{3, 5, 7, 9, 11, 13}$:
+
+  \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+      \xxiii@row{3}{
+        \xxiii@gridboxc{2}{0}
+      }
+      \newline\newline
+      \xxiii@row{5}{
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{5}{0}
+      }
+      \newline\newline
+      \xxiii@row{7}{
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{7}{0}
+      }
+      \newline\newline
+      \xxiii@row{9}{
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{8}{0}
+      }
+      \newline\newline
+      \xxiii@row{11}{
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{8}{0}
+        \xxiii@gridboxc{11}{0}
+      }
+      \newline\newline
+      \xxiii@row{13}{
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{8}{0}
+        \xxiii@gridboxc{11}{0}
+        \xxiii@gridboxc{13}{0}
+      }
+    \end{minipage}
+  \end{center}
+  So what is the minimum number of colored squares needed for a given $n$.
+  We do not prove it, but this was reasoned to be
+  \gath{
+    h(n) = \ceil{\frac{n}{3}}.
+  }
+  If we simply duplicate any of the above rows vertically $n$ times, this will produce a grid that has the desired property (i.e. that every square is friendly with at least two colored squares), but this is not a minimum solution.
+  The important property currently is that every square is friendly with at least one colored column.
+
+  Now we change focus to the $y$ dimension, namely what should these columns be to minimize the number of colored squares needed while retaining the desired property?
+  We can repeat the above exercise, representing each colored column with a single row of squares and finding the pattern such that every square is friendly with at least \emph{two} colored squares.
+  Here, the basic pattern involves spaced groups of two colored squares, noting that both the first two and last two squares must always be colored so the that first and last squares are friendly with two colored squares.
+  We again show minimal required patterns for the same set of $n$:
+  \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+      \xxiii@row{3}{
+        \xxiii@gridboxc{1}{0}
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{3}{0}
+      }
+      \newline\newline
+      \xxiii@row{5}{
+        \xxiii@gridboxc{1}{0}
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{4}{0}
+        \xxiii@gridboxc{5}{0}
+      }
+      \newline\newline
+      \xxiii@row{7}{
+        \xxiii@gridboxc{1}{0}
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{4}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{6}{0}
+        \xxiii@gridboxc{7}{0}
+      }
+      \newline\newline
+      \xxiii@row{9}{
+        \xxiii@gridboxc{1}{0}
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{4}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{7}{0}
+        \xxiii@gridboxc{8}{0}
+        \xxiii@gridboxc{9}{0}
+      }
+      \newline\newline
+      \xxiii@row{11}{
+        \xxiii@gridboxc{1}{0}
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{4}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{7}{0}
+        \xxiii@gridboxc{8}{0}
+        \xxiii@gridboxc{10}{0}
+        \xxiii@gridboxc{11}{0}
+      }
+      \newline\newline
+      \xxiii@row{13}{
+        \xxiii@gridboxc{1}{0}
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{4}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{7}{0}
+        \xxiii@gridboxc{8}{0}
+        \xxiii@gridboxc{10}{0}
+        \xxiii@gridboxc{11}{0}
+        \xxiii@gridboxc{12}{0}
+        \xxiii@gridboxc{13}{0}
+      }
+    \end{minipage}
+  \end{center}
+  Note that these minimal patterns are not unique.
+  For example, a valid alternate pattern for $n = 9$ is the following:
+  \begin{center}
+    \begin{minipage}[t]{0.5\textwidth}
+      \xxiii@row{9}{
+        \xxiii@gridboxc{1}{0}
+        \xxiii@gridboxc{2}{0}
+        \xxiii@gridboxc{3}{0}
+        \xxiii@gridboxc{5}{0}
+        \xxiii@gridboxc{6}{0}
+        \xxiii@gridboxc{8}{0}
+        \xxiii@gridboxc{9}{0}
+      }
+    \end{minipage}
+  \end{center}
+  However, the number of colored squares is the same for both.
+  While more difficult to determine than the $x$ dimension case, this minimal number of colored squares was reasoned to be
+  \gath{
+    v(n) = n - \floor{\frac{n-2}{3}},
+  }
+  noting that the first term is simply the total number of squares and the second, floor term is the number of squares that are \emph{not} colored.
+  Then the total minimum number of colored squares is
+  \gath{
+    N(n) = h(n) \cdot v(n) = \ceil{\frac{n}{3}} \parens{n - \floor{\frac{n-2}{3}}}, \label{eqn:23:N}
+  }
+  noting that this evaluates to the expected $N(5) = 8$ in the example case.
+
+  Putting the $x$ and $y$ dimension patterns together, a minimal qualifying coloring pattern for our full $23 \times 23$ grid is:
+  \begin{center}
+    \newcommand\offrow[1]{
+      \foreach \x in {1,...,23} {
+          \xxiii@gridbox{\x}{#1}
+        }
+    }
+
+    \newcommand\onrow[1]{
+      \offrow{#1}
+
+      \xxiii@gridboxc{2}{#1}
+      \xxiii@gridboxc{5}{#1}
+      \xxiii@gridboxc{8}{#1}
+      \xxiii@gridboxc{11}{#1}
+      \xxiii@gridboxc{14}{#1}
+      \xxiii@gridboxc{17}{#1}
+      \xxiii@gridboxc{20}{#1}
+      \xxiii@gridboxc{23}{#1}
+    }
+
+    \begin{tikzpicture}[scale=1.25]
+      \onrow{23}
+      \onrow{22}
+      \offrow{21}
+
+      \onrow{20}
+      \onrow{19}
+      \offrow{18}
+
+      \onrow{17}
+      \onrow{16}
+      \offrow{15}
+
+      \onrow{14}
+      \onrow{13}
+      \offrow{12}
+
+      \onrow{11}
+      \onrow{10}
+      \offrow{9}
+
+      \onrow{8}
+      \onrow{7}
+      \offrow{6}
+
+      \onrow{5}
+      \onrow{4}
+      \offrow{3}
+
+      \onrow{2}
+      \onrow{1}
+    \end{tikzpicture}
+  \end{center}
+  Observe the repeated columns, spaced out according to the spacing derived for the $x$ dimension so that every square is friendly with at least one column.
+  The vertical pattern of each column then ensures that every square is friendly with at least \emph{two} other squares over all.
+  Counting the colored squares above then agrees with the evaluation of our answer from \eqref{eqn:23:N} above with $N(23) = 128$.
+  It is worth noting that, in all that precedes, the $x$ and $y$ dimensions could have been swapped with no change in the end result.
+
+  These results were checked with a brute force Python program, though this still required treating each dimension separately in order for the computation time to be reasonable.
+}
+
+\aproblem{24}{444}{\advent@xxiv@xxiv}{
+  Let $D = \braces{1, 2, 3, 4, 5, 6, 7} = \braces{k \mid 1 \leq k \leq 7}$ be the set of used digits.
+  Since digits can be repeated, there are $7^3 = 343$ three-digit numbers that can be made from these, which was given.
+  Similarly, there are $7^2 = 49$ two-digit numbers that can be made.
+  Now consider the Cartesian product $N = D \times D \times D$, which is of course the set of ordered triplets, each of the three components being from $D$.
+  Denote the three components of an $x \in N$ as $x_1$, $x_2$, and $x_3$.
+  Clearly each vector $x \in N$ corresponds to a unique three-digit number of interest.
+  The mean of these three-digit numbers is then
+  \gath{
+    m = \frac{1}{7^3} \sum_{x \in N}(100 x_1 + 10 x_2 + x_3). \label{eqn:24:mi}
+  }
+  Now, for a fixed value of, say, $x_1$, there are $7^2$ ordered pairs $(x_2, x_3) \in D \times D$.
+  As a result of this, \eqref{eqn:24:mi} can be rearranged as
+  \ali{
+    m &= \frac{1}{7^3} \squares{\sum_{d \in D}7^2 \cdot 100 d + \sum_{d \in D} 7^2 \cdot 10 d + \sum_{d \in D} 7^2 d} \non
+    &= \frac{7^2}{7^3} \squares{100 \sum_{d \in D} d + 10 \sum_{d \in D} d + \sum_{d \in D} d} \non
+    &= \frac{1}{7} \squares{100 + 10 + 1} \sum_{d \in D} d \non
+    &= \frac{111}{7} \sum_{d = 1}^7 d \non
+    &= \frac{111}{7} \frac{7 \cdot 8}{2} = 111 \cdot 4 \non
+    &= 444,
+  }
+  which is our answer.
+
+  This solution was verified using a brute force Python program.
 }
 
 \end{document}
