@@ -1615,6 +1615,14 @@
 				"tags": [
 					"comb"
 				]
+			},
+			{
+				"number": 24,
+				"tags": [
+					"dig",
+					"comb",
+					"sum"
+				]
 			}
 		]
 	},
