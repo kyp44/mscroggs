@@ -1,0 +1,132 @@
+\documentclass{article}
+
+\input{common/prelude}
+
+% Macros
+\input{common/macros}
+\input{questions}
+\input{boxes}
+
+\begin{document}
+
+\title{Matthew Scroggs Advent Calendar 2025 Answers}
+\author{Dan Whitman}
+\date{}
+
+\maketitle
+
+Magic link: \href{http://mscroggs.co.uk/adventcode/5kGf6WdI}{http://mscroggs.co.uk/adventcode/5kGf6WdI}
+
+\aproblem{1}{648}{\advent@xxv@i}{
+  We will approach this like a permutation.
+  There are $9$ numbers for the first digit (i.e. $1$ through $9$), noting that this cannot be zero.
+  There are also $9$ numbers to choose from for the second digit (i.e. $0$ through $9$ minus the one digit already chosen to be the first).
+  Clearly then there are only $8$ numbers from which to choose for the final digit (i.e. $0$ through $9$ minus the two already chosen).
+  Hence, there are
+  \gath{
+    9 \cdot 9 \cdot 8 = 648
+  }
+  three-digit numbers whose digits are all different.
+  This was also verified with a brute-force Python program.
+}
+
+\aproblem{2}{192}{\advent@xxv@ii}{
+  There are $9$ single digit numbers (i.e. $1$ through $9$) and $9 \cdot 10 = 90$ two-digit numbers (i.e. $10$ through $99$).
+  And of course we have our single three-digit number $100$.
+  Thus, if all these numbers are written down, there will be
+  \gath{
+    9 \cdot 1 + 90 \cdot 2 + 1 \cdot 3 = 192
+  }
+  total digits written.
+  This was also verified with a brute-force Python program.
+}
+
+\aproblem{3}{TODO}{\advent@xxv@iii}{
+  TODO
+}
+
+\aproblem{4}{TODO}{\advent@xxv@iv}{
+  TODO
+}
+
+\aproblem{5}{TODO}{\advent@xxv@v}{
+  TODO
+}
+
+\aproblem{6}{TODO}{\advent@xxv@vi}{
+  TODO
+}
+
+\aproblem{7}{TODO}{\advent@xxv@vii}{
+  TODO
+}
+
+\aproblem{8}{TODO}{\advent@xxv@viii}{
+  TODO
+}
+
+\aproblem{9}{TODO}{\advent@xxv@ix}{
+  TODO
+}
+
+\aproblem{10}{TODO}{\advent@xxv@x}{
+  TODO
+}
+
+\aproblem{11}{TODO}{\advent@xxv@xi}{
+  TODO
+}
+
+\aproblem{12}{TODO}{\advent@xxv@xii}{
+  TODO
+}
+
+\aproblem{13}{TODO}{\advent@xxv@xiii}{
+  TODO
+}
+
+\aproblem{14}{TODO}{\advent@xxv@xiv}{
+  TODO
+}
+
+\aproblem{15}{TODO}{\advent@xxv@xv}{
+  TODO
+}
+
+\aproblem{16}{TODO}{\advent@xxv@xvi}{
+  TODO
+}
+
+\aproblem{17}{TODO}{\advent@xxv@xvii}{
+  TODO
+}
+
+\aproblem{18}{TODO}{\advent@xxv@xviii}{
+  TODO
+}
+
+\aproblem{19}{TODO}{\advent@xxv@xix}{
+  TODO
+}
+
+\aproblem{20}{TODO}{\advent@xxv@xx}{
+  TODO
+}
+
+\aproblem{21}{TODO}{\advent@xxv@xxi}{
+  TODO
+}
+
+\aproblem{22}{TODO}{\advent@xxv@xxii}{
+  TODO
+}
+
+\aproblem{23}{TODO}{\advent@xxv@xxiii}{
+  TODO
+}
+
+\aproblem{24}{TODO}{\advent@xxv@xxiv}{
+  TODO
+}
+
+\end{document}

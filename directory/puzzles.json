@@ -1699,5 +1699,26 @@
 				]
 			}
 		]
+	},
+	{
+		"type": "advent",
+		"year": 2025,
+		"number": 24,
+		"puzzles": [
+			{
+				"number": 1,
+				"tags": [
+					"dig",
+					"comb"
+				]
+			},
+			{
+				"number": 2,
+				"tags": [
+					"cons",
+					"dig"
+				]
+			}
+		]
 	}
 ]

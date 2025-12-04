@@ -3,42 +3,31 @@
 #
 # Author: Dan Whitman
 ##############################################################################
-TARGET = directory
+TARGET = answers
 BOXES = boxes.tex
 
-.PHONY: all help tags boxes clean
-TAGS=
+.PHONY: all clean
 
 #==============================================================================
-all: boxes
+all: $(BOXES)
 #==============================================================================
-	./build.py $(TAGS) > puzzles.tex
-	pdflatex $(TARGET).tex
+	pdflatex -halt-on-error $(TARGET).tex
 
 #==============================================================================
-help:
+card:
 #==============================================================================
-	@echo "Run make with TAGS=<CSV Tags> to only include certain tags."
-	@echo "Available tags and information on the puzzle sets are:"
-	@./build.py -i
+	pdflatex -halt-on-error card.tex
 
 #==============================================================================
-tags: help
+$(BOXES):
 #==============================================================================
-
-#==============================================================================
-boxes: 
-#==============================================================================
-	cd ../advent_2015/; make $(BOXES)
-	cd ../advent_2016/; make $(BOXES)
-	cd ../advent_2019/; make $(BOXES)
-	cd ../advent_2020/; make $(BOXES)
-	cd ../advent_2021/; make $(BOXES)
-	cd ../advent_2022/; make $(BOXES)
-	cd ../advent_2023/; make $(BOXES)
+	> $@
+	$(foreach script, $^, python3 $(script) -c >> $@;)
 
 #==============================================================================
 clean:
 #==============================================================================
 	rm -f *.aux *.log *.pdf *.out *.toc *.fls *.fdb_latexmk *.gz
-	rm -f puzzles.tex
+	rm -f -r *.png figs/
+	rm -f -r __pycache__
+	rm -f $(BOXES)
