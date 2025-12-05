@@ -16,6 +16,9 @@
 \maketitle
 
 Magic link: \href{http://mscroggs.co.uk/adventcode/5kGf6WdI}{http://mscroggs.co.uk/adventcode/5kGf6WdI}
+% Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2025}{https://www.mscroggs.co.uk/puzzles/advent2025}
+
+\newcommand{\verified}{This was verified with a brute-force Python program.}
 
 \aproblem{1}{648}{\advent@xxv@i}{
   We will approach this like a permutation.
@@ -27,7 +30,7 @@ Magic link: \href{http://mscroggs.co.uk/adventcode/5kGf6WdI}{http://mscroggs.co.
     9 \cdot 9 \cdot 8 = 648
   }
   three-digit numbers whose digits are all different.
-  This was also verified with a brute-force Python program.
+  \verified{}
 }
 
 \aproblem{2}{192}{\advent@xxv@ii}{
@@ -38,31 +41,184 @@ Magic link: \href{http://mscroggs.co.uk/adventcode/5kGf6WdI}{http://mscroggs.co.
     9 \cdot 1 + 90 \cdot 2 + 1 \cdot 3 = 192
   }
   total digits written.
-  This was also verified with a brute-force Python program.
+  This was verified with a brute-force Python program.
+  \verified{}
 }
 
-\aproblem{3}{TODO}{\advent@xxv@iii}{
-  TODO
+\aproblem{3}{187}{\advent@xxv@iii}{
+  Let $n$ denote Ivy's starting three-digit number, and suppose it has the digits $d_2 d_1 d_0$, where of course $1 \leq d_2 \leq 9$, $0 \leq d_1 \leq 9$, and $0 \leq d_0\leq 9$.
+  Then her addition looks like this:
+  \begin{center}
+    \begin{tabular}{cccc}
+          & $d_2$ & $d_1$ & $d_0$ \\
+      $+$ & $d_0$ & $d_1$ & $d_2$ \\
+      \hline
+          & $9$   & $6$   & $8$
+    \end{tabular}
+  \end{center}
+  Now, since the any digit can be at most $9$, it must be that $d_0 + d_2 \leq 9 + 9 = 18 < 20$.
+  Thus, at most, only $1$ can be potentially be carried from the first digit to the second when adding.
+  If $1$ were carried, then adding the second digits result in $d_1 + d_1 + 1 \pmod{10} = 2d_1 + 1 \pmod{10} = 6$.
+  This is not possible since $10$ and $6$ are even while the left side $2d_1 + 1$ is odd.
+  Hence, there can be no carry so that $d_0 + d_2 < 10$, which means that it has to be that $d_0 + d_2 = 8$.
+  Looking at the first digits, we have of course $d_2 + d_0 = d_0 + d_2 = 8$ and yet the third digit in the sum is $8 + 1=9$ so that it must be that $1$ is carried over from the second digit.
+  This implies that $d_1 + d_1 = 2d_1 = 16$, and thus $d_1 = 8$.
+
+  Therefore, for the sum to be true, it suffices that $d_1 = 8$ and $d_0 + d2 = 8$, so we have some freedom to choose $d_2$ or $d_0$, which then determines the other.
+  If we want $n$ to be as small as possible, we can simply select $d_2 = 1$, noting that $d_2$ cannot be zero since then $n$ would not be a three-digit number after all.
+  So then $d_0 = 8 - d_2 = 8 - 1 = 7$ so that Ivy's starting number must have been $n = d_2 d_1 d_0 = 187$.
+  \verified{}
 }
 
-\aproblem{4}{TODO}{\advent@xxv@iv}{
-  TODO
+\aproblem{4}{550}{\advent@xxv@iv}{
+  We can leverage the results of the 2021, Dec~9 problem.
+  There, the sum of the $n$ consecutive integers starting at (and including) $a$ was derived to be
+  \gath{
+    \sum_{k=a}^{a+n-1} k = \frac{1}{2} n (n + 2a - 1). \label{eqn:04:sum}
+  }
+  Thus, the sum of the $4$ consecutive integers starting with $a$ is
+  \gath{
+    \sum_{k=a}^{a+3} k = \frac{1}{2} 4 (4 + 2a - 1) = 2 (2a + 3). \label{eqn:04:sum4}
+  }
+  Since we would like any such sum to be a three-digit number, we have
+  \gath{
+    100 \leq \sum_{k=a}^{a+3} k < 1000 \non
+    100 \leq 2 (2a + 3) < 1000 \non
+    50 \leq 2a + 3 < 500 \non
+    47 \leq 2a < 497 \non
+    23 + \frac{1}{2} \leq a < 248 + \frac{1}{2} \non
+    24 \leq a \leq 248
+  }
+  since the starting number $a$ is an integer.
+  Now, there are
+  \gath{
+    N = 248 - 24 + 1 = \b - \a + 1 = 225
+  }
+  integers starting from $\a = 24$ and ending with $\b = 248$, and it follows that $\b = \a + N - 1$.
+  So, we can calculate the mean $m$ of these sums of four consecutive integers:
+  \ali{
+    m &= \frac{1}{N} \sum_{a = \a}^\b \sum_{k=a}^{a+3} k = \frac{1}{N} \sum_{a = \a}^\b 2 (2a + 3) & \text{(using \eqref{eqn:04:sum4})} \non
+    &= \frac{1}{N} \sum_{a = \a}^{\a + N - 1} (4a + 6) = \frac{1}{N}\squares{4 \sum_{a = \a}^{\a + N - 1} a + 3 \sum_{a = \a}^{\a + N - 1} 1} \non
+    &= \frac{1}{N}\squares{4 \frac{1}{2}N(N + 2\a - 1) + 3N}  & \text{(using \eqref{eqn:04:sum})} \non
+    &= \frac{2N}{N} \parens{N + 2\a -1 + 3} \non
+    &= 2 \parens{N + 2\a + 2}.
+  }
+  With our $N = 225$ and $a = 24$, this evaluates to our answer $m = 550$.
+  \verified{}
 }
 
-\aproblem{5}{TODO}{\advent@xxv@v}{
-  TODO
+\aproblem{5}{384}{\advent@xxv@v}{
+  We shall search for this number, but do so in an intelligent way.
+  First, we will take advantage of the fact that our answer $n$ must be a three-digit number, say with the digits $d_2 d_1 d_0$.
+  Then our core property is that
+  \gath{
+    4\cdot d_2 \cdot d_1 \cdot d_0 = n = 100d_2 + 10d_1 + d_0, \label{eqn:05:main}
+  }
+  where of course $1 \leq d_2, d_1, d_0 \leq 9$, noting that none of the digits can be zero since that would make the product on the right zero, hence $n = 0$ as well.
+  Thus, $n$ must be divisible by $4$ so that the least significant two-digit number $d_1 d_0$ must also be divisible by $4$.
+  Supposing that this two-digit number is $m = 10d_1 + d_0$, this means that
+  \gath{
+    m \in \braces{12, 16, 24, 28, 32, 36, 44, 48, 52, 56, 64, 68, 72, 76, 84, 88, 92, 96} \label{eqn:05:ms1}
+  }
+  as these are all the two-digit numbers that are divisible by $4$ and contain no zeros.
+  From \eqref{eqn:05:main} we have
+  \gath{
+    4 d_2 d_1 d_0 = n = 100 d_2 + 10 d_1 + d_0 = 100 d_2 + m \non
+    m = 4 d_2 d_1 d_0 - 100 d_2 \non
+    m = 4 d_2 (d_1 d_0 - 25). \label{eqn:05:m}
+  }
+  Since obviously $m > 0$ it must that
+  \gath{
+    d_1 d_0 - 25 > 0 \non
+    d_1 d_0 > 25. \label{eqn:05:filter}
+  }
+  If we filter \eqref{eqn:05:ms1} such that \eqref{eqn:05:filter} holds, we get the reduced number of possibilities
+  \gath{
+    m \in \braces{48, 56, 68, 76, 84, 88, 96}. \label{eqn:05:ms2}
+  }
+  Now, \eqref{eqn:05:m} also means that
+  \gath{
+    4 d_2 (d_1 d_0 - 25) = m \non
+    d_2 = \frac{m}{4(d_1 d_0 - 25)}.
+  }
+  So, for every $m$ in \eqref{eqn:05:ms2}, we get that
+  \gath{
+    d_2 \in \braces{\frac{12}{7}, \frac{14}{5}, \frac{17}{23}, \frac{19}{17}, 3, \frac{22}{39}, \frac{24}{29}}.
+  }
+  Since $d_2$ must be an integer, it clearly has to be that $d_2 = 3$, which corresponds to $m = 84$.
+  Hence, our answer is necessarily $n = 384$.
+  \verified{}
 }
 
-\aproblem{6}{TODO}{\advent@xxv@vi}{
-  TODO
+\aproblem{6}{810}{\advent@xxv@vi}{
+  \boxans{\gridsol@advent@xxv@vi}
 }
 
-\aproblem{7}{TODO}{\advent@xxv@vii}{
-  TODO
+\aproblem{7}{354}{\advent@xxv@vii}{
+  Every match eliminates exactly one player, and after all the matches have been played only one player is the winner.
+  Therefore, if $n$ players enter, $n-1$ players must be eliminated to leave one winner, hence there must be $m = n-1$ matches.
+  In our case $n = 355$ players enter so that our answer is $m = n - 1 = 355 - 1 = 354$ matches.
 }
 
-\aproblem{8}{TODO}{\advent@xxv@viii}{
-  TODO
+\aproblem{8}{405}{\advent@xxv@viii}{
+  Let $x_{k,m}$ be the element in the table at column $k$ and row $m$ in an $n \times n$ table so that $1 \leq k,m \leq n$.
+  By the way that the table is constructed we have that
+  \ali{
+    x_{k,1} &= k \\
+    x_{1,m} &= m,
+  }
+  and, for any element not in the first row or column, we get
+  \gath{
+    x_{k, m} = x_{k,1} x_{1, m} = km. \label{eqn:08:xkm}
+  }
+  In fact, since
+  \ali{
+    x_{k,1} &= k = k \cdot 1 \\`'
+    x_{1,m} &= m = 1 \cdot m,
+  }
+  we simply have \eqref{eqn:08:xkm} for all $1 \leq k,m \leq n$.
+  Now, the sum of all the elements in the bottom row is then clearly
+  \ali{
+    S_b &= \sum_{k=1}^n x_{k,n} = \sum_{k=1}^n kn = n \sum_{k=1}^n k \non
+    &= n\frac{n(n + 1)}{2} = \frac{n^2(n + 1)}{2}. \label{eqn:08:Sb}
+  }
+  Similarly, the sum of all table elements is
+  \ali{
+    S &= \sum_{k=1}^n \sum_{m=1}^n x_{k, m} = \sum_{k=1}^n \sum_{m=1}^n km = \sum_{k=1}^n k \parens{\sum_{m=1}^n m} \non
+    &= \sum_{k=1}^n k \squares{\frac{n(n + 1)}{2}} = \frac{n(n + 1)}{2} \sum_{k=1}^n k = \squares{\frac{n(n + 1)}{2}} \squares{\frac{n(n + 1)}{2}} \non
+    &= \frac{n^2(n+1)^2}{4}.
+  }
+  Letting, $s = \sqrt{S}$ for brevity, it then follows from the above that
+  \gath{
+    \frac{n(n+1)}{2} = \sqrt{S} = s \non
+    n(n+1) = 2s \non
+    n^2 + n = 2s \non
+    n^2 + n - 2s = 0,
+  }
+  which is a quadratic equation in $n$.
+  Since factoring this nicely is not possible, we need to use the quadratic formula to get
+  \gath{
+    n = \frac{-1 \pm \sqrt{1 + 8s}}{2}
+  }
+  Clearly taking the root with subtraction on top will result in a negative number so that it must be addition since $n$ must be positive.
+  Thus,
+  \gath{
+    n = \frac{\sqrt{1 + 8s} - 1}{2} \label{eqn:08:n}
+  }
+  If we substitute this into \eqref{eqn:08:Sb} we can get $S_b$ as a function of $S$ instead of $n$:
+  \ali{
+    S_b(\sqrt{S}) = S_b(s) &= \frac{n^2(n + 1)}{2} = \frac{1}{2}\parens{\frac{\sqrt{1 + 8s} - 1}{2}}^2 \parens{\frac{\sqrt{1 + 8s} - 1}{2} + 1} \non
+    &= \frac{1}{2}\parens{\frac{\sqrt{1 + 8s} - 1}{2}}^2 \parens{\frac{\sqrt{1 + 8s} + 1}{2}} \non
+    &= \frac{1}{16}\parens{\sqrt{1 + 8s} - 1}^2 \parens{\sqrt{1 + 8s} + 1} \non
+    &= \frac{1}{16}\parens{\sqrt{1 + 8s} - 1} \parens{\sqrt{1 + 8s} - 1} \parens{\sqrt{1 + 8s} + 1} \non
+    &= \frac{1}{16}\parens{\sqrt{1 + 8s} - 1} \parens{1 + 8s - 1} \non
+    &= \frac{8s}{16}\parens{\sqrt{1 + 8s} - 1} \non
+    &= \frac{s\parens{\sqrt{1 + 8s} - 1}}{2}
+  }
+
+  As expected, this results in $S_b(\sqrt{36}) = S_b(6) = 18$ for the example.
+  Our answer is then $S_b(\sqrt{2025}) = S_b(45) = 405$.
+  As an aside, using \eqref{eqn:08:n}, we find that the larger multiplication square is in fact $9 \times 9$.
 }
 
 \aproblem{9}{TODO}{\advent@xxv@ix}{

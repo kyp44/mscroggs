@@ -36,9 +36,11 @@ boxes:
 	cd ../advent_2021/; make $(BOXES)
 	cd ../advent_2022/; make $(BOXES)
 	cd ../advent_2023/; make $(BOXES)
+	cd ../advent_2024/; make $(BOXES)
+	cd ../advent_2025/; make $(BOXES)
 
 #==============================================================================
 clean:
 #==============================================================================
-	rm -f *.aux *.log *.pdf *.out *.toc *.fls *.fdb_latexmk *.gz
+	rm -f *.aux *.log *.pdf *.out *.toc *.fls *.fdb_latexmk *.synctex.gz
 	rm -f puzzles.tex

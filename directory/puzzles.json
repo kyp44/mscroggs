@@ -1718,6 +1718,42 @@
 					"cons",
 					"dig"
 				]
+			},
+			{
+				"number": 3,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 4,
+				"tags": [
+					"cons"
+				]
+			},
+			{
+				"number": 5,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 6,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 7,
+				"tags": [
+					"misc"
+				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"sum"
+				]
 			}
 		]
 	}
