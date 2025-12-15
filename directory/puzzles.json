@@ -1754,6 +1754,24 @@
 				"tags": [
 					"sum"
 				]
+			},
+			{
+				"number": 9,
+				"tags": [
+					"geom"
+				]
+			},
+			{
+				"number": 10,
+				"tags": [
+					"num"
+				]
+			},
+			{
+				"number": 11,
+				"tags": [
+					"cons"
+				]
 			}
 		]
 	}

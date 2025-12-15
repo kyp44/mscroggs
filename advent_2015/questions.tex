@@ -17,7 +17,7 @@
   For example, $4 + 3 \times 2$ is $14$, not $10$.
 
   \grid@advent@xv@iv{}{}{}{}{}{}{}{}{}
-  
+
   The answer is the product of the digits in the red boxes.
 }
 
@@ -60,7 +60,7 @@
 \def\advent@xv@vii{
   In September, my puzzle appeared as \href{http://www.theguardian.com/science/2015/sep/14/can-you-solve-it-are-you-smarter-than-a-rugby-commentator}{Alex Bellos's Monday Puzzle}.
   The puzzle asked what the highest rugby score was which can only be made with one combination of kicks, tries and converted tries.
-  
+
   What is the highest rugby score which can be made with $101$ different combinations of kicks, tries and converted tries?
 }
 
@@ -71,21 +71,21 @@
 \def\advent@xv@ix{
   You start at A and are allowed to move either to the right or upwards.
 
-    \begin{center}
+  \begin{center}
     \begin{tikzpicture}
       \def\gs{1}
       % Grid
       \foreach \i in {0,...,6}{
-        \foreach \j in {0,...,4}{
-          \draw[thick] (\i * \gs, \j * \gs) rectangle (\i * \gs + \gs, \j * \gs + \gs);
+          \foreach \j in {0,...,4}{
+              \draw[thick] (\i * \gs, \j * \gs) rectangle (\i * \gs + \gs, \j * \gs + \gs);
+            }
         }
-      }
       % Points
       \fill[color=red] (0, 0) circle (0.2) node[color=red,left] {A};
       \fill[color=blue] (7*\gs, 5*\gs) circle (0.2) node[color=blue,right] {B};
-    \end{tikzpicture}  
+    \end{tikzpicture}
   \end{center}
-  
+
   How many different routes are there to get from A to B?
 }
 
@@ -154,7 +154,7 @@
 
 \def\advent@xv@xv{
   If the numbers $1$ to $7$ are arranged $\mathbf{7,1,2,6,3,4,5}$ then each number is either larger than or a factor of the number before it.
-  
+
   How many ways can the numbers $1$ to $7$ be arranged to that each number is either larger than or a factor of the number before it?
 }
 
@@ -196,7 +196,7 @@
   Put the digits $1$ to $9$ (using each digit once) in the boxes so that the three digit numbers formed (reading left to right and top to bottom) have the desired properties written by their rows and columns.
 
   \grid@advent@xv@xviii{}{}{}{}{}{}{}{}{}
-  
+
   Today's number is the multiple of $6$ formed in the left hand column.
 }
 
@@ -214,13 +214,13 @@
   For example, $4 + 3 \times 2$ is $14$, not $10$.
 
   \grid@advent@xv@xx{}{}{}{}{}{}{}{}{}
-  
+
   The answer is the product of the digits in the red boxes.
 }
 
 \def\advent@xv@xxi{
   This year, I posted instructions for making a \href{https://www.mscroggs.co.uk/blog/14}{dodecahedron} and a stellated \href{https://www.mscroggs.co.uk/blog/17}{rhombicuboctahedron}.
-  
+
   To get today's number, multiply the number of modules needed to make a dodecahedron by half the number of tube maps used to make a stellated rhombicuboctahedron.
 }
 
@@ -230,7 +230,7 @@
 
 \def\advent@xv@xxiii{
   This number is a prime number.
-  If you treble it and add $16$, the result is also prime.
+  If you triple it and add $16$, the result is also prime.
   Repeating this will give $11$ prime numbers in total (including the number itself).
 }
 

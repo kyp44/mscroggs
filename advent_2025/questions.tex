@@ -72,16 +72,52 @@
   What is the sum of the numbers in the bottom row of the new table?
 }
 
+\definecolor{ixhigh}{rgb}{0.18, 0.639, 0.812}
+\definecolor{ixline}{rgb}{0.965, 0.655, 0.435}
+\newcommand\ixbox[2]{\draw[thick] (#1,#2) rectangle (#1+1,#2+1) node[pos=.5] {};}
+\newcommand\ixboxh[2]{\draw[thick,fill=ixhigh] (#1,#2) rectangle (#1+1,#2+1) node[pos=.5] {};}
 \def\advent@xxv@ix{
-  TODO
+  In a $3$ by $5$ grid of squares, if a line is drawn from the bottom left corner to the top right corner, it will pass through $7$ squares:
+  \begin{center}
+    \begin{tikzpicture}[scale=1.7]
+      \ixboxh{0}{0}
+      \ixboxh{1}{0}
+      \ixbox{2}{0}
+      \ixbox{3}{0}
+      \ixbox{4}{0}
+      \ixbox{0}{1}
+      \ixboxh{1}{1}
+      \ixboxh{2}{1}
+      \ixboxh{3}{1}
+      \ixbox{4}{1}
+      \ixbox{0}{2}
+      \ixbox{1}{2}
+      \ixbox{2}{2}
+      \ixboxh{3}{2}
+      \ixboxh{4}{2}
+      \draw[draw=ixline, very thick] (0,0) -- (5,3);
+    \end{tikzpicture}
+  \end{center}
+
+  In a $251$ by $272$ grid of squares, how many squares will a line drawn from the bottom left corner to the top right corner pass through?
 }
 
 \def\advent@xxv@x{
-  TODO
+  $2025$ is the smallest number with exactly $15$ odd factors.
+
+  What is the smallest number with exactly $16$ odd factors?
 }
 
 \def\advent@xxv@xi{
-  TODO
+  Holly added up $3$ consecutive numbers starting at $10$, then added up the next $3$ consective numbers, then found the difference between her two totals:
+  \gaths{
+    10 + 11 + 12 = 33 \\
+    13 + 14 + 15 = 42 \\
+    42 – 33 = 9
+  }
+  Ivy added up $n$ consecutive numbers starting at $m$, then added up the next n consecutive numbers, then found the difference between her two totals.
+  The difference was $203401$.
+  What is the largest possible value of n that Ivy could have used?
 }
 
 \def\advent@xxv@xii{

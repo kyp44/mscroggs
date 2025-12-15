@@ -1,5 +1,4 @@
 import numpy as np
-from fractions import Fraction as frc
 from common import *
 
 a = 840

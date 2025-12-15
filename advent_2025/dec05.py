@@ -1,5 +1,4 @@
 from common import *
-from fractions import Fraction as frc
 
 
 def frc_latex(f: frc):

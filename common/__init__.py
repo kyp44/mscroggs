@@ -253,17 +253,6 @@ class EquGrid(GenGrid):
         print(gblank + latex_args(1, 3))
         print(gblank + latex_args(3, 3))
 
-        """
-
-        \gridsym{0}{1}{=}
-        \gridsym{2}{1}{=}
-        \gridsym{4}{1}{=}
-
-        \gridsym{0}{0}{4}
-        \gridsym{2}{0}{-4}
-        \gridsym{4}{0}{10}
-        """
-
 
 class GridRoutes:
     """
@@ -324,6 +313,8 @@ def factors(n):
     """
     Find factors of a number.
     """
+    if n == 0:
+        return set()
     return set(reduce(list.__add__,
                       ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 # Print answer
