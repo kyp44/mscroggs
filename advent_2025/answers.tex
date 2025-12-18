@@ -334,28 +334,124 @@ Clearly the smallest of these is our answer $n = 945$.
   \verified{}
 }
 
-\aproblem{13}{TODO}{\advent@xxv@xiii}{
-  TODO
+\aproblem{13}{175}{\advent@xxv@xiii}{
+  \boxans{\grid@advent@xxv@xiii{1}{7}{5}{3}{5}{0}{3}{5}}
 }
 
-\aproblem{14}{TODO}{\advent@xxv@xiv}{
-  TODO
+\aproblem{14}{144}{\advent@xxv@xiv}{
+  Let $F(n)$ be the number of valid lists of length $n$, where a valid list is of course one that does not contain an odd number of consecutive A's.
+  Now consider lists of length $n$.
+  If such a list starts with a B then, then the list is valid if and only if the remaining list of length $n-1$ is valid.
+  Therefore, there are $F(n-1)$ valid lists that start with a B.
+  However, if such a list starts with an A then if the remaining list of length $n-1$ is valid then the list is \emph{invalid} because it is guaranteed to start with an odd number of A's.
+  More than that though, even if the remaining list of length $n-1$ is invalid, there is no guarantee that the list is valid.
+  The easiest way to show this is with an example for $n = 5$.
+  In this case, here are two lists that both start with an $A$ where the remaining list of length $4$ are both invalid:
+  \begin{itemize}
+    \item A, A, B, B, B
+    \item A, A, B, B, A
+  \end{itemize}
+  The first list is valid while the second is invalid.
+  So consider the first two letters of the where the first letter is A.
+  If the second letter is a B then the list can no longer be valid regardless of the remaining letters since it begins with an odd number of A's, i.e. one A.
+  So there are zero valid lists in this case.
+  On the other hand, if the second letter is also an A, then list is valid if and only if the remaining list of length $n-2$ is valid.
+  Hence, there $F(n-2)$ valid lists in this case.
+  Since cases are exhaustive, this gives rise to
+  \gath{
+    F(n) = F(n-1) + 0 + F(n-2) = F(n-1) + F(n-2),
+  }
+  which is of course the Fibonacci sequence!
+  Clearly in the case of $n=1$, only the list B is valid, so that $F(1) = 1$.
+  For $n=2$, it is easy to see that only two of the four possible lists are valid: BB and AA.
+  Listed below are the first eleven Fibonacci numbers:
+  \ali{
+    F(1) &= 1 & F(2) &= 2 & F(3) &= 3 & F(4) &= 5 \non
+    F(5) &= 8 & F(6) &= 13 & F(7) &= 21 & F(8) &= 34 \non
+    F(9) &= 55 & F(10) &= 89 & F(11) &= 144
+  }
+
+  Since we are interested in valid lists of length $n = 11$, our answer is clearly $F(11) = 144$.
+  \verified{}
 }
 
-\aproblem{15}{TODO}{\advent@xxv@xv}{
-  TODO
+\aproblem{15}{128}{\advent@xxv@xv}{
+  Though it seems like a degenerate case, we notice that any number with only even factors will have only one odd factor, which is $1$, and therefore qualifies.
+  A number can have only even factors if and only if its only prime factor is $2$, since otherwise any other prime would be a factor, and every other prime is odd.
+  A relatively small three-digit power of two is $128$.
+  The numbers $100$ through $127$ were checked using Python to see if any have a number of odd factors that is itself an odd factor, and none meet that criterion.
+  Thus, our answer is $128$.
 }
 
-\aproblem{16}{TODO}{\advent@xxv@xvi}{
-  TODO
+\aproblem{16}{120}{\advent@xxv@xvi}{
+  \boxans{\gridsol@advent@xxv@xvi}
 }
 
-\aproblem{17}{TODO}{\advent@xxv@xvii}{
-  TODO
+\aproblem{17}{512}{\advent@xxv@xvii}{
+  Consider a reduction of a sequence of $N$ zeros and ones as the inverted pyramid shown in the example.
+  Since each row going down reduces the length of the sequence by one, there will be $N$ rows.
+  Label the rows of the reduction from the bottom up with the final singular value ($0$ or $1$) being row $0$, the sceond row being row $1$, and so that the top row is row $N-1$.
+  Note that row $n$ has a length of $n+1$.
+  We will call each element of the sequence a bit.
+
+  Label the bits in the reduction as $b_{n,k}$, where this is the $k$th bit in the $n$th row (both start at $0$), hence $0 \leq k < n$ and $0 \leq n < N$.
+  Working backwards, consider a specific sequence in row $n$ and the possible sequences for row $n+1$.
+  The first bit in row $n+1$ can always be either of two possibilities: a $0$ or a $1$.
+  Now, $b_{n,k}$ in row $n$ sits between $b_{n+1,k}$ and $b_{n+1,k+1}$ in the row above.
+  If bit $b_{n+1,k}$ is set, then $b_{n+1,k+1}$ is determined and has only one possibility.
+  Specifically, if $b_{n,k} = 0$, then $b_{n+1,k+1}$ must be the opposite of $b_{n+1,k}$ since they must be different.
+  Contrarywise, if $b_{n,k} = 1$, then $b_{n+1,k+1}$ = $b_{n+1,k}$ since they must be the same.
+  Therefore, while the first bit in row $n+1$ is arbitrary, the remaining bits are fully determined by this choice and the bits of row $n$.
+  It then follows that, for a given sequence in row $n$, the sequence in row $n+1$ can be one of two possible sequences.
+
+  Letting $S(n)$ denote the number of possible sequences in row $n$, this means that
+  \gath{
+    S(n+1) = 2 S(n). \label{eqn:17:Ns}
+  }
+  We are interested in all the sequences that reduce down to a single $1$ so that
+  \gath{
+    S(0) = 1 = 2^0. \label{eqn:17:Ns0}
+  }
+  From \eqref{eqn:17:Ns} and \eqref{eqn:17:Ns0}, it is trivial to prove by induction that
+  \gath{
+    S(n) = 2^n.
+  }
+  Since we are interested in sequences of length $N = 10$, the top row is $n = N - 1 = 9$.
+  Thus, our answer is $S(9) = 2^9 = 512$.
+  \verified{}
 }
 
-\aproblem{18}{TODO}{\advent@xxv@xviii}{
-  TODO
+\aproblem{18}{377}{\advent@xxv@xviii}{
+Define the set $I_N = \braces{1, \ldots, N}$, and define a valid set to mean a set in which the smallest number is equal to the number of elements in the set.
+Let $S(N, n)$ denote thenumber of valid sets of size $n$ that are subsets of $I_N$ so that $0 \leq n \leq N$.
+Now, consider valid subsets $I_n$ and with $n$ elements.
+First, the smallest elements of such a set must be $n$ so that it can contain no smaller numbers.
+There are $n-1$ more elements greater than $n$ we need to fill in the for rest of the set.
+So, in $I_n$ there are $N-n$ elements greater than $n$ (i.e. $n+1, n+2, \ldots, N-1, N$) and we must choose $n-1$ of them.
+There are of course
+\gath{
+  \binom{N-n}{n-1}
+}
+ways to choose these remaining elements, and hence
+\gath{
+  S(N, n) = \binom{N-n}{n-1}.
+}
+Of course a subset of $I_N$ can have any size from $1$ to $N$ (technically the empty set $\es$ is also a subset, but we need not consider this since the size of $\es$ is $0$ and this is not an element of it).
+Then we have that the total number of valid subsets of $I_N$ is
+\gath{
+  T(N) = \sum_{n=1}^N S(N, n) = \sum_{n=0}^{N-1} S(N, n+1) = \sum_{n=0}^{N-1} \binom{N - \squares{n+1}}{\squares{n+1} - 1} = \sum_{n=0}^{N-1} \binom{\squares{N - 1} - n}{n}.
+}
+Calculating this for the example gives the expected result of $T(5) = 5$.
+Our answer is then $T(14) = 377$.
+\verified{}
+It is worth noting that the sequence $T(N)$ is related to the Fibonacci sequence $F(N)$ by
+\gath{
+  T(N) = F(N-1)
+}
+which comes from the known identity
+\gath{
+F(N+1) = \sum_{n=0}^{\floor{N/2}} \binom{N-n}{n}.
+}
 }
 
 \aproblem{19}{TODO}{\advent@xxv@xix}{

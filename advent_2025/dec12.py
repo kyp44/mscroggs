@@ -1,6 +1,5 @@
 from __future__ import annotations
 from common import *
-from itertools import permutations
 from dataclasses import dataclass
 
 
@@ -30,7 +29,7 @@ class Numbers:
 
 
 ns = []
-for all_digits in permutations(range(1, 7+1)):
+for all_digits in it.permutations(range(1, 7+1)):
     n = Numbers(
         number(all_digits[:3]),
         number(all_digits[3:6]),

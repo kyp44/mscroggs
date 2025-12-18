@@ -1,9 +1,8 @@
 from common import *
-from itertools import count
 
 
 def lowest_with_factors(nf):
-    for n in count():
+    for n in it.count():
         fs = factors(n)
         if 2 not in fs and len(factors(n)) == nf:
             return n

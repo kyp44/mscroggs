@@ -1,4 +1,3 @@
-import numpy as np
 from common import *
 
 sol = np.array([[1, 3, 5],

@@ -127,28 +127,132 @@
   What is the smallest that the larger of her two three-digit numbers could be?
 }
 
+% This cheats a bit because we are annoyingly limited to 9 arguments
+\newcommand\grid@advent@xxv@xiii[8]{
+  \begin{center}
+    \begin{tikzpicture}[scale=2]
+      % Grid
+      \gridbox{0}{2}{#1}
+      \gridbox{1}{2}{#2}
+      \gridbox{2}{2}{#3}
+      \gridbox{0}{1}{#4}
+      \gridbox{1}{1}{#5}
+      \gridbox{2}{1}{#6}
+      \gridbox{1}{0}{#7}
+      \gridbox{2}{0}{#8}
+
+      % Blacked out boxes
+      \gridboxb{0}{0}{}
+
+      % Across / Down labels
+      \cwlab{0}{2}{1}
+      \cwlab{1}{2}{2}
+      \cwlab{2}{2}{3}
+      \cwlab{0}{1}{4}
+      \cwlab{1}{0}{5}
+
+    \end{tikzpicture}
+  \end{center}
+}
 \def\advent@xxv@xiii{
-  TODO
+  Today's number is given in this crossnumber.
+  No number in the completed grid starts with 0.
+
+  \setlength{\columnsep}{-2cm}
+  \begin{multicols}{2}
+    \grid@advent@xxv@xiii{}{}{}{}{}{}{}{}
+
+    \vfill\null
+    \columnbreak
+
+    \begin{center}
+      \textbf{Across}
+
+      \begin{tabular}{clc}
+        \textbf{1} & Today's number.                              & (\textbf{3}) \\
+        \textbf{4} & Two times today's number.                    & (\textbf{3}) \\
+        \textbf{5} & The product of the digits of today's number. & (\textbf{2})
+      \end{tabular}
+
+      \textbf{Down}
+
+      \begin{tabular}{clc}
+        \textbf{1} & The sum of the digits of today's number.    & (\textbf{2}) \\
+        \textbf{2} & Two more than an anagram of today's number. & (\textbf{3}) \\
+        \textbf{3} & A multiple of $101$.                        & (\textbf{3})
+      \end{tabular}
+    \end{center}
+  \end{multicols}
 }
 
 \def\advent@xxv@xiv{
-  TODO
+  There are five ways to make a list of four As and Bs that don't contain an odd number of consecutive As:
+  \begin{itemize}
+    \item B,B,B,B
+    \item A,A,B,B
+    \item B,A,A,B
+    \item B,B,A,A
+    \item A,A,A,A
+  \end{itemize}
+  How many ways are there to make a list of eleven As and Bs that don't contain an odd number of consecutive As?
 }
 
 \def\advent@xxv@xv{
-  TODO
+  The odd factors of $2025$ are $1$, $3$, $5$, $9$, $15$, $25$, $27$, $45$, $75$, $81$, $135$, $225$, $405$, $675$ and $2025$.
+  There are $15$ of these factors and $15$ is itself an odd factor of $2025$.
+
+  What is the smallest three-digit number whose number of odd factors is itself an odd factor of the number?
 }
 
 \def\advent@xxv@xvi{
-  TODO
+  Put the digits $1$ to $9$ (using each digit exactly once) in the boxes so that the sums are correct.
+  The sums should be read left to right and top to bottom ignoring the usual order of operations.
+  For example, $4 + 3 \times 2$ is $14$, not $10$.
+  Today's number is the product of the numbers in the red boxes.
+
+  \grid@advent@xxv@xvi{}{}{}{}{}{}{}{}{}
 }
 
+\newcommand\xviibox[3]{\draw (#1,#2) rectangle (#1+1,#2+1) node[pos=.5] {#3};}
 \def\advent@xxv@xvii{
-  TODO
+  A sequence of zeros and ones can be reduced by writing a $0$ or $1$ under each pair of numbers: $1$ is written if the numbers are the same, $0$ is written if they are not.
+  This process can be repeated until there is a single number.
+  For example, if we start with the sequence $1$, $1$, $1$, $0$, $1$ (of length $5$), we get:
+
+  \begin{center}
+    \begin{tikzpicture}[scale=1.2]
+      \xviibox{0}{0}{1}
+
+      \xviibox{-0.5}{1}{0}
+      \xviibox{0.5}{1}{0}
+
+      \xviibox{-1}{2}{1}
+      \xviibox{0}{2}{0}
+      \xviibox{1}{2}{1}
+
+      \xviibox{-1.5}{3}{1}
+      \xviibox{-0.5}{3}{1}
+      \xviibox{0.5}{3}{0}
+      \xviibox{1.5}{3}{0}
+
+      \xviibox{-2}{4}{1}
+      \xviibox{-1}{4}{1}
+      \xviibox{0}{4}{1}
+      \xviibox{1}{4}{0}
+      \xviibox{2}{4}{1}
+    \end{tikzpicture}
+  \end{center}
+
+  The final digit is a $1$.
+
+  How many sequences of zeros and ones of length $10$ are there that when reduced lead to the final digit being a $1$?
 }
 
 \def\advent@xxv@xviii{
-  TODO
+  There are $5$ different ways to make a set of numbers between $1$ and $5$ such that the smallest number in the set is equal to the number of numbers in the set.
+  These $5$ sets are: $\braces{1}$, $\braces{2, 3}$, $\braces{2, 4}$, $\braces{2, 5}$ and $\braces{3, 4, 5}$.
+
+  How many ways are there to make a set of numbers between $1$ and $14$ such that the smallest number in the set is equal to the number of numbers in the set?
 }
 
 \def\advent@xxv@xix{

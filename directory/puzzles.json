@@ -1778,6 +1778,42 @@
 				"tags": [
 					"dig"
 				]
+			},
+			{
+				"number": 13,
+				"tags": [
+					"cross"
+				]
+			},
+			{
+				"number": 14,
+				"tags": [
+					"comb"
+				]
+			},
+			{
+				"number": 15,
+				"tags": [
+					"num"
+				]
+			},
+			{
+				"number": 16,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 17,
+				"tags": [
+					"tri"
+				]
+			},
+			{
+				"number": 18,
+				"tags": [
+					"comb"
+				]
 			}
 		]
 	}
