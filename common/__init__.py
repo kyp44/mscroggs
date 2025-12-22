@@ -6,8 +6,7 @@ import argparse
 import os
 from functools import reduce
 from fractions import Fraction as frc
-from math import factorial
-from math import comb as binom
+from math import factorial, gcd, comb as binom
 from enum import Enum, auto
 import roman
 from tqdm import tqdm
@@ -544,6 +543,29 @@ def count_ending_zeros(n):
     return cnt
 
 
+def all_primes(limit=None):
+    """
+    Generator that produces all primes of at most the limit, or without bound if limit is `None`.
+    """
+    yield 2
+    primes_so_far = [2]
+    n = 3
+    while True:
+        if limit is not None and n > limit:
+            break
+        is_prime = True
+        for p in primes_so_far:
+            if p * p > n:
+                break
+            if n % p == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes_so_far.append(n)
+            yield n
+        n += 2
+
+
 class NotDivisibleError(Exception):
     pass
 
@@ -596,7 +618,7 @@ class PrimeFactors:
     def __pow__(self, other):
         return PrimeFactors(int(other) * self.multiset)
 
-    def issquare(self):
+    def is_square(self):
         """
         Whether this is a square number.
         """
@@ -606,6 +628,9 @@ class PrimeFactors:
                 return False
 
         return True
+
+    def is_perfect_power(self) -> bool:
+        return gcd(*self.multiset.multiplicities()) > 1
 
     def factorial(self):
         p = 1

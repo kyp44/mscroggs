@@ -454,12 +454,81 @@ F(N+1) = \sum_{n=0}^{\floor{N/2}} \binom{N-n}{n}.
 }
 }
 
-\aproblem{19}{TODO}{\advent@xxv@xix}{
-  TODO
+\aproblem{19}{784}{\advent@xxv@xix}{
+  First, we know that the largest number (and our answer) must be a three-digit number so that we need not consider any square numbers larger than $1000$.
+  The set of all square numbers less than $1000$ such that no digits are repeated in a given number are
+  \gath{
+    \braces{1, 4, 9, 16, 25, 36, 49, 64, 81, 169, 196, 256, 289, 324, 361, 529, 576, 625, 729, 784, 841, 961}. \label{eqn:19:squares}
+  }
+  Since we must select $5$ of these, we ask how many of one-digit, two-digit, and three-digit numbers we might need to select such that the total number of digits is $9$.
+  It turns out there are only two ways to do this:
+  \gath{
+    \squares{3, 2, 2, 1, 1} \non
+    \squares{3, 3, 1, 1, 1}
+  }
+  where each sequence represents five numbers where the number of digits in each number are the elements of the sequence.
+  First consider the second of these, that is $2$ three-digit numbers and $3$ one-digit numbers.
+  Looking at \eqref{eqn:19:squares}, there are only $3$ one-digits squares, so that $\braces{1, 4, 9}$ must be $3$ of our numbers.
+  The three-digit squares that do not contain any of these digits reduce to
+  \gath{
+    \braces{256, 576, 625},
+  }
+  but clearly no two of these can be selected without them sharing a $6$ so that this is not possible.
+
+  Hence, it must be that Eve wrote $1$ three-digit number, $2$ two-digit numbers, and $2$ one-digit numbers.
+  For each one or two-digit square, $n$ let $T_n$ be the set of three-digit squares that contain none of the digits of $n$.
+  We then have that
+  \ali{
+    T_{1} &= \braces{256, 289, 324, 529, 576, 625, 729, 784} \non
+    T_{4} &= \braces{169, 196, 256, 289, 361, 529, 576, 625, 729, 961} \non
+    T_{9} &= \braces{256, 324, 361, 576, 625, 784, 841} \non
+    T_{16} &= \braces{289, 324, 529, 729, 784} \non
+    T_{25} &= \braces{169, 196, 361, 784, 841, 961} \non
+    T_{36} &= \braces{289, 529, 729, 784, 841} \non
+    T_{49} &= \braces{256, 361, 576, 625} \non
+    T_{64} &= \braces{289, 529, 729} \non
+    T_{81} &= \braces{256, 324, 529, 576, 625, 729} \non
+  }
+  Now, for the single-digit squares $\braces{1, 4, 9}$ we choose two.
+  And for that choice, we choose two two-digit squares from $\braces{16, 25, 36, 49, 64, 81}$ that containing neither of the single digits.
+  Then we calculate the intersections of the $T_n$ sets for these four squares, to see what, if any, three-digits numbers are viable as the final choice.
+  These are summarized below:
+  \begin{center}
+    \begin{tabular}{cl}
+      Choice                  & Intersection                                              \\
+      \hline
+      $\braces{1, 4, 25, 36}$ & $T_{1} \cap T_{4} \cap T_{25} \cap T_{36} = \es$          \\
+      $\braces{1, 9, 25, 64}$ & $T_{1} \cap T_{9} \cap T_{25} \cap T_{64} = \es$          \\
+      $\braces{1, 9, 36, 64}$ & $T_{1} \cap T_{9} \cap T_{36} \cap T_{64} = \es$          \\
+      $\braces{1, 9, 25, 36}$ & $T_{1} \cap T_{9} \cap T_{25} \cap T_{36} = \braces{784}$ \\
+      $\braces{4, 9, 16, 25}$ & $T_{4} \cap T_{9} \cap T_{16} \cap T_{25} = \es$          \\
+      $\braces{4, 9, 16, 36}$ & $T_{4} \cap T_{9} \cap T_{16} \cap T_{36} = \es$          \\
+      $\braces{4, 9, 16, 81}$ & $T_{4} \cap T_{9} \cap T_{16} \cap T_{81} = \es$          \\
+      $\braces{4, 9, 25, 36}$ & $T_{4} \cap T_{9} \cap T_{25} \cap T_{36} = \es$          \\
+      $\braces{4, 9, 25, 81}$ & $T_{4} \cap T_{9} \cap T_{25} \cap T_{81} = \es$          \\
+      $\braces{4, 9, 36, 81}$ & $T_{4} \cap T_{9} \cap T_{36} \cap T_{81} = \es$          \\
+    \end{tabular}
+  \end{center}
+  Clearly then, the only possible solution is that Eve wrote down the numbers $\braces{1, 9, 25, 36, 784}$ so that our answer is $784$.
+  \verified{}
 }
 
-\aproblem{20}{TODO}{\advent@xxv@xx}{
-  TODO
+
+\aproblem{20}{196}{\advent@xxv@xx}{
+  If our answer is $n$, it is reasonable to assume that the perfect powers separated by $p = 29$ might be consecutive squares since these grow the slowest and so may be most likely to be so close together.
+  If we try this, we
+  \gath{
+    (n+1)^2 - n^2 = p \non
+    n^2 + 2n + 1 - n^2 = p \non
+    2n + 1 = p \non
+    n = \frac{p-1}{2}.
+  }
+  So we have $n = (29 - 1)/2 = 14$ so that $n^2 = 196$  and $(n+1)^2 = 15^2 = 225$ are perfect powers separated by $29$.
+  Hence, $196$ must be our answer, and we are given that this must be unique.
+  However, it is unclear how to prove that this is unique or why they must be consecutive squares.
+  \verified{}
+
+  It is also worth noting that this same approach yields $n = (23 - 1)/2  = 11$ for the example so that $11^2 = 121$ and $12^2 = 144$ are also perfect powers separated by $23$.
 }
 
 \aproblem{21}{TODO}{\advent@xxv@xxi}{

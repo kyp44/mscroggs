@@ -6,6 +6,6 @@ for n in range(100, 1000):
     npf = PrimeFactors(n).factorial()
 
     if num.ismultiple(npf):
-        if (num / npf).issquare():
+        if (num / npf).is_square():
             pans(n)
             break
