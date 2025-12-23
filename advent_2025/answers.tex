@@ -531,8 +531,69 @@ F(N+1) = \sum_{n=0}^{\floor{N/2}} \binom{N-n}{n}.
   It is also worth noting that this same approach yields $n = (23 - 1)/2  = 11$ for the example so that $11^2 = 121$ and $12^2 = 144$ are also perfect powers separated by $23$.
 }
 
-\aproblem{21}{TODO}{\advent@xxv@xxi}{
-  TODO
+\aproblem{21}{638}{\advent@xxv@xxi}{
+  This is similar to the Dec~14 problem above, but is more complicated.
+  Define a valid sequence of As and Bs as one that does not contain an even number of consecutive As, again not counting zero As as even of course.
+  For a sequence of length $n$, let $B(n)$ denote the number of valid sequences that end in a $B$, $A_o(n)$ denote the number of valid sequences ending in an \emph{odd} number of As, and $A_e(n)$ denote the number of otherwise valid sequences that end in an \emph{even} number of As.
+  Lastly, let $T(n)$ denote the total number of valid sequences of length $n$.
+  First, we clearly have that
+  \gath{
+    T(n) = B(n) + A_o(n)
+  }
+  to account for valid sequences that end in a B or an A.
+  Now, if we have a sequence of length $n-1$ and tack a B on the end, then it is still valid, and hence
+  \gath{
+    B(n) = T(n-1).
+  }
+  We also have
+  \gath{
+    A_o(n) = B(n-1) + A_e(n-1)
+  }
+  since adding an A to a sequence ending in a B makes it a valid sequence ending in an odd number (i.e. one) of As.
+  Similarly, an otherwise valid sequence ending in an even number of As becomes fully valid if we add a single A onto the end, and will then end in an odd number of As.
+  Lastly, we have
+  \gath{
+    A_e(n) = A_o(n-1)
+  }
+  since adding an A to the end of a valid sequence ending in an odd number of As, makes it a sequence that is otherwise valid but ends in an even number of As.
+  For a sequence of length $n = 1$ it can either simply be an A or a B, which are both valid, so that
+  \ali{
+    B(1) &= 1 \non
+    A_o(1) &= 1 \non
+    A_e(1) &=  0 \non
+    T(1) &= B(1) + A_o(1) = 1 + 1 = 2.
+  }
+  The complex recursive relationships above involving $B(n)$, $A_o(n)$, $A_e(n)$, and $T(n)$ can be reduced down as follows:
+  \gath{
+    T(n) = B(n) + A_o(n) = T(n-1) + A_o(n)
+  }
+  and
+  \gath{
+    A_o(n) = B(n-1) + A_e(n-1) = T(n-2) + A_o(n-2).
+  }
+  We also of course have
+  \ali{
+    A_o(2) = B(1) + A_e(1) = 1 + 0 = 1.
+  }
+  Summarizing and making this a little more abstract by renaming $A_o(n)$ to $S(n)$ for brevity, we get the double recursion
+  \ali{
+    T(n) &= S(n) + T(n-1) \non
+    S(n) &= S(n-2) + T(n-2)
+  }
+  with base cases
+  \ali{
+    T(1) &= 2 \non
+    S(1) &= 1 \non
+    S(2) &= 1.
+  }
+  Evaluating $T(n)$ using these gives
+  \ali{
+    T(1) &= 2 & T(2) &= 3 & T(3) &= 6 & T(4) &= 10 \non
+    T(5) &= 19 & T(6) &= 33 & T(7) &= 61 & T(8) &= 108 \non
+    T(9) &= 197 & T(10) &= 352 & T(11) &= 638
+  }
+  so that our answer, the number of valid sequences of length $11$, is $T(11) = 638$, noting also that $T(4) = 10$ as expected for the example.
+  \verified{}
 }
 
 \aproblem{22}{TODO}{\advent@xxv@xxii}{

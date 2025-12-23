@@ -1,24 +1,34 @@
 from __future__ import annotations
 from common import *
+from dataclasses import dataclass
 from seq import Seq
 
 
-class Fib:
+class FibLike:
     def __init__(self, n: int):
         self.n = n
-        self.F = Fib.calculate(n)
+        self.F = FibLike.calculate(n)
 
     def __str__(self):
-        return f"F({self.n}) &= {self.F}"
+        return f"T({self.n}) &= {self.F}"
 
     @classmethod
     def calculate(cls, n):
-        if n == 1:
-            return 1
-        elif n == 2:
-            return 2
-        else:
-            return Fib.calculate(n-1) + Fib.calculate(n-2)
+        def T(n):
+            if n == 1:
+                return 2
+            else:
+                return S(n) + T(n-1)
+
+        def S(n):
+            if n == 1:
+                return 1
+            elif n == 2:
+                return 1
+            else:
+                return T(n-2) + S(n-2)
+
+        return T(n)
 
 
 class Row:
@@ -28,7 +38,7 @@ class Row:
     def full(self) -> bool:
         return len(self.row) == 4
 
-    def add(self, f: Fib):
+    def add(self, f: FibLike):
         self.row.append(f)
         if self.full():
             self.flush()
@@ -39,10 +49,12 @@ class Row:
               r"\non" if self.full() else "")
 
 
+print(f"Example: {len(Seq.all_no_even(4))}\n")
+
 row = Row()
 for seq_len in range(1, 11+1):
-    row.add(Fib(seq_len))
+    row.add(FibLike(seq_len))
 row.flush()
-
 print()
-pans(len(Seq.all_no_odd(11)))
+
+pans(len(Seq.all_no_even(11)))
