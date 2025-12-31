@@ -51,3 +51,21 @@ class Seq:
     @classmethod
     def all_no_even(cls, n: int) -> List[Seq]:
         return [s for s in cls.all(n) if not s.has_even_ones()]
+
+
+class Row:
+    def __init__(self):
+        self.row = []
+
+    def full(self) -> bool:
+        return len(self.row) == 4
+
+    def add(self, x):
+        self.row.append(x)
+        if self.full():
+            self.flush()
+            self.row = []
+
+    def flush(self):
+        print(" & ".join([str(x) for x in self.row]),
+              r"\non" if self.full() else "")

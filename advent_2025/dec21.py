@@ -1,7 +1,7 @@
 from __future__ import annotations
 from common import *
 from dataclasses import dataclass
-from seq import Seq
+from com import Seq
 
 
 class FibLike:

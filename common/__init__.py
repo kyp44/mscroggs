@@ -597,6 +597,12 @@ class PrimeFactors:
 
     __rmul__ = __mul__
 
+    def primes(self):
+        """
+        Returns the set of distinct prime bases.
+        """
+        return set(self.multiset)
+
     def ismultiple(self, other):
         """
         Whether this is a multiple of another number.

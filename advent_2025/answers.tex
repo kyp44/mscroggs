@@ -15,8 +15,7 @@
 
 \maketitle
 
-Magic link: \href{http://mscroggs.co.uk/adventcode/5kGf6WdI}{http://mscroggs.co.uk/adventcode/5kGf6WdI}
-% Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2025}{https://www.mscroggs.co.uk/puzzles/advent2025}
+Answers: \href{https://www.mscroggs.co.uk/puzzles/advent2025}{https://www.mscroggs.co.uk/puzzles/advent2025}
 
 \newcommand{\verified}{This was verified with a brute-force Python program.}
 
@@ -513,7 +512,6 @@ F(N+1) = \sum_{n=0}^{\floor{N/2}} \binom{N-n}{n}.
   \verified{}
 }
 
-
 \aproblem{20}{196}{\advent@xxv@xx}{
   If our answer is $n$, it is reasonable to assume that the perfect powers separated by $p = 29$ might be consecutive squares since these grow the slowest and so may be most likely to be so close together.
   If we try this, we
@@ -596,16 +594,29 @@ F(N+1) = \sum_{n=0}^{\floor{N/2}} \binom{N-n}{n}.
   \verified{}
 }
 
-\aproblem{22}{TODO}{\advent@xxv@xxii}{
-  TODO
+\aproblem{22}{504}{\advent@xxv@xxii}{
+  \boxans{\gridsol@advent@xxv@xxii}
 }
 
-\aproblem{23}{TODO}{\advent@xxv@xxiii}{
-  TODO
+\aproblem{23}{407}{\advent@xxv@xxiii}{
+  As no analytical solution is readily apparent, this was solved using a brute force approach in Python.
 }
 
-\aproblem{24}{TODO}{\advent@xxv@xxiv}{
-  TODO
+\aproblem{24}{675}{\advent@xxv@xxiv}{
+  Since we are only interested in numbers that have both $3$ and $5$ as prime factors and no other prime factors, we need only consider numbers of the form $3^k 5^n$.
+  Moreover, $3^6 = 729$ but $3^7 = 2187$, so, if $k$ is the power of $3$, we need only consider $k \in I_6 = \braces{1, 2, \ldots, 6}$.
+  Similarly, $5^4 = 625$ but $5^5 = 3125$ so, for $n$ the power of $5$, we need only consider $n \in I_4 = \braces{1, 2, 3, 4}$.
+  If we list all $3^k 5^n$ where $(k, n) \in I_6 \times I_4$, we get
+  \ali{
+    3^{1} 5^{1} &= 15 & 3^{1} 5^{2} &= 75 & 3^{1} 5^{3} &= 375 & 3^{1} 5^{4} &= 1875 \non
+    3^{2} 5^{1} &= 45 & 3^{2} 5^{2} &= 225 & 3^{2} 5^{3} &= 1125 & 3^{2} 5^{4} &= 5625 \non
+    3^{3} 5^{1} &= 135 & 3^{3} 5^{2} &= 675 & 3^{3} 5^{3} &= 3375 & 3^{3} 5^{4} &= 16875 \non
+    3^{4} 5^{1} &= 405 & 3^{4} 5^{2} &= 2025 & 3^{4} 5^{3} &= 10125 & 3^{4} 5^{4} &= 50625 \non
+    3^{5} 5^{1} &= 1215 & 3^{5} 5^{2} &= 6075 & 3^{5} 5^{3} &= 30375 & 3^{5} 5^{4} &= 151875 \non
+    3^{6} 5^{1} &= 3645 & 3^{6} 5^{2} &= 18225 & 3^{6} 5^{3} &= 91125 & 3^{6} 5^{4} &= 455625.
+  }
+  Clearly the largest three-digit number here is our answer $3^3 5^2 = 675$.
+  \verified{}
 }
 
 \end{document}

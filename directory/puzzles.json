@@ -1833,6 +1833,24 @@
 				"tags": [
 					"comb"
 				]
+			},
+			{
+				"number": 22,
+				"tags": [
+					"box"
+				]
+			},
+			{
+				"number": 23,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 24,
+				"tags": [
+					"num"
+				]
 			}
 		]
 	}

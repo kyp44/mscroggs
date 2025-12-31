@@ -1,6 +1,6 @@
 from __future__ import annotations
 from common import *
-from seq import Seq
+from com import Seq
 
 
 class Fib:
