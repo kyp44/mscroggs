@@ -1,7 +1,5 @@
 from __future__ import annotations
 from common import *
-from typing import List, Optional, Set
-from dataclasses import dataclass
 
 
 def union(sets) -> Numbers:
@@ -94,7 +92,7 @@ for nd1s in it.combinations(squares.with_num_digits(1).ns, r=2):
         nd3s = intersection([Tns[n].ns for n in ns])
         latex_row(
             f"${ns}$",
-            f"${r' \cap '.join([f'T_{{{n}}}' for n in ns])} = {
+            f"${r' \cap '.join([f'T_{{{n}}}' for n in ns])}={
                 nd3s if len(nd3s.ns) > 0 else r'\es'}$",
         )
 print()

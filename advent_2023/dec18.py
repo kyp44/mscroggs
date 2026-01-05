@@ -15,7 +15,7 @@ def sliding_window(iterable, n):
 first = None
 
 for n in range(100, 1000):
-    fs = sorted(factors(n))
+    fs = factors(n)
     print(n, fs)
     fs = fs[1:-1]
 

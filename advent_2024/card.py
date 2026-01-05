@@ -28,11 +28,11 @@ prob(4)
 pans(S(2, 1, 11))
 
 prob(5)
-pans(gmean(list(factors(41306329))))
+pans(gmean(factors(41306329)))
 
 prob(6)
 b = 92**2
-print("Geometric mean check:", gmean(list(factors(b))))
+print("Geometric mean check:", gmean(factors(b)))
 pans(b)
 
 prob(7)

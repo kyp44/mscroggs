@@ -1,9 +1,10 @@
+from __future__ import annotations
 from common import *
 
 
 def do_it(one_valid: bool) -> int:
     for n in it.count(100):
-        fs = sorted(factors(n))
+        fs = factors(n)
         ofs = list(filter(lambda f: f % 2 == 1, fs))
         if not one_valid and len(ofs) == 1:
             continue

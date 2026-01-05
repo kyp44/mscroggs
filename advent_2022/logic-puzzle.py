@@ -1,6 +1,4 @@
 from collections import OrderedDict
-from dataclasses import dataclass
-import numpy as np
 from common import *
 
 
@@ -41,7 +39,7 @@ class Drone:
 
 
 def highest_common_factor(m, n):
-    return max(set(factors(m).intersection(set(factors(n)))))
+    return max(set(factors(m)).intersection(set(factors(n))))
 
 
 def drone_positions(which, day):

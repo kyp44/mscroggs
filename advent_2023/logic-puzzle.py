@@ -7,8 +7,6 @@ This failed due to the clues being self-referential. As such, this program
 doesn't actual work, but I'm leaving it for reference.
 """
 from common import *
-from dataclasses import dataclass
-from typing import Callable, Iterable, Optional
 
 
 clues = {

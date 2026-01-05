@@ -38,7 +38,7 @@ for n in it.count(2):
 prob(2)
 for n in it.count(2):
     s = n**2
-    sf = sum(list(factors(s)))
+    sf = sum(factors(s))
     if square(sf):
         pans(s)
         break

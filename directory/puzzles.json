@@ -1853,5 +1853,85 @@
 				]
 			}
 		]
+	},
+	{
+		"type": "card",
+		"year": 2025,
+		"number": 12,
+		"puzzles": [
+			{
+				"number": 1,
+				"tags": [
+					"sum"
+				]
+			},
+			{
+				"number": 2,
+				"tags": [
+					"sum"
+				]
+			},
+			{
+				"number": 3,
+				"tags": [
+					"mod"
+				]
+			},
+			{
+				"number": 4,
+				"tags": [
+					"mod"
+				]
+			},
+			{
+				"number": 5,
+				"tags": [
+					"dig"
+				]
+			},
+			{
+				"number": 6,
+				"tags": [
+					"dig",
+					"comb"
+				]
+			},
+			{
+				"number": 7,
+				"tags": [
+					"dio"
+				]
+			},
+			{
+				"number": 8,
+				"tags": [
+					"dio"
+				]
+			},
+			{
+				"number": 9,
+				"tags": [
+					"cons"
+				]
+			},
+			{
+				"number": 10,
+				"tags": [
+					"cons"
+				]
+			},
+			{
+				"number": 11,
+				"tags": [
+					"comb"
+				]
+			},
+			{
+				"number": 12,
+				"tags": [
+					"comb"
+				]
+			}
+		]
 	}
 ]

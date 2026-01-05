@@ -15,52 +15,283 @@
 
 Link to the online card: \href{https://www.mscroggs.co.uk/blog/121}{https://www.mscroggs.co.uk/blog/121}
 
-\cproblem{1}{TODO}{\card@xxv@i}{
-  TODO
+\cproblem{1}{36}{\card@xxv@i}{
+  Suppose that $N$ is an even number, and we are interested in the sum of all integers between $0$ and $N$, and denote this by $S(N)$.
+  Odd numbers of course can have the form $n = 2k-1$.
+  The first odd number after $0$ is obviously $1 = 2 \cdot 1 - 1$.
+  The last odd number before $N$ is then $N - 1$ so that
+  \gath{
+    2k - 1 = N -1 \non
+    2k = N \non
+    k = \frac{N}{2}.
+  }
+  Therefore, we have
+  \ali{
+    S(N) &= \sum_{k=1}^{N/2} (2k-1) = 2 \sum_{k=1}^{N/2} k - \sum_{k=1}^{N/2} 1 \non
+    &= 2 \frac{\frac{N}{2}\parens{\frac{N}{2} + 1}}{2} - \parens{\frac{N}{2} - 1 + 1} \non
+    &= \frac{N(N+2)}{4}  - \frac{2N}{4} \non
+    &= \frac{N(N + 2 - 2)}{4} \non
+    &= \frac{N^2}{4}.
+  }
+  This results in our answer $S(12) = 12^2 / 4 = 36$.
+  \verified{}
 }
 
-\cproblem{2}{TODO}{\card@xxv@ii}{
-  TODO
+\cproblem{2}{493817284}{\card@xxv@ii}{
+  As we know from the previous problem that the sum is
+  \gath{
+    S(N) = \frac{N^2}{4}
+  }
+  so that our answer here is $S(44444) = 493817284$.
 }
 
-\cproblem{3}{TODO}{\card@xxv@iii}{
-  TODO
+\cproblem{3}{13}{\card@xxv@iii}{
+  This can be expressed as the system of modulo congruences:
+  \ali{
+    x &= 1 \pmod{3} \non
+    x &= 1 \pmod{4}.
+  }
+  Then by the Chinese remainder theorem, this has a unique solution modulo $N = 3 \cdot 4 = 12$ since $3$ and $4$ are coprime.
+  Now, clearly $x = 1$ is a solution, but presumably everyone must get at least one bauble, so that next smallest solution is $x = N + 1 = 13$, which must be our answer.
+  \verified{}
 }
 
-\cproblem{4}{TODO}{\card@xxv@iv}{
-  TODO
+\cproblem{4}{2521}{\card@xxv@iv}{
+  Just like the previous problem, this can clearly be expressed as the following system of modulo congruences:
+  \ali{
+    x &= 1 \pmod{2} \non
+    x &= 1 \pmod{3} \non
+    x &= 1 \pmod{4} \non
+    x &= 1 \pmod{5} \non
+    x &= 1 \pmod{6} \non
+    x &= 1 \pmod{7} \non
+    x &= 1 \pmod{8} \non
+    x &= 1 \pmod{9}.
+  }
+  In this more general case (relative tothe previous problem) the Chinese remainder theorem says that the solution is unique modulo $N = \lcm(2, 3, 4, 5, 6, 7, 8, 9) = 2520$.
+  Since again $x = 1$ is a solution and everyone should get at least one bauble, the next smallest solution and our answer is $x = N + 1 = 2521$.
+  \verified{}
 }
 
-\cproblem{5}{TODO}{\card@xxv@v}{
-  TODO
+\cproblem{5}{123}{\card@xxv@v}{
+  The answer is clearly simply $123$, which is intuitively obvious since we simply select the smallest nonzero digit that has not been used yet, starting at the hundreds place and moving right.
+  \verified{}
 }
 
-\cproblem{6}{TODO}{\card@xxv@vi}{
-  TODO
+\cproblem{6}{986409}{\card@xxv@vi}{
+  This is a permutation problem.
+  For the first digit we have 9 choices (i.e. the digits 1 through 9), 8 for the second digit, and 7 for the third, hence our answer is $9 \cdot 8 \cdot 7 = 504$.
+  \verified{}
 }
 
-\cproblem{7}{TODO}{\card@xxv@vii}{
-  TODO
+\cproblem{7}{11}{\card@xxv@vii}{
+  First we solve a more general problem: suppose the same Christmas game except that you can either win $a > 0$ points or $b > 0$ points.
+  Hence, for this specific problem, it will be that $a = 4$ and $b = 5$.
+  Clearly, since we can have any number of turns, any game will end on some score $c$ where
+  \gath{
+    ax + by = c. \label{eqn:07:orig}
+  }
+  This is a linear Diophantine equation where of course $x$ and $y$ must be non-negative integers.
+  Call a solution $(x, y)$ \emph{valid} if both $x \geq 0$ and $y \geq 0$ but they are not both zero, since that would result in a score of zero.
+  For a general linear Diophantine in which $x$ and $y$ can be \emph{any} integers, a necessary and sufficient condition for the existence of a solution is that $d = \gcd(a, b)$ divides $c$.
+  The base integer solution $(x_0, y_0)$ to
+  \gath{
+    a x_0 + b y_0 = d
+  }
+  can be found using the \href{https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm}{extended Euclidean algorithm}, which will not be reviewed here.
+  So assume that we have that solution in hand.
+  We then have that
+  \gath{
+    a x_0 + b y_0 = d \non
+    \frac{a x_0}{d} + \frac{b y_0}{d} = \frac{d}{d} = 1 \non
+    \frac{c a x_0}{d} + \frac{c b y_0}{d} = c \non
+    a \frac{c x_0}{d} + b \frac{c y_0}{d} = c
+  }
+  so that $(c x_0/d, c y_0/d)$ is a base solution to our original equation \eqref{eqn:07:orig}.
+  Then there are an infinite number of solutions $(x, y)$ to \eqref{eqn:07:orig}:
+  \ali{
+    x &= \frac{c x_0}{d} + \frac{b t}{d} \non
+    y &= \frac{c y_0}{d} - \frac{a t}{d} \label{eqn:07:xy}
+  }
+  for all $t \in \ints$.
+  We are of course actually interested in only valid solutions.
+  In this case, $d$ dividing $c$ is still a necessary condition, but not a sufficient one.
+  Note that, if $a$ and $b$ are coprime, then $d = 1$, which of course divides every $c$, so that any $c$ will potentially have solutions.
+  If $a$ and $b$ were not coprime then there would be an infinite number of $c$ such that $d$ does not divide $c$, and hence an infnite number of impossible scores.
+  For valid solutions then, from \eqref{eqn:07:xy}, we must have
+  \ali{
+    x = \frac{c x_0}{d} + \frac{b t}{d} &\geq 0 &
+    y = \frac{c y_0}{d} - \frac{a t}{d} &\geq 0 & \non
+    c x_0 + bt &\geq 0 &
+    c y_0 - at &\geq 0 & \non
+    bt &\geq -c x_0 &
+    c y_0 &\geq at \non
+    t &\geq \frac{-c x_0}{b} &
+    \frac{c y_0}{a} &\geq t. &
+    \text{(since $b > 0$ and $a > 0$)}
+  }
+  Thus, it must be that
+  \gath{
+    \frac{-c x_0}{b} \leq t \leq \frac{c y_0}{a} \label{eqn:07:interval}
+  }
+  Since $c/d$ is an integer (since $d$ divides $c$), $b/d$ is an integer (since $d = \gcd(a,b)$ is a divisor of $b$), and $a/d$ is an integer (for the same reason), it follows by \eqref{eqn:07:xy} that $x$ and $y$ will be integers if and only if $t$ is an integer.
+  So we are interested in integers in the closed interval $\squares{-cx_0/b, cy_0/a}$.
+  If $x = y = 0$, then \eqref{eqn:07:orig} requires that $c  = 0$ as well, which is trivial.
+  Thus, assuming that $c > 0$, any integer $t$ in the interval will result in not just a non-negative solution but a valid one.
+  Since the interval is bounded, this means that there are only finitely many valid solutions.
+
+  Now, if the length of this interval is over $1$, then there is clearly at least one integer in the interval, and hence \eqref{eqn:07:orig} has a valid solution.
+  So a necessary condition for it to be impossible for the game to end with a score of $c$ is that
+  \def\cmax{c_\mathrm{max}}
+  \gath{
+    \frac{c y_0}{a} - \frac{-c x_0}{b} \leq 1 \non
+    b c y_0 + a c x_0 \leq ab \non
+    c \parens{b y_0 + a x_0} \leq ab \non
+    c \leq \frac{ab}{a x_0 + b y_0} = \cmax \label{eqn:07:cmax}
+  }
+  It is clear from the derivation \eqref{eqn:07:cmax} that $\cmax$ corresponds with an interval of length $1$.
+  At the low end of the interval for a score of $\cmax$, we have
+  \gath{
+    \frac{-c x_0}{b} \leq t \non
+    -\frac{x_0}{b} \parens{\frac{ab}{a x_0 + b y_0}} \leq t \non
+    -\frac{x_0}{b} \parens{\frac{ab}{d}} \leq t \non
+    -\frac{a x_0}{d} \leq t.
+  }
+  Since $d = \gcd(a, b)$ is a divisor of $a$, clearly the left side is an integer so that $t = -a x_0/d$ results in a valid solution.
+  Therefore, $\cmax$ is a score on which the game \emph{can} end.
+  This puts an upper bound on the problem so that we need only to check all scores $c < \cmax$ by checking for integers in the interval \eqref{eqn:07:interval}.
+  Clearly there will be such an integer if
+  \gath{
+    \ceil{- \frac{c x_0}{b}} \leq \frac{c y_0}{a}
+  }
+  since $\ceil{-a x_0/b}$ is an integer not less than the lower bound.
+  So we simply check that
+  \gath{
+    \ceil{- \frac{c x_0}{b}} > \frac{c y_0}{a}, \label{eqn:07:ceil}
+  }
+  working backwards from $\cmax$.
+  The first $c$ such that \eqref{eqn:07:ceil} holds is our answer, i.e. the largest impossible score.
+
+  For the actual problem, we of course have $(a, b) = (4, 5)$, and we note that $4$ and $5$ are coprime so that there are only a finite number of impossible scores.
+  When the extended Euclidean algorithm is executed for this, we get $(x_0, y_0) = (-1, 1)$.
+  This results in
+  \gath{
+    c \leq \cmax = 20
+  }
+  by \eqref{eqn:07:cmax}.
+  So, when we work backwards from $20$ as described above, we get our answer $c = 11$.
 }
 
-\cproblem{8}{TODO}{\card@xxv@viii}{
-  TODO
+\cproblem{8}{1447319556779}{\card@xxv@viii}{
+  This is the same as the previous problem with larger numbers.
+  Here $(a, b) = (495371, 2921695)$, noting these are again coprime so that there are a finite number of impossible scores.
+  When the extended Euclidean algorithm is executed for this, we get $(x_0, y_0) = (-31454, 5333)$.
+  This results in
+  \gath{
+    c \leq \cmax = 1447322973845
+  }
+  by \eqref{eqn:07:cmax}.
+  So, when we work backwards from this $\cmax$, we get our answer $c = 1447319556779$.
 }
 
-\cproblem{9}{TODO}{\card@xxv@ix}{
-  TODO
+\cproblem{9}{16}{\card@xxv@ix}{
+  From the 2021, Dec 9 problem, we know that a positive integer $x$ can be written as the sum of consecutive integers if and only if
+  \gath{
+    x = \sum_{k=a}^{a+n-1} k = \frac{1}{2} n (n + 2a - 1) \label{eqn:09:x}
+  }
+  from some integers $a \geq 0$ and $n > 1$ since we omit the trivial case in which we add only one integer $a = x$.
+  It then follows that
+  \gath{
+    \frac{1}{2} n (n + 2a - 1) = x \non
+    n(n + 2a - 1) = 2x.
+  }
+  Let $m = n + 2a -1$ so that $n$ and $m$ are a corresponding pair of factors of $2x$.
+  We then have that
+  \gath{
+    n +  2a - 1 = m \non
+    2a = m - n + 1 \non
+    a = \frac{m - n + 1}{2}. \label{eqn:09:a}
+  }
+  Now, we require that $a$ be non-negative so that
+  \gath{
+    a = \frac{m - n + 1}{2} \geq 0 \non
+    m - n + 1 \geq 0 \non
+    m \geq n - 1.
+  }
+  It suffices to require that
+  \gath{
+    m \geq n \geq n - 1
+  }
+  so that $m$ should be the larger of the two corresponding factors, or $m = n$ if $2x$ is a square number.
+  In order for $a$ to be an integer, clearly it has to be that the numerator of \eqref{eqn:09:a} is even, that is, for some integer $k$,
+  \gath{
+    m - n + 1 = 2k \non
+    m - n = 2k - 1
+  }
+  and hence it has to be that $m - n$ is odd.
+  This can only be the case when $m$ is even and $n$ is odd or vice versa.
+  Note also, that since $n$ must be the smaller of the two factors, and it must be that $n > 1$, we can ignore the trivial case when the factors are $n = 1$ and $m = 2x$.
+
+  We are now in a position to prove the claim that a number \emph{cannot} be written as the sum of consecutive integers if and only if it is a power of two.
+  First, we prove the backward implication.
+  So assume that $x = 2^k$ is a power of two.
+  Then of course $2x = 2^{k+1}$ is also a power of two.
+  Obviously then, any factors of $2x$ must also be powers of two and thus even, besides the trivial factor  $1 = 2^0$, which we can ignore.
+  Hence, it has to be that both $n$ and $m$ are always even so that $a$ cannot be an integer.
+  From this it follows that $x$ cannot be written as the sum of consecutive integers.
+
+  We prove the forward direction by contrapositive, so assume that $x$ is \emph{not} a power of two so that it must be that $x = 2^k y$ where $y > 2$ is some odd number representing all the prime factors over $2$, noting that it could very well be that $k = 0$ when $x$ itself is odd.
+  Then of course $2x = 2 \cdot 2^k y = 2^{k+1} y$, noting that $k+1 > 0$ since $k \geq 0$
+  We then set $n$ to the smallest of $2^{k+1} > 2^0 = 1$ and $y$, and $m$ to the largest.
+  Then clearly $n$ and $m$ are corresponding factors of $2x = mn$ where one is even (the whichever was set to $2^{k+1}$) and the other is odd (whichever was set to $y$).
+  Therefore, $a$ is an integer and $n > 1$ so that $x$ can be written as the sum of consecutive integers.
+  This completes the proof of our original claim.
+
+  Lastly, since the smallest two-digit power of two is $x = 16$, this is our answer.
+  \verified{}
 }
 
-\cproblem{10}{TODO}{\card@xxv@x}{
-  TODO
+\cproblem{10}{1002}{\card@xxv@x}{
+  We could very well use the results of the previous problem to solve this by looking for the smallest four-digit number $x$ such that $x$ is even but $x/2$ is odd.
+  For, in this case, $x = 2y$ where $y$ is odd so that $2x = 2 \cdot 2y = 4y$, and hence $n = 4$ and $m = y$ are two corresponding factors such that $n$ is even and $m$ is odd.
+  Since $n = 4$, this would be the sum of \emph{four} consecutive integers.
+
+  However, there is an even easier way to approach this.
+  From \eqref{eqn:09:x} above with $n = 4$ we get
+  \ali{
+    x &= \frac{1}{2} n (n + 2a - 1) \non
+    &= \frac{1}{2} 4 (4 + 2a - 1) \non
+    &= 2(2a + 3) \non
+    &= 4a + 6 \non
+    &= 4a + 4 + 2 \non
+    &= 4(a+1) + 2.
+  }
+  This means that it must be that $x \equiv 2 \pmod{4}$.
+  Since the first four-digit number $1000$ is divisible by $4$ (since $1000/4 = 250$), clearly our answer is simply $x = 1002 = 4 \cdot 250 + 2$ so that $a = 249$.
 }
 
-\cproblem{11}{TODO}{\card@xxv@xi}{
-  TODO
+\cproblem{11}{153}{\card@xxv@xi}{
+  From the 2022 Christmas Card, problem 10, we know that the number of lines connecting $n$ points is
+  \gath{
+    N(n) = \binom{n}{2} = \frac{n(n-1)}{2}. \label{eqn:11:N}
+  }
+  Therefore, we simply have $N(18) = 18 \cdot 17 / 2 = 153$ as our answer.
 }
 
-\cproblem{12}{TODO}{\card@xxv@xii}{
-  TODO
+\cproblem{12}{18224}{\card@xxv@xii}{
+  From \eqref{eqn:11:N} above we are told that
+  \gath{
+    N(n) = \frac{n(n-1)}{2} = a \non
+    n(n-1) = 2a \non
+    n^2 - n = 2a \non
+    n^2 - n - 2a = 0,
+  }
+  where we have let $a = 166047976$.
+  This is of course a quadratic equation that can be solved with the quadratic formula:
+  \gath{
+    n = \frac{1 \pm \sqrt{1 - 4 \cdot 1 \cdot (-2a)}}{2} = \frac{1 \pm \sqrt{1 + 8a}}{2}.
+  }
+  For us, this results in solutions $n = 18224$ and $n = -18223$ so that clearly our answer must be $n = 18224$ points.
 }
 
 \end{document}

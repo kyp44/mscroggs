@@ -1,6 +1,5 @@
 from __future__ import annotations
 from common import *
-from dataclasses import dataclass
 from com import Seq
 
 

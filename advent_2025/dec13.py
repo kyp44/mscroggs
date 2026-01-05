@@ -1,3 +1,4 @@
+from __future__ import annotations
 from common import *
 
 
@@ -33,7 +34,8 @@ box_gen_solutions(
     3*[nonzero_first_dig],
     sol,
     lambda s: anumber(across_1(s)),
-    True,
+    # This takes too long to run
+    False,
     genchecks=[
         clue_4a,
         clue_5a,

@@ -1,6 +1,9 @@
+from __future__ import annotations
 import operator as op
 import numpy as np
 from collections import namedtuple
+from dataclasses import dataclass
+from typing import Tuple, List, Optional, Set
 import itertools as it
 import argparse
 import os
@@ -56,20 +59,37 @@ def number(ds):
     return sum([d*10**e for (e, d) in enumerate(ds)])
 
 
-def power_number(n, p):
+def power_number(n: int, p: int) -> Optional[int]:
     """
-    Returns whether is another number to a certain power.
+    Returns integer k such that k^p = n, or None if none exists, i.e.
+    the pth root of n is not an integer.
     """
     for k in it.count():
         m = k**p
         if m == n:
-            return True
+            return k
         elif m > n:
-            return False
+            break
+    return None
 
 
 def square_number(n): return power_number(n, 2)
 def cubic_number(n): return power_number(n, 3)
+
+
+def quadratic_rational(a: int, b: int, c: int) -> Set[frc]:
+    """
+    Returns integer solutions to the quadratic
+    ax^2 + bx + c = 0.
+    The empty set will be returned if no solutions are integers.
+    """
+    srd = square_number(b**2 - 4*a*c)
+    if srd is None:
+        return set()
+
+    n1 = frc(-b + srd, 2*a)
+    n2 = frc(-b - srd, 2*a)
+    return {n1, n2}
 
 
 class GenGrid:
@@ -310,12 +330,12 @@ class GridRoutes:
 
 def factors(n):
     """
-    Find factors of a number.
+    Find factors of a number and returns a list of them, in order.
     """
     if n == 0:
-        return set()
-    return set(reduce(list.__add__,
-                      ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
+        return []
+    return sorted(reduce(list.__add__,
+                         ([i, n//i] for i in range(1, int(n**0.5) + 1) if n % i == 0)))
 # Print answer
 
 
@@ -664,3 +684,54 @@ def prob(n):
     """
     sep = "".join(["-" for i in range(20)])
     print(sep + " Problem " + str(n) + " " + sep)
+
+
+@dataclass
+class EEAStep:
+    r: int
+    q: int
+    s: int
+    t: int
+
+    def final(self) -> bool:
+        return self.r == 0
+
+
+@dataclass
+class EEA:
+    """
+    Extended Euclidean algorithm implementation
+    """
+    r0: EEAStep
+    r1: EEAStep
+
+    @classmethod
+    def new(cls, a, b) -> EEA:
+        return cls(
+            EEAStep(a, 0, 1, 0),
+            EEAStep(b, 0, 0, 1)
+        )
+
+    def next(self) -> EEAStep:
+        if self.r0.final():
+            return self.r0
+        elif self.r1.final():
+            return self.r1
+        else:
+            q = self.r0.r // self.r1.r
+            return EEAStep(
+                self.r0.r - q*self.r1.r,
+                q,
+                self.r0.s - q*self.r1.s,
+                self.r0.t - q*self.r1.t,
+            )
+
+    def run(self) -> Tuple[int, int]:
+        current = self
+        while not current.r1.final():
+            current = EEA(
+                current.r1,
+                current.next()
+            )
+
+        return (current.r0.s, current.r0.t)

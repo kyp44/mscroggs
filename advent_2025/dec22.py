@@ -1,3 +1,4 @@
+from __future__ import annotations
 from common import *
 
 sol = np.array([[1, 6, 5],
